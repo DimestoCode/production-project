@@ -1,0 +1,24 @@
+{
+    "compilerOptions": {
+      "outDir": "./dist/",
+      "noImplicitAny": true,
+      "module": "ESNext",
+      // Version that's gonna be used for compilation
+      "target": "es5",
+      "jsx": "react-jsx",
+      "allowJs": true, 
+      "moduleResolution": "node",
+      // (require() moduel.export) = common js
+      // helps us to replace common js by import 
+      "esModuleInterop": true,
+      // Helps to deal with default imports
+      "allowSyntheticDefaultImports": true,
+
+      "baseUrl": "."
+    },
+    "ts-node": {
+        "compilerOptions": {
+          "module": "CommonJS"
+        }
+      }
+  }
