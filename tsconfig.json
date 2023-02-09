@@ -14,7 +14,10 @@
       // Helps to deal with default imports
       "allowSyntheticDefaultImports": true,
 
-      "baseUrl": "."
+      "baseUrl": ".",
+      "paths": {
+        "*": ["./src/*"]
+      }
     },
     "ts-node": {
         "compilerOptions": {
