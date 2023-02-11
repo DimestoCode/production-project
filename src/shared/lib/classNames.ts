@@ -8,6 +8,6 @@ export function classNames(
     return [
         stringClasses,
         ...Object.keys(objectClasses).filter((key) => !!objectClasses[key]),
-        ...additionalClasses
+        ...additionalClasses.filter(Boolean)
     ].join(" ");
 }
