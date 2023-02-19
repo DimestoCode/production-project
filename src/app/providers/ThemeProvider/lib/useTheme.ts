@@ -6,7 +6,7 @@ interface UseThemeResult {
     theme: Theme;
 }
 
-const useTheme = () => {
+const useTheme = (): UseThemeResult => {
     const { setTheme, theme } = useContext(ThemeContext);
 
     const toggleTheme = () => {
