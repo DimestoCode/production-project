@@ -20,8 +20,7 @@ export function buildLoaders({ isDev }: BuildOptions): webpack.RuleSetRule[] {
         use: {
             loader: "babel-loader",
             options: {
-                presets: [["@babel/preset-env", { targets: "defaults" }]],
-                plugins: [["i18next-extract", { locales: ["en", "ua"], keyAsDefaultValue: true }]]
+                presets: [["@babel/preset-env", { targets: "defaults" }]]
             }
         }
     };

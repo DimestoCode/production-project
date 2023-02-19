@@ -7,7 +7,7 @@ export function classNames(
 ): string {
     return [
         stringClasses,
-        ...Object.keys(objectClasses).filter((key) => !!objectClasses[key]),
-        ...additionalClasses.filter(Boolean)
+        ...additionalClasses.filter(Boolean),
+        ...Object.keys(objectClasses).filter((key) => !!objectClasses[key])
     ].join(" ");
 }
