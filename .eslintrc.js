@@ -42,9 +42,11 @@ module.exports = {
         "linebreak-style": ["error", "windows"],
         "comma-dangle": "off",
         "max-len": [2, {
-            code: 120
+            code: 120,
+            ignoreComments: true
         }],
-        "i18next/no-literal-string": ["error", { markupOnly: true }]
+        "i18next/no-literal-string": ["error", { markupOnly: true }],
+        "object-curly-newline": "off"
     },
     globals: {
         __IS_DEV__: true,

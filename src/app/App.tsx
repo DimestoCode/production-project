@@ -2,8 +2,10 @@ import { Suspense } from "react";
 import { classNames } from "shared/lib/classNames";
 import { Navbar } from "widgets/Navbar";
 import { Sidebar } from "widgets/Sidebar";
+import { Loader } from "widgets/Loader";
 import { useTheme } from "./providers/ThemeProvider";
 import { AppRouter } from "./providers/router";
+
 import "./styles/index.scss";
 
 const App = () => {
@@ -11,7 +13,7 @@ const App = () => {
 
     return (
         <div className={classNames("app", { [theme]: true })}>
-            <Suspense fallback="">
+            <Suspense fallback={<Loader />}>
                 <Navbar />
                 <div className="content-page">
                     <Sidebar />
