@@ -1,4 +1,4 @@
-import { classNames } from "shared/lib/classNames";
+import { classNames } from "shared/lib/classNames/classNames";
 import { Spinner } from "shared/ui/Spinner/Spinner";
 import classes from "./Loader.module.scss";
 

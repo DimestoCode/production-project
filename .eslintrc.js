@@ -45,9 +45,20 @@ module.exports = {
             code: 120,
             ignoreComments: true
         }],
-        "i18next/no-literal-string": ["error", { markupOnly: true }],
+        "i18next/no-literal-string": ["error", {
+            markupOnly: true,
+            ignoreAttribute: ["data-testid", "to"]
+        }],
         "object-curly-newline": "off"
     },
+    overrides: [
+        {
+            files: ["**/*.test.*"],
+            rules: {
+                "i18next/no-literal-string": "off"
+            }
+        }
+    ],
     globals: {
         __IS_DEV__: true,
     },

@@ -3,24 +3,25 @@
  * https://jestjs.io/docs/configuration
  */
 
+import path from "path";
+
 export default {
     clearMocks: true,
     testEnvironment: "jsdom",
     coveragePathIgnorePatterns: ["\\\\node_modules\\\\"],
-    moduleDirectories: ["node_modules"],
     moduleFileExtensions: ["js", "jsx", "ts", "tsx", "json", "node"],
-    testMatch: ["<rootDir>/src/**/*(*.)@(spec|test).[tj]s?(x)"],
-    rootDir: "../../"
-
-    // All imported modules in your tests should be mocked automatically
-    // automock: false,
-
-    // Stop running tests after `n` failures
-    // bail: 0,
-
-    // The directory where Jest should store its cached dependency information
-    // cacheDirectory: "C:\\Users\\dando\\AppData\\Local\\Temp\\jest",
-
+    moduleDirectories: ["node_modules"],
+    modulePaths: ["<rootDir>src"],
+    testMatch: [
+        // Обнаружил разницу между МАК ОС и ВИНДОУС!!!
+        "<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)"
+    ],
+    rootDir: "../../",
+    setupFilesAfterEnv: ["<rootDir>config/jest/setupTests.ts"],
+    moduleNameMapper: {
+        "\\.s?css$": "identity-obj-proxy",
+        "\\.svg": path.resolve(__dirname, "jestEmptyComponent.tsx")
+    }
     // Indicates whether the coverage information should be collected while executing the test
     // collectCoverage: false,
 
@@ -30,6 +31,8 @@ export default {
     // The directory where Jest should output its coverage files
     // coverageDirectory: undefined,
 
+    // An array of regexp pattern strings used to skip coverage collection
+
     // Indicates which provider should be used to instrument code for coverage
     // coverageProvider: "babel",
 
@@ -37,7 +40,6 @@ export default {
     // coverageReporters: [
     //   "json",
     //   "text",
-
     //   "lcov",
     //   "clover"
     // ],
@@ -62,6 +64,19 @@ export default {
 
     // A set of global variables that need to be available in all test environments
     // globals: {},
+
+    // The maximum amount of workers used to run your tests. Can be specified as % or a number. E.g. maxWorkers: 10% will use 10% of your CPU amount + 1 as the maximum worker number. maxWorkers: 2 will use a maximum of 2 workers.
+    // maxWorkers: "50%",
+
+    // An array of directory names to be searched recursively up from the requiring module's location
+
+    // An array of file extensions your modules use
+
+    // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
+    // moduleNameMapper: {},
+
+    // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
+    // modulePathIgnorePatterns: [],
 
     // Activates notifications for test results
     // notify: false,
@@ -89,6 +104,8 @@ export default {
 
     // Automatically restore mock state and implementation before every test
     // restoreMocks: false,
+
+    // The root directory that Jest should scan for tests and modules within
 
     // A list of paths to directories that Jest should use to search for files in
     // roots: [
@@ -118,6 +135,8 @@ export default {
     // Adds a location field to test results
     // testLocationInResults: false,
 
+    // The glob patterns Jest uses to detect test files
+
     // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
     // testPathIgnorePatterns: [
     //   "\\\\node_modules\\\\"
@@ -141,11 +160,13 @@ export default {
     // A map from regular expressions to paths to transformers
     // transform: undefined,
 
+    // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
     // transformIgnorePatterns: [
     //   "\\\\node_modules\\\\",
     //   "\\.pnp\\.[^\\\\]+$"
     // ],
 
+    // An array of regexp pattern strings that are matched against all modules before the module loader will automatically return a mock for them
     // unmockedModulePathPatterns: undefined,
 
     // Indicates whether each individual test should be reported during the run
