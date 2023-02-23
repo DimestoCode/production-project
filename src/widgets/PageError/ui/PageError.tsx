@@ -16,9 +16,7 @@ export const PageError = ({ className }: PageErrorProps) => {
     return (
         <div className={classNames(classes.PageError, {}, [className])}>
             <p>{t("Something went wrong")}</p>
-            <Button className={classes.refreshBtn} onClick={refreshPage}>
-                {t("Refresh page")}
-            </Button>
+            <Button onClick={refreshPage}>{t("Refresh page")}</Button>
         </div>
     );
 };
