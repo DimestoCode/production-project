@@ -4,6 +4,7 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
+
 jobs:
   pipeline:
     runs-on: ubuntu-latest
@@ -11,19 +12,19 @@ jobs:
       matrix:
         node: [ 17.x ]
 
-  steps:
-      uses: actions/checkout@v2
-    - name: "Starting Node.js ${{ matrix.node-version }}"
-      uses: actions/setup-node@v1
-      with:
-        node-version: 16
-    - name: Install Modules
-      run: npm install
-    - name: Run prod build
-      run: npm run build:prod
-    - name: Linting TS
-      run: npm run lint:ts
-    - name: Linting Styles
-      run: npm run lint:scss
-    - name: Run unit tests
-      run: npm run test:unit
+    steps:
+      - uses: actions/checkout@v2
+      - name: Starting Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install Modules
+        run: npm install
+      - name: Run prod build
+        run: npm run build:prod
+      - name: Linting TS
+        run: npm run lint:ts
+      - name: Linting Styles
+        run: npm run lint:scss
+      - name: Run unit tests
+        run: npm run test:unit
