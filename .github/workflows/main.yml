@@ -7,9 +7,9 @@ on:
 jobs:
   pipeline:
     runs-on: ubuntu-latest
-  strategy:
-    matrix:
-      node: [ 17.x ]
+    strategy:
+      matrix:
+        node: [ 17.x ]
 
   steps:
       uses: actions/checkout@v2
@@ -17,13 +17,13 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: 16
-    - name: install modules
+    - name: Install Modules
       run: npm install
-    - name: build production version of a project
+    - name: Run prod build
       run: npm run build:prod
-    - name: linting typescript
+    - name: Linting TS
       run: npm run lint:ts
-    - name: linting styles
+    - name: Linting Styles
       run: npm run lint:scss
-    - name: unit testing
+    - name: Run unit tests
       run: npm run test:unit
