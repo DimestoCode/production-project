@@ -39,7 +39,7 @@ module.exports = {
         "import/no-extraneous-dependencies": "off",
         "no-underscore-dangle": "off",
         quotes: [2, "double"],
-        "linebreak-style": ["error", "windows"],
+        "linebreak-style": ["error", "unix"],
         "comma-dangle": "off",
         "max-len": [2, {
             code: 120,
