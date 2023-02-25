@@ -1,5 +1,5 @@
 name: build-application
-on: 
+on:
   push:
     branches: [ master ]
   pull_request:
