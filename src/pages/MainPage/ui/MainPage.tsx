@@ -5,4 +5,6 @@ const MainPage = () => {
     return <div>{t("Main page")}</div>;
 };
 
+// Test
+
 export default MainPage;
