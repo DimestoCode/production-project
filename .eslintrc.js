@@ -7,7 +7,6 @@ module.exports = {
     extends: [
         "plugin:react/recommended",
         "airbnb",
-        "airbnb-typescript",
         "plugin:i18next/recommended"
     ],
     parser: "@typescript-eslint/parser",
@@ -48,7 +47,7 @@ module.exports = {
         }],
         "i18next/no-literal-string": ["error", {
             markupOnly: true,
-            ignoreAttribute: ["data-testid", "to"]
+            ignoreAttribute: ["data-testid", "to", "fallback"]
         }],
         "object-curly-newline": "off",
         "react/jsx-sort-props": "error"
