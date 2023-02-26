@@ -30,6 +30,12 @@ export default ({ config }: { config: webpack.Configuration }) => {
         use: ["@svgr/webpack"]
     });
     config.module?.rules?.push(buildCssLoaders(true));
+    const isDev = config.mode === "development";
+    config.plugins.push(
+        new webpack.DefinePlugin({
+            __IS_DEV__: JSON.stringify(isDev)
+        })
+    );
 
     return config;
 };

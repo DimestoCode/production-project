@@ -4,6 +4,8 @@ import { initReactI18next } from "react-i18next";
 import Backend from "i18next-http-backend";
 import LanguageDetector from "i18next-browser-languagedetector";
 
+const ns = ["common", "about", "main"];
+
 i18n.use(Backend)
     .use(LanguageDetector)
     .use(initReactI18next)
@@ -11,7 +13,8 @@ i18n.use(Backend)
     .init({
         fallbackLng: "en",
         debug: __IS_DEV__,
-
+        supportedLngs: ["en", "ua"],
+        ns,
         interpolation: {
             escapeValue: false // not needed for react as it escapes by default
         }
