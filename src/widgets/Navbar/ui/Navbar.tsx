@@ -11,15 +11,8 @@ interface NavBarProps {
 export const Navbar = ({ className }: NavBarProps) => {
     const { t } = useTranslation("common");
     return (
-        <div className={classNames(classes.Navbar, {}, [className])}>
-            <div className={classes.links}>
-                <AppLink className={classes.mainLink} to="/" theme={AppLinkTheme.SECONDARY}>
-                    {t("Main")}
-                </AppLink>
-                <AppLink theme={AppLinkTheme.SECONDARY} to="/about">
-                    {t("About")}
-                </AppLink>
-            </div>
-        </div>
+        <nav className={classNames(classes.Navbar, {}, [className])}>
+            <div className={classes.links}>/</div>
+        </nav>
     );
 };

@@ -49,7 +49,8 @@ module.exports = {
             markupOnly: true,
             ignoreAttribute: ["data-testid", "to"]
         }],
-        "object-curly-newline": "off"
+        "object-curly-newline": "off",
+        "react/jsx-sort-props": "error"
     },
     overrides: [
         {
