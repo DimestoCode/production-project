@@ -8,6 +8,6 @@ interface NavBarProps {
 
 export const Navbar = ({ className }: NavBarProps) => (
     <nav className={classNames(classes.Navbar, {}, [className])}>
-        <div className={classes.links}>//</div>
+        <div className={classes.links}>\\</div>
     </nav>
 );

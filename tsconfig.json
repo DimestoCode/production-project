@@ -26,6 +26,7 @@
     "include": [
       "./config/**/*.ts",
       "./src/**/*.tsx",
-      "./src/**/*.ts"
+      "./src/**/*.ts",
+      "lost-pixel.config.ts"
     ]
   }
