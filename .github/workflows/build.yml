@@ -34,3 +34,5 @@ jobs:
       - name: Build Storybook
         run: npm run storybook:build
         if: always()
+      - name: Run Visual UI Regression Testing
+        uses: lost-pixel/lost-pixel@v3.0.3

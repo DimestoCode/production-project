@@ -4,7 +4,7 @@
       "noImplicitAny": true,
       "module": "ESNext",
       // Version that's gonna be used for compilation
-      "target": "es5",
+      "target": "ESNext",
       "jsx": "react-jsx",
       "allowJs": true, 
       "moduleResolution": "node",
