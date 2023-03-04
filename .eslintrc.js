@@ -20,7 +20,8 @@ module.exports = {
     plugins: [
         "react",
         "@typescript-eslint",
-        "i18next"
+        "i18next",
+        "react-hooks"
     ],
     rules: {
         "react/jsx-indent": [2, 4],
@@ -50,11 +51,16 @@ module.exports = {
             ignoreAttribute: ["data-testid", "to", "fallback"]
         }],
         "object-curly-newline": "off",
-        "react/jsx-sort-props": "error"
+        "react/jsx-sort-props": "error",
+        "jsx-a11y/no-static-element-interactions": "off",
+        "jsx-a11y/click-events-have-key-events": "off",
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "error",
+        "implicit-arrow-linebreak": "off"
     },
     overrides: [
         {
-            files: ["**/*.test.*"],
+            files: ["**/*.{test,stories}.{ts,tsx}"],
             rules: {
                 "i18next/no-literal-string": "off"
             }
