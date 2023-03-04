@@ -19,12 +19,6 @@ jobs:
       - name: Build Storybook
         run: npm run storybook:build
 
-      - name: Build Application
-        run: npm run build:prod
-
-      - name: Run Application
-        run: npm run start
-
       - name: Lost Pixel
         id: lp
         uses: lost-pixel/lost-pixel@v3.0.3
