@@ -10,7 +10,7 @@ export interface ICustomRenderOptions extends RenderOptions {
     route?: string;
     initialState?: DeepPartial<IStoreState>;
 }
-export function renderTestComponent(component: ReactNode, options?: ICustomRenderOptions) {
+export function renderTestComponent(component: ReactNode, options: ICustomRenderOptions = {}) {
     const { route = "/", initialState, ...rest } = options;
     return render(
         <StoreProvider initialState={initialState as IStoreState}>
