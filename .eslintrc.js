@@ -56,13 +56,20 @@ module.exports = {
         "jsx-a11y/click-events-have-key-events": "off",
         "react-hooks/rules-of-hooks": "error",
         "react-hooks/exhaustive-deps": "error",
-        "implicit-arrow-linebreak": "off"
+        "implicit-arrow-linebreak": "off",
+        "react/jsx-one-expression-per-line": "off"
     },
     overrides: [
         {
             files: ["**/*.{test,stories}.{ts,tsx}"],
             rules: {
                 "i18next/no-literal-string": "off"
+            }
+        },
+        {
+            files: ["src/**/*.slice.ts"],
+            rules: {
+                "no-param-reassign": ["error", { props: false }]
             }
         }
     ],

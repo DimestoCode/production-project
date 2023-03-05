@@ -7,5 +7,7 @@
   "LanguageAbbreviation": "UA",
   "Main page": "Головна",
   "About page": "Про нас",
-  "Login": "Увійти"
+  "Login": "Увійти",
+  "Increment": "Додати",
+  "Decrement": "Відняти"
 }

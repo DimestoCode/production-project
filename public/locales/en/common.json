@@ -7,5 +7,7 @@
   "LanguageAbbreviation": "EN",
   "Main page": "Main",
   "About page": "About",
-  "Login": "Login"
+  "Login": "Login",
+  "Increment": "Increment",
+  "Decrement": "Decrement"
 }
