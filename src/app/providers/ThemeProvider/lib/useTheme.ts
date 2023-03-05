@@ -11,6 +11,7 @@ const useTheme = (): IUseThemeResult => {
 
     const toggleTheme = () => {
         const newTheme = theme === Theme.DARK ? Theme.LIGHT : Theme.DARK;
+        document.body.className = newTheme;
         setTheme(theme === Theme.DARK ? Theme.LIGHT : Theme.DARK);
         localStorage.setItem(LOCAL_STORAGE_THEME_KEY, newTheme);
     };
