@@ -1,8 +1,8 @@
 import webpack from "webpack";
 import { buildCssLoaders } from "./loaders/buildCssLoaders";
-import { BuildOptions } from "./types/config";
+import { IBuildOptions } from "./types/config";
 
-export function buildLoaders({ isDev }: BuildOptions): webpack.RuleSetRule[] {
+export function buildLoaders({ isDev }: IBuildOptions): webpack.RuleSetRule[] {
     const svgLoader = {
         test: /\.svg$/i,
         use: ["@svgr/webpack"]

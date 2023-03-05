@@ -1,10 +1,10 @@
 import path from "path";
 import webpack, { RuleSetRule } from "webpack";
 import { buildCssLoaders } from "../build/loaders/buildCssLoaders";
-import { BuildPaths } from "../build/types/config";
+import { IBuildPaths } from "../build/types/config";
 
 export default ({ config }: { config: webpack.Configuration }) => {
-    const paths: BuildPaths = {
+    const paths: IBuildPaths = {
         build: "",
         html: "",
         entry: "",
