@@ -12,10 +12,10 @@ interface IModalProps {
 }
 const ANIMATION_DELAY = 300;
 
-export const Modal = ({ className, children, isOpen, onClose }: IModalProps) => {
+export const Modal = ({ className = "", children, isOpen, onClose }: IModalProps) => {
     const [isClosing, setIsClosing] = useState(false);
     const timerRef = useRef<ReturnType<typeof setTimeout>>();
-    const { theme } = useTheme();
+
     const handleClose = useCallback(() => {
         if (onClose) {
             setIsClosing(true);
@@ -55,7 +55,7 @@ export const Modal = ({ className, children, isOpen, onClose }: IModalProps) => 
     };
     return (
         <Portal>
-            <div className={classNames(classes.Modal, dynamicClasses, [className, classes[theme]])}>
+            <div className={classNames(classes.Modal, dynamicClasses, [className])}>
                 <div className={classes.overlay} onClick={handleClose}>
                     <div
                         className={classNames(classes.content, {

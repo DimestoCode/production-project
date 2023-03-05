@@ -5,6 +5,6 @@ interface ISpinnerProps {
     className?: string;
 }
 
-export const Spinner = ({ className }: ISpinnerProps) => (
+export const Spinner = ({ className = "" }: ISpinnerProps) => (
     <div className={classNames(classes.Spinner, {}, [className])} />
 );

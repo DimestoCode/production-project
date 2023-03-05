@@ -8,7 +8,7 @@ interface IThemeSwitcherProps {
     className?: string;
 }
 
-export const ThemeSwitcher = ({ className }: IThemeSwitcherProps) => {
+export const ThemeSwitcher = ({ className = "" }: IThemeSwitcherProps) => {
     const { theme, toggleTheme } = useTheme();
     return (
         <Button className={classNames("", {}, [className])} onClick={toggleTheme} theme={ButtonTheme.CLEAR}>

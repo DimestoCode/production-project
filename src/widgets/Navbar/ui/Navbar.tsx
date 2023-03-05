@@ -11,7 +11,7 @@ interface INavBarProps {
     className?: string;
 }
 
-export const Navbar = ({ className }: INavBarProps) => {
+export const Navbar = ({ className = "" }: INavBarProps) => {
     const { t } = useTranslation("common");
     const [isAuthWindowOpen, setIsAuthWindowOpen] = useState(false);
 

@@ -7,13 +7,6 @@
     z-index: -1;
     opacity: 0;
     pointer-events: none;
-
-    &.dark {
-        --bg-color: #090949;
-        --primary-color: #04ff04;
-    }
-
-    color: var(--primary-color);
 }
 
 .overlay {

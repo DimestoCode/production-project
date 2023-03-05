@@ -6,7 +6,7 @@ interface ILoaderProps {
     className?: string;
 }
 
-export const Loader = ({ className }: ILoaderProps) => (
+export const Loader = ({ className = "" }: ILoaderProps) => (
     <div className={classNames(classes.Loader, {}, [className])}>
         <Spinner />
     </div>

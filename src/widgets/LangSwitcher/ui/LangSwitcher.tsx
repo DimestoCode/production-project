@@ -7,7 +7,7 @@ interface ILangSwitcherProps {
     short?: boolean;
 }
 
-export const LangSwitcher = ({ className, short }: ILangSwitcherProps) => {
+export const LangSwitcher = ({ className = "", short }: ILangSwitcherProps) => {
     const { t, i18n } = useTranslation("common");
 
     const toggleLanguage = () => {
