@@ -7,11 +7,11 @@ import { Modal } from "shared/ui/Modal/Modal";
 
 import classes from "./Navbar.module.scss";
 
-interface NavBarProps {
+interface INavBarProps {
     className?: string;
 }
 
-export const Navbar = ({ className }: NavBarProps) => {
+export const Navbar = ({ className }: INavBarProps) => {
     const { t } = useTranslation("common");
     const [isAuthWindowOpen, setIsAuthWindowOpen] = useState(false);
 

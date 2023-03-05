@@ -10,11 +10,11 @@ import MainPageIcon from "shared/assets/icons/main-page.svg";
 import AboutPageIcon from "shared/assets/icons/about-page.svg";
 import classes from "./Sidebar.module.scss";
 
-interface SideBarProps {
+interface ISideBarProps {
     className?: string;
 }
 
-export const Sidebar = ({ className = "" }: SideBarProps) => {
+export const Sidebar = ({ className = "" }: ISideBarProps) => {
     const [collapsed, setCollapsed] = useState(false);
     const { t } = useTranslation("common");
     const onToggle = () => setCollapsed((prev) => !prev);

@@ -4,7 +4,7 @@ import { classNames } from "shared/lib/classNames/classNames";
 import { Portal } from "../Portal/Portal";
 import classes from "./Modal.module.scss";
 
-interface ModalProps {
+interface IModalProps {
     className?: string;
     children?: ReactNode;
     isOpen?: boolean;
@@ -12,7 +12,7 @@ interface ModalProps {
 }
 const ANIMATION_DELAY = 300;
 
-export const Modal = ({ className, children, isOpen, onClose }: ModalProps) => {
+export const Modal = ({ className, children, isOpen, onClose }: IModalProps) => {
     const [isClosing, setIsClosing] = useState(false);
     const timerRef = useRef<ReturnType<typeof setTimeout>>();
     const { theme } = useTheme();

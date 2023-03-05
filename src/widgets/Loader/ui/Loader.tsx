@@ -2,11 +2,11 @@ import { classNames } from "shared/lib/classNames/classNames";
 import { Spinner } from "shared/ui/Spinner/Spinner";
 import classes from "./Loader.module.scss";
 
-interface LoaderProps {
+interface ILoaderProps {
     className?: string;
 }
 
-export const Loader = ({ className }: LoaderProps) => (
+export const Loader = ({ className }: ILoaderProps) => (
     <div className={classNames(classes.Loader, {}, [className])}>
         <Spinner />
     </div>
