@@ -15,12 +15,9 @@
     "test:unit": "jest --config ./config/jest/jest.config.ts",
     "test:ui": "lost-pixel",
     "test:ui:update": "lost-pixel update",
-    "test:ui:ci": "npx loki --requireReference --reactUri file:./storybook-static",
-    "test:ui:report": "npm run test:ui:json && npm run test:ui:html",
-    "test:ui:json": "node scripts/generate-visual-json-report.js",
-    "test:ui:html": "reg-cli --from .loki/report.json --report .loki/report.html",
     "storybook": "start-storybook -p 6006 -c ./config/storybook -s ./public",
-    "storybook:build": "build-storybook -c ./config/storybook -s ./public"
+    "storybook:build": "build-storybook -c ./config/storybook -s ./public",
+    "prepare": "husky install"
   },
   "keywords": [],
   "author": "",
@@ -82,7 +79,8 @@
     "webpack": "5.69.1",
     "webpack-bundle-analyzer": "4.5.0",
     "webpack-cli": "^4.10.0",
-    "webpack-dev-server": "4.7.4"
+    "webpack-dev-server": "4.7.4",
+    "husky": "^8.0.0"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.0",

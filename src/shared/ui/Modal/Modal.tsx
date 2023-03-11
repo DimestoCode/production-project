@@ -9,11 +9,13 @@ interface IModalProps {
     children?: ReactNode;
     isOpen?: boolean;
     onClose?: () => void;
+    lazy?: boolean;
 }
 const ANIMATION_DELAY = 300;
 
-export const Modal = ({ className = "", children, isOpen, onClose }: IModalProps) => {
+export const Modal = ({ className = "", children, isOpen, onClose, lazy }: IModalProps) => {
     const [isClosing, setIsClosing] = useState(false);
+    const [isMounted, setIsMounted] = useState(false);
     const timerRef = useRef<ReturnType<typeof setTimeout>>();
 
     const handleClose = useCallback(() => {
@@ -45,6 +47,12 @@ export const Modal = ({ className = "", children, isOpen, onClose }: IModalProps
         };
     }, [isOpen, onKeyDown]);
 
+    useEffect(() => {
+        if (isOpen) {
+            setIsMounted(isOpen);
+        }
+    }, [isOpen]);
+
     const dynamicClasses: Record<string, boolean> = {
         [classes.opened]: isOpen,
         [classes.isClosing]: isClosing
@@ -53,6 +61,11 @@ export const Modal = ({ className = "", children, isOpen, onClose }: IModalProps
     const handleContentClick = (e: MouseEvent) => {
         e.stopPropagation();
     };
+
+    if (lazy && !isMounted) {
+        return null;
+    }
+
     return (
         <Portal>
             <div className={classNames(classes.Modal, dynamicClasses, [className])}>

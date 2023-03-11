@@ -9,5 +9,7 @@
   "About page": "Про нас",
   "Login": "Увійти",
   "Increment": "Додати",
-  "Decrement": "Відняти"
+  "Decrement": "Відняти",
+  "Input login": "Введіть логін",
+  "Input password": "Введіть пароль"
 }

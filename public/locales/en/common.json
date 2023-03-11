@@ -9,5 +9,7 @@
   "About page": "About",
   "Login": "Login",
   "Increment": "Increment",
-  "Decrement": "Decrement"
+  "Decrement": "Decrement",
+  "Input login": "Input login",
+  "Input password": "Input password"
 }
