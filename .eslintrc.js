@@ -30,7 +30,6 @@ module.exports = {
         "react/jsx-filename-extension": [2, { extensions: [".js", ".jsx", ".tsx"] }],
         "import/no-unresolved": "off",
         "import/prefer-default-export": "off",
-        "no-unused-vars": "warn",
         "react/require-default-props": "off",
         "react/react-in-jsx-scope": "off",
         "react/jsx-props-no-spreading": "warn",
@@ -59,19 +58,21 @@ module.exports = {
         "react-hooks/rules-of-hooks": "error",
         "react-hooks/exhaustive-deps": "error",
         "implicit-arrow-linebreak": "off",
-        "react/jsx-one-expression-per-line": "off"
+        "react/jsx-one-expression-per-line": "off",
+        "no-param-reassign": ["error", {
+            props: true,
+            ignorePropertyModificationsFor: [
+                "state",
+            ]
+        }],
+        "no-unused-vars": "off",
+        "@typescript-eslint/no-unused-vars": "error"
     },
     overrides: [
         {
             files: ["**/*.{test,stories}.{ts,tsx}"],
             rules: {
                 "i18next/no-literal-string": "off"
-            }
-        },
-        {
-            files: ["src/**/*.slice.ts"],
-            rules: {
-                "no-param-reassign": ["error", { props: false }]
             }
         }
     ],

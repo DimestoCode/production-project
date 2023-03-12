@@ -1,4 +1,3 @@
-/* eslint-disable i18next/no-literal-string */
 import { getUserAuthData, userActions } from "entities/User";
 import { LoginModal } from "features/UserAuthentication";
 import { useCallback, useState } from "react";
@@ -38,7 +37,7 @@ export const Navbar = ({ className = "" }: INavBarProps) => {
             <Button className={classes.links} onClick={onClickHandler} theme={ButtonTheme.CLEAR_INVERTED}>
                 {t(btnText)}
             </Button>
-            {!authData && <LoginModal isOpen={isLoginModalOpen} onClose={toggleModal} />}
+            {isLoginModalOpen && !authData && <LoginModal isOpen={isLoginModalOpen} onClose={toggleModal} />}
         </nav>
     );
 };

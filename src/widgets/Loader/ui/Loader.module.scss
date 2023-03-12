@@ -1,5 +1,5 @@
 .Loader {
-    min-height: calc(100vh - var(--navbar-height));
+    max-height: calc(100vh - var(--navbar-height));
     display: flex;
     justify-content: center;
     align-items: center;

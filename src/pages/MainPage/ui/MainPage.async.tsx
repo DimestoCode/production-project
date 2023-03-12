@@ -1,3 +1,8 @@
-import { lazy } from "react";
+import { FC, lazy } from "react";
 
-export const MainPageAsync = lazy(() => import("./MainPage"));
+export const MainPageAsync = lazy<FC>(
+    () =>
+        new Promise((res) => {
+            setTimeout(() => res(import("./MainPage")), 1000);
+        })
+);
