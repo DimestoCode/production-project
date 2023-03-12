@@ -1,13 +1,4 @@
-import {
-    ChangeEvent,
-    InputHTMLAttributes,
-    memo,
-    ReactEventHandler,
-    SyntheticEvent,
-    useEffect,
-    useRef,
-    useState
-} from "react";
+import { ChangeEvent, InputHTMLAttributes, memo, SyntheticEvent, useRef, useState } from "react";
 import { classNames } from "shared/lib/classNames/classNames";
 import classes from "./Input.module.scss";
 
@@ -43,12 +34,12 @@ export const Input = memo(({ className, value, onChange, type = "text", placehol
             {placeholder && <div className={classes.placeholder}>{`${placeholder}>`}</div>}
             <div className={classes.caretWrapper}>
                 <input
-                    ref={inputRef}
                     className={classes.input}
                     onBlur={onBlur}
                     onChange={handleChange}
                     onFocus={onFocus}
                     onSelect={onSelect}
+                    ref={inputRef}
                     type={type}
                     value={value}
                     {...rest}

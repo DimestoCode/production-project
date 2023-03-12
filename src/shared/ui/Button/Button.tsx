@@ -24,16 +24,16 @@ interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export const Button: FC<IButtonProps> = (props) => {
-    const { className = "", children, theme, square, size = ButtonSize.M, ...rest } = props;
+    const { className = "", children, theme, square, size = ButtonSize.M, disabled, ...rest } = props;
 
-    const buttonClassnames = classNames(classes.Button, { [classes.square]: square }, [
-        className,
-        classes[theme],
-        classes[size]
-    ]);
+    const dynamicClassnames: Record<string, boolean> = {
+        [classes.square]: square,
+        [classes.disabled]: disabled
+    };
+    const buttonClassnames = classNames(classes.Button, dynamicClassnames, [className, classes[theme], classes[size]]);
 
     return (
-        <button type="button" {...rest} className={buttonClassnames}>
+        <button type="button" {...rest} className={buttonClassnames} disabled={disabled}>
             {children}
         </button>
     );

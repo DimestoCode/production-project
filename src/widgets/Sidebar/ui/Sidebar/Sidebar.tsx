@@ -29,9 +29,9 @@ export const Sidebar = ({ className = "" }: ISideBarProps) => {
                 data-testid="sidebar-toggle"
                 onClick={onToggle}
                 size={ButtonSize.L}
-                square
                 theme={ButtonTheme.BACKGROUND_INVERTED}
                 type="button"
+                square
             >
                 {collapsed ? ">" : "<"}
             </Button>

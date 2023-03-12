@@ -10,10 +10,9 @@ export default ({ config }: { config: webpack.Configuration }) => {
         entry: "",
         src: path.resolve(__dirname, "..", "..", "src")
     };
-
-    config.resolve?.modules?.push(paths.src);
+    config.resolve.modules.splice(0, config.resolve.modules?.length);
+    config.resolve?.modules?.push(paths.src, "node_modules");
     config.resolve?.extensions?.push(".ts", ".tsx");
-
     if (config.module?.rules) {
         // eslint-disable-next-line no-param-reassign
         config.module.rules = (config.module.rules as RuleSetRule[]).map((rule: RuleSetRule) => {

@@ -11,5 +11,8 @@
   "Increment": "Додати",
   "Decrement": "Відняти",
   "Input login": "Введіть логін",
-  "Input password": "Введіть пароль"
+  "Input password": "Введіть пароль",
+  "Login Form": "Форма Авторизації",
+  "Incorrect login or password": "Невірний логін чи пароль",
+  "Logout": "Вийти"
 }

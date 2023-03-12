@@ -11,5 +11,8 @@
   "Increment": "Increment",
   "Decrement": "Decrement",
   "Input login": "Input login",
-  "Input password": "Input password"
+  "Input password": "Input password",
+  "Login Form": "Login Form",
+  "Incorrect login or password": "Incorrect login or password",
+  "Logout": "Logout"
 }

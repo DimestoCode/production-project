@@ -51,7 +51,9 @@ module.exports = {
             ignoreAttribute: ["data-testid", "to", "fallback"]
         }],
         "object-curly-newline": "off",
-        "react/jsx-sort-props": "error",
+        "react/jsx-sort-props": ["error", {
+            shorthandLast: true
+        }],
         "jsx-a11y/no-static-element-interactions": "off",
         "jsx-a11y/click-events-have-key-events": "off",
         "react-hooks/rules-of-hooks": "error",
