@@ -24,7 +24,14 @@
         }
     ],
     "profile": {
-        "name": "typicode"
+        "firstName": "Dima",
+        "lastName": "Andoniev",
+        "age": 22,
+        "currency": "UAH",
+        "country": "Ukraine",
+        "city": "Kharkiv",
+        "username": "admin",
+        "avatar": "https://ibb.co/pKp49PL"
     },
     "users": [
         {

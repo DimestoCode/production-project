@@ -17,21 +17,6 @@
         margin-left: 30px;
         display: flex;
         flex-direction: column;
-
-        .item {
-            margin-top: 10px;
-            display: flex;
-            align-items: center;
-
-            .icon {
-                fill: var(--inverted-primary-color);
-            }
-
-            .link {
-                margin-left: 10px;
-                opacity: 1;
-            }
-        }
     }
 
     .switchers {
@@ -55,14 +40,6 @@
 
             .lang {
                 margin-left: 0;
-            }
-        }
-
-        .items {
-            .link {
-                opacity: 0;
-                width: 0;
-                transition: 0.2s all ease-out;
             }
         }
     }

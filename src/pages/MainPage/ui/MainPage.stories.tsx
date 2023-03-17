@@ -12,11 +12,9 @@ export default {
     }
 } as ComponentMeta<typeof MainPage>;
 
-const Template: ComponentStory<typeof MainPage> = (args) => <MainPage {...args} />;
+const Template: ComponentStory<typeof MainPage> = () => <MainPage />;
 
 export const Light = Template.bind({});
-Light.args = {};
 
 export const Dark = Template.bind({});
-Dark.args = {};
 Dark.decorators = [ThemeDecorator(Theme.DARK)];

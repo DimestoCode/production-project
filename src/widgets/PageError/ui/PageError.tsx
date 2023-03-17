@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { useTranslation } from "react-i18next";
 import { classNames } from "shared/lib/classNames/classNames";
 import { Button } from "shared/ui/Button/Button";
@@ -7,7 +8,7 @@ interface IPageErrorProps {
     className?: string;
 }
 
-export const PageError = ({ className = "" }: IPageErrorProps) => {
+export const PageError = memo(({ className = "" }: IPageErrorProps) => {
     const { t } = useTranslation("common");
 
     const refreshPage = () => {
@@ -19,4 +20,4 @@ export const PageError = ({ className = "" }: IPageErrorProps) => {
             <Button onClick={refreshPage}>{t("Refresh page")}</Button>
         </div>
     );
-};
+});

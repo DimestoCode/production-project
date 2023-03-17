@@ -1,10 +1,14 @@
 import { loginActions, loginByUsername } from "features/UserAuthentication";
 import { memo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { USER_LOCAL_STORAGE_KEY } from "shared/const/localStorage";
 import { classNames } from "shared/lib/classNames/classNames";
-import { IDynamicLoaderProps, useDynamicModuleLoader } from "shared/lib/hooks/useDynamicModuleLoader";
+import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
+import {
+    IDynamicLoaderProps,
+    useDynamicModuleLoader
+} from "shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader";
 import { Button, ButtonTheme } from "shared/ui/Button/Button";
 import { Input } from "shared/ui/Input/Input";
 import { TextTheme, Text } from "shared/ui/Text/Text";
@@ -17,6 +21,7 @@ import classes from "./LoginForm.module.scss";
 
 export interface LoginFormProps {
     className?: string;
+    onSuccess: () => void;
 }
 
 const dynamicModuleLoaderProps: IDynamicLoaderProps = {
@@ -26,11 +31,11 @@ const dynamicModuleLoaderProps: IDynamicLoaderProps = {
     removeOnUnmount: true
 };
 
-const LoginForm = memo(({ className }: LoginFormProps) => {
+const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
     useDynamicModuleLoader(dynamicModuleLoaderProps);
 
     const { t } = useTranslation("common");
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     const username = useSelector(getLoginUsername);
     const password = useSelector(getLoginPassword);
@@ -51,10 +56,13 @@ const LoginForm = memo(({ className }: LoginFormProps) => {
         [dispatch]
     );
 
-    const onLoginClick = useCallback(() => {
-        dispatch(loginByUsername({ username, password }));
-        localStorage.setItem(USER_LOCAL_STORAGE_KEY, JSON.stringify({ username, password }));
-    }, [dispatch, password, username]);
+    const onLoginClick = useCallback(async () => {
+        const result = await dispatch(loginByUsername({ username, password }));
+        if (result.meta.requestStatus === "fulfilled") {
+            localStorage.setItem(USER_LOCAL_STORAGE_KEY, JSON.stringify({ username, password }));
+            onSuccess();
+        }
+    }, [dispatch, onSuccess, password, username]);
 
     return (
         <div className={classNames(classes.LoginForm, {}, [className])}>

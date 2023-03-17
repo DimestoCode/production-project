@@ -1,6 +1,6 @@
 import { getUserAuthData, userActions } from "entities/User";
 import { LoginModal } from "features/UserAuthentication";
-import { useCallback, useState } from "react";
+import { memo, useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { USER_LOCAL_STORAGE_KEY } from "shared/const/localStorage";
@@ -13,7 +13,7 @@ interface INavBarProps {
     className?: string;
 }
 
-export const Navbar = ({ className = "" }: INavBarProps) => {
+export const Navbar = memo(({ className = "" }: INavBarProps) => {
     const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
 
     const dispatch = useDispatch();
@@ -37,7 +37,7 @@ export const Navbar = ({ className = "" }: INavBarProps) => {
             <Button className={classes.links} onClick={onClickHandler} theme={ButtonTheme.CLEAR_INVERTED}>
                 {t(btnText)}
             </Button>
-            {isLoginModalOpen && !authData && <LoginModal isOpen={isLoginModalOpen} onClose={toggleModal} />}
+            {isLoginModalOpen && <LoginModal isOpen={isLoginModalOpen} onClose={toggleModal} />}
         </nav>
     );
-};
+});
