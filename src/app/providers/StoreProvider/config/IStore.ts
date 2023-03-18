@@ -1,8 +1,11 @@
-import { AnyAction, CombinedState, EnhancedStore, Reducer, ReducersMapObject } from "@reduxjs/toolkit";
+import { AnyAction, EnhancedStore, Reducer, ReducersMapObject } from "@reduxjs/toolkit";
+import { AxiosInstance } from "axios";
 import { ICounterState } from "entities/Counter";
 import { IProfileState } from "entities/Profile";
 import { IUserState } from "entities/User";
 import { ILoginState } from "features/UserAuthentication";
+import { NavigateFunction } from "react-router-dom";
+import { AppDispatch } from "..";
 
 export interface IStoreState {
     counter: ICounterState;
@@ -12,12 +15,23 @@ export interface IStoreState {
 }
 
 export type StoreStateKey = keyof IStoreState;
-export interface IReducerManager {
-    getReducerMap: () => ReducersMapObject<IStoreState>;
-    reduce: (state: IStoreState, action: AnyAction) => CombinedState<IStoreState>;
-    add: (key: StoreStateKey, reducer: Reducer) => void;
+export interface IReducerManager<> {
+    getReducerMap: () => ReducersMapObject<IStoreState, AnyAction>;
+    reduce: Reducer<IStoreState, AnyAction>;
+    add: (key: StoreStateKey, reducer: Reducer<IStoreState[StoreStateKey], AnyAction>) => void;
     remove: (key: StoreStateKey) => void;
 }
 export interface IStoreWithManager extends EnhancedStore<IStoreState> {
     reducerManager: IReducerManager;
+}
+
+export interface IThunkExtra {
+    api: AxiosInstance;
+    navigate?: NavigateFunction;
+}
+
+export interface IThunkConfig<T> {
+    rejectValue: T;
+    extra: IThunkExtra;
+    dispatch: AppDispatch;
 }

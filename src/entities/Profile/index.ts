@@ -1,3 +1,7 @@
+export { ProfileCard } from "./ui/ProfileCard/ProfileCard";
+
+export { retrieveProfileData } from "./model/services/retrieveProfileData/retrieveProfileData";
+
 export { profileActions, profileReducer } from "./model/slice/profileSlice";
 
-export { IProfile, IProfileState } from "./model/types/IProfile";
+export { type IProfile, type IProfileState } from "./model/types/IProfile";

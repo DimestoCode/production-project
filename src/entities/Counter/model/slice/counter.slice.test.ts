@@ -1,4 +1,3 @@
-import { DeepPartial } from "@reduxjs/toolkit";
 import { ICounterState } from "../types/ICounterState";
 import { counterActions, counterReducer } from "./counter.slice";
 

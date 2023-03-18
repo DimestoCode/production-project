@@ -5,13 +5,11 @@ import { useEffect } from "react";
 import { useDispatch, useStore } from "react-redux";
 
 export type Reducers = {
-    [name in StoreStateKey]?: Reducer;
+    [name in StoreStateKey]: Reducer;
 };
 
-type ReducersEntry = [StoreStateKey, Reducer];
-
 export interface IDynamicLoaderProps {
-    reducers: Reducers;
+    reducers: DeepPartial<Reducers>;
     removeOnUnmount: boolean;
 }
 
@@ -20,15 +18,15 @@ export const useDynamicModuleLoader = ({ reducers, removeOnUnmount }: IDynamicLo
     const dispatch = useDispatch();
 
     useEffect(() => {
-        Object.entries(reducers).forEach(([name, reducer]: ReducersEntry) => {
-            store.reducerManager.add(name, reducer);
+        Object.entries(reducers).forEach(([name, reducer]) => {
+            store.reducerManager.add(name as StoreStateKey, reducer as Reducer);
             dispatch({ type: `@INIT ${name} reducer` });
         });
 
         return () => {
             if (removeOnUnmount) {
-                Object.entries(reducers).forEach(([name]: ReducersEntry) => {
-                    store.reducerManager.remove(name);
+                Object.entries(reducers).forEach(([name]) => {
+                    store.reducerManager.remove(name as StoreStateKey);
                     dispatch({ type: `@DESTROY ${name} reducer` });
                 });
             }

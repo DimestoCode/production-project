@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import { IThunkConfig } from "app/providers/StoreProvider";
 import { IUser, userActions } from "entities/User";
 import i18n from "shared/config/i18n/i18n";
 
@@ -8,20 +8,20 @@ interface ILoginByUsernameProps {
     password: string;
 }
 
-export const loginByUsername = createAsyncThunk<IUser, ILoginByUsernameProps, { rejectValue: string }>(
+export const loginByUsername = createAsyncThunk<IUser, ILoginByUsernameProps, IThunkConfig<string>>(
     "login/loginByUsername",
-    async (authData, thunkApi) => {
+    async (authData, { dispatch, extra, rejectWithValue }) => {
         try {
-            const response = await axios.post<IUser>("http://localhost:8000/login", authData);
+            const response = await extra.api.post<IUser>("/login", authData);
             if (!response.data) {
                 throw new Error();
             }
 
-            thunkApi.dispatch(userActions.setAuthData(response.data));
-
+            dispatch(userActions.setAuthData(response.data));
+            extra.navigate?.("/about");
             return response.data;
         } catch (e) {
-            return thunkApi.rejectWithValue(
+            return rejectWithValue(
                 i18n.t("Incorrect login or password", {
                     ns: "common"
                 })

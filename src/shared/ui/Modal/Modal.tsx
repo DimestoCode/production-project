@@ -1,5 +1,5 @@
 import { ReactNode, MouseEvent, useState, useRef, useCallback, useEffect } from "react";
-import { classNames } from "shared/lib/classNames/classNames";
+import { ClassNameObject, classNames } from "shared/lib/classNames/classNames";
 import { Portal } from "../Portal/Portal";
 import classes from "./Modal.module.scss";
 
@@ -15,7 +15,7 @@ const ANIMATION_DELAY = 300;
 export const Modal = ({ className = "", children, isOpen, onClose, lazy }: IModalProps) => {
     const [isClosing, setIsClosing] = useState(false);
     const [isMounted, setIsMounted] = useState(false);
-    const timerRef = useRef<ReturnType<typeof setTimeout>>();
+    const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
     const handleClose = useCallback(() => {
         if (onClose) {
@@ -41,7 +41,9 @@ export const Modal = ({ className = "", children, isOpen, onClose, lazy }: IModa
             window.addEventListener("keydown", onKeyDown);
         }
         return () => {
-            clearTimeout(timerRef.current);
+            if (timerRef?.current) {
+                clearTimeout(timerRef.current);
+            }
             window.removeEventListener("keydown", onKeyDown);
         };
     }, [isOpen, onKeyDown]);
@@ -52,7 +54,7 @@ export const Modal = ({ className = "", children, isOpen, onClose, lazy }: IModa
         }
     }, [isOpen]);
 
-    const dynamicClasses: Record<string, boolean> = {
+    const dynamicClasses: ClassNameObject = {
         [classes.opened]: isOpen,
         [classes.isClosing]: isClosing
     };

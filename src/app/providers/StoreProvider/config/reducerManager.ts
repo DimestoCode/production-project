@@ -2,20 +2,20 @@ import { AnyAction, combineReducers, Reducer, ReducersMapObject } from "@reduxjs
 import { IReducerManager, IStoreState, StoreStateKey } from "./IStore";
 
 export function createReducerManager(initialReducers: ReducersMapObject<IStoreState>): IReducerManager {
-    const reducers = { ...initialReducers };
+    const reducers: ReducersMapObject<IStoreState> = { ...initialReducers };
 
-    let combinedReducer = combineReducers(reducers);
+    let combinedReducer: Reducer<IStoreState> = combineReducers<IStoreState>(reducers);
 
     let keysToRemove: StoreStateKey[] = [];
 
     return {
         getReducerMap: () => reducers,
-        reduce: (state: IStoreState, action: AnyAction) => {
-            if (keysToRemove.length > 0) {
+        reduce: (state: IStoreState | undefined, action: AnyAction) => {
+            if (keysToRemove.length > 0 && state) {
                 // eslint-disable-next-line no-param-reassign
                 state = { ...state };
                 keysToRemove.forEach((key) => {
-                    delete state[key];
+                    delete state![key];
                 });
 
                 keysToRemove = [];

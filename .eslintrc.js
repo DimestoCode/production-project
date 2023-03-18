@@ -66,7 +66,8 @@ module.exports = {
             ]
         }],
         "no-unused-vars": "off",
-        "@typescript-eslint/no-unused-vars": "error"
+        "@typescript-eslint/no-unused-vars": "error",
+        "no-undef": "off"
     },
     overrides: [
         {
@@ -78,5 +79,6 @@ module.exports = {
     ],
     globals: {
         __IS_DEV__: true,
+        __API__: true
     },
 };

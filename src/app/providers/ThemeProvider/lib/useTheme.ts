@@ -11,15 +11,17 @@ const useTheme = (): IUseThemeResult => {
 
     const toggleTheme = () => {
         const newTheme = theme === Theme.DARK ? Theme.LIGHT : Theme.DARK;
-        setTheme(theme === Theme.DARK ? Theme.LIGHT : Theme.DARK);
+        setTheme?.(theme === Theme.DARK ? Theme.LIGHT : Theme.DARK);
         localStorage.setItem(LOCAL_STORAGE_THEME_KEY, newTheme);
     };
 
     useEffect(() => {
-        document.body.className = theme;
+        if (theme) {
+            document.body.className = theme;
+        }
     }, [theme]);
 
-    return { theme, toggleTheme };
+    return { theme: theme ?? Theme.LIGHT, toggleTheme };
 };
 
 export default useTheme;

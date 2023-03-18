@@ -6,7 +6,8 @@
       // Version that's gonna be used for compilation
       "target": "ESNext",
       "jsx": "react-jsx",
-      "allowJs": true, 
+      "allowJs": true,
+      "strict": true,
       "moduleResolution": "node",
       // (require() moduel.export) = common js
       // helps us to replace common js by import 

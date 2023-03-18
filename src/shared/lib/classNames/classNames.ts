@@ -1,9 +1,9 @@
-type ObjectClassType = Record<string, string | boolean>;
+export type ClassNameObject = Record<string, string | boolean | undefined>;
 
 export function classNames(
     stringClasses: string,
-    objectClasses: ObjectClassType = {},
-    additionalClasses: string[] = []
+    objectClasses: ClassNameObject = {},
+    additionalClasses: Array<string | undefined> = []
 ): string {
     return [
         stringClasses,

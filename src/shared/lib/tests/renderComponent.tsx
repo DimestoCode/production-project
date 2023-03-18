@@ -1,4 +1,3 @@
-import { DeepPartial } from "@reduxjs/toolkit";
 import { render, RenderOptions } from "@testing-library/react";
 import { IStoreState, StoreProvider } from "app/providers/StoreProvider";
 import { ReactNode } from "react";
@@ -13,11 +12,11 @@ export interface ICustomRenderOptions extends RenderOptions {
 export function renderTestComponent(component: ReactNode, options: ICustomRenderOptions = {}) {
     const { route = "/", initialState, ...rest } = options;
     return render(
-        <StoreProvider initialState={initialState as IStoreState}>
-            <MemoryRouter initialEntries={[route]}>
+        <MemoryRouter initialEntries={[route]}>
+            <StoreProvider initialState={initialState as IStoreState}>
                 <I18nextProvider i18n={i18nForTests}>{component}</I18nextProvider>
-            </MemoryRouter>
-        </StoreProvider>,
+            </StoreProvider>
+        </MemoryRouter>,
         rest
     );
 }

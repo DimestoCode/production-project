@@ -1,3 +1,3 @@
-export { createReduxStore, AppDispatch } from "./config/store";
+export { createReduxStore, type AppDispatch } from "./config/store";
 export { StoreProvider } from "./ui/StoreProvider";
-export type { IStoreState, IStoreWithManager } from "./config/IStore";
+export type { IStoreState, IStoreWithManager, IThunkConfig } from "./config/IStore";
