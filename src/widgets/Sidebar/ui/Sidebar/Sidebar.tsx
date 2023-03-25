@@ -25,7 +25,7 @@ export const Sidebar = memo(({ className = "" }: ISideBarProps) => {
                 data-testid="sidebar-toggle"
                 onClick={onToggle}
                 size={ButtonSize.L}
-                theme={ButtonTheme.BACKGROUND_INVERTED}
+                theme={ButtonTheme.BackgroundInverted}
                 type="button"
                 square
             >

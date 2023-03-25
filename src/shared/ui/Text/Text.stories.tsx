@@ -33,31 +33,31 @@ export const WithTitleDark = Template.bind({});
 WithTitleDark.args = {
     title: "title"
 };
-WithTitleDark.decorators = [ThemeDecorator(Theme.DARK)];
+WithTitleDark.decorators = [ThemeDecorator(Theme.Dark)];
 
 export const WithTextDark = Template.bind({});
 WithTextDark.args = {
     text: "text"
 };
-WithTextDark.decorators = [ThemeDecorator(Theme.DARK)];
+WithTextDark.decorators = [ThemeDecorator(Theme.Dark)];
 
 export const WithTitleAndTextDark = Template.bind({});
 WithTitleAndTextDark.args = {
     title: "title",
     text: "text"
 };
-WithTitleAndTextDark.decorators = [ThemeDecorator(Theme.DARK)];
+WithTitleAndTextDark.decorators = [ThemeDecorator(Theme.Dark)];
 
 export const PrimaryTheme = Template.bind({});
 PrimaryTheme.args = {
     title: "Title",
     text: "text",
-    theme: TextTheme.PRIMARY
+    theme: TextTheme.Primary
 };
 
 export const ErrorTheme = Template.bind({});
 ErrorTheme.args = {
     title: "title",
     text: "text",
-    theme: TextTheme.ERROR
+    theme: TextTheme.Error
 };

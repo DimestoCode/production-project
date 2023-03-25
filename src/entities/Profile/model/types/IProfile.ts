@@ -1,6 +1,13 @@
 import { Currency } from "entities/Currency";
 import { Country } from "entities/Country/model/country";
 
+export enum ProfileValidationError {
+    NoData = "No Profile Data",
+    IncorrectName = "Incorrect Name",
+    IncorrectAge = "Incorrect Age",
+    IncorrectCountry = "Incorrect Country",
+    ServerError = "Server Error"
+}
 export interface IProfile {
     firstName?: string;
     lastName?: string;
@@ -16,6 +23,7 @@ export interface IProfileState {
     data?: IProfile;
     form?: IProfile;
     isLoading: boolean;
-    error?: string;
     readonly: boolean;
+    error?: string;
+    validationErrors?: ProfileValidationError[];
 }

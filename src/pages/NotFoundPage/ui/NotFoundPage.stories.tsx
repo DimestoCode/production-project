@@ -5,7 +5,7 @@ import { Theme } from "app/providers/ThemeProvider";
 import { NotFoundPage } from "..";
 
 export default {
-    title: "page/NotFoundPage",
+    title: "pages/NotFoundPage",
     component: NotFoundPage,
     argTypes: {
         backgroundColor: { control: "color" }
@@ -19,4 +19,4 @@ Light.args = {};
 
 export const Dark = Template.bind({});
 Dark.args = {};
-Dark.decorators = [ThemeDecorator(Theme.DARK)];
+Dark.decorators = [ThemeDecorator(Theme.Dark)];

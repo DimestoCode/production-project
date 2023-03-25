@@ -1,23 +1,28 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { IThunkConfig } from "app/providers/StoreProvider";
-import i18n from "shared/config/i18n/i18n";
 import { getProfileForm } from "../../selectors/getProfileForm/getProfileForm";
-import { IProfile } from "../../types/IProfile";
+import { IProfile, ProfileValidationError } from "../../types/IProfile";
+import { validateProfileData } from "../validateProfileData/validateProfileData";
 
-export const updateProfileData = createAsyncThunk<IProfile, void, IThunkConfig<string>>(
+export const updateProfileData = createAsyncThunk<IProfile, void, IThunkConfig<ProfileValidationError[]>>(
     "profile/updateProfileData",
     async (_, { extra, rejectWithValue, getState }) => {
         const formData = getProfileForm(getState());
+        const errors = validateProfileData(formData);
 
+        if (errors.length) {
+            return rejectWithValue(errors);
+        }
         try {
             const response = await extra.api.put<IProfile>("/profile", formData);
+
+            if (!response.data) {
+                throw new Error();
+            }
+
             return response.data;
         } catch (e) {
-            return rejectWithValue(
-                i18n.t("Incorrect login or password", {
-                    ns: "common"
-                })
-            );
+            return rejectWithValue([ProfileValidationError.ServerError]);
         }
     }
 );

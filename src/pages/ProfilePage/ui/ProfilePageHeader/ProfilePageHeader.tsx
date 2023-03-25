@@ -35,15 +35,15 @@ export const ProfilePageHeader = ({ className }: ProfilePageHeaderProps) => {
             <Text title={t("Profile")} />
 
             {readOnly ? (
-                <Button className={classes.button} onClick={onEdit} theme={ButtonTheme.OUTLINE}>
+                <Button className={classes.button} onClick={onEdit} theme={ButtonTheme.Outline}>
                     {t("Edit")}
                 </Button>
             ) : (
                 <>
-                    <Button className={classes.button} onClick={onCancel} theme={ButtonTheme.OUTLINE_RED}>
+                    <Button className={classes.button} onClick={onCancel} theme={ButtonTheme.OutlineRed}>
                         {t("Cancel")}
                     </Button>
-                    <Button className={classes.button} onClick={onSave} theme={ButtonTheme.OUTLINE}>
+                    <Button className={classes.button} onClick={onSave} theme={ButtonTheme.Outline}>
                         {t("Save")}
                     </Button>
                 </>

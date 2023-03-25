@@ -67,7 +67,7 @@ const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
     return (
         <div className={classNames(classes.LoginForm, {}, [className])}>
             <Text title={t("Login Form")} />
-            {error && <Text text={error} theme={TextTheme.ERROR} />}
+            {error && <Text text={error} theme={TextTheme.Error} />}
             <Input
                 className={classes.input}
                 onChange={onChangeUsername}
@@ -87,7 +87,7 @@ const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
                 className={classes.loginBtn}
                 disabled={isLoading}
                 onClick={onLoginClick}
-                theme={ButtonTheme.OUTLINE}
+                theme={ButtonTheme.Outline}
             >
                 {t("Login")}
             </Button>

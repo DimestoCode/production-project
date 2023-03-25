@@ -8,34 +8,34 @@ type AppRoutesProps = RouteProps & {
     isPrivate?: boolean;
 };
 export enum AppRoutes {
-    MAIN = "main",
-    ABOUT = "about",
-    PROFILE = "profile",
-    NOTFOUND = "not-found"
+    Main = "main",
+    About = "about",
+    Profile = "profile",
+    NotFound = "not-found"
 }
 
 export const RoutePath: Record<AppRoutes, string> = {
-    [AppRoutes.MAIN]: "/",
-    [AppRoutes.ABOUT]: "/about",
-    [AppRoutes.PROFILE]: "/profile",
-    [AppRoutes.NOTFOUND]: "*"
+    [AppRoutes.Main]: "/",
+    [AppRoutes.About]: "/about",
+    [AppRoutes.Profile]: "/profile",
+    [AppRoutes.NotFound]: "*"
 };
 
 export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
-    [AppRoutes.MAIN]: {
+    [AppRoutes.Main]: {
         path: RoutePath.main,
         element: <MainPage />
     },
-    [AppRoutes.ABOUT]: {
+    [AppRoutes.About]: {
         path: RoutePath.about,
         element: <AboutPage />
     },
-    [AppRoutes.PROFILE]: {
+    [AppRoutes.Profile]: {
         path: RoutePath.profile,
         element: <ProfilePage />,
         isPrivate: true
     },
-    [AppRoutes.NOTFOUND]: {
+    [AppRoutes.NotFound]: {
         path: RoutePath["not-found"],
         element: <NotFoundPage />
     }

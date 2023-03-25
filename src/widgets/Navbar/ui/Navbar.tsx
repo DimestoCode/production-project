@@ -34,7 +34,7 @@ export const Navbar = memo(({ className = "" }: INavBarProps) => {
 
     return (
         <nav className={classNames(classes.Navbar, {}, [className])}>
-            <Button className={classes.links} onClick={onClickHandler} theme={ButtonTheme.CLEAR_INVERTED}>
+            <Button className={classes.links} onClick={onClickHandler} theme={ButtonTheme.ClearInverted}>
                 {t(btnText)}
             </Button>
             {isLoginModalOpen && <LoginModal isOpen={isLoginModalOpen} onClose={toggleModal} />}

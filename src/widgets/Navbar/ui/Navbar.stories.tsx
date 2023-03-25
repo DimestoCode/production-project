@@ -21,7 +21,7 @@ LightUnauthenticated.decorators = [StoreDecorator({})];
 
 export const DarkUnauthenticated = Template.bind({});
 DarkUnauthenticated.args = {};
-DarkUnauthenticated.decorators = [ThemeDecorator(Theme.DARK), StoreDecorator({})];
+DarkUnauthenticated.decorators = [ThemeDecorator(Theme.Dark), StoreDecorator({})];
 
 export const LightAuthenticated = Template.bind({});
 LightAuthenticated.args = {};
@@ -38,7 +38,7 @@ LightAuthenticated.decorators = [
 export const DarkAuthenticated = Template.bind({});
 DarkAuthenticated.args = {};
 DarkAuthenticated.decorators = [
-    ThemeDecorator(Theme.DARK),
+    ThemeDecorator(Theme.Dark),
     StoreDecorator({
         user: {
             authData: {

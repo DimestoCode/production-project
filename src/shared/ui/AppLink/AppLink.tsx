@@ -4,8 +4,8 @@ import { classNames } from "shared/lib/classNames/classNames";
 import classes from "./AppLink.module.scss";
 
 export enum AppLinkTheme {
-    PRIMARY = "primary",
-    SECONDARY = "secondary"
+    Primary = "primary",
+    Secondary = "secondary"
 }
 
 interface IAppLinkProps extends LinkProps {
@@ -14,7 +14,7 @@ interface IAppLinkProps extends LinkProps {
 }
 
 export const AppLink: FC<IAppLinkProps> = memo((props: IAppLinkProps) => {
-    const { to, className = "", children, theme = AppLinkTheme.PRIMARY, ...rest } = props;
+    const { to, className = "", children, theme = AppLinkTheme.Primary, ...rest } = props;
     return (
         <Link className={classNames(classes.AppLink, {}, [className, classes[theme]])} to={to} {...rest}>
             {children}

@@ -12,5 +12,10 @@
   "Your username": "Your username",
   "Your avatar": "Your avatar",
   "Currency": "Currency",
-  "Country": "Country"
+  "Country": "Country",
+  "No Profile Data": "No profile data",
+  "Incorrect Name": "Incorrect name",
+  "Incorrect Age": "Incorrect age",
+  "Incorrect Country": "Incorrect country",
+  "Server Error": "Server error"
 }

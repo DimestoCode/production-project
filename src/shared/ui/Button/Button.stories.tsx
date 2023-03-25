@@ -22,38 +22,38 @@ Primary.args = {
 export const Clear = Template.bind({});
 Clear.args = {
     children: "Text",
-    theme: ButtonTheme.CLEAR
+    theme: ButtonTheme.Clear
 };
 
 export const ClearInverted = Template.bind({});
 ClearInverted.args = {
     children: "Text",
-    theme: ButtonTheme.CLEAR_INVERTED
+    theme: ButtonTheme.ClearInverted
 };
 
 export const Background = Template.bind({});
 Background.args = {
     children: ">",
-    theme: ButtonTheme.BACKGROUND
+    theme: ButtonTheme.Background
 };
 
 export const BackgroundInverted = Template.bind({});
 BackgroundInverted.args = {
     children: ">",
-    theme: ButtonTheme.BACKGROUND_INVERTED
+    theme: ButtonTheme.BackgroundInverted
 };
 
 export const OutlineDark = Template.bind({});
 OutlineDark.args = {
     children: "Text",
-    theme: ButtonTheme.OUTLINE
+    theme: ButtonTheme.Outline
 };
-OutlineDark.decorators = [ThemeDecorator(Theme.DARK)];
+OutlineDark.decorators = [ThemeDecorator(Theme.Dark)];
 
 export const OutlineLight = Template.bind({});
 OutlineLight.args = {
     children: "Text",
-    theme: ButtonTheme.OUTLINE
+    theme: ButtonTheme.Outline
 };
 
 export const Square = Template.bind({});
@@ -65,7 +65,7 @@ Square.args = {
 export const SquareM = Template.bind({});
 SquareM.args = {
     children: ">",
-    theme: ButtonTheme.BACKGROUND_INVERTED,
+    theme: ButtonTheme.BackgroundInverted,
     square: true,
     size: ButtonSize.M
 };
@@ -73,7 +73,7 @@ SquareM.args = {
 export const SquareL = Template.bind({});
 SquareL.args = {
     children: ">",
-    theme: ButtonTheme.BACKGROUND_INVERTED,
+    theme: ButtonTheme.BackgroundInverted,
     square: true,
     size: ButtonSize.L
 };
@@ -81,7 +81,7 @@ SquareL.args = {
 export const SquareXL = Template.bind({});
 SquareXL.args = {
     children: ">",
-    theme: ButtonTheme.BACKGROUND_INVERTED,
+    theme: ButtonTheme.BackgroundInverted,
     square: true,
     size: ButtonSize.XL
 };
@@ -89,14 +89,14 @@ SquareXL.args = {
 export const OutlineLightL = Template.bind({});
 OutlineLightL.args = {
     children: "Text",
-    theme: ButtonTheme.OUTLINE,
+    theme: ButtonTheme.Outline,
     size: ButtonSize.L
 };
 
 export const OutlineLightXL = Template.bind({});
 OutlineLightXL.args = {
     children: "Text",
-    theme: ButtonTheme.OUTLINE,
+    theme: ButtonTheme.Outline,
     size: ButtonSize.XL
 };
 

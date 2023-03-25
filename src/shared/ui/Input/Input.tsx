@@ -6,16 +6,21 @@ interface IInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "value
     className?: string;
     value?: string | number;
     onChange?: (value: string, name: string) => void;
+    regExp?: RegExp;
 }
 
 export const Input = memo(
-    ({ className, value, onChange, type = "text", placeholder, disabled, ...rest }: IInputProps) => {
+    ({ className, value, onChange, type = "text", placeholder, disabled, regExp, ...rest }: IInputProps) => {
         const [isFocused, setIsFocused] = useState(false);
         const [caretPosition, setCaretPosition] = useState(0);
 
         const inputRef = useRef<HTMLInputElement | null>(null);
 
         const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+            if (e.target.value && regExp && !regExp.test(e.target.value)) {
+                return;
+            }
+
             onChange?.(e.target.value, e.target.name);
             setCaretPosition(e.target.value.length);
         };

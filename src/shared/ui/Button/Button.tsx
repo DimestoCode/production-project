@@ -3,12 +3,12 @@ import { ClassNameObject, classNames } from "shared/lib/classNames/classNames";
 import classes from "./Button.module.scss";
 
 export enum ButtonTheme {
-    CLEAR = "clear",
-    CLEAR_INVERTED = "clearInverted",
-    OUTLINE = "outline",
-    OUTLINE_RED = "outlineRed",
-    BACKGROUND = "background",
-    BACKGROUND_INVERTED = "backgroundInverted"
+    Clear = "clear",
+    ClearInverted = "clearInverted",
+    Outline = "outline",
+    OutlineRed = "outlineRed",
+    Background = "background",
+    BackgroundInverted = "backgroundInverted"
 }
 
 export enum ButtonSize {
@@ -28,7 +28,7 @@ export const Button = memo((props: IButtonProps) => {
     const {
         className = "",
         children,
-        theme = ButtonTheme.OUTLINE,
+        theme = ButtonTheme.Outline,
         square,
         size = ButtonSize.M,
         disabled,

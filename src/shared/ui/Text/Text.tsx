@@ -3,8 +3,8 @@ import { classNames } from "shared/lib/classNames/classNames";
 import classes from "./Text.module.scss";
 
 export enum TextTheme {
-    PRIMARY = "primary",
-    ERROR = "error"
+    Primary = "primary",
+    Error = "error"
 }
 
 interface TextProps {
@@ -15,7 +15,7 @@ interface TextProps {
     align?: "left" | "center" | "right";
 }
 
-export const Text = memo(({ className, title, text, theme = TextTheme.PRIMARY, align = "left" }: TextProps) => (
+export const Text = memo(({ className, title, text, theme = TextTheme.Primary, align = "left" }: TextProps) => (
     <div className={classNames(classes.Text, {}, [className, classes[theme], classes[align]])}>
         {title && <p className={classes.title}>{title}</p>}
         {text && <p className={classes.text}>{text}</p>}

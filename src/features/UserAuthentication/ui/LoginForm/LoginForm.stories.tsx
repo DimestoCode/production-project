@@ -43,7 +43,7 @@ PrimaryDark.decorators = [
     StoreDecorator({
         loginForm: { username: "admin", password: "123" }
     }),
-    ThemeDecorator(Theme.DARK)
+    ThemeDecorator(Theme.Dark)
 ];
 export const ErrorDark = Template.bind({});
 ErrorDark.args = {};
@@ -51,7 +51,7 @@ ErrorDark.decorators = [
     StoreDecorator({
         loginForm: { username: "admin", password: "123", error: "Incorrect data" }
     }),
-    ThemeDecorator(Theme.DARK)
+    ThemeDecorator(Theme.Dark)
 ];
 
 export const LoadingDark = Template.bind({});
@@ -60,5 +60,5 @@ LoadingDark.decorators = [
     StoreDecorator({
         loginForm: { isLoading: true }
     }),
-    ThemeDecorator(Theme.DARK)
+    ThemeDecorator(Theme.Dark)
 ];

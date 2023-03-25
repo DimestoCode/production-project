@@ -1,4 +1,6 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { Theme } from "app/providers/ThemeProvider";
+import { ThemeDecorator } from "shared/config/storybook/ThemeDecorator/ThemeDecorator";
 
 import { Input } from "./Input";
 
@@ -17,3 +19,23 @@ WithPlaceholderAndValue.args = {
     value: "12312",
     placeholder: "Input here"
 };
+
+export const Empty = Template.bind({});
+Empty.args = {
+    value: "",
+    placeholder: "Input here"
+};
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+    value: "12312",
+    placeholder: "Input here",
+    disabled: true
+};
+
+export const Dark = Template.bind({});
+Dark.args = {
+    value: "12312",
+    placeholder: "Input here"
+};
+Dark.decorators = [ThemeDecorator(Theme.Dark)];

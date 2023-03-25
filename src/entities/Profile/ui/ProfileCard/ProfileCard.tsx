@@ -2,6 +2,7 @@ import { CountrySelect } from "entities/Country";
 import { CurrencySelect } from "entities/Currency";
 import { useTranslation } from "react-i18next";
 import { classNames } from "shared/lib/classNames/classNames";
+import { numbersOnlyRegExp } from "shared/lib/regExp/regExp";
 import { Avatar } from "shared/ui/Avatar/Avatar";
 import { Input } from "shared/ui/Input/Input";
 import { Text, TextTheme } from "shared/ui/Text/Text";
@@ -29,7 +30,7 @@ const ProfileCardErrorState = () => {
             <Text
                 align="center"
                 text={t("Common Error Text")}
-                theme={TextTheme.ERROR}
+                theme={TextTheme.Error}
                 title={t("Common Error Title")}
             />
         </div>
@@ -89,6 +90,7 @@ export const ProfileCard = ({
                 name="age"
                 onChange={onInputNumberChange}
                 placeholder={t("Your age")}
+                regExp={numbersOnlyRegExp}
                 value={data?.age}
             />
             <Input

@@ -25,7 +25,7 @@ export const Dark = Template.bind({});
 Dark.args = {
     label: "Country"
 };
-Dark.decorators = [ThemeDecorator(Theme.DARK)];
+Dark.decorators = [ThemeDecorator(Theme.Dark)];
 
 export const DisabledLight = Template.bind({});
 DisabledLight.args = {
@@ -38,4 +38,4 @@ DisabledDark.args = {
     label: "Country",
     disabled: true
 };
-DisabledDark.decorators = [ThemeDecorator(Theme.DARK)];
+DisabledDark.decorators = [ThemeDecorator(Theme.Dark)];

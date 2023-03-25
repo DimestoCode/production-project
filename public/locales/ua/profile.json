@@ -12,5 +12,10 @@
   "Your username": "Ваше ім'я користувача",
   "Your avatar": "Ваш аватар",
   "Currency": "Валюта",
-  "Country": "Країна"
+  "Country": "Країна",
+  "No Profile Data": "Немає даних профілю",
+  "Incorrect Name": "Неправильне ім'я",
+  "Incorrect Age": "Неправильний вік",
+  "Incorrect Country": "Неправильна країна",
+  "Server Error": "Помилка на сервері"
 }

@@ -20,11 +20,16 @@ export default {
     setupFilesAfterEnv: ["<rootDir>config/jest/setupTests.ts"],
     moduleNameMapper: {
         "\\.s?css$": "identity-obj-proxy",
-        "\\.svg": path.resolve(__dirname, "jestEmptyComponent.tsx")
+        "\\.svg": path.resolve(__dirname, "jestEmptyComponent.tsx"),
+        "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": path.resolve(
+            __dirname,
+            "fileTransformer.js"
+        )
     },
     globals: {
         __IS_DEV__: true,
-        __API__: ""
+        __API__: "",
+        __PROJECT__: "jest"
     }
     // Indicates whether the coverage information should be collected while executing the test
     // collectCoverage: false,
