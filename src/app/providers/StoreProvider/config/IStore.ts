@@ -34,4 +34,5 @@ export interface IThunkConfig<T> {
     rejectValue: T;
     extra: IThunkExtra;
     dispatch: AppDispatch;
+    state: IStoreState;
 }

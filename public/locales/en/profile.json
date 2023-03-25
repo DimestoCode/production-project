@@ -2,7 +2,15 @@
   "Profile Page": "Profile Page",
   "Profile": "Profile",
   "Edit": "Edit",
+  "Cancel": "Cancel",
   "Your name": "Your first name",
   "Your first name": "Your first name",
-  "Your last name": "Your last name"
+  "Your last name": "Your last name",
+  "Save": "Save",
+  "Your age": "Your age",
+  "Your city": "Your city",
+  "Your username": "Your username",
+  "Your avatar": "Your avatar",
+  "Currency": "Currency",
+  "Country": "Country"
 }

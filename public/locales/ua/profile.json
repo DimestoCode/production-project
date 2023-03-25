@@ -2,7 +2,15 @@
   "Profile Page": "Сторінка Профілю",
   "Profile": "Профіль",
   "Edit": "Редагувати",
+  "Cancel": "Відмінити",
   "Your name": "Ваше ім'я",
   "Your first name": "Ваше ім'я",
-  "Your last name": "Ваше прізвище"
+  "Your last name": "Ваше прізвище",
+  "Save": "Зберегти",
+  "Your age": "Ваш вік",
+  "Your city": "Ваше місто",
+  "Your username": "Ваше ім'я користувача",
+  "Your avatar": "Ваш аватар",
+  "Currency": "Валюта",
+  "Country": "Країна"
 }

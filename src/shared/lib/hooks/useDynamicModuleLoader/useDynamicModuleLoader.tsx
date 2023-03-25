@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { useDispatch, useStore } from "react-redux";
 
 export type Reducers = {
-    [name in StoreStateKey]: Reducer;
+    [name in StoreStateKey]?: Reducer;
 };
 
 export interface IDynamicLoaderProps {

@@ -2,19 +2,24 @@
     padding: 20px;
     border: 2px solid var(--inverted-bg-color);
 
-    .header {
-        display: flex;
-    }
-
-    .button {
-        margin-left: auto;
-    }
-
-    .data {
-        margin-top: 30px;
-    }
-
-    .input {
+    .input:not(:first-child) {
         margin-top: 10px;
+    }
+
+    &.loading,
+    &.error {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 200px;
+    }
+
+    .avatarWrapper {
+        display: flex;
+        justify-content: center;
+    }
+
+    &.edit {
+        border: 2px solid var(--inverted-primary-color);
     }
 }

@@ -18,6 +18,7 @@ export const sidebarItemsList: ISidebarItem[] = [
     {
         path: RoutePath.profile,
         Icon: ProfilePageIcon,
-        text: "Profile page"
+        text: "Profile page",
+        isPrivate: true
     }
 ];

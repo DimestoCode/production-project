@@ -1,43 +1,43 @@
 {
-    "posts": [
-        {
-            "id": 1,
-            "title": "json-server",
-            "author": "typicode"
-        },
-        {
-            "id": 2,
-            "title": "json-server",
-            "author": "typicode"
-        },
-        {
-            "id": 3,
-            "title": "json-server",
-            "author": "typicode"
-        }
-    ],
-    "comments": [
-        {
-            "id": 1,
-            "body": "some comment",
-            "postId": 1
-        }
-    ],
-    "profile": {
-        "firstName": "Dima",
-        "lastName": "Andoniev",
-        "age": 22,
-        "currency": "UAH",
-        "country": "Ukraine",
-        "city": "Kharkiv",
-        "username": "admin",
-        "avatar": "https://ibb.co/pKp49PL"
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
     },
-    "users": [
-        {
-            "id": 1,
-            "username": "admin",
-            "password": "123"
-        }
-    ]
+    {
+      "id": 2,
+      "title": "json-server",
+      "author": "typicode"
+    },
+    {
+      "id": 3,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "firstName": "Dmytro",
+    "lastName": "Andoniev",
+    "age": "22",
+    "currency": "EUR",
+    "country": "USA",
+    "city": "Kharkiv",
+    "username": "admin",
+    "avatar": "https://i.pinimg.com/564x/d4/28/bb/d428bb4dff60cf6df9b282ce58efcade.jpg"
+  },
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password": "123"
+    }
+  ]
 }

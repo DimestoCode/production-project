@@ -2,6 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { IThunkConfig } from "app/providers/StoreProvider";
 import { IUser, userActions } from "entities/User";
 import i18n from "shared/config/i18n/i18n";
+import { RoutePath } from "shared/config/routeConfig/routeConfig";
 
 interface ILoginByUsernameProps {
     username: string;
@@ -18,7 +19,7 @@ export const loginByUsername = createAsyncThunk<IUser, ILoginByUsernameProps, IT
             }
 
             dispatch(userActions.setAuthData(response.data));
-            extra.navigate?.("/about");
+            extra.navigate?.(RoutePath.profile);
             return response.data;
         } catch (e) {
             return rejectWithValue(

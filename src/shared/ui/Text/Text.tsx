@@ -12,10 +12,11 @@ interface TextProps {
     title?: string;
     text?: string;
     theme?: TextTheme;
+    align?: "left" | "center" | "right";
 }
 
-export const Text = memo(({ className, title, text, theme = TextTheme.PRIMARY }: TextProps) => (
-    <div className={classNames(classes.Text, {}, [className, classes[theme]])}>
+export const Text = memo(({ className, title, text, theme = TextTheme.PRIMARY, align = "left" }: TextProps) => (
+    <div className={classNames(classes.Text, {}, [className, classes[theme], classes[align]])}>
         {title && <p className={classes.title}>{title}</p>}
         {text && <p className={classes.text}>{text}</p>}
     </div>

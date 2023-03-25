@@ -15,5 +15,7 @@
   "Input password": "Input password",
   "Login Form": "Login Form",
   "Incorrect login or password": "Incorrect login or password",
-  "Logout": "Logout"
+  "Logout": "Logout",
+  "Common Error Text": "Try to reload the page",
+  "Common Error Title": "Oops! Something went wrong..."
 }

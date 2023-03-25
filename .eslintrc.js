@@ -47,7 +47,7 @@ module.exports = {
         }],
         "i18next/no-literal-string": ["error", {
             markupOnly: true,
-            ignoreAttribute: ["data-testid", "to", "fallback"]
+            ignoreAttribute: ["data-testid", "to", "fallback", "align", "name"]
         }],
         "object-curly-newline": "off",
         "react/jsx-sort-props": ["error", {
@@ -67,7 +67,9 @@ module.exports = {
         }],
         "no-unused-vars": "off",
         "@typescript-eslint/no-unused-vars": "error",
-        "no-undef": "off"
+        "no-undef": "off",
+        "comma-spacing": "off",
+        "@typescript-eslint/comma-spacing": "error"
     },
     overrides: [
         {
