@@ -8,28 +8,24 @@ module.exports = {
         "plugin:react/recommended",
         "airbnb",
         "plugin:i18next/recommended",
-        "plugin:prettier/recommended"
+        "plugin:prettier/recommended",
+        "prettier"
     ],
     parser: "@typescript-eslint/parser",
     parserOptions: {
         ecmaFeatures: {
-            jsx: true,
+            jsx: true
         },
         ecmaVersion: "latest",
-        sourceType: "module",
+        sourceType: "module"
     },
-    plugins: [
-        "react",
-        "@typescript-eslint",
-        "i18next",
-        "react-hooks",
-        "prettier"
-    ],
+    plugins: ["react", "@typescript-eslint", "i18next", "react-hooks", "prettier"],
     rules: {
         "prettier/prettier": "error",
         "react/jsx-indent": [2, 4],
         "react/jsx-indent-props": [2, 4],
-        indent: [2, 4],
+        indent: "off",
+        "@typescript-eslint/indent": ["error"],
         "react/jsx-filename-extension": [2, { extensions: [".js", ".jsx", ".tsx"] }],
         "import/no-unresolved": "off",
         "import/prefer-default-export": "off",
@@ -44,30 +40,40 @@ module.exports = {
         quotes: [2, "double"],
         "linebreak-style": ["error", "unix"],
         "comma-dangle": "off",
-        "max-len": [2, {
-            code: 120,
-            ignoreComments: true
-        }],
-        "i18next/no-literal-string": ["error", {
-            markupOnly: true,
-            ignoreAttribute: ["data-testid", "to", "fallback", "align", "name"]
-        }],
+        "max-len": [
+            2,
+            {
+                code: 120,
+                ignoreComments: true
+            }
+        ],
+        "i18next/no-literal-string": [
+            "error",
+            {
+                markupOnly: true,
+                ignoreAttribute: ["data-testid", "to", "fallback", "align", "name"]
+            }
+        ],
         "object-curly-newline": "off",
-        "react/jsx-sort-props": ["error", {
-            shorthandLast: true
-        }],
+        "react/jsx-sort-props": [
+            "error",
+            {
+                shorthandLast: true
+            }
+        ],
         "jsx-a11y/no-static-element-interactions": "off",
         "jsx-a11y/click-events-have-key-events": "off",
         "react-hooks/rules-of-hooks": "error",
         "react-hooks/exhaustive-deps": "error",
         "implicit-arrow-linebreak": "off",
         "react/jsx-one-expression-per-line": "off",
-        "no-param-reassign": ["error", {
-            props: true,
-            ignorePropertyModificationsFor: [
-                "state",
-            ]
-        }],
+        "no-param-reassign": [
+            "error",
+            {
+                props: true,
+                ignorePropertyModificationsFor: ["state"]
+            }
+        ],
         "no-unused-vars": "off",
         "@typescript-eslint/no-unused-vars": "error",
         "no-undef": "off",
@@ -86,5 +92,5 @@ module.exports = {
         __IS_DEV__: true,
         __API__: true,
         __PROJECT__: true
-    },
+    }
 };

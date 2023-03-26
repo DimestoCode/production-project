@@ -22,10 +22,8 @@ describe("profileSlice", () => {
         const state: DeepPartial<IProfileState> = {
             readonly: false
         };
-
-        expect(profileReducer(state as IProfileState, profileActions.setReadOnly(true))).toStrictEqual<
-            DeepPartial<IProfileState>
-        >({
+        const res = profileReducer(state as IProfileState, profileActions.setReadOnly(true));
+        expect(res).toStrictEqual<DeepPartial<IProfileState>>({
             readonly: true
         });
     });
@@ -37,10 +35,8 @@ describe("profileSlice", () => {
             form: undefined,
             validationErrors: []
         };
-
-        expect(profileReducer(state as IProfileState, profileActions.cancelEdit())).toStrictEqual<
-            DeepPartial<IProfileState>
-        >({
+        const res = profileReducer(state as IProfileState, profileActions.cancelEdit());
+        expect(res).toStrictEqual<DeepPartial<IProfileState>>({
             readonly: true,
             form: data,
             data,
@@ -60,9 +56,8 @@ describe("profileSlice", () => {
 
     test("retrieveProfileData pending", () => {
         const state: DeepPartial<IProfileState> = {};
-        expect(profileReducer(state as IProfileState, retrieveProfileData.pending)).toStrictEqual<
-            DeepPartial<IProfileState>
-        >({
+        const res = profileReducer(state as IProfileState, retrieveProfileData.pending);
+        expect(res).toStrictEqual<DeepPartial<IProfileState>>({
             error: undefined,
             isLoading: true
         });
@@ -91,9 +86,8 @@ describe("profileSlice", () => {
 
     test("updateProfileData pending", () => {
         const state: DeepPartial<IProfileState> = {};
-        expect(profileReducer(state as IProfileState, updateProfileData.pending)).toStrictEqual<
-            DeepPartial<IProfileState>
-        >({
+        const res = profileReducer(state as IProfileState, updateProfileData.pending);
+        expect(res).toStrictEqual<DeepPartial<IProfileState>>({
             validationErrors: undefined,
             isLoading: true
         });

@@ -29,5 +29,9 @@
       "./src/**/*.tsx",
       "./src/**/*.ts",
       "lost-pixel.config.ts"
+    ],
+    "exclude": [
+      ".fttemplates/**/*.tsx",
+      ".fttemplates/**/*.stories.tsx",
     ]
   }

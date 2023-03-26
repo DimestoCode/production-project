@@ -27,7 +27,8 @@ export function buildLoaders({ isDev }: IBuildOptions): webpack.RuleSetRule[] {
         use: {
             loader: "babel-loader",
             options: {
-                presets: [["@babel/preset-env", { targets: "defaults" }]]
+                presets: [["@babel/preset-env", { targets: "defaults" }]],
+                plugins: [isDev && require.resolve("react-refresh/babel")].filter(Boolean)
             }
         }
     };

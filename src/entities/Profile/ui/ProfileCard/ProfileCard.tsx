@@ -101,7 +101,6 @@ export const ProfileCard = ({
                 placeholder={t("Your city")}
                 value={data?.city}
             />
-
             <Input
                 className={classes.input}
                 disabled={readOnly}
@@ -110,7 +109,6 @@ export const ProfileCard = ({
                 placeholder={t("Your username")}
                 value={data?.username}
             />
-
             <Input
                 className={classes.input}
                 disabled={readOnly}
@@ -119,7 +117,6 @@ export const ProfileCard = ({
                 placeholder={t("Your avatar")}
                 value={data?.avatar}
             />
-
             <CurrencySelect
                 className={classes.input}
                 disabled={readOnly}
@@ -127,7 +124,6 @@ export const ProfileCard = ({
                 onChange={onSelectChange}
                 value={data?.currency}
             />
-
             <CountrySelect
                 className={classes.input}
                 disabled={readOnly}

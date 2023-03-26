@@ -1,19 +1,27 @@
-import { memo } from "react";
+import { lazy, memo } from "react";
 import { Theme, useTheme } from "app/providers/ThemeProvider";
-import { classNames } from "shared/lib/classNames/classNames";
-import DarkIcon from "shared/assets/icons/theme-dark.svg";
-import LightIcon from "shared/assets/icons/theme-light.svg";
 import { Button, ButtonTheme } from "shared/ui/Button/Button";
+
+const DarkIcon = lazy(() => import("shared/assets/icons/theme-dark.svg"));
+const LightIcon = lazy(() => import("shared/assets/icons/theme-light.svg"));
+const OrangeIcon = lazy(() => import("shared/assets/icons/theme-orange.svg"));
 
 interface IThemeSwitcherProps {
     className?: string;
 }
 
+const icons: Record<Theme, JSX.Element> = {
+    [Theme.Dark]: <LightIcon />,
+    [Theme.Light]: <OrangeIcon />,
+    [Theme.Orange]: <DarkIcon />
+};
+
 export const ThemeSwitcher = memo(({ className = "" }: IThemeSwitcherProps) => {
     const { theme, toggleTheme } = useTheme();
+
     return (
-        <Button className={classNames("", {}, [className])} onClick={toggleTheme} theme={ButtonTheme.Clear}>
-            {theme === Theme.Dark ? <DarkIcon /> : <LightIcon />}
+        <Button className={className} onClick={toggleTheme} theme={ButtonTheme.Clear}>
+            {icons[theme]}
         </Button>
     );
 });
