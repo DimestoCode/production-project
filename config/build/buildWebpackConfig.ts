@@ -15,7 +15,8 @@ export function buildWebpackConfig(options: IBuildOptions): webpack.Configuratio
         output: {
             filename: "[name].[contenthash:8].js",
             path: paths.build,
-            clean: true
+            clean: true,
+            publicPath: "/"
         },
         module: {
             rules: buildLoaders(options)
