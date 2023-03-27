@@ -3,12 +3,13 @@ import { classNames } from "shared/lib/classNames/classNames";
 import { Navbar } from "widgets/Navbar";
 import { Sidebar } from "widgets/Sidebar";
 import { Loader } from "widgets/Loader";
-import { useDispatch } from "react-redux";
-import { userActions } from "entities/User";
+import { useDispatch, useSelector } from "react-redux";
+import { getUserInitialized, userActions } from "entities/User";
 import { AppRouter } from "./providers/router";
 
 const App = () => {
     const dispatch = useDispatch();
+    const initialized = useSelector(getUserInitialized);
 
     useEffect(() => {
         dispatch(userActions.retrieveAuthDataFromStorage());
@@ -20,7 +21,7 @@ const App = () => {
                 <Navbar />
                 <div className="content-page">
                     <Sidebar />
-                    <AppRouter />
+                    {initialized && <AppRouter />}
                 </div>
             </Suspense>
         </div>

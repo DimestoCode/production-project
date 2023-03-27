@@ -1,3 +1,3 @@
 import { IStoreState } from "app/providers/StoreProvider";
 
-export const getUserAuthData = (state: IStoreState) => state.user.authData;
+export const getUserAuthData = (state: IStoreState) => state.user?.authData;
