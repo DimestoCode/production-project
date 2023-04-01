@@ -29,7 +29,7 @@ export const Sidebar = memo(({ className = "" }: ISideBarProps) => {
                 type="button"
                 square
             >
-                {collapsed ? ">" : "<"}
+                <span className={classNames(classes.arrow, { [classes.arrowCollapsed]: collapsed })}>{"<"}</span>
             </Button>
             <div className={classes.items}>
                 {sidebarItemsList.map((item) => (

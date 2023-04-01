@@ -1,0 +1,18 @@
+import { IArticleCodeBlock } from "entities/Article/model/types/IArticleBlock";
+import { memo } from "react";
+import { classNames } from "shared/lib/classNames/classNames";
+import { Code } from "shared/ui/Code/Code";
+import classes from "./ArticleCodeBlock.module.scss";
+
+interface ArticleCodeBlockProps {
+    className?: string;
+    block: IArticleCodeBlock;
+}
+
+export const ArticleCodeBlock = memo(({ className, block }: ArticleCodeBlockProps) => {
+    return (
+        <div className={classNames(classes.ArticleCodeBlock, {}, [className])}>
+            <Code text={block.code} />
+        </div>
+    );
+});

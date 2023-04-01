@@ -48,7 +48,7 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
         isPrivate: true
     },
     [AppRoutes.ArticleDetails]: {
-        path: `${RoutePath.article_details}/:id`,
+        path: `${RoutePath.article_details}/:articleId`,
         element: <ArticleDetailsPage />,
         isPrivate: true
     },

@@ -10,6 +10,16 @@
         position: absolute;
         right: -32px;
         bottom: 32px;
+
+        .arrow {
+            display: block;
+            transform: rotate(0deg);
+            transition: transform 0.3s ease-out;
+
+            &.arrowCollapsed {
+                transform: rotate(180deg);
+            }
+        }
     }
 
     .items {
@@ -28,6 +38,7 @@
 
         .lang {
             margin-left: 20px;
+            color: var(--inverted-primary-color);
         }
     }
 

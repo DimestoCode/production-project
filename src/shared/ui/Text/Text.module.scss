@@ -30,4 +30,24 @@
     &.center {
         text-align: center;
     }
+
+    &.M {
+        .title {
+            font: var(--font-l);
+        }
+
+        .text {
+            font: var(--font-m);
+        }
+    }
+
+    &.L {
+        .title {
+            font: var(--font-xl);
+        }
+
+        .text {
+            font: var(--font-l);
+        }
+    }
 }

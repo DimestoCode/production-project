@@ -8,8 +8,8 @@ module.exports = {
         "plugin:react/recommended",
         "airbnb",
         "plugin:i18next/recommended",
-        "plugin:prettier/recommended",
-        "prettier"
+        "prettier",
+        "plugin:prettier/recommended"
     ],
     parser: "@typescript-eslint/parser",
     parserOptions: {
@@ -21,7 +21,14 @@ module.exports = {
     },
     plugins: ["react", "@typescript-eslint", "i18next", "react-hooks", "prettier"],
     rules: {
-        "prettier/prettier": "error",
+        "prettier/prettier": [
+            "error",
+            {
+                singleQuote: false,
+                parser: "babel-ts"
+            }
+        ],
+        quotes: ["error", "double", { avoidEscape: true }],
         "react/jsx-indent": [2, 4],
         "react/jsx-indent-props": [2, 4],
         indent: "off",
@@ -37,7 +44,7 @@ module.exports = {
         "import/extensions": "off",
         "import/no-extraneous-dependencies": "off",
         "no-underscore-dangle": "off",
-        quotes: [2, "double"],
+        // quotes: [2, "double"],
         "linebreak-style": ["error", "unix"],
         "comma-dangle": "off",
         "max-len": [

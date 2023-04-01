@@ -18,5 +18,6 @@
   "Incorrect login or password": "Невірний логін чи пароль",
   "Logout": "Вийти",
   "Common Error Text": "Спробуйте перезавантажити сторінку",
-  "Common Error Title": "От халепа! Щось пішло не так..."
+  "Common Error Title": "От халепа! Щось пішло не так...",
+  "Server error": "Серверна помилка"
 }

@@ -2,9 +2,9 @@ import { Suspense, useEffect } from "react";
 import { classNames } from "shared/lib/classNames/classNames";
 import { Navbar } from "widgets/Navbar";
 import { Sidebar } from "widgets/Sidebar";
-import { Loader } from "widgets/Loader";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserInitialized, userActions } from "entities/User";
+import { Loader } from "shared/ui/Loader/Loader";
 import { AppRouter } from "./providers/router";
 
 const App = () => {

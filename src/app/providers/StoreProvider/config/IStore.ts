@@ -1,5 +1,6 @@
 import { AnyAction, EnhancedStore, Reducer, ReducersMapObject } from "@reduxjs/toolkit";
 import { AxiosInstance } from "axios";
+import { IArticleState } from "entities/Article";
 import { ICounterState } from "entities/Counter";
 import { IProfileState } from "entities/Profile";
 import { IUserState } from "entities/User";
@@ -12,6 +13,7 @@ export interface IStoreState {
     user: IUserState;
     loginForm?: ILoginState;
     profile: IProfileState;
+    articleDetails?: IArticleState;
 }
 
 export type StoreStateKey = keyof IStoreState;

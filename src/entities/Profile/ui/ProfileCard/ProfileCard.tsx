@@ -5,8 +5,8 @@ import { classNames } from "shared/lib/classNames/classNames";
 import { numbersOnlyRegExp } from "shared/lib/regExp/regExp";
 import { Avatar } from "shared/ui/Avatar/Avatar";
 import { Input } from "shared/ui/Input/Input";
+import { Loader } from "shared/ui/Loader/Loader";
 import { Text, TextTheme } from "shared/ui/Text/Text";
-import { Loader } from "widgets/Loader";
 import { IProfile } from "../../model/types/IProfile";
 import classes from "./ProfileCard.module.scss";
 

@@ -61,3 +61,10 @@ ErrorTheme.args = {
     text: "text",
     theme: TextTheme.Error
 };
+
+export const SizeL = Template.bind({});
+SizeL.args = {
+    title: "title",
+    text: "text",
+    size: "L"
+};

@@ -13,11 +13,17 @@ interface TextProps {
     text?: string;
     theme?: TextTheme;
     align?: "left" | "center" | "right";
+    size?: "M" | "L";
 }
 
-export const Text = memo(({ className, title, text, theme = TextTheme.Primary, align = "left" }: TextProps) => (
-    <div className={classNames(classes.Text, {}, [className, classes[theme], classes[align]])}>
-        {title && <p className={classes.title}>{title}</p>}
-        {text && <p className={classes.text}>{text}</p>}
-    </div>
-));
+export const Text = memo(
+    ({ className, title, text, theme = TextTheme.Primary, align = "left", size = "M" }: TextProps) => {
+        const additionalClasses: (string | undefined)[] = [className, classes[theme], classes[align], classes[size]];
+        return (
+            <div className={classNames(classes.Text, {}, additionalClasses)}>
+                {title && <p className={classes.title}>{title}</p>}
+                {text && <p className={classes.text}>{text}</p>}
+            </div>
+        );
+    }
+);
