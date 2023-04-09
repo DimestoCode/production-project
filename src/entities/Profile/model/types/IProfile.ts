@@ -9,6 +9,7 @@ export enum ProfileValidationError {
     ServerError = "Server Error"
 }
 export interface IProfile {
+    id?: number;
     firstName?: string;
     lastName?: string;
     age?: number;

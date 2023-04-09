@@ -1,7 +1,8 @@
 import { profileReducer, retrieveProfileData } from "entities/Profile";
 import { EditableProfileCard } from "features/EditableProfileCard";
-import { memo, useEffect } from "react";
-import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
+import { memo, useCallback } from "react";
+import { useParams } from "react-router-dom";
+import { useActionEffect } from "shared/lib/hooks/useActionEffect/useActionEffect";
 import { Reducers, useDynamicModuleLoader } from "shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader";
 import { ProfilePageHeader } from "./ProfilePageHeader/ProfilePageHeader";
 
@@ -10,15 +11,11 @@ const reducers: Reducers = {
 };
 
 const ProfilePage = memo(() => {
+    const { profileId } = useParams<{ profileId: string }>();
+    const fetchProfileCallback = useCallback(() => retrieveProfileData(Number(profileId)), [profileId]);
+
     useDynamicModuleLoader({ reducers, removeOnUnmount: true });
-
-    const dispatch = useAppDispatch();
-
-    useEffect(() => {
-        if (__PROJECT__ !== "storybook") {
-            dispatch(retrieveProfileData());
-        }
-    }, [dispatch]);
+    useActionEffect(fetchProfileCallback);
 
     return (
         <div>

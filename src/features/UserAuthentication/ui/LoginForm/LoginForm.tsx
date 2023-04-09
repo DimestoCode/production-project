@@ -27,8 +27,7 @@ export interface LoginFormProps {
 const dynamicModuleLoaderProps: IDynamicLoaderProps = {
     reducers: {
         loginForm: loginReducer
-    },
-    removeOnUnmount: true
+    }
 };
 
 const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
@@ -59,7 +58,7 @@ const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
     const onLoginClick = useCallback(async () => {
         const result = await dispatch(loginByUsername({ username, password }));
         if (result.meta.requestStatus === "fulfilled") {
-            localStorage.setItem(USER_LOCAL_STORAGE_KEY, JSON.stringify({ username, password }));
+            localStorage.setItem(USER_LOCAL_STORAGE_KEY, JSON.stringify(result.payload));
             onSuccess();
         }
     }, [dispatch, onSuccess, password, username]);

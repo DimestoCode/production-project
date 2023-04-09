@@ -18,5 +18,11 @@
   "Incorrect login or password": "Incorrect login or password",
   "Logout": "Logout",
   "Common Error Text": "Try to reload the page",
-  "Common Error Title": "Oops! Something went wrong..."
+  "Common Error Title": "Oops! Something went wrong...",
+  "There": "There's no comments yet",
+  "Type comment": "Type comment",
+  "Server error": "Server error",
+  "Submit": "Submit",
+  "Invalid data": "Invalid data",
+  "rticle id": "Wrong article id"
 }

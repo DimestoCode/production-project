@@ -9,6 +9,7 @@ jest.mock("axios");
 jest.mock("shared/config/i18n/i18n", () => jest.requireActual("shared/config/i18n/i18nForTests"));
 
 const data: IProfile = {
+    id: 1,
     username: "admin",
     age: 22,
     city: "NY",
@@ -18,7 +19,7 @@ const data: IProfile = {
     lastName: "Andoniev",
     avatar: ProfileImg
 };
-describe("retrieveProfileData", () => {
+describe("updateProfileData", () => {
     test("returns updated profile data if thunk is fullfilled", async () => {
         const thunk = new TestAsyncThunk(updateProfileData, {
             profile: {
@@ -29,7 +30,7 @@ describe("retrieveProfileData", () => {
         thunk.api.put.mockResolvedValue({ data });
 
         const result = await thunk.callThunk();
-        expect(thunk.api.put).toHaveBeenCalledWith("/profile", data);
+        expect(thunk.api.put).toHaveBeenCalledWith("/profile/1", data);
         expect(result.meta.requestStatus).toBe("fulfilled");
         expect(result.payload).toStrictEqual(data);
     });
@@ -43,7 +44,7 @@ describe("retrieveProfileData", () => {
         thunk.api.put.mockResolvedValue({ status: 403 });
 
         const result = await thunk.callThunk();
-        expect(thunk.api.put).toHaveBeenCalledWith("/profile", data);
+        expect(thunk.api.put).toHaveBeenCalledWith("/profile/1", data);
         expect(result.meta.requestStatus).toBe("rejected");
         expect(result.payload).toStrictEqual(["Server Error"]);
     });

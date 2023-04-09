@@ -4,16 +4,21 @@ import { IArticleState } from "entities/Article";
 import { ICounterState } from "entities/Counter";
 import { IProfileState } from "entities/Profile";
 import { IUserState } from "entities/User";
+import { IAddCommentFormState } from "features/AddCommentForm";
 import { ILoginState } from "features/UserAuthentication";
+import { IArticleCommentsState } from "pages/ArticleDetailsPage/model/types/IArticleCommentsState";
 import { NavigateFunction } from "react-router-dom";
 import { AppDispatch } from "..";
 
 export interface IStoreState {
     counter: ICounterState;
     user: IUserState;
+    // async reducers
     loginForm?: ILoginState;
     profile: IProfileState;
     articleDetails?: IArticleState;
+    articleComments?: IArticleCommentsState;
+    addCommentForm?: IAddCommentFormState;
 }
 
 export type StoreStateKey = keyof IStoreState;

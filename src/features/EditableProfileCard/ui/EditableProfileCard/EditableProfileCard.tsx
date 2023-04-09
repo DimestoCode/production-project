@@ -55,7 +55,6 @@ export const EditableProfileCard = memo(() => {
                 onInputNumberChange={onInputNumberChange}
                 onSelectChange={onSelectChange}
                 readOnly={readOnly}
-                validationErrors={validationErrors}
             />
         </>
     );

@@ -19,7 +19,7 @@ export const loginByUsername = createAsyncThunk<IUser, ILoginByUsernameProps, IT
             }
 
             dispatch(userActions.setAuthData(response.data));
-            extra.navigate?.(RoutePath.profile);
+            extra.navigate?.(`${RoutePath.profile}/${response.data.id}`);
             return response.data;
         } catch (e) {
             return rejectWithValue(

@@ -8,8 +8,8 @@ module.exports = {
         "plugin:react/recommended",
         "airbnb",
         "plugin:i18next/recommended",
-        "prettier",
-        "plugin:prettier/recommended"
+        "plugin:prettier/recommended",
+        "prettier"
     ],
     parser: "@typescript-eslint/parser",
     parserOptions: {
@@ -25,7 +25,11 @@ module.exports = {
             "error",
             {
                 singleQuote: false,
-                parser: "babel-ts"
+                parser: "typescript",
+                semi: true,
+                trailingComma: "none",
+                tabWidth: 4,
+                printWidth: 120
             }
         ],
         quotes: ["error", "double", { avoidEscape: true }],
@@ -44,13 +48,13 @@ module.exports = {
         "import/extensions": "off",
         "import/no-extraneous-dependencies": "off",
         "no-underscore-dangle": "off",
-        // quotes: [2, "double"],
         "linebreak-style": ["error", "unix"],
         "comma-dangle": "off",
         "max-len": [
             2,
             {
-                code: 120,
+                code: 150,
+                ignorePattern: "import",
                 ignoreComments: true
             }
         ],

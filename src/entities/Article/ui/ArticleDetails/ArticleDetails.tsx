@@ -1,7 +1,6 @@
-import { memo, useEffect } from "react";
+import { memo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
-import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 import {
     IDynamicLoaderProps,
     useDynamicModuleLoader
@@ -12,6 +11,7 @@ import { Text } from "shared/ui/Text/Text";
 import EyeIcon from "shared/assets/icons/eye.svg";
 import CalendarIcon from "shared/assets/icons/calendar.svg";
 import { Icon } from "shared/ui/Icon/Icon";
+import { useActionEffect } from "shared/lib/hooks/useActionEffect/useActionEffect";
 import { articleDetailsReducer } from "../../model/slice/articleDetailsSlice";
 import { retrieveArticleById } from "../../model/services/retrieveArticleById/retrieveArticleById";
 import { ArticleBlockType, IArticleBlock } from "../../model/types/IArticleBlock";
@@ -26,8 +26,7 @@ import { ArticleImageBlock } from "../ArticleImageBlock/ArticleImageBlock";
 import { ArticleTextBlock } from "../ArticleTextBlock/ArticleTextBlock";
 
 const asyncModules: IDynamicLoaderProps = {
-    reducers: { articleDetails: articleDetailsReducer },
-    removeOnUnmount: true
+    reducers: { articleDetails: articleDetailsReducer }
 };
 
 function renderBlock(block: IArticleBlock) {
@@ -45,17 +44,16 @@ function renderBlock(block: IArticleBlock) {
 
 export const ArticleDetails = memo(({ id }: { id: number }) => {
     useDynamicModuleLoader(asyncModules);
+
+    const fetchArticleCallback = useCallback(() => retrieveArticleById(id), [id]);
+
+    useActionEffect(fetchArticleCallback);
+
     const { t } = useTranslation("article");
-    const dispatch = useAppDispatch();
     const isLoading = useSelector(getArticleDetailsIsLoading);
+
     const error = useSelector(getArticleDetailsError);
     const article = useSelector(getArticleDetailsData);
-
-    useEffect(() => {
-        if (__PROJECT__ !== "storybook") {
-            dispatch(retrieveArticleById(id));
-        }
-    }, [id, dispatch]);
 
     if (isLoading) {
         return (

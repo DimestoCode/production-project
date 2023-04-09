@@ -19,5 +19,10 @@
   "Logout": "Вийти",
   "Common Error Text": "Спробуйте перезавантажити сторінку",
   "Common Error Title": "От халепа! Щось пішло не так...",
-  "Server error": "Серверна помилка"
+  "Server error": "Серверна помилка",
+  "There": "Коментарії поки відсутні",
+  "Type comment": "Введіть коментар",
+  "Submit": "Відправити",
+  "Invalid data": "Invalid data",
+  "rticle id": "Невірний ідентифікатор статті"
 }

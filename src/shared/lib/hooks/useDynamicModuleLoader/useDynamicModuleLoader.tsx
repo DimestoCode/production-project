@@ -10,10 +10,10 @@ export type Reducers = {
 
 export interface IDynamicLoaderProps {
     reducers: DeepPartial<Reducers>;
-    removeOnUnmount: boolean;
+    removeOnUnmount?: boolean;
 }
 
-export const useDynamicModuleLoader = ({ reducers, removeOnUnmount }: IDynamicLoaderProps) => {
+export const useDynamicModuleLoader = ({ reducers, removeOnUnmount = true }: IDynamicLoaderProps) => {
     const store = useStore() as IStoreWithManager;
     const dispatch = useDispatch();
 

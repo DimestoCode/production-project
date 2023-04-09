@@ -61,6 +61,8 @@ export const ProfileCard = ({
         return <ProfileCardErrorState />;
     }
 
+    console.log(data);
+
     return (
         <div className={classNames(classes.ProfileCard, { [classes.edit]: !readOnly }, [className])}>
             {!!data?.avatar && (
