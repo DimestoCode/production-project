@@ -1,10 +1,19 @@
 /* eslint-disable max-len */
-import { ArticleList } from "entities/Article";
-import { ArticleType, IArticle } from "entities/Article/model/types/IArticle";
+import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { IArticle } from "entities/Article";
+import { ArticleType } from "entities/Article/model/types/IArticle";
 import { ArticleBlockType } from "entities/Article/model/types/IArticleBlock";
-import { memo } from "react";
-import { classNames } from "shared/lib/classNames/classNames";
-import classes from "./ArticlesPage.module.scss";
+import { ArticleListItem } from "./ArticleListItem";
+
+export default {
+    title: "entities/Article/ArticleListItem",
+    component: ArticleListItem,
+    argTypes: {
+        backgroundColor: { control: "color" }
+    }
+} as ComponentMeta<typeof ArticleListItem>;
+
+const Template: ComponentStory<typeof ArticleListItem> = (args) => <ArticleListItem {...args} />;
 
 const article: IArticle = {
     id: 1,
@@ -33,16 +42,14 @@ const article: IArticle = {
     ]
 };
 
-const ArticlesPage = () => {
-    return (
-        <div className={classNames(classes.ArticlesPage)}>
-            <ArticleList
-                articles={new Array(16).fill(article).map((article, id) => ({ ...article, id }))}
-                viewMode="list"
-                isLoading
-            />
-        </div>
-    );
+export const GridItem = Template.bind({});
+GridItem.args = {
+    viewMode: "grid",
+    article
 };
 
-export default memo(ArticlesPage);
+export const ListItem = Template.bind({});
+ListItem.args = {
+    viewMode: "list",
+    article
+};

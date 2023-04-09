@@ -13,6 +13,9 @@ import {
     useDynamicModuleLoader
 } from "shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader";
 import { Text } from "shared/ui/Text/Text";
+import { AppLink } from "shared/ui/AppLink/AppLink";
+import { Button, ButtonTheme } from "shared/ui/Button/Button";
+import { RoutePath } from "shared/config/routeConfig/routeConfig";
 import { getArticleCommentsIsLoading } from "../../model/selectors/commentsSelectors";
 import { retrieveCommentsByArticleId } from "../../model/services/retrieveCommentsByArticleId/retrieveCommentsByArticleId";
 import { addCommentForArticle } from "../../model/services/addCommentForArticle/addCommentForArticle";
@@ -46,6 +49,9 @@ const ArticleDetailsPage = memo(() => {
 
     return (
         <div className={classNames(classes.ArticleDetailsPage)}>
+            <AppLink to={RoutePath.articles}>
+                <Button theme={ButtonTheme.Outline}>{t("Back to list")}</Button>
+            </AppLink>
             <ArticleDetails id={Number(articleId)} />
             <Text className={classes.commentTitle} title={t("Comments")} />
             <AddCommentForm onCommentSubmit={onCommentSubmit} />

@@ -1,3 +1,4 @@
+import { IUser } from "entities/User";
 import { IArticleBlock } from "./IArticleBlock";
 
 export enum ArticleType {
@@ -14,5 +15,8 @@ export interface IArticle {
     views: number;
     createdAt: string;
     type: ArticleType[];
+    user: IUser;
     blocks: IArticleBlock[];
 }
+
+export type ArticleViewMode = "grid" | "list";

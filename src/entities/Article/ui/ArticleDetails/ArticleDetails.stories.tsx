@@ -7,7 +7,7 @@ import { StoreDecorator } from "shared/config/storybook/StoreDecorator/StoreDeco
 import { ArticleDetails } from "./ArticleDetails";
 
 export default {
-    title: "entities/ArticleDetails",
+    title: "entities/Article/ArticleDetails",
     component: ArticleDetails,
     argTypes: {
         backgroundColor: { control: "color" }
@@ -24,6 +24,10 @@ const articleDetails: IArticle = {
     views: 1022,
     createdAt: "26.02.2022",
     type: [ArticleType.IT],
+    user: {
+        id: 1,
+        username: "userName"
+    },
     blocks: [
         {
             id: 1,

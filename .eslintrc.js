@@ -62,7 +62,7 @@ module.exports = {
             "error",
             {
                 markupOnly: true,
-                ignoreAttribute: ["data-testid", "to", "fallback", "align", "name"]
+                ignoreAttribute: ["data-testid", "to", "fallback", "align", "name", "viewMode"]
             }
         ],
         "object-curly-newline": "off",
