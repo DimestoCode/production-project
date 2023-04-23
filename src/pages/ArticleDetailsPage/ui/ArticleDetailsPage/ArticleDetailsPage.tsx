@@ -16,6 +16,7 @@ import { Text } from "shared/ui/Text/Text";
 import { AppLink } from "shared/ui/AppLink/AppLink";
 import { Button, ButtonTheme } from "shared/ui/Button/Button";
 import { RoutePath } from "shared/config/routeConfig/routeConfig";
+import { Page } from "widgets/Page";
 import { getArticleCommentsIsLoading } from "../../model/selectors/commentsSelectors";
 import { retrieveCommentsByArticleId } from "../../model/services/retrieveCommentsByArticleId/retrieveCommentsByArticleId";
 import { addCommentForArticle } from "../../model/services/addCommentForArticle/addCommentForArticle";
@@ -47,8 +48,12 @@ const ArticleDetailsPage = memo(() => {
         [dispatch]
     );
 
+    if (!articleId) {
+        <Page className={classNames(classes.ArticleDetailsPage)}>{t("Article is not found")}</Page>;
+    }
+
     return (
-        <div className={classNames(classes.ArticleDetailsPage)}>
+        <Page className={classNames(classes.ArticleDetailsPage)}>
             <AppLink to={RoutePath.articles}>
                 <Button theme={ButtonTheme.Outline}>{t("Back to list")}</Button>
             </AppLink>
@@ -56,7 +61,7 @@ const ArticleDetailsPage = memo(() => {
             <Text className={classes.commentTitle} title={t("Comments")} />
             <AddCommentForm onCommentSubmit={onCommentSubmit} />
             <CommentList comments={comments} isLoading={isLoading} />
-        </div>
+        </Page>
     );
 });
 

@@ -33,11 +33,11 @@ export const Navbar = memo(({ className = "" }: INavBarProps) => {
     const btnText = authData ? "Logout" : "Login";
 
     return (
-        <nav className={classNames(classes.Navbar, {}, [className])}>
+        <header className={classNames(classes.Navbar, {}, [className])}>
             <Button className={classes.links} onClick={onClickHandler} theme={ButtonTheme.ClearInverted}>
                 {t(btnText)}
             </Button>
             {isLoginModalOpen && <LoginModal isOpen={isLoginModalOpen} onClose={toggleModal} />}
-        </nav>
+        </header>
     );
 });

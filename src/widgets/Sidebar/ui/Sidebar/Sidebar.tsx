@@ -38,7 +38,7 @@ export const Sidebar = memo(({ className = "" }: ISideBarProps) => {
             >
                 <span className={classNames(classes.arrow, { [classes.arrowCollapsed]: collapsed })}>{"<"}</span>
             </Button>
-            <div className={classes.items}>{renderedSidebarItems}</div>
+            <nav className={classes.items}>{renderedSidebarItems}</nav>
 
             <div className={classes.switchers}>
                 <ThemeSwitcher />

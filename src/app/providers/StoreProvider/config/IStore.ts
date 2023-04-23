@@ -7,8 +7,9 @@ import { IUserState } from "entities/User";
 import { IAddCommentFormState } from "features/AddCommentForm";
 import { ILoginState } from "features/UserAuthentication";
 import { IArticleCommentsState } from "pages/ArticleDetailsPage/model/types/IArticleCommentsState";
+import { IArticlesState } from "pages/ArticlesPage";
 import { NavigateFunction } from "react-router-dom";
-import { AppDispatch } from "..";
+import { AppDispatch } from "./store";
 
 export interface IStoreState {
     counter: ICounterState;
@@ -19,6 +20,7 @@ export interface IStoreState {
     articleDetails?: IArticleState;
     articleComments?: IArticleCommentsState;
     addCommentForm?: IAddCommentFormState;
+    articles?: IArticlesState;
 }
 
 export type StoreStateKey = keyof IStoreState;
@@ -27,6 +29,7 @@ export interface IReducerManager<> {
     reduce: Reducer<IStoreState, AnyAction>;
     add: (key: StoreStateKey, reducer: Reducer<IStoreState[StoreStateKey], AnyAction>) => void;
     remove: (key: StoreStateKey) => void;
+    has: (key: StoreStateKey) => boolean;
 }
 export interface IStoreWithManager extends EnhancedStore<IStoreState> {
     reducerManager: IReducerManager;

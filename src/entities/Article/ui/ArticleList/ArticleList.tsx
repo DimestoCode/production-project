@@ -27,13 +27,11 @@ export const ArticleList = memo(({ className, articles, isLoading, viewMode = "g
         [viewMode]
     );
 
-    if (isLoading) {
-        return <div className={classNames(classes.ArticleList, {}, [classes[viewMode]])}>{getSkeletons(viewMode)}</div>;
-    }
-
     return (
         <div className={classNames(classes.ArticleList, {}, [className, classes[viewMode]])}>
             {!!articles.length && articles.map(renderArticle)}
+
+            {isLoading && getSkeletons(viewMode)}
         </div>
     );
 });

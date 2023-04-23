@@ -17,12 +17,6 @@ Empty.args = {
     isLoading: false
 };
 
-export const Loading = Template.bind({});
-Loading.args = {
-    comments: [],
-    isLoading: true
-};
-
 export const Normal = Template.bind({});
 Normal.args = {
     comments: [

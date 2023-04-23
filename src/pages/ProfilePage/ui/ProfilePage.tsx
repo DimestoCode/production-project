@@ -4,6 +4,7 @@ import { memo, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import { useActionEffect } from "shared/lib/hooks/useActionEffect/useActionEffect";
 import { Reducers, useDynamicModuleLoader } from "shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader";
+import { Page } from "widgets/Page";
 import { ProfilePageHeader } from "./ProfilePageHeader/ProfilePageHeader";
 
 const reducers: Reducers = {
@@ -18,10 +19,10 @@ const ProfilePage = memo(() => {
     useActionEffect(fetchProfileCallback);
 
     return (
-        <div>
+        <Page>
             <ProfilePageHeader />
             <EditableProfileCard />
-        </div>
+        </Page>
     );
 });
 

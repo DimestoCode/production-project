@@ -1,7 +1,12 @@
+import { IUser } from "entities/User";
 import { loginActions, loginByUsername } from "features/UserAuthentication";
+import isNil from "lodash/isNil";
+import isString from "lodash/isString";
 import { memo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { RoutePath } from "shared/config/routeConfig/routeConfig";
 import { USER_LOCAL_STORAGE_KEY } from "shared/const/localStorage";
 import { classNames } from "shared/lib/classNames/classNames";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
@@ -31,6 +36,7 @@ const dynamicModuleLoaderProps: IDynamicLoaderProps = {
 };
 
 const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
+    const navigate = useNavigate();
     useDynamicModuleLoader(dynamicModuleLoaderProps);
 
     const { t } = useTranslation("common");
@@ -55,13 +61,18 @@ const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
         [dispatch]
     );
 
+    const isUser = (user: string | IUser | undefined): user is IUser => {
+        return !!user && !isString(user) && !isNil(user.id);
+    };
+
     const onLoginClick = useCallback(async () => {
         const result = await dispatch(loginByUsername({ username, password }));
-        if (result.meta.requestStatus === "fulfilled") {
+        if (result.meta.requestStatus === "fulfilled" && isUser(result.payload)) {
             localStorage.setItem(USER_LOCAL_STORAGE_KEY, JSON.stringify(result.payload));
             onSuccess();
+            navigate(`${RoutePath.profile}/${result.payload.id}`);
         }
-    }, [dispatch, onSuccess, password, username]);
+    }, [dispatch, navigate, onSuccess, password, username]);
 
     return (
         <div className={classNames(classes.LoginForm, {}, [className])}>

@@ -66,7 +66,6 @@ export const ArticleListItem = memo(({ className, article, viewMode }: IArticleL
                             <AppLink to={articleDetailsUrl}>
                                 <Button theme={ButtonTheme.Outline}>{t("Read more")}</Button>
                             </AppLink>
-
                             {views}
                         </div>
                     </>

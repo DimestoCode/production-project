@@ -71,14 +71,14 @@ const articles: IArticle[] = [
 
 export const LoadingGrid = Template.bind({});
 LoadingGrid.args = {
-    articles,
+    articles: [],
     isLoading: true,
     viewMode: "grid"
 };
 
 export const LoadingList = Template.bind({});
 LoadingList.args = {
-    articles,
+    articles: [],
     isLoading: true,
     viewMode: "list"
 };

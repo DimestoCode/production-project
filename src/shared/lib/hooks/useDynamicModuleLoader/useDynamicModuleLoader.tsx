@@ -13,14 +13,18 @@ export interface IDynamicLoaderProps {
     removeOnUnmount?: boolean;
 }
 
-export const useDynamicModuleLoader = ({ reducers, removeOnUnmount = true }: IDynamicLoaderProps) => {
+export const useDynamicModuleLoader = ({ reducers, removeOnUnmount = false }: IDynamicLoaderProps) => {
     const store = useStore() as IStoreWithManager;
     const dispatch = useDispatch();
 
     useEffect(() => {
-        Object.entries(reducers).forEach(([name, reducer]) => {
-            store.reducerManager.add(name as StoreStateKey, reducer as Reducer);
-            dispatch({ type: `@INIT ${name} reducer` });
+        const reducersEntries = Object.entries<Reducers>(reducers) as Array<[StoreStateKey, Reducer]>;
+
+        reducersEntries.forEach(([name, reducer]) => {
+            if (!store.reducerManager.has(name)) {
+                store.reducerManager.add(name, reducer);
+                dispatch({ type: `@INIT ${name} reducer` });
+            }
         });
 
         return () => {

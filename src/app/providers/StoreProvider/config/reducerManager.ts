@@ -44,6 +44,10 @@ export function createReducerManager(initialReducers: ReducersMapObject<IStoreSt
             keysToRemove.push(key);
 
             combinedReducer = combineReducers(reducers);
+        },
+
+        has: (key: StoreStateKey) => {
+            return !!reducers?.[key];
         }
     };
 }

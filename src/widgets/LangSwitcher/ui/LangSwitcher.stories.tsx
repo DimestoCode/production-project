@@ -5,7 +5,7 @@ import { Theme } from "app/providers/ThemeProvider";
 import { LangSwitcher } from "./LangSwitcher";
 
 export default {
-    title: "widget/LangSwitcher",
+    title: "widgets/LangSwitcher",
     component: LangSwitcher,
     argTypes: {
         backgroundColor: { control: "color" }

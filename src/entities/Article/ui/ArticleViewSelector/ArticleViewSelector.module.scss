@@ -1,0 +1,15 @@
+.ArticleViewSelector {
+    .icon {
+        margin-right: 5px;
+
+        path {
+            fill: var(--primary-color);
+        }
+    }
+
+    .notActive {
+        path {
+            fill: var(--secondary-color);
+        }
+    }
+}

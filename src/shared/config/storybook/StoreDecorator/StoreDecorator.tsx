@@ -5,6 +5,7 @@ import { profileReducer } from "entities/Profile";
 import { addCommentFormReducer } from "features/AddCommentForm/model/slices/addCommentFormSlice";
 import { loginReducer } from "features/UserAuthentication/model/slices/loginSlice";
 import { articleCommentsReducer } from "pages/ArticleDetailsPage/model/slices/articleCommentsSlice";
+import { articlesReducer } from "pages/ArticlesPage/model/slices/articlesPageSlice";
 import { Reducers } from "shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader";
 
 const defaultAsyncReducers: DeepPartial<Reducers> = {
@@ -12,7 +13,8 @@ const defaultAsyncReducers: DeepPartial<Reducers> = {
     profile: profileReducer,
     articleDetails: articleDetailsReducer,
     addCommentForm: addCommentFormReducer,
-    articleComments: articleCommentsReducer
+    articleComments: articleCommentsReducer,
+    articles: articlesReducer
 };
 
 export function StoreDecorator(initialState: DeepPartial<IStoreState>, asyncReducers?: DeepPartial<Reducers>) {
