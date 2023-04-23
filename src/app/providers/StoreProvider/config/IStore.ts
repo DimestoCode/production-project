@@ -5,6 +5,7 @@ import { ICounterState } from "entities/Counter";
 import { IProfileState } from "entities/Profile";
 import { IUserState } from "entities/User";
 import { IAddCommentFormState } from "features/AddCommentForm";
+import { IScrollState } from "features/ScrollRestoration";
 import { ILoginState } from "features/UserAuthentication";
 import { IArticleCommentsState } from "pages/ArticleDetailsPage/model/types/IArticleCommentsState";
 import { IArticlesState } from "pages/ArticlesPage";
@@ -14,6 +15,8 @@ import { AppDispatch } from "./store";
 export interface IStoreState {
     counter: ICounterState;
     user: IUserState;
+    scroll: IScrollState;
+
     // async reducers
     loginForm?: ILoginState;
     profile: IProfileState;

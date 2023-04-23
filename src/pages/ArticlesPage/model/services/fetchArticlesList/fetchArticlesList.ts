@@ -29,8 +29,6 @@ export const fetchArticlesList = createAsyncThunk<IArticle[], IFetchArticlesList
                 throw new Error();
             }
 
-            console.log("here");
-
             dispatch(articlesActions.setArticles({ articles: response.data, initialLoad }));
 
             return response.data;
