@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { HTMLAttributeAnchorTarget, memo } from "react";
 import { classNames } from "shared/lib/classNames/classNames";
 import { Icon } from "shared/ui/Icon/Icon";
 import { Text } from "shared/ui/Text/Text";
@@ -18,9 +18,10 @@ interface IArticleListItemProps {
     className?: string;
     article: IArticle;
     viewMode: ArticleViewMode;
+    target?: HTMLAttributeAnchorTarget;
 }
 
-export const ArticleListItem = memo(({ className, article, viewMode }: IArticleListItemProps) => {
+export const ArticleListItem = memo(({ className, article, viewMode, target }: IArticleListItemProps) => {
     const { t } = useTranslation("articles");
 
     const isGrid = viewMode === "grid";
@@ -40,7 +41,7 @@ export const ArticleListItem = memo(({ className, article, viewMode }: IArticleL
         <div className={classNames(classes.ArticleListItem, {}, [className, classes[viewMode]])}>
             <Card className={classes.card}>
                 {isGrid ? (
-                    <AppLink to={articleDetailsUrl}>
+                    <AppLink target={target} to={articleDetailsUrl}>
                         <div className={classes.imageWrapper}>
                             <img alt={article.title} className={classes.img} src={article.img} />
                             <Text className={classes.date} text={article.createdAt} />

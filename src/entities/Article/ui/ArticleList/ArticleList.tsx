@@ -13,6 +13,7 @@ interface IArticleListProps {
     articles: IArticle[];
     isLoading?: boolean;
     viewMode: ArticleViewMode;
+    target?: HTMLAttributeAnchorTarget;
 }
 
 const getSkeletons = (viewMode: ArticleViewMode) => {
@@ -23,12 +24,14 @@ const getSkeletons = (viewMode: ArticleViewMode) => {
         .map((Skeleton) => <Skeleton key={uniqId()} viewMode={viewMode} />);
 };
 
-export const ArticleList = memo(({ className, articles, isLoading, viewMode = "grid" }: IArticleListProps) => {
+export const ArticleList = memo(({ className, articles, isLoading, viewMode = "grid", target }: IArticleListProps) => {
     const { t } = useTranslation("articles");
 
     const renderArticle = useCallback(
-        (article: IArticle) => <ArticleListItem article={article} key={article.id} viewMode={viewMode} />,
-        [viewMode]
+        (article: IArticle) => (
+            <ArticleListItem article={article} key={article.id} target={target} viewMode={viewMode} />
+        ),
+        [viewMode, target]
     );
 
     return (

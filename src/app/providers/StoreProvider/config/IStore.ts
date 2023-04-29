@@ -7,9 +7,9 @@ import { IUserState } from "entities/User";
 import { IAddCommentFormState } from "features/AddCommentForm";
 import { IScrollState } from "features/ScrollRestoration";
 import { ILoginState } from "features/UserAuthentication";
-import { IArticleCommentsState } from "pages/ArticleDetailsPage/model/types/IArticleCommentsState";
 import { IArticlesState } from "pages/ArticlesPage";
 import { NavigateFunction } from "react-router-dom";
+import { IArticleDetailsPageState } from "pages/ArticleDetailsPage";
 import { AppDispatch } from "./store";
 
 export interface IStoreState {
@@ -21,9 +21,9 @@ export interface IStoreState {
     loginForm?: ILoginState;
     profile: IProfileState;
     articleDetails?: IArticleState;
-    articleComments?: IArticleCommentsState;
     addCommentForm?: IAddCommentFormState;
     articles?: IArticlesState;
+    articleDetailsPage?: IArticleDetailsPageState;
 }
 
 export type StoreStateKey = keyof IStoreState;

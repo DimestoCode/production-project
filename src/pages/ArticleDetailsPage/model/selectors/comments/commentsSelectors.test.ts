@@ -5,8 +5,10 @@ describe("commentsSelectors", () => {
     describe("getArticleCommentsIsLoading", () => {
         it("returns isLoading if state isn't empty", () => {
             const state: DeepPartial<IStoreState> = {
-                articleComments: {
-                    isLoading: false
+                articleDetailsPage: {
+                    comments: {
+                        isLoading: false
+                    }
                 }
             };
 
@@ -23,8 +25,10 @@ describe("commentsSelectors", () => {
     describe("getArticleCommentsError", () => {
         it("returns error if state isn't empty", () => {
             const state: DeepPartial<IStoreState> = {
-                articleComments: {
-                    error: "error"
+                articleDetailsPage: {
+                    comments: {
+                        error: "error"
+                    }
                 }
             };
 

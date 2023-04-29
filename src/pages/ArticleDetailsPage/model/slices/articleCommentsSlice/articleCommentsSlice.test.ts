@@ -1,6 +1,6 @@
 import { IComment } from "entities/Comment";
-import { retrieveCommentsByArticleId } from "../services/retrieveCommentsByArticleId/retrieveCommentsByArticleId";
-import { IArticleCommentsState } from "../types/IArticleCommentsState";
+import { retrieveCommentsByArticleId } from "../../services/retrieveCommentsByArticleId/retrieveCommentsByArticleId";
+import { IArticleCommentsState } from "../../types/IArticleCommentsState";
 import { articleCommentsReducer } from "./articleCommentsSlice";
 
 describe("articleCommentsSlice", () => {

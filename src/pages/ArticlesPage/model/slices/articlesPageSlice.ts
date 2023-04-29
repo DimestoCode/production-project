@@ -16,7 +16,7 @@ export const getArticles = articlesAdapter.getSelectors<IStoreState>(
 
 const storageArticleMode = localStorage.getItem(ARTICLES_VIEW_LOCAL_STORAGE_KEY) as ArticleViewMode;
 const articlesSlice = createSlice({
-    name: "articleComments",
+    name: "articles",
     initialState: articlesAdapter.getInitialState<IArticlesState>({
         initialized: false,
         isLoading: true,

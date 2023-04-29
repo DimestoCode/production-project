@@ -1,11 +1,11 @@
 import { Reducer } from "@reduxjs/toolkit";
 import { IStoreWithManager } from "app/providers/StoreProvider";
-import { StoreStateKey } from "app/providers/StoreProvider/config/IStore";
+import { IStoreState, StoreStateKey } from "app/providers/StoreProvider/config/IStore";
 import { useEffect } from "react";
 import { useDispatch, useStore } from "react-redux";
 
 export type Reducers = {
-    [name in StoreStateKey]?: Reducer;
+    [name in StoreStateKey]?: Reducer<NonNullable<IStoreState[name]>>;
 };
 
 export interface IDynamicLoaderProps {

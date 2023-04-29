@@ -70,6 +70,18 @@
       "userId": 1,
       "text": "Commm",
       "id": 9
+    },
+    {
+      "articleId": 14,
+      "userId": 1,
+      "text": "comment",
+      "id": 10
+    },
+    {
+      "articleId": 6,
+      "userId": 1,
+      "text": "NEw comment",
+      "id": 11
     }
   ],
   "profile": [
