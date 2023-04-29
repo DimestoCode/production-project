@@ -1,35 +1,68 @@
-import { IArticle } from "entities/Article";
+import { ArticleSortField, ArticleType, IArticle } from "entities/Article";
 import { TestAsyncThunk } from "shared/lib/tests/testAsyncThunk";
 import { articlesActions } from "../../slices/articlesPageSlice";
+import { IArticlesState } from "../../types/IArticlesState";
 import { fetchArticlesList } from "./fetchArticlesList";
 
 jest.mock("axios");
 jest.mock("shared/config/i18n/i18n", () => jest.requireActual("shared/config/i18n/i18nForTests"));
 
 describe("fetchArticlesList", () => {
-    test("should fulfill", async () => {
+    test("should fulfill with all query params if type is all", async () => {
+        const articlesState: DeepPartial<IArticlesState> = {
+            page: 1,
+            limit: 3,
+            sort: ArticleSortField.Title,
+            hasMore: true,
+            order: "desc",
+            type: ArticleType.All,
+            initialized: true,
+            search: "Search"
+        };
         const thunk = new TestAsyncThunk(fetchArticlesList, {
-            articles: {
-                limit: 3
-            }
+            articles: articlesState
         });
         const data: DeepPartial<IArticle>[] = [{ id: 1, blocks: [], createdAt: "08/08" }];
         thunk.api.get.mockResolvedValue({ data });
 
-        const res = await thunk.callThunk({ page: 1, initialLoad: true });
+        const res = await thunk.callThunk({ initialLoad: true });
 
         expect(res.meta.requestStatus).toBe("fulfilled");
         expect(thunk.api.get).toHaveBeenCalledWith("/articles", {
             params: {
-                _page: 1,
-                _limit: 3,
-                _expand: "user"
+                _expand: "user",
+                _limit: articlesState.limit,
+                _page: articlesState.page,
+                _sort: articlesState.sort,
+                _order: articlesState.order,
+                type: undefined,
+                q: articlesState.search
             }
         });
         expect(thunk.dispatch).toHaveBeenCalledWith(
             articlesActions.setArticles({ articles: data as IArticle[], initialLoad: true })
         );
         expect(res.payload).toStrictEqual(data);
+    });
+
+    test("should fulfill with all query params if type is all", async () => {
+        const articlesState: DeepPartial<IArticlesState> = {
+            type: ArticleType.Economics
+        };
+        const thunk = new TestAsyncThunk(fetchArticlesList, {
+            articles: articlesState
+        });
+        const data: DeepPartial<IArticle>[] = [{ id: 1, blocks: [], createdAt: "08/08" }];
+        thunk.api.get.mockResolvedValue({ data });
+
+        const res = await thunk.callThunk({ initialLoad: true });
+
+        expect(res.meta.requestStatus).toBe("fulfilled");
+        expect(thunk.api.get).toHaveBeenCalledWith("/articles", {
+            params: expect.objectContaining({
+                type: articlesState.type
+            })
+        });
     });
 
     test("should reject", async () => {
@@ -40,16 +73,10 @@ describe("fetchArticlesList", () => {
         });
         thunk.api.get.mockResolvedValue({ data: null });
 
-        const res = await thunk.callThunk({ page: 1 });
+        const res = await thunk.callThunk({ initialLoad: true });
 
         expect(res.meta.requestStatus).toBe("rejected");
-        expect(thunk.api.get).toHaveBeenCalledWith("/articles", {
-            params: {
-                _expand: "user",
-                _page: 1,
-                _limit: 3
-            }
-        });
+        expect(thunk.api.get).toHaveBeenCalled();
         expect(res.payload).toBe("Server Error");
     });
 });

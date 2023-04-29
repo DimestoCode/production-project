@@ -30,16 +30,16 @@ export const Page = ({ className, children, onScrollEnd }: IPageProps) => {
                 path: pathname
             })
         );
-    }, 500);
+    }, 2000);
 
     useLayoutEffect(() => {
         wrapperRef.current.scrollTop = scrollPosition;
-    });
+    }, [scrollPosition]);
 
     return (
         <main className={classNames(classes.Page, {}, [className])} onScroll={onScroll} ref={wrapperRef}>
             {children}
-            <div ref={triggerRef} />
+            {onScrollEnd ? <div ref={triggerRef} /> : null}
         </main>
     );
 };

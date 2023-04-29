@@ -1,6 +1,6 @@
-import { retrieveArticleById } from "../services/retrieveArticleById/retrieveArticleById";
-import { ArticleType } from "../types/IArticle";
-import { IArticleState } from "../types/IArticleState";
+import { retrieveArticleById } from "../../services/retrieveArticleById/retrieveArticleById";
+import { ArticleType } from "../../types/IArticle";
+import { IArticleState } from "../../types/IArticleState";
 import { articleDetailsReducer } from "./articleDetailsSlice";
 
 describe("articleDetailsSlice", () => {

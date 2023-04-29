@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { retrieveArticleById } from "../services/retrieveArticleById/retrieveArticleById";
-import { IArticle } from "../types/IArticle";
-import { IArticleState } from "../types/IArticleState";
+import { retrieveArticleById } from "../../services/retrieveArticleById/retrieveArticleById";
+import { IArticle } from "../../types/IArticle";
+import { IArticleState } from "../../types/IArticleState";
 
 const initialState: IArticleState = {
     isLoading: false,

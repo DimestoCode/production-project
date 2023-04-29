@@ -26,7 +26,7 @@ describe("fetchFollowingArticles", () => {
 
         expect(thunk.dispatch).toHaveBeenCalledTimes(4);
         expect(articlesActions.setPage).toHaveBeenCalledWith(3);
-        expect(fetchArticlesList).toHaveBeenCalledWith({ page: 3 });
+        expect(fetchArticlesList).toHaveBeenCalledWith({ initialLoad: false });
     });
 
     test("should not trigger fetchArticlesList if hasMore = false", async () => {

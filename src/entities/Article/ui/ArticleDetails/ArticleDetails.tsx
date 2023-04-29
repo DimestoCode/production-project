@@ -12,7 +12,7 @@ import EyeIcon from "shared/assets/icons/eye.svg";
 import CalendarIcon from "shared/assets/icons/calendar.svg";
 import { Icon } from "shared/ui/Icon/Icon";
 import { useActionEffect } from "shared/lib/hooks/useActionEffect/useActionEffect";
-import { articleDetailsReducer } from "../../model/slice/articleDetailsSlice";
+import { articleDetailsReducer } from "../../model/slice/articleDetailsSlice/articleDetailsSlice";
 import { retrieveArticleById } from "../../model/services/retrieveArticleById/retrieveArticleById";
 import { ArticleBlockType, IArticleBlock } from "../../model/types/IArticleBlock";
 import {

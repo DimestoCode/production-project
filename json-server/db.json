@@ -121,7 +121,8 @@
       "views": 1022,
       "createdAt": "26.02.2022",
       "type": [
-        "IT"
+        "economics",
+        "it"
       ],
       "userId": 1,
       "blocks": [
@@ -148,9 +149,9 @@
       "subtitle": "Что нового в JS за 2022 год?",
       "img": "https://s.dou.ua/img/announces/how-to-front-end-840.jpg",
       "views": 1022,
-      "createdAt": "26.02.2022",
+      "createdAt": "23.04.2022",
       "type": [
-        "IT"
+        "it"
       ],
       "userId": 1,
       "blocks": [
@@ -179,7 +180,8 @@
       "views": 1022,
       "createdAt": "26.02.2022",
       "type": [
-        "IT"
+        "it",
+        "science"
       ],
       "userId": 1,
       "blocks": [
@@ -213,7 +215,7 @@
       "views": 1022,
       "createdAt": "26.02.2022",
       "type": [
-        "IT"
+        "science"
       ],
       "userId": 1,
       "blocks": [
@@ -241,7 +243,7 @@
       "views": 1022,
       "createdAt": "26.02.2022",
       "type": [
-        "IT"
+        "economics"
       ],
       "userId": 1,
       "blocks": [
@@ -274,7 +276,7 @@
       "views": 1022,
       "createdAt": "26.02.2022",
       "type": [
-        "IT"
+        "it"
       ],
       "userId": 1,
       "blocks": [
@@ -314,10 +316,10 @@
       "title": "Javascript news",
       "subtitle": "Что нового в JS за 2022 год?",
       "img": "https://www.codecademy.com/resources/blog/wp-content/uploads/2022/12/what-is-c---used-for.png",
-      "views": 1022,
-      "createdAt": "26.02.2022",
+      "views": 2250,
+      "createdAt": "02.12.2022",
       "type": [
-        "IT"
+        "it"
       ],
       "userId": 1,
       "blocks": [
@@ -348,10 +350,10 @@
       "title": "Javascript news",
       "subtitle": "Что нового в JS за 2022 год?",
       "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
-      "views": 1022,
-      "createdAt": "26.02.2022",
+      "views": 586,
+      "createdAt": "05.05.2022",
       "type": [
-        "IT"
+        "it"
       ],
       "userId": 1,
       "blocks": [
@@ -378,13 +380,13 @@
     },
     {
       "id": 11,
-      "title": "Javascript news",
+      "title": "Kotlin news",
       "subtitle": "Что нового в JS за 2022 год?",
-      "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
-      "views": 1022,
-      "createdAt": "26.02.2022",
+      "img": "https://logowik.com/content/uploads/images/kotlin.jpg",
+      "views": 58,
+      "createdAt": "26.02.2020",
       "type": [
-        "IT"
+        "it"
       ],
       "userId": 1,
       "blocks": [
@@ -411,13 +413,13 @@
     },
     {
       "id": 12,
-      "title": "Javascript news",
+      "title": "Swift news",
       "subtitle": "Что нового в JS за 2022 год?",
-      "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
-      "views": 1022,
-      "createdAt": "26.02.2022",
+      "img": "https://developer.apple.com/swift/images/swift-og.png",
+      "views": 100,
+      "createdAt": "26.02.2023",
       "type": [
-        "IT"
+        "it"
       ],
       "userId": 1,
       "blocks": [
@@ -444,13 +446,13 @@
     },
     {
       "id": 13,
-      "title": "Javascript news",
+      "title": "Ruby news",
       "subtitle": "Что нового в JS за 2022 год?",
-      "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
-      "views": 1022,
-      "createdAt": "26.02.2022",
+      "img": "https://res.cloudinary.com/practicaldev/image/fetch/s--cqjua8_w--/c_imagga_scale,f_auto,fl_progressive,h_900,q_auto,w_1600/https://cdn-images-1.medium.com/max/1600/1%2A9hd_8qR0CMZ8L0pVbFLjDw.png",
+      "views": 10000,
+      "createdAt": "06.03.2022",
       "type": [
-        "IT"
+        "it"
       ],
       "userId": 1,
       "blocks": [
@@ -477,13 +479,13 @@
     },
     {
       "id": 14,
-      "title": "Javascript news",
+      "title": "Java",
       "subtitle": "Что нового в JS за 2022 год?",
-      "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
-      "views": 1022,
-      "createdAt": "26.02.2022",
+      "img": "https://upload.wikimedia.org/wikipedia/uk/thumb/8/85/%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF_Java.png/250px-%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF_Java.png",
+      "views": 522,
+      "createdAt": "01.11.2018",
       "type": [
-        "IT"
+        "it"
       ],
       "userId": 1,
       "blocks": [
@@ -510,13 +512,13 @@
     },
     {
       "id": 15,
-      "title": "Javascript news",
+      "title": "React news",
       "subtitle": "Что нового в JS за 2022 год?",
-      "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
-      "views": 1022,
-      "createdAt": "26.02.2022",
+      "img": "https://www.datocms-assets.com/45470/1631110818-logo-react-js.png",
+      "views": 2000,
+      "createdAt": "13.08.2022",
       "type": [
-        "IT"
+        "it"
       ],
       "userId": 1,
       "blocks": [
@@ -543,13 +545,13 @@
     },
     {
       "id": 116,
-      "title": "Javascript news",
+      "title": "Next.js news",
       "subtitle": "Что нового в JS за 2022 год?",
-      "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
-      "views": 1022,
-      "createdAt": "26.02.2022",
+      "img": "https://gorzelinski.com/static/1db41e3ecd311724a15306b270d99dd9/6e87d/next-js-logo.png",
+      "views": 100000,
+      "createdAt": "22.02.2021",
       "type": [
-        "IT"
+        "it"
       ],
       "userId": 1,
       "blocks": [

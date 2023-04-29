@@ -17,3 +17,8 @@ body {
 .content-page {
     display: flex;
 }
+
+select,
+option {
+    z-index: 10000;
+}

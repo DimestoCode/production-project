@@ -20,11 +20,11 @@ Primary.args = {
     value: "first",
     options: [
         {
-            title: "First",
+            label: "First",
             value: "first"
         },
         {
-            title: "Second",
+            label: "Second",
             value: "second"
         }
     ]

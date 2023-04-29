@@ -1,27 +1,42 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { IThunkConfig } from "app/providers/StoreProvider";
-import { IArticle } from "entities/Article";
+import { ArticleType, IArticle } from "entities/Article";
 import i18n from "shared/config/i18n/i18n";
-import { getArticlesPageLimit } from "../../selectors/articlesSelectors";
+import {
+    getArticlesPageLimit,
+    getArticlesPageNumber,
+    getArticlesSearch,
+    getArticlesSortField,
+    getArticlesSortOrder,
+    getArticlesType
+} from "../../selectors/articlesSelectors";
 import { articlesActions } from "../../slices/articlesPageSlice";
 
 interface IFetchArticlesListProps {
-    page?: number;
     initialLoad?: boolean;
 }
 export const fetchArticlesList = createAsyncThunk<IArticle[], IFetchArticlesListProps, IThunkConfig<string>>(
     "articles/fetchArticlesList",
     async (props, thunkApi) => {
         const { extra, rejectWithValue, getState, dispatch } = thunkApi;
-        const { page = 1, initialLoad = false } = props;
+        const { initialLoad = false } = props;
         const limit = getArticlesPageLimit(getState());
+        const search = getArticlesSearch(getState());
+        const sort = getArticlesSortField(getState());
+        const order = getArticlesSortOrder(getState());
+        const page = getArticlesPageNumber(getState());
+        const type = getArticlesType(getState());
 
         try {
             const response = await extra.api.get<IArticle[]>("/articles", {
                 params: {
                     _expand: "user",
                     _limit: limit,
-                    _page: page
+                    _page: page,
+                    _sort: sort,
+                    _order: order,
+                    type: type === ArticleType.All ? undefined : type,
+                    q: search
                 }
             });
 

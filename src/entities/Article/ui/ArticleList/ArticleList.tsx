@@ -1,5 +1,7 @@
 import { memo, useCallback } from "react";
+import { useTranslation } from "react-i18next";
 import { classNames } from "shared/lib/classNames/classNames";
+import { Text } from "shared/ui/Text/Text";
 import uniqId from "uniqid";
 import { ArticleViewMode, IArticle } from "../../model/types/IArticle";
 import { ArticleListItem } from "../ArticleListItem/ArticleListItem";
@@ -22,6 +24,8 @@ const getSkeletons = (viewMode: ArticleViewMode) => {
 };
 
 export const ArticleList = memo(({ className, articles, isLoading, viewMode = "grid" }: IArticleListProps) => {
+    const { t } = useTranslation("articles");
+
     const renderArticle = useCallback(
         (article: IArticle) => <ArticleListItem article={article} key={article.id} viewMode={viewMode} />,
         [viewMode]
@@ -30,6 +34,7 @@ export const ArticleList = memo(({ className, articles, isLoading, viewMode = "g
     return (
         <div className={classNames(classes.ArticleList, {}, [className, classes[viewMode]])}>
             {!!articles.length && articles.map(renderArticle)}
+            {!isLoading && !articles.length && <Text title={t("Articles not found")} />}
 
             {isLoading && getSkeletons(viewMode)}
         </div>

@@ -1,5 +1,4 @@
-import { ArticleList, ArticleViewSelector } from "entities/Article";
-import { ArticleViewMode } from "entities/Article/model/types/IArticle";
+import { ArticleList } from "entities/Article";
 import { memo, useCallback } from "react";
 import { useSelector } from "react-redux";
 import { classNames } from "shared/lib/classNames/classNames";
@@ -11,11 +10,12 @@ import {
 } from "shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader";
 import { initializeArticles } from "pages/ArticlesPage/model/services/initializeArticles/initializeArticles";
 import { Page } from "widgets/Page";
-import { fetchArticlesList } from "../../model/services/fetchArticlesList/fetchArticlesList";
-import { getArticlesIsLoading, getArticlesView } from "../../model/selectors/articlesSelectors";
+import { useSearchParams } from "react-router-dom";
+import { getArticlesInitialized, getArticlesIsLoading, getArticlesView } from "../../model/selectors/articlesSelectors";
 import { fetchFollowingArticles } from "../../model/services/fetchFollowingArticles/fetchFollowingArticles";
-import { articlesActions, articlesReducer, getArticles } from "../../model/slices/articlesPageSlice";
+import { articlesReducer, getArticles } from "../../model/slices/articlesPageSlice";
 import classes from "./ArticlesPage.module.scss";
+import { ArticlesPageFilters } from "../ArticlesPageFilters/ArticlesPageFilters";
 
 const dynamicModules: IDynamicLoaderProps = {
     reducers: {
@@ -24,32 +24,27 @@ const dynamicModules: IDynamicLoaderProps = {
 };
 
 const ArticlesPage = () => {
+    const [searchParams] = useSearchParams();
     useDynamicModuleLoader(dynamicModules);
     const isLoading = useSelector(getArticlesIsLoading);
     const view = useSelector(getArticlesView);
     const articles = useSelector(getArticles.selectAll);
     const dispatch = useAppDispatch();
+    const initialized = useSelector(getArticlesInitialized);
 
-    useActionEffect(initializeArticles);
-
-    const onChangeView = useCallback(
-        (view: ArticleViewMode) => {
-            dispatch(articlesActions.setView(view));
-            dispatch(fetchArticlesList({ page: 1, initialLoad: true }));
-        },
-        [dispatch]
-    );
+    useActionEffect(() => initializeArticles(searchParams), !initialized);
 
     const onLoadNextPart = useCallback(() => {
-        if (__PROJECT__ !== "storybook") {
+        if (!!articles.length && __PROJECT__ !== "storybook") {
             dispatch(fetchFollowingArticles());
         }
-    }, [dispatch]);
+    }, [articles.length, dispatch]);
 
     return (
         <Page className={classNames(classes.ArticlesPage)} onScrollEnd={onLoadNextPart}>
-            <ArticleViewSelector onViewClick={onChangeView} view={view} />
-            <ArticleList articles={articles} isLoading={isLoading} viewMode={view} />
+            <ArticlesPageFilters />
+
+            <ArticleList articles={articles} className={classes.list} isLoading={isLoading} viewMode={view} />
         </Page>
     );
 };

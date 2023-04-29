@@ -1,4 +1,5 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { StoreDecorator } from "shared/config/storybook/StoreDecorator/StoreDecorator";
 import { Page } from "./Page";
 
 export default {
@@ -14,3 +15,8 @@ export const Normal = Template.bind({});
 Normal.args = {
     children: <div>Page</div>
 };
+Normal.decorators = [
+    StoreDecorator({
+        scroll: {}
+    })
+];

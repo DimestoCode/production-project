@@ -2,9 +2,16 @@ import { IUser } from "entities/User";
 import { IArticleBlock } from "./IArticleBlock";
 
 export enum ArticleType {
-    IT = "IT",
-    Science = "Science",
-    Economics = "Economics"
+    All = "all",
+    IT = "it",
+    Science = "science",
+    Economics = "economics"
+}
+
+export enum ArticleSortField {
+    Views = "views",
+    Title = "title",
+    CreatedAt = "createdAt"
 }
 
 export interface IArticle {
