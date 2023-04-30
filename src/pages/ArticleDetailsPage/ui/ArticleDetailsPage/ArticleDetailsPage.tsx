@@ -13,9 +13,6 @@ import {
     useDynamicModuleLoader
 } from "shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader";
 import { Text } from "shared/ui/Text/Text";
-import { AppLink } from "shared/ui/AppLink/AppLink";
-import { Button, ButtonTheme } from "shared/ui/Button/Button";
-import { RoutePath } from "shared/config/routeConfig/routeConfig";
 import { Page } from "widgets/Page";
 import { getArticleRecommendationsIsLoading } from "pages/ArticleDetailsPage/model/selectors/recommendations/recommendations";
 import { fetchArticleRecommendations } from "pages/ArticleDetailsPage/model/services/fetchArticleRecommendations/fetchArticleRecommendations";
@@ -26,6 +23,7 @@ import { retrieveCommentsByArticleId } from "../../model/services/retrieveCommen
 import { addCommentForArticle } from "../../model/services/addCommentForArticle/addCommentForArticle";
 import { getArticleComments } from "../../model/slices/articleCommentsSlice/articleCommentsSlice";
 import classes from "./ArticleDetailsPage.module.scss";
+import { ArticleDetailsPageHeader } from "../ArticleDetailsPageHeader/ArticleDetailsPageHeader";
 
 const dynamicModule: IDynamicLoaderProps = {
     reducers: {
@@ -60,9 +58,7 @@ const ArticleDetailsPage = memo(() => {
 
     return (
         <Page className={classNames(classes.ArticleDetailsPage)}>
-            <AppLink to={RoutePath.articles}>
-                <Button theme={ButtonTheme.Outline}>{t("Back to list")}</Button>
-            </AppLink>
+            <ArticleDetailsPageHeader />
             <ArticleDetails id={Number(articleId)} />
 
             <Text className={classes.recommendationsTitle} size="L" title={t("Recommendations")} />

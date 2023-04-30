@@ -1,8 +1,3 @@
-import { FC, lazy } from "react";
+import { lazy } from "react";
 
-export const ProfilePageAsync = lazy<FC>(
-    () =>
-        new Promise((res) => {
-            setTimeout(() => res(import("./ProfilePage")), 1000);
-        })
-);
+export const ProfilePageAsync = lazy(() => import("./ProfilePage"));

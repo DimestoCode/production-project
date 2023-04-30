@@ -32,7 +32,8 @@ export interface LoginFormProps {
 const dynamicModuleLoaderProps: IDynamicLoaderProps = {
     reducers: {
         loginForm: loginReducer
-    }
+    },
+    removeOnUnmount: true
 };
 
 const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {

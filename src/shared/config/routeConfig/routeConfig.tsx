@@ -1,6 +1,7 @@
 import { AboutPage } from "pages/AboutPage";
 import { ArticleDetailsPage } from "pages/ArticleDetailsPage";
 import { ArticlesPage } from "pages/ArticlesPage";
+import { EditArticlePage } from "pages/EditArticlePage";
 import { MainPage } from "pages/MainPage";
 import { NotFoundPage } from "pages/NotFoundPage";
 import { ProfilePage } from "pages/ProfilePage";
@@ -16,6 +17,8 @@ export enum AppRoutes {
     Profile = "profile",
     Articles = "articles",
     ArticleDetails = "article_details",
+    AddArticle = "add_article",
+    EditArticle = "edit_article",
     NotFound = "not-found"
 }
 
@@ -25,6 +28,8 @@ export const RoutePath: Record<AppRoutes, string> = {
     [AppRoutes.Profile]: "/profile",
     [AppRoutes.Articles]: "/articles",
     [AppRoutes.ArticleDetails]: "/articles", // + id
+    [AppRoutes.AddArticle]: "/articles/add",
+    [AppRoutes.EditArticle]: "articles/:articleId/edit",
     [AppRoutes.NotFound]: "*"
 };
 
@@ -50,6 +55,16 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     [AppRoutes.ArticleDetails]: {
         path: `${RoutePath.article_details}/:articleId`,
         element: <ArticleDetailsPage />,
+        isPrivate: true
+    },
+    [AppRoutes.EditArticle]: {
+        path: `${RoutePath.edit_article}`,
+        element: <EditArticlePage />,
+        isPrivate: true
+    },
+    [AppRoutes.AddArticle]: {
+        path: `${RoutePath.add_article}`,
+        element: <EditArticlePage />,
         isPrivate: true
     },
     [AppRoutes.NotFound]: {

@@ -23,7 +23,7 @@ describe("retrieveArticleById", () => {
 
         const result = await thunk.callThunk(1);
 
-        expect(thunk.api.get).toHaveBeenCalledWith("/articles/1");
+        expect(thunk.api.get).toHaveBeenCalledWith("/articles/1", { params: { _expand: "user" } });
         expect(result.meta.requestStatus).toBe("fulfilled");
         expect(result.payload).toStrictEqual(data);
     });
@@ -33,7 +33,7 @@ describe("retrieveArticleById", () => {
         thunk.api.get.mockReturnValue(Promise.resolve({ status: 403 }));
 
         const result = await thunk.callThunk(1);
-        expect(thunk.api.get).toHaveBeenCalledWith("/articles/1");
+        expect(thunk.api.get).toHaveBeenCalledWith("/articles/1", { params: { _expand: "user" } });
         expect(result.meta.requestStatus).toBe("rejected");
         expect(result.payload).toBe("Server Error");
     });
