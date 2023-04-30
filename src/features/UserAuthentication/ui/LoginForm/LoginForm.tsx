@@ -17,8 +17,8 @@ import {
 import { Button, ButtonTheme } from "shared/ui/Button/Button";
 import { Input } from "shared/ui/Input/Input";
 import { TextTheme, Text } from "shared/ui/Text/Text";
-import { getLoginError } from "../../model/selectors/getLoginError/getLoginError";
 import { getLoginIsLoading } from "../../model/selectors/getLoginIsLoading/getLoginIsLoading";
+import { getLoginError } from "../../model/selectors/getLoginError/getLoginError";
 import { getLoginPassword } from "../../model/selectors/getLoginPassword/getLoginPassword";
 import { getLoginUsername } from "../../model/selectors/getLoginUsername/getLoginUsername";
 import { loginReducer } from "../../model/slices/loginSlice";
