@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { classNames } from "shared/lib/classNames/classNames";
 import { AppLink, AppLinkTheme } from "shared/ui/AppLink/AppLink";
-import { ISidebarItem } from "widgets/Sidebar/model/types/ISidebarItem";
+import { ISidebarItem } from "../../model/types/ISidebarItem";
 import classes from "./SidebarItem.module.scss";
 
 export const SidebarItem = memo(({ item, collapsed }: { item: ISidebarItem; collapsed: boolean }) => {

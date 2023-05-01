@@ -19,7 +19,7 @@ module.exports = {
         ecmaVersion: "latest",
         sourceType: "module"
     },
-    plugins: ["react", "@typescript-eslint", "i18next", "react-hooks", "prettier"],
+    plugins: ["react", "@typescript-eslint", "i18next", "react-hooks", "prettier", "fsd-path-checker-by-dandoniev"],
     rules: {
         "prettier/prettier": [
             "error",
@@ -89,7 +89,8 @@ module.exports = {
         "@typescript-eslint/no-unused-vars": "error",
         "no-undef": "off",
         "comma-spacing": "off",
-        "@typescript-eslint/comma-spacing": "error"
+        "@typescript-eslint/comma-spacing": "error",
+        "fsd-path-checker-by-dandoniev/fsd-path-checker": "error"
     },
     overrides: [
         {

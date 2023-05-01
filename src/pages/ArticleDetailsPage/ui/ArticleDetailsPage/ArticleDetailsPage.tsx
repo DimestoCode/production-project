@@ -14,16 +14,16 @@ import {
 } from "shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader";
 import { Text } from "shared/ui/Text/Text";
 import { Page } from "widgets/Page";
-import { getArticleRecommendationsIsLoading } from "pages/ArticleDetailsPage/model/selectors/recommendations/recommendations";
-import { fetchArticleRecommendations } from "pages/ArticleDetailsPage/model/services/fetchArticleRecommendations/fetchArticleRecommendations";
-import { articleDetailsPageReducer } from "pages/ArticleDetailsPage/model/slices";
+import { getArticleRecommendationsIsLoading } from "../../model/selectors/recommendations/recommendations";
+import { fetchArticleRecommendations } from "../../model/services/fetchArticleRecommendations/fetchArticleRecommendations";
+import { articleDetailsPageReducer } from "../../model/slices";
+import { ArticleDetailsPageHeader } from "../../ui/ArticleDetailsPageHeader/ArticleDetailsPageHeader";
 import { getArticleRecommendations } from "../../model/slices/articleDetailsRecommendationsSlice/articleDetailsRecommendationsSlice";
 import { getArticleCommentsIsLoading } from "../../model/selectors/comments/commentsSelectors";
 import { retrieveCommentsByArticleId } from "../../model/services/retrieveCommentsByArticleId/retrieveCommentsByArticleId";
 import { addCommentForArticle } from "../../model/services/addCommentForArticle/addCommentForArticle";
 import { getArticleComments } from "../../model/slices/articleCommentsSlice/articleCommentsSlice";
 import classes from "./ArticleDetailsPage.module.scss";
-import { ArticleDetailsPageHeader } from "../ArticleDetailsPageHeader/ArticleDetailsPageHeader";
 
 const dynamicModule: IDynamicLoaderProps = {
     reducers: {
@@ -53,7 +53,7 @@ const ArticleDetailsPage = memo(() => {
     );
 
     if (!articleId) {
-        <Page className={classNames(classes.ArticleDetailsPage)}>{t("Article is not found")}</Page>;
+        return <Page className={classNames(classes.ArticleDetailsPage)}>{t("Article is not found")}</Page>;
     }
 
     return (

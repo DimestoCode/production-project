@@ -8,9 +8,9 @@ import {
     IDynamicLoaderProps,
     useDynamicModuleLoader
 } from "shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader";
-import { initializeArticles } from "pages/ArticlesPage/model/services/initializeArticles/initializeArticles";
 import { Page } from "widgets/Page";
 import { useSearchParams } from "react-router-dom";
+import { initializeArticles } from "../../model/services/initializeArticles/initializeArticles";
 import { getArticlesInitialized, getArticlesIsLoading, getArticlesView } from "../../model/selectors/articlesSelectors";
 import { fetchFollowingArticles } from "../../model/services/fetchFollowingArticles/fetchFollowingArticles";
 import { articlesReducer, getArticles } from "../../model/slices/articlesPageSlice";

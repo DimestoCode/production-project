@@ -1,9 +1,8 @@
 /* eslint-disable max-len */
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { IArticle } from "entities/Article";
-import { ArticleType } from "entities/Article/model/types/IArticle";
-import { ArticleBlockType } from "entities/Article/model/types/IArticleBlock";
 import { StoreDecorator } from "shared/config/storybook/StoreDecorator/StoreDecorator";
+import { IArticle, ArticleType } from "../../model/types/IArticle";
+import { ArticleBlockType } from "../../model/types/IArticleBlock";
 import { ArticleDetails } from "./ArticleDetails";
 
 export default {

@@ -1,5 +1,4 @@
 import { IUser } from "entities/User";
-import { loginActions, loginByUsername } from "features/UserAuthentication";
 import isNil from "lodash/isNil";
 import isString from "lodash/isString";
 import { memo, useCallback } from "react";
@@ -17,12 +16,13 @@ import {
 import { Button, ButtonTheme } from "shared/ui/Button/Button";
 import { Input } from "shared/ui/Input/Input";
 import { TextTheme, Text } from "shared/ui/Text/Text";
+import { loginActions, loginReducer } from "../../model/slices/loginSlice";
 import { getLoginIsLoading } from "../../model/selectors/getLoginIsLoading/getLoginIsLoading";
 import { getLoginError } from "../../model/selectors/getLoginError/getLoginError";
 import { getLoginPassword } from "../../model/selectors/getLoginPassword/getLoginPassword";
 import { getLoginUsername } from "../../model/selectors/getLoginUsername/getLoginUsername";
-import { loginReducer } from "../../model/slices/loginSlice";
 import classes from "./LoginForm.module.scss";
+import { loginByUsername } from "../../model/services/loginByUsername/loginByUsername";
 
 export interface LoginFormProps {
     className?: string;

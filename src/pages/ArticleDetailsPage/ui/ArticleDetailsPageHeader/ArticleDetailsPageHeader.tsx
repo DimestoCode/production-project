@@ -1,4 +1,3 @@
-import { getCanUserEditArticle } from "pages/ArticleDetailsPage/model/selectors/article/article";
 import { memo } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
@@ -7,6 +6,7 @@ import { RoutePath } from "shared/config/routeConfig/routeConfig";
 import { classNames } from "shared/lib/classNames/classNames";
 import { AppLink } from "shared/ui/AppLink/AppLink";
 import { Button, ButtonTheme } from "shared/ui/Button/Button";
+import { getCanUserEditArticle } from "../../model/selectors/article/article";
 import classes from "./ArticleDetailsPageHeader.module.scss";
 
 interface IArticleDetailsPageHeaderProps {
