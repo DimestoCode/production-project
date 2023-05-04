@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { classNames } from "shared/lib/classNames/classNames";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { Button, ButtonTheme } from "shared/ui/Button/Button";
+import { HStack } from "shared/ui/Stack";
 import { Text } from "shared/ui/Text/Text";
 import classes from "./ProfilePageHeader.module.scss";
 
@@ -32,27 +33,27 @@ export const ProfilePageHeader = ({ className }: ProfilePageHeaderProps) => {
     }, [dispatch]);
 
     return (
-        <div className={classNames(classes.ProfilePageHeader, {}, [className])}>
+        <HStack className={classNames(classes.ProfilePageHeader, {}, [className])} justify="between" maxWidth>
             <Text title={t("Profile")} />
 
             {isEditable && (
-                <div className={classes.buttonsWrapper}>
+                <div>
                     {readOnly ? (
-                        <Button className={classes.button} onClick={onEdit} theme={ButtonTheme.Outline}>
+                        <Button onClick={onEdit} theme={ButtonTheme.Outline}>
                             {t("Edit")}
                         </Button>
                     ) : (
-                        <>
-                            <Button className={classes.button} onClick={onCancel} theme={ButtonTheme.OutlineRed}>
+                        <HStack gap="8">
+                            <Button onClick={onCancel} theme={ButtonTheme.OutlineRed}>
                                 {t("Cancel")}
                             </Button>
-                            <Button className={classes.button} onClick={onSave} theme={ButtonTheme.Outline}>
+                            <Button onClick={onSave} theme={ButtonTheme.Outline}>
                                 {t("Save")}
                             </Button>
-                        </>
+                        </HStack>
                     )}
                 </div>
             )}
-        </div>
+        </HStack>
     );
 };

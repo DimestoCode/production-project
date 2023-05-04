@@ -1,28 +1,7 @@
 .ArticleDetails {
-    .avatarWrapper {
-        display: flex;
-        justify-content: start;
-        width: 100%;
-    }
-
-    .articleInfo {
-        display: flex;
-        align-items: center;
-
-        .icon {
-            margin-right: 8px;
-        }
-    }
+    min-height: 100%;
 }
 
 .avatar {
-    margin: 0 auto 20px;
-}
-
-.block {
-    margin-top: 16px;
-}
-
-.skeleton:not(:last-of-type) {
-    margin-bottom: 15px;
+    margin: 0 auto;
 }

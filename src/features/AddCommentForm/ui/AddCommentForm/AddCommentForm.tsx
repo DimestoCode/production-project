@@ -9,6 +9,7 @@ import {
 } from "shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader";
 import { Button } from "shared/ui/Button/Button";
 import { Input } from "shared/ui/Input/Input";
+import { HStack } from "shared/ui/Stack";
 import { addCommentFormActions, addCommentFormReducer } from "../../model/slices/addCommentFormSlice";
 import { getAddCommentFormText } from "../../model/selectors/addCommentFormSelectors";
 import classes from "./AddCommentForm.module.scss";
@@ -43,7 +44,12 @@ export const AddCommentForm = memo(({ className, onCommentSubmit }: IAddCommentF
     }, [onCommentSubmit, comment, onCommentChange]);
 
     return (
-        <div className={classNames(classes.AddCommentForm, {}, [className])}>
+        <HStack
+            align="center"
+            className={classNames(classes.AddCommentForm, {}, [className])}
+            justify="between"
+            maxWidth
+        >
             <Input
                 className={classes.input}
                 onChange={onCommentChange}
@@ -51,6 +57,6 @@ export const AddCommentForm = memo(({ className, onCommentSubmit }: IAddCommentF
                 value={comment}
             />
             <Button onClick={handleCommentSubmit}>{t("Submit")}</Button>
-        </div>
+        </HStack>
     );
 });

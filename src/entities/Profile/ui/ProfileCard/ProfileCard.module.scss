@@ -2,10 +2,6 @@
     padding: 20px;
     border: 2px solid var(--inverted-bg-color);
 
-    .input:not(:first-child) {
-        margin-top: 10px;
-    }
-
     &.loading,
     &.error {
         display: flex;

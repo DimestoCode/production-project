@@ -12,6 +12,7 @@ import EyeIcon from "shared/assets/icons/eye.svg";
 import CalendarIcon from "shared/assets/icons/calendar.svg";
 import { Icon } from "shared/ui/Icon/Icon";
 import { useActionEffect } from "shared/lib/hooks/useActionEffect/useActionEffect";
+import { HStack, VStack } from "shared/ui/Stack";
 import { articleDetailsReducer } from "../../model/slice/articleDetailsSlice/articleDetailsSlice";
 import { retrieveArticleById } from "../../model/services/retrieveArticleById/retrieveArticleById";
 import { ArticleBlockType, IArticleBlock } from "../../model/types/IArticleBlock";
@@ -57,13 +58,13 @@ export const ArticleDetails = memo(({ id }: { id: number }) => {
 
     if (isLoading) {
         return (
-            <>
+            <VStack gap="16" maxWidth>
                 <Skeleton borderRadius="50%" className={classes.avatar} height={200} width={200} />
                 <Skeleton className={classes.skeleton} height={32} width={300} />
                 <Skeleton className={classes.skeleton} height={24} width={600} />
                 <Skeleton className={classes.skeleton} height={200} width="100%" />
                 <Skeleton className={classes.skeleton} height={200} width="100%" />
-            </>
+            </VStack>
         );
     }
 
@@ -72,22 +73,24 @@ export const ArticleDetails = memo(({ id }: { id: number }) => {
     }
 
     return (
-        <div className={classes.ArticleDetails}>
-            <div className={classes.avatarWrapper}>
+        <VStack className={classes.ArticleDetails} gap="16" maxWidth>
+            <HStack className={classes.avatarWrapper} justify="center" maxWidth>
                 <Avatar className={classes.avatar} size={200} src={article?.img} />
-            </div>
-            <Text className={classes.title} text={article?.subtitle} title={article?.title} />
-            <div className={classes.articleInfo}>
-                <Icon Svg={EyeIcon} className={classes.icon} />
-                <Text text={String(article?.views)} />
-            </div>
+            </HStack>
+            <VStack gap="4">
+                <Text className={classes.title} text={article?.subtitle} title={article?.title} />
+                <HStack className={classes.articleInfo} gap="8">
+                    <Icon Svg={EyeIcon} className={classes.icon} />
+                    <Text text={String(article?.views)} />
+                </HStack>
 
-            <div className={classes.articleInfo}>
-                <Icon Svg={CalendarIcon} className={classes.icon} />
-                <Text text={article?.createdAt} />
-            </div>
+                <HStack className={classes.articleInfo} gap="8">
+                    <Icon Svg={CalendarIcon} className={classes.icon} />
+                    <Text text={article?.createdAt} />
+                </HStack>
+            </VStack>
 
             {article?.blocks.map(renderBlock)}
-        </div>
+        </VStack>
     );
 });

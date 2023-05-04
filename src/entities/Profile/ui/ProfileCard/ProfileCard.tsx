@@ -6,6 +6,7 @@ import { numbersOnlyRegExp } from "shared/lib/regExp/regExp";
 import { Avatar } from "shared/ui/Avatar/Avatar";
 import { Input } from "shared/ui/Input/Input";
 import { Loader } from "shared/ui/Loader/Loader";
+import { HStack, VStack } from "shared/ui/Stack";
 import { Text, TextTheme } from "shared/ui/Text/Text";
 import { IProfile } from "../../model/types/IProfile";
 import classes from "./ProfileCard.module.scss";
@@ -26,14 +27,14 @@ interface IProfileCardProps {
 const ProfileCardErrorState = () => {
     const { t } = useTranslation("common");
     return (
-        <div className={classNames(classes.ProfileCard, {}, [classes.error])}>
+        <HStack className={classNames(classes.ProfileCard, {}, [classes.error])} justify="center" maxWidth>
             <Text
                 align="center"
                 text={t("Common Error Text")}
                 theme={TextTheme.Error}
                 title={t("Common Error Title")}
             />
-        </div>
+        </HStack>
     );
 };
 
@@ -51,9 +52,9 @@ export const ProfileCard = ({
 
     if (isLoading) {
         return (
-            <div className={classNames(classes.ProfileCard, {}, [className, classes.loading])}>
+            <VStack className={classNames(classes.ProfileCard, {}, [className, classes.loading])} maxWidth>
                 <Loader />
-            </div>
+            </VStack>
         );
     }
 
@@ -62,11 +63,15 @@ export const ProfileCard = ({
     }
 
     return (
-        <div className={classNames(classes.ProfileCard, { [classes.edit]: !readOnly }, [className])}>
+        <VStack
+            className={classNames(classes.ProfileCard, { [classes.edit]: !readOnly }, [className])}
+            gap="8"
+            maxWidth
+        >
             {!!data?.avatar && (
-                <div className={classes.avatarWrapper}>
+                <HStack className={classes.avatarWrapper} justify="center" maxWidth>
                     <Avatar src={data.avatar} />
-                </div>
+                </HStack>
             )}
             <Input
                 className={classes.input}
@@ -131,6 +136,6 @@ export const ProfileCard = ({
                 onChange={onSelectChange}
                 value={data?.country}
             />
-        </div>
+        </VStack>
     );
 };

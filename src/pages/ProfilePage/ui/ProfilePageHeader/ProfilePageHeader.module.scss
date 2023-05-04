@@ -1,18 +1,3 @@
 .ProfilePageHeader {
-    display: flex;
     margin-bottom: 20px;
-
-    .buttonsWrapper {
-        margin-left: auto;
-    }
-
-    .button {
-        &:first-of-type {
-            margin-left: auto;
-        }
-
-        &:not(:last-child) {
-            margin-right: 10px;
-        }
-    }
 }
