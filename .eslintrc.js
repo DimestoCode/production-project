@@ -73,7 +73,8 @@ module.exports = {
                     "direction",
                     "gap",
                     "justify",
-                    "align"
+                    "align",
+                    "tag"
                 ]
             }
         ],

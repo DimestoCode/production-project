@@ -8,21 +8,31 @@ export enum TextTheme {
     Error = "error"
 }
 
+type TextSize = "S" | "M" | "L";
+
 interface TextProps {
     className?: string;
     title?: string;
     text?: string;
     theme?: TextTheme;
     align?: "left" | "center" | "right";
-    size?: "M" | "L";
+    size?: TextSize;
 }
+
+const mapHeaderSizeToTag: Record<TextSize, keyof JSX.IntrinsicElements> = {
+    S: "h3",
+    L: "h2",
+    M: "h1"
+};
 
 export const Text = memo(
     ({ className, title, text, theme = TextTheme.Primary, align = "left", size = "M" }: TextProps) => {
+        const HeaderTag = mapHeaderSizeToTag[size];
+
         const additionalClasses: (string | undefined)[] = [className, classes[theme], classes[align], classes[size]];
         return (
             <div className={classNames(classes.Text, {}, additionalClasses)}>
-                {title && <p className={classes.title}>{title}</p>}
+                {title && <HeaderTag className={classes.title}>{title}</HeaderTag>}
                 {text && <p className={classes.text}>{text}</p>}
             </div>
         );

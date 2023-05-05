@@ -15,6 +15,7 @@ export interface IFlexProps {
     direction?: FlexDirection;
     gap?: FlexGap;
     maxWidth?: boolean;
+    tag?: keyof JSX.IntrinsicElements;
 }
 
 const justifyClasses: Record<FlexJustify, string> = {
@@ -49,6 +50,7 @@ export const Flex = ({
     direction = "row",
     justify = "start",
     gap,
+    tag = "div",
     maxWidth
 }: IFlexProps) => {
     const additionalClasses = [
@@ -59,7 +61,9 @@ export const Flex = ({
         gap && gapClasses[gap]
     ];
 
+    const Tag = tag;
+
     return (
-        <div className={classNames(classes.Flex, { [classes.maxWidth]: maxWidth }, additionalClasses)}>{children}</div>
+        <Tag className={classNames(classes.Flex, { [classes.maxWidth]: maxWidth }, additionalClasses)}>{children}</Tag>
     );
 };

@@ -39,7 +39,7 @@ export const Sidebar = memo(({ className = "" }: ISideBarProps) => {
             >
                 <span className={classNames(classes.arrow, { [classes.arrowCollapsed]: collapsed })}>{"<"}</span>
             </Button>
-            <VStack className={classes.items} gap="8">
+            <VStack className={classes.items} gap="8" tag="nav">
                 {renderedSidebarItems}
             </VStack>
 
