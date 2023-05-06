@@ -2,6 +2,7 @@ import { Fragment, ReactNode, SelectHTMLAttributes, useMemo } from "react";
 import { Listbox as HListbox } from "@headlessui/react";
 import { classNames } from "shared/lib/classNames/classNames";
 import SelectArrowIcon from "shared/assets/icons/select-arrow.svg";
+import { DropdownDirection } from "shared/types/ui";
 import classes from "./ListBox.module.scss";
 import { Button } from "../Button/Button";
 import { Icon } from "../Icon/Icon";
@@ -11,8 +12,6 @@ export interface IListBoxItem<T> {
     label: ReactNode;
     disabled?: boolean;
 }
-
-type DropdownDirection = "top" | "bottom";
 
 export interface IListBoxProps<T extends string>
     extends Omit<SelectHTMLAttributes<HTMLSelectElement>, "onChange" | "value" | "defaultValue"> {
@@ -36,7 +35,7 @@ export const ListBox = <T extends string>({
     defaultValue,
     value,
     name,
-    direction = "bottom"
+    direction = "bottom-left"
 }: IListBoxProps<T>) => {
     const currentOption = useMemo(() => options.find((item) => item.value === value), [options, value]);
 

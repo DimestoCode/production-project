@@ -18,11 +18,6 @@ body {
     display: flex;
 }
 
-select,
-option {
-    z-index: 10000;
-}
-
 *::-webkit-scrollbar {
     width: 12px;
     height: 8px;

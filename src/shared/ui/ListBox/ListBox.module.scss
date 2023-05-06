@@ -39,18 +39,39 @@
     .options {
         background: var(--listbox-bg);
         position: absolute;
+        display: flex;
+        flex-direction: column;
         min-width: 100%;
-        z-index: 10000;
+
+        // min-width: 100%;
+        z-index: var(--dropdown-z-index);
         border-radius: 12px;
         box-shadow: 4px 4px 8px var(--listbox-bg);
 
-        &.top {
+        &.top-left {
             bottom: 100%;
+            right: 0;
+        }
+
+        &.top-right {
+            bottom: 100%;
+            left: 0;
+        }
+
+        &.bottom-left {
+            top: 100%;
+            right: 0;
+        }
+
+        &.bottom-right {
+            top: 100%;
+            left: 0;
         }
 
         .item {
             padding: 10px 20px;
             cursor: pointer;
+            white-space: nowrap;
 
             &:first-child {
                 border-top-left-radius: 12px;

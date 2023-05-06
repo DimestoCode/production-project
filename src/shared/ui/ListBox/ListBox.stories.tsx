@@ -7,7 +7,14 @@ export default {
     component: ListBox,
     argTypes: {
         backgroundColor: { control: "color" }
-    }
+    },
+    decorators: [
+        (Story) => (
+            <div style={{ padding: 100 }}>
+                <Story />{" "}
+            </div>
+        )
+    ]
 } as ComponentMeta<typeof ListBox>;
 
 const Template: ComponentStory<typeof ListBox> = (args) => (
@@ -73,8 +80,8 @@ DisabledOption.args = {
     onChange: action("onchange")
 };
 
-export const TopDropdown = Template.bind({});
-TopDropdown.args = {
+export const TopLeftDropdown = Template.bind({});
+TopLeftDropdown.args = {
     options: [
         {
             label: "Label 1",
@@ -84,7 +91,54 @@ TopDropdown.args = {
     ],
     label: "Label",
     defaultValue: "Select value",
-    direction: "top",
+    direction: "top-left",
+
+    onChange: action("onchange")
+};
+
+export const TopRightDropdown = Template.bind({});
+TopRightDropdown.args = {
+    options: [
+        {
+            label: "Label 1 dawdaw",
+            value: "1"
+        },
+        { label: "Label 2 dawdawdawda", value: "2" }
+    ],
+    label: "Label",
+    defaultValue: "Select value",
+    direction: "top-right",
+
+    onChange: action("onchange")
+};
+export const BottomLeftDropdown = Template.bind({});
+BottomLeftDropdown.args = {
+    options: [
+        {
+            label: "Label 1 dwa dawdawd",
+            value: "1"
+        },
+        { label: "Label 2 dadwawdawda", value: "2" }
+    ],
+    label: "Label",
+    defaultValue: "Select value",
+    direction: "bottom-left",
+
+    onChange: action("onchange")
+};
+
+export const BottomRightDropdown = Template.bind({});
+BottomRightDropdown.args = {
+    options: [
+        {
+            label: "Label 1 dwa dawdawd",
+            value: "1"
+        },
+        { label: "Label 2 dadwawdawda", value: "2" }
+    ],
+    label: "Label",
+    defaultValue: "Select value",
+    direction: "bottom-right",
 
     onChange: action("onchange")
 };
