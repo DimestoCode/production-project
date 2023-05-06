@@ -4,6 +4,7 @@ import ListIcon from "shared/assets/icons/list.svg";
 import GridIcon from "shared/assets/icons/grid.svg";
 import { Button, ButtonTheme } from "shared/ui/Button/Button";
 import { Icon } from "shared/ui/Icon/Icon";
+import { HStack } from "shared/ui/Stack";
 import { ArticleViewMode } from "../../model/types/IArticle";
 import classes from "./ArticleViewSelector.module.scss";
 
@@ -22,19 +23,20 @@ export const ArticleViewSelector = memo(({ className, onViewClick, view }: IArti
     const onClick = (viewMode: ArticleViewMode) => () => {
         onViewClick(viewMode);
     };
-
     return (
-        <div className={classNames(classes.ArticleViewSelector, {}, [className])}>
+        <HStack align="center" className={className} gap="8">
             {viewModes.map((viewMode) => {
+                console.log(viewMode.view, view);
+
                 return (
                     <Button key={viewMode.view} onClick={onClick(viewMode.view)} theme={ButtonTheme.Clear}>
                         <Icon
                             Svg={viewMode.icon}
-                            className={classNames(classes.icon, { [classes.notActive]: viewMode.view !== view })}
+                            className={classNames(classes.icon, { [classes.active]: viewMode.view === view })}
                         />
                     </Button>
                 );
             })}
-        </div>
+        </HStack>
     );
 });

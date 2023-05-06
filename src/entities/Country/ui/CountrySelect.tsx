@@ -1,19 +1,19 @@
-import { ISelectOption, Select } from "shared/ui/Select/Select";
-import { SelectHTMLAttributes, useCallback } from "react";
+import { useCallback } from "react";
+import { IListBoxItem, IListBoxProps, ListBox } from "shared/ui/ListBox/ListBox";
+import { useTranslation } from "react-i18next";
 import { Country } from "../model/country";
 
-interface CountrySelectProps extends Omit<SelectHTMLAttributes<HTMLSelectElement>, "onChange" | "value"> {
-    label?: string;
-    value?: Country;
+interface CountrySelectProps extends Omit<IListBoxProps<Country>, "onChange" | "options"> {
     onChange?: (currency: Country, name: string) => void;
 }
 
-const countryOptions: ISelectOption<Country>[] = Object.entries(Country).map(([, value]) => ({
-    title: value,
+const countryOptions: IListBoxItem<Country>[] = Object.entries(Country).map(([, value]) => ({
+    label: value,
     value
 }));
 
 export const CountrySelect = ({ label, value, onChange, disabled, ...rest }: CountrySelectProps) => {
+    const { t } = useTranslation("common");
     const onChangeHandler = useCallback(
         (value: string) => {
             onChange?.(value as Country, "country");
@@ -22,8 +22,9 @@ export const CountrySelect = ({ label, value, onChange, disabled, ...rest }: Cou
     );
 
     return (
-        <Select
+        <ListBox
             {...rest}
+            defaultValue={t("Specify country")}
             disabled={disabled}
             label={label}
             name="currency"

@@ -1,19 +1,20 @@
-import { ISelectOption, Select } from "shared/ui/Select/Select";
-import { SelectHTMLAttributes, useCallback } from "react";
+import { useCallback } from "react";
+import { useTranslation } from "react-i18next";
+import { IListBoxItem, IListBoxProps, ListBox } from "shared/ui/ListBox/ListBox";
 import { Currency } from "../../model/types/currency";
 
-interface CurrencySelectProps extends Omit<SelectHTMLAttributes<HTMLSelectElement>, "onChange" | "value"> {
-    label?: string;
-    value?: Currency;
+interface CurrencySelectProps extends Omit<IListBoxProps<Currency>, "onChange" | "options"> {
     onChange?: (currency: Currency, name: string) => void;
 }
 
-const currencyOptions: ISelectOption<Currency>[] = Object.entries(Currency).map(([, value]) => ({
-    title: value,
+const currencyOptions: IListBoxItem<Currency>[] = Object.entries(Currency).map(([, value]) => ({
+    label: value,
     value
 }));
 
 export const CurrencySelect = ({ label, value, onChange, disabled, ...rest }: CurrencySelectProps) => {
+    const { t } = useTranslation("common");
+
     const onChangeHandler = useCallback(
         (value: string) => {
             onChange?.(value as Currency, "currency");
@@ -21,8 +22,9 @@ export const CurrencySelect = ({ label, value, onChange, disabled, ...rest }: Cu
         [onChange]
     );
     return (
-        <Select
+        <ListBox
             {...rest}
+            defaultValue={t("Specify currency")}
             disabled={disabled}
             label={label}
             name="currency"

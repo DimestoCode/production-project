@@ -1,10 +1,9 @@
 import { ArticleSortField } from "entities/Article";
 import { memo, useMemo } from "react";
 import { useTranslation } from "react-i18next";
-import { classNames } from "shared/lib/classNames/classNames";
 import { SortOrder } from "shared/types";
-import { ISelectOption, Select } from "shared/ui/Select/Select";
-import classes from "./ArticleSortSelector.module.scss";
+import { IListBoxItem, ListBox } from "shared/ui/ListBox/ListBox";
+import { HStack } from "shared/ui/Stack";
 
 interface IArticleSortSelectorProps {
     className?: string;
@@ -17,7 +16,7 @@ interface IArticleSortSelectorProps {
 export const ArticleSortSelector = memo(
     ({ className, onChangeOrder, onChangeSort, order, sort }: IArticleSortSelectorProps) => {
         const { t } = useTranslation("articles");
-        const orderOptions = useMemo<ISelectOption<SortOrder>[]>(
+        const orderOptions = useMemo<IListBoxItem<SortOrder>[]>(
             () => [
                 {
                     label: t("Ascending"),
@@ -31,7 +30,7 @@ export const ArticleSortSelector = memo(
             [t]
         );
 
-        const sortFieldOptions = useMemo<ISelectOption<ArticleSortField>[]>(
+        const sortFieldOptions = useMemo<IListBoxItem<ArticleSortField>[]>(
             () => [
                 {
                     label: t("Creation date"),
@@ -50,10 +49,10 @@ export const ArticleSortSelector = memo(
         );
 
         return (
-            <div className={classNames(classes.ArticleSortSelector, {}, [className])}>
-                <Select label={t("Sort by")} onChange={onChangeSort} options={sortFieldOptions} value={sort} />
-                <Select label={t("Order")} onChange={onChangeOrder} options={orderOptions} value={order} />
-            </div>
+            <HStack align="center" className={className} gap="16">
+                <ListBox label={t("Sort by")} onChange={onChangeSort} options={sortFieldOptions} value={sort} />
+                <ListBox label={t("Order")} onChange={onChangeOrder} options={orderOptions} value={order} />
+            </HStack>
         );
     }
 );

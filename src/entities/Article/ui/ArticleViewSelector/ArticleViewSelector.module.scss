@@ -1,15 +1,9 @@
-.ArticleViewSelector {
-    .icon {
-        margin-right: 5px;
+.icon {
+    margin-right: 5px;
+    fill: var(--secondary-color);
+}
 
-        path {
-            fill: var(--primary-color);
-        }
-    }
-
-    .notActive {
-        path {
-            fill: var(--secondary-color);
-        }
-    }
+.active {
+    fill: var(--primary-color);
+    opacity: 1;
 }

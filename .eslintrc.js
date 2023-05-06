@@ -74,7 +74,8 @@ module.exports = {
                     "gap",
                     "justify",
                     "align",
-                    "tag"
+                    "tag",
+                    "as"
                 ]
             }
         ],
