@@ -18,7 +18,8 @@
     "test:ui:update": "lost-pixel update",
     "storybook": "start-storybook -p 6006 -c ./config/storybook",
     "storybook:build": "build-storybook -c ./config/storybook",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "generate:slice": "node ./script/createSlice/index.js"
   },
   "keywords": [],
   "author": "",
