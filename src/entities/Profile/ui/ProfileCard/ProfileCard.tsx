@@ -8,7 +8,7 @@ import { Input } from "shared/ui/Input/Input";
 import { Loader } from "shared/ui/Loader/Loader";
 import { HStack, VStack } from "shared/ui/Stack";
 import { Text, TextTheme } from "shared/ui/Text/Text";
-import { IProfile } from "../../model/types/IProfile";
+import { IProfile } from "../../../../features/EditableProfileCard/model/types/IProfileState";
 import classes from "./ProfileCard.module.scss";
 
 type ChangeHandler = (value: string, name: string) => void;

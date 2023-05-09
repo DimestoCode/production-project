@@ -17,5 +17,6 @@
   "Incorrect Name": "Неправильне ім'я",
   "Incorrect Age": "Неправильний вік",
   "Incorrect Country": "Неправильна країна",
-  "Server Error": "Помилка на сервері"
+  "Server Error": "Помилка на сервері",
+  "Profile not found": "Профіль не знайдено"
 }

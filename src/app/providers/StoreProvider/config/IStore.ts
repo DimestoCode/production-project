@@ -2,7 +2,6 @@ import { AnyAction, EnhancedStore, Reducer, ReducersMapObject } from "@reduxjs/t
 import { AxiosInstance } from "axios";
 import { IArticleState } from "entities/Article";
 import { ICounterState } from "entities/Counter";
-import { IProfileState } from "entities/Profile";
 import { IUserState } from "entities/User";
 import { IAddCommentFormState } from "features/AddCommentForm";
 import { IScrollState } from "features/ScrollRestoration";
@@ -10,12 +9,15 @@ import { ILoginState } from "features/UserAuthentication";
 import { IArticlesState } from "pages/ArticlesPage";
 import { NavigateFunction } from "react-router-dom";
 import { IArticleDetailsPageState } from "pages/ArticleDetailsPage";
+import { rtkApi } from "shared/api/rtkApi";
+import { IProfileState } from "features/EditableProfileCard";
 import { AppDispatch } from "./store";
 
 export interface IStoreState {
     counter: ICounterState;
     user: IUserState;
     scroll: IScrollState;
+    [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>;
 
     // async reducers
     loginForm?: ILoginState;

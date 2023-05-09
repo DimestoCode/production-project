@@ -80,7 +80,7 @@ const articleDetails: IArticle = {
     ]
 };
 export default {
-    title: "pages/ArticleDetailsPage",
+    title: "pages/Article/ArticleDetailsPage",
     component: ArticleDetailsPage,
     parameters: {
         router: {

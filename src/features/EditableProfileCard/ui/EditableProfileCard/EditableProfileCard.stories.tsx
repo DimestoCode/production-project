@@ -1,8 +1,8 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { Country } from "entities/Country";
 import { Currency } from "entities/Currency";
-import { ProfileValidationError } from "entities/Profile/model/types/IProfile";
 import { StoreDecorator } from "shared/config/storybook/StoreDecorator/StoreDecorator";
+import { ProfileValidationError } from "../../model/types/ProfileValidationError";
 import { EditableProfileCard } from "./EditableProfileCard";
 
 export default {
@@ -13,7 +13,7 @@ export default {
     }
 } as ComponentMeta<typeof EditableProfileCard>;
 
-const Template: ComponentStory<typeof EditableProfileCard> = () => <EditableProfileCard />;
+const Template: ComponentStory<typeof EditableProfileCard> = (args) => <EditableProfileCard {...args} />;
 
 export const FilledDataReadonly = Template.bind({});
 FilledDataReadonly.args = {};

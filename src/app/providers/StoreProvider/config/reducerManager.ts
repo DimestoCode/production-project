@@ -1,4 +1,5 @@
 import { AnyAction, combineReducers, Reducer, ReducersMapObject } from "@reduxjs/toolkit";
+import cloneDeep from "lodash/cloneDeep";
 import { IReducerManager, IStoreState, StoreStateKey } from "./IStore";
 
 export function createReducerManager(initialReducers: ReducersMapObject<IStoreState>): IReducerManager {
@@ -11,17 +12,17 @@ export function createReducerManager(initialReducers: ReducersMapObject<IStoreSt
     return {
         getReducerMap: () => reducers,
         reduce: (state: IStoreState | undefined, action: AnyAction) => {
+            let newState: IStoreState | undefined;
             if (keysToRemove.length > 0 && state) {
-                // eslint-disable-next-line no-param-reassign
-                state = { ...state };
+                newState = cloneDeep(state);
                 keysToRemove.forEach((key) => {
-                    delete state![key];
+                    delete newState?.[key];
                 });
 
                 keysToRemove = [];
             }
 
-            return combinedReducer(state, action);
+            return combinedReducer(newState ?? state, action);
         },
 
         add: (key: StoreStateKey, reducer: Reducer) => {

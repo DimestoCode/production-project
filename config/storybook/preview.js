@@ -1,4 +1,5 @@
 import { addDecorator } from "@storybook/react";
+import { initialize, mswDecorator } from "msw-storybook-addon";
 import { StyleDecorator } from "../../src/shared/config/storybook/StyleDecorator/StyleDecorator";
 import { ThemeDecorator } from "../../src/shared/config/storybook/ThemeDecorator/ThemeDecorator";
 import { Theme } from "../../src/app/providers/ThemeProvider";
@@ -30,7 +31,10 @@ export const globalTypes = {
     }
 };
 
+initialize();
+
 addDecorator(RouterDecorator);
 addDecorator(I18nDecorator);
 addDecorator(StyleDecorator);
 addDecorator(ThemeDecorator(Theme.LIGHT));
+addDecorator(mswDecorator);

@@ -1,20 +1,36 @@
-import {
-    getProfileError,
-    getProfileForm,
-    getProfileIsLoading,
-    getProfileReadOnly,
-    getProfileValidationErrors,
-    profileActions,
-    ProfileCard
-} from "entities/Profile";
+import { ProfileCard } from "entities/Profile";
 import { memo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
+import { useActionEffect } from "shared/lib/hooks/useActionEffect/useActionEffect";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
+import { Reducers, useDynamicModuleLoader } from "shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader";
+import { VStack } from "shared/ui/Stack";
 import { Text, TextTheme } from "shared/ui/Text/Text";
+import { retrieveProfileData } from "../../model/services/retrieveProfileData/retrieveProfileData";
+import { getProfileError } from "../../model/selectors/getProfileError/getProfileError";
+import { getProfileForm } from "../../model/selectors/getProfileForm/getProfileForm";
+import { getProfileIsLoading } from "../../model/selectors/getProfileIsLoading/getProfileIsLoading";
+import { getProfileReadOnly } from "../../model/selectors/getProfileReadOnly/getProfileReadOnly";
+import { getProfileValidationErrors } from "../../model/selectors/getProfileValidationErrors/getProfileValidationErrors";
+import { profileActions, profileReducer } from "../../model/slices/profileSlice";
+import { EditableProfileCardHeader } from "../EditableProfileCardHeader/EditableProfileCardHeader";
 
-export const EditableProfileCard = memo(() => {
+interface IEditableProfileCardProps {
+    profileId: number;
+}
+
+const reducers: Reducers = {
+    profile: profileReducer
+};
+
+export const EditableProfileCard = memo(({ profileId }: IEditableProfileCardProps) => {
     const { t } = useTranslation("profile");
+    const fetchProfileCallback = useCallback(() => retrieveProfileData(Number(profileId)), [profileId]);
+
+    useDynamicModuleLoader({ reducers, removeOnUnmount: true });
+    useActionEffect(fetchProfileCallback);
+
     const dispatch = useAppDispatch();
     const formData = useSelector(getProfileForm);
     const error = useSelector(getProfileError);
@@ -44,7 +60,8 @@ export const EditableProfileCard = memo(() => {
     );
 
     return (
-        <>
+        <VStack gap="16" maxWidth>
+            <EditableProfileCardHeader />
             {!!validationErrors?.length &&
                 validationErrors.map((error) => <Text key={error} text={t(error)} theme={TextTheme.Error} />)}
             <ProfileCard
@@ -56,6 +73,6 @@ export const EditableProfileCard = memo(() => {
                 onSelectChange={onSelectChange}
                 readOnly={readOnly}
             />
-        </>
+        </VStack>
     );
 });

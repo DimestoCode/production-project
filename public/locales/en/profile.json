@@ -17,5 +17,6 @@
   "Incorrect Name": "Incorrect name",
   "Incorrect Age": "Incorrect age",
   "Incorrect Country": "Incorrect country",
-  "Server Error": "Server error"
+  "Server Error": "Server error",
+  "Profile not found": "Profile not found"
 }

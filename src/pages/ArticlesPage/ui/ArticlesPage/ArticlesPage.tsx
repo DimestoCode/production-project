@@ -1,4 +1,3 @@
-import { ArticleList } from "entities/Article";
 import { memo, useCallback } from "react";
 import { useSelector } from "react-redux";
 import { classNames } from "shared/lib/classNames/classNames";
@@ -11,11 +10,12 @@ import {
 import { Page } from "widgets/Page";
 import { useSearchParams } from "react-router-dom";
 import { initializeArticles } from "../../model/services/initializeArticles/initializeArticles";
-import { getArticlesInitialized, getArticlesIsLoading, getArticlesView } from "../../model/selectors/articlesSelectors";
+import { getArticlesInitialized } from "../../model/selectors/articlesSelectors";
 import { fetchFollowingArticles } from "../../model/services/fetchFollowingArticles/fetchFollowingArticles";
 import { articlesReducer, getArticles } from "../../model/slices/articlesPageSlice";
 import classes from "./ArticlesPage.module.scss";
 import { ArticlesPageFilters } from "../ArticlesPageFilters/ArticlesPageFilters";
+import { ArticlesInfiniteList } from "../ArticlesInfiniteList/ArticlesInfiniteList";
 
 const dynamicModules: IDynamicLoaderProps = {
     reducers: {
@@ -26,8 +26,7 @@ const dynamicModules: IDynamicLoaderProps = {
 const ArticlesPage = () => {
     const [searchParams] = useSearchParams();
     useDynamicModuleLoader(dynamicModules);
-    const isLoading = useSelector(getArticlesIsLoading);
-    const view = useSelector(getArticlesView);
+
     const articles = useSelector(getArticles.selectAll);
     const dispatch = useAppDispatch();
     const initialized = useSelector(getArticlesInitialized);
@@ -43,8 +42,7 @@ const ArticlesPage = () => {
     return (
         <Page className={classNames(classes.ArticlesPage)} onScrollEnd={onLoadNextPart}>
             <ArticlesPageFilters />
-
-            <ArticleList articles={articles} className={classes.list} isLoading={isLoading} viewMode={view} />
+            <ArticlesInfiniteList className={classes.list} />
         </Page>
     );
 };

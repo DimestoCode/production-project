@@ -35,7 +35,6 @@ server.post("/login", (req, res) => {
     }
 });
 
-// проверяем, авторизован ли пользователь
 // eslint-disable-next-line
 server.use((req, res, next) => {
     if (!req.headers.authorization) {
@@ -47,7 +46,6 @@ server.use((req, res, next) => {
 
 server.use(router);
 
-// запуск сервера
 server.listen(8000, () => {
     console.log("server is running on 8000 port");
 });

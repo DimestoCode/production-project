@@ -1,30 +1,21 @@
-import { profileReducer, retrieveProfileData } from "entities/Profile";
 import { EditableProfileCard } from "features/EditableProfileCard";
-import { memo, useCallback } from "react";
+import { memo } from "react";
+import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
-import { useActionEffect } from "shared/lib/hooks/useActionEffect/useActionEffect";
-import { Reducers, useDynamicModuleLoader } from "shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader";
-import { VStack } from "shared/ui/Stack";
+import { Text } from "shared/ui/Text/Text";
 import { Page } from "widgets/Page";
-import { ProfilePageHeader } from "./ProfilePageHeader/ProfilePageHeader";
-
-const reducers: Reducers = {
-    profile: profileReducer
-};
 
 const ProfilePage = memo(() => {
+    const { t } = useTranslation("profile");
     const { profileId } = useParams<{ profileId: string }>();
-    const fetchProfileCallback = useCallback(() => retrieveProfileData(Number(profileId)), [profileId]);
 
-    useDynamicModuleLoader({ reducers, removeOnUnmount: true });
-    useActionEffect(fetchProfileCallback);
+    if (!profileId) {
+        return <Text title={t("Profile not found")} />;
+    }
 
     return (
         <Page>
-            <VStack gap="16" maxWidth>
-                <ProfilePageHeader />
-                <EditableProfileCard />
-            </VStack>
+            <EditableProfileCard profileId={Number(profileId)} />
         </Page>
     );
 });
