@@ -17,6 +17,7 @@ interface TextProps {
     theme?: TextTheme;
     align?: "left" | "center" | "right";
     size?: TextSize;
+    "data-testid"?: string;
 }
 
 const mapHeaderSizeToTag: Record<TextSize, keyof JSX.IntrinsicElements> = {
@@ -26,14 +27,30 @@ const mapHeaderSizeToTag: Record<TextSize, keyof JSX.IntrinsicElements> = {
 };
 
 export const Text = memo(
-    ({ className, title, text, theme = TextTheme.Primary, align = "left", size = "M" }: TextProps) => {
+    ({
+        className,
+        title,
+        text,
+        theme = TextTheme.Primary,
+        align = "left",
+        size = "M",
+        "data-testid": dataTestId
+    }: TextProps) => {
         const HeaderTag = mapHeaderSizeToTag[size];
 
         const additionalClasses: (string | undefined)[] = [className, classes[theme], classes[align], classes[size]];
         return (
             <div className={classNames(classes.Text, {}, additionalClasses)}>
-                {title && <HeaderTag className={classes.title}>{title}</HeaderTag>}
-                {text && <p className={classes.text}>{text}</p>}
+                {title && (
+                    <HeaderTag className={classes.title} data-testid={`${dataTestId}.Header`}>
+                        {title}
+                    </HeaderTag>
+                )}
+                {text && (
+                    <p className={classes.text} data-testid={`${dataTestId}.Text`}>
+                        {text}
+                    </p>
+                )}
             </div>
         );
     }

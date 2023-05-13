@@ -24,6 +24,7 @@ export const CurrencySelect = ({ label, value, onChange, disabled, ...rest }: Cu
     return (
         <ListBox
             {...rest}
+            data-testid="CurrencySelect"
             defaultValue={t("Specify currency")}
             disabled={disabled}
             label={label}

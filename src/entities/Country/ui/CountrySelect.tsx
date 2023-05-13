@@ -24,6 +24,7 @@ export const CountrySelect = ({ label, value, onChange, disabled, ...rest }: Cou
     return (
         <ListBox
             {...rest}
+            data-testid="CountrySelect"
             defaultValue={t("Specify country")}
             disabled={disabled}
             label={label}

@@ -8,7 +8,7 @@ import { Input } from "shared/ui/Input/Input";
 import { Loader } from "shared/ui/Loader/Loader";
 import { HStack, VStack } from "shared/ui/Stack";
 import { Text, TextTheme } from "shared/ui/Text/Text";
-import { IProfile } from "../../../../features/EditableProfileCard/model/types/IProfileState";
+import { IProfile } from "../../model/types/IProfile";
 import classes from "./ProfileCard.module.scss";
 
 type ChangeHandler = (value: string, name: string) => void;
@@ -75,6 +75,7 @@ export const ProfileCard = ({
             )}
             <Input
                 className={classes.input}
+                data-testid="ProfileCard.firstName"
                 disabled={readOnly}
                 name="firstName"
                 onChange={onInputChange}
@@ -83,6 +84,7 @@ export const ProfileCard = ({
             />
             <Input
                 className={classes.input}
+                data-testid="ProfileCard.lastName"
                 disabled={readOnly}
                 name="lastName"
                 onChange={onInputChange}
@@ -91,6 +93,7 @@ export const ProfileCard = ({
             />
             <Input
                 className={classes.input}
+                data-testid="ProfileCard.age"
                 disabled={readOnly}
                 name="age"
                 onChange={onInputNumberChange}
@@ -100,6 +103,7 @@ export const ProfileCard = ({
             />
             <Input
                 className={classes.input}
+                data-testid="ProfileCard.city"
                 disabled={readOnly}
                 name="city"
                 onChange={onInputChange}
@@ -108,6 +112,7 @@ export const ProfileCard = ({
             />
             <Input
                 className={classes.input}
+                data-testid="ProfileCard.username"
                 disabled={readOnly}
                 name="username"
                 onChange={onInputChange}
@@ -116,6 +121,7 @@ export const ProfileCard = ({
             />
             <Input
                 className={classes.input}
+                data-testid="ProfileCard.avatar"
                 disabled={readOnly}
                 name="avatar"
                 onChange={onInputChange}

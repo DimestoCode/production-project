@@ -63,7 +63,9 @@ export const EditableProfileCard = memo(({ profileId }: IEditableProfileCardProp
         <VStack gap="16" maxWidth>
             <EditableProfileCardHeader />
             {!!validationErrors?.length &&
-                validationErrors.map((error) => <Text key={error} text={t(error)} theme={TextTheme.Error} />)}
+                validationErrors.map((error) => (
+                    <Text data-testid="EditableProfileCard.Error" key={error} text={t(error)} theme={TextTheme.Error} />
+                ))}
             <ProfileCard
                 data={formData}
                 error={error}

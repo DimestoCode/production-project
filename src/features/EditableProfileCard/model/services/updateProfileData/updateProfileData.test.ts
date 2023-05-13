@@ -2,7 +2,7 @@ import { Country } from "entities/Country";
 import { Currency } from "entities/Currency";
 import { TestAsyncThunk } from "shared/lib/tests/testAsyncThunk";
 import ProfileImg from "shared/assets/tests/profile.jpg";
-import { IProfile } from "../../types/IProfileState";
+import { IProfile } from "entities/Profile";
 import { ProfileValidationError } from "../../types/ProfileValidationError";
 import { updateProfileData } from "./updateProfileData";
 
