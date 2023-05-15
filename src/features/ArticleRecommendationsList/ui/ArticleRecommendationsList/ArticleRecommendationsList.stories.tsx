@@ -5,6 +5,7 @@ import { StoreDecorator } from "shared/config/storybook/StoreDecorator/StoreDeco
 import { rest } from "msw";
 import { ArticleType, IArticle } from "entities/Article";
 import { ArticleBlockType } from "entities/Article/model/types/IArticleBlock";
+import { UserRole } from "entities/User";
 import { ArticleRecommendationsList } from "./ArticleRecommendationsList";
 
 const articles: IArticle[] = [
@@ -15,6 +16,7 @@ const articles: IArticle[] = [
         img: "https://teknotower.com/wp-content/uploads/2020/11/js.png",
         views: 1022,
         user: {
+            roles: [UserRole.Admin],
             id: 1,
             username: "Dima",
             avatar: "https://i.pinimg.com/564x/d4/28/bb/d428bb4dff60cf6df9b282ce58efcade.jpg"
@@ -41,6 +43,7 @@ const articles: IArticle[] = [
         img: "https://teknotower.com/wp-content/uploads/2020/11/js.png",
         views: 1022,
         user: {
+            roles: [UserRole.Admin, UserRole.Manager],
             id: 1,
             username: "Dima",
             avatar: "https://i.pinimg.com/564x/d4/28/bb/d428bb4dff60cf6df9b282ce58efcade.jpg"

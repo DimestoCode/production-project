@@ -64,6 +64,7 @@ export const ArticlesPageFilters = memo(({ className }: IArticlesPageFiltersProp
     const onChangeSort = useCallback(
         (sortField: ArticleSortField) => {
             setSearchParams({ sort: sortField });
+
             dispatch(articlesActions.setSort(sortField));
             fetchData();
         },

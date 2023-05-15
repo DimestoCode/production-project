@@ -2,18 +2,9 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { IArticle } from "entities/Article";
 import { ArticleType } from "entities/Article/model/types/IArticle";
 import { ArticleBlockType } from "entities/Article/model/types/IArticleBlock";
+import { rest } from "msw";
 import { StoreDecorator } from "shared/config/storybook/StoreDecorator/StoreDecorator";
 import ArticlesPage from "./ArticlesPage";
-
-export default {
-    title: "pages/Articles/ArticlesPage",
-    component: ArticlesPage,
-    argTypes: {
-        backgroundColor: { control: "color" }
-    }
-} as ComponentMeta<typeof ArticlesPage>;
-
-const Template: ComponentStory<typeof ArticlesPage> = () => <ArticlesPage />;
 
 const articles: DeepPartial<IArticle>[] = [
     {
@@ -80,6 +71,25 @@ const articles: DeepPartial<IArticle>[] = [
     }
 ];
 
+export default {
+    title: "pages/Articles/ArticlesPage",
+    component: ArticlesPage,
+    argTypes: {
+        backgroundColor: { control: "color" }
+    },
+    parameters: {
+        msw: {
+            handlers: [
+                rest.get("/articles", (req, res, ctx) => {
+                    return res(ctx.json(articles));
+                })
+            ]
+        }
+    }
+} as ComponentMeta<typeof ArticlesPage>;
+
+const Template: ComponentStory<typeof ArticlesPage> = () => <ArticlesPage />;
+
 export const LoadingGrid = Template.bind({});
 LoadingGrid.args = {};
 LoadingGrid.decorators = [
@@ -113,14 +123,15 @@ Grid.decorators = [
         articles: {
             isLoading: false,
             view: "grid",
-            hasMore: true,
+            hasMore: false,
             page: 1,
             limit: 9,
             ids: [4, 5],
             entities: {
                 "4": articles[0],
                 "5": articles[1]
-            }
+            },
+            initialized: true
         }
     })
 ];
@@ -132,14 +143,15 @@ List.decorators = [
         articles: {
             isLoading: false,
             view: "list",
-            hasMore: true,
+            hasMore: false,
             page: 1,
             limit: 9,
             ids: [4, 5],
             entities: {
                 "4": articles[0],
                 "5": articles[1]
-            }
+            },
+            initialized: true
         }
     })
 ];

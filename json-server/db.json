@@ -88,6 +88,18 @@
       "userId": 1,
       "text": "dwdwada",
       "id": 12
+    },
+    {
+      "articleId": 14,
+      "userId": 1,
+      "text": "added new comments",
+      "id": 13
+    },
+    {
+      "articleId": 14,
+      "userId": 1,
+      "text": "dawdawda",
+      "id": 14
     }
   ],
   "profile": [
@@ -119,14 +131,27 @@
       "id": 1,
       "username": "admin",
       "password": "123",
-      "role": "admin",
+      "roles": [
+        "Admin"
+      ],
       "avatar": "https://i.pinimg.com/564x/d4/28/bb/d428bb4dff60cf6df9b282ce58efcade.jpg"
     },
     {
       "id": 2,
       "username": "user",
       "password": "123",
-      "role": "user",
+      "roles": [
+        "User"
+      ],
+      "avatar": "https://i.pinimg.com/736x/8a/55/99/8a5599792c0d7b0a02377b97fafe76a9.jpg"
+    },
+    {
+      "id": 3,
+      "username": "manager",
+      "password": "123",
+      "roles": [
+        "Manager"
+      ],
       "avatar": "https://i.pinimg.com/736x/8a/55/99/8a5599792c0d7b0a02377b97fafe76a9.jpg"
     }
   ],

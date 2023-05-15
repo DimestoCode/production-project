@@ -1,35 +1,50 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { Country } from "entities/Country";
 import { Currency } from "entities/Currency";
+import { IProfile } from "entities/Profile";
+import { rest } from "msw";
 import { StoreDecorator } from "shared/config/storybook/StoreDecorator/StoreDecorator";
 import { ProfileValidationError } from "../../model/types/ProfileValidationError";
 import { EditableProfileCard } from "./EditableProfileCard";
+
+const profile: IProfile = {
+    age: 1,
+    city: "City",
+    country: Country.France,
+    currency: Currency.EUR,
+    firstName: "First",
+    id: 1,
+    lastName: "lAst",
+    username: "User"
+};
 
 export default {
     title: "features/EditableProfileCard",
     component: EditableProfileCard,
     argTypes: {
         backgroundColor: { control: "color" }
+    },
+    parameters: {
+        msw: {
+            handlers: [
+                rest.get("/profile/1", (req, res, ctx) => {
+                    return res(ctx.json(profile));
+                })
+            ]
+        }
     }
 } as ComponentMeta<typeof EditableProfileCard>;
 
 const Template: ComponentStory<typeof EditableProfileCard> = (args) => <EditableProfileCard {...args} />;
 
 export const FilledDataReadonly = Template.bind({});
-FilledDataReadonly.args = {};
+FilledDataReadonly.args = {
+    profileId: 1
+};
 FilledDataReadonly.decorators = [
     StoreDecorator({
         profile: {
-            form: {
-                age: 1,
-                city: "City",
-                country: Country.France,
-                currency: Currency.EUR,
-                firstName: "First",
-                id: 1,
-                lastName: "lAst",
-                username: "User"
-            },
+            form: profile,
             readonly: true,
             isLoading: false,
             validationErrors: []
@@ -38,7 +53,9 @@ FilledDataReadonly.decorators = [
 ];
 
 export const FilledDataEditMode = Template.bind({});
-FilledDataEditMode.args = {};
+FilledDataEditMode.args = {
+    profileId: 1
+};
 FilledDataEditMode.decorators = [
     StoreDecorator({
         user: {
@@ -47,17 +64,7 @@ FilledDataEditMode.decorators = [
             }
         },
         profile: {
-            form: {
-                age: 1,
-                avatar: "avatar",
-                city: "City",
-                country: Country.France,
-                currency: Currency.EUR,
-                firstName: "First",
-                id: 1,
-                lastName: "lAst",
-                username: "User"
-            },
+            form: profile,
             readonly: false,
             isLoading: false,
             validationErrors: []
@@ -66,7 +73,9 @@ FilledDataEditMode.decorators = [
 ];
 
 export const Loading = Template.bind({});
-Loading.args = {};
+Loading.args = {
+    profileId: 1
+};
 Loading.decorators = [
     StoreDecorator({
         profile: {
@@ -76,7 +85,9 @@ Loading.decorators = [
 ];
 
 export const Error = Template.bind({});
-Error.args = {};
+Error.args = {
+    profileId: 1
+};
 Error.decorators = [
     StoreDecorator({
         profile: {
@@ -86,7 +97,9 @@ Error.decorators = [
 ];
 
 export const ValidationErrors = Template.bind({});
-ValidationErrors.args = {};
+ValidationErrors.args = {
+    profileId: 1
+};
 ValidationErrors.decorators = [
     StoreDecorator({
         profile: {

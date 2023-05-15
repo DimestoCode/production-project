@@ -46,7 +46,7 @@ const articlesSlice = createSlice({
 
             if (initialLoad) {
                 articlesAdapter.setAll(state, articles);
-                state.hasMore = true;
+                state.hasMore = articles.length === state.limit;
             } else {
                 articlesAdapter.addMany(state, articles);
                 state.hasMore = articles.length >= state?.limit;

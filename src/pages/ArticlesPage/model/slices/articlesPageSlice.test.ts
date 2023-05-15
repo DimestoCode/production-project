@@ -88,7 +88,7 @@ describe("articlesPageSlice", () => {
                     "2": { id: 2 }
                 },
                 ids: [1, 2],
-                hasMore: true
+                hasMore: false
             });
         });
     });

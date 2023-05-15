@@ -6,7 +6,20 @@ import { StoreDecorator } from "shared/config/storybook/StoreDecorator/StoreDeco
 import { Country } from "entities/Country";
 import { Currency } from "entities/Currency";
 import ProfileImg from "shared/assets/tests/profile.jpg";
+import { rest } from "msw";
+import { IProfile } from "entities/Profile";
 import ProfilePage from "./ProfilePage";
+
+const profile: IProfile = {
+    username: "admin",
+    age: 22,
+    city: "NY",
+    country: Country.USA,
+    currency: Currency.USD,
+    firstName: "Dima",
+    lastName: "Andoniev",
+    avatar: ProfileImg
+};
 
 export default {
     title: "pages/ProfilePage",
@@ -15,6 +28,13 @@ export default {
         router: {
             path: "/profile/:profileId",
             route: "/profile/1"
+        },
+        msw: {
+            handlers: [
+                rest.get("/profile/1", (req, res, ctx) => {
+                    return res(ctx.json(profile));
+                })
+            ]
         }
     },
     argTypes: {
@@ -28,16 +48,7 @@ export const DisabledLight = Template.bind({});
 DisabledLight.decorators = [
     StoreDecorator({
         profile: {
-            form: {
-                username: "admin",
-                age: 22,
-                city: "NY",
-                country: Country.USA,
-                currency: Currency.USD,
-                firstName: "Dima",
-                lastName: "Andoniev",
-                avatar: ProfileImg
-            },
+            form: profile,
             readonly: true
         }
     })
@@ -47,16 +58,7 @@ DisabledDark.decorators = [
     ThemeDecorator(Theme.Dark),
     StoreDecorator({
         profile: {
-            form: {
-                username: "admin",
-                age: 22,
-                city: "NY",
-                country: Country.USA,
-                currency: Currency.USD,
-                firstName: "Dima",
-                lastName: "Andoniev",
-                avatar: ProfileImg
-            },
+            form: profile,
             readonly: true
         }
     })
@@ -66,16 +68,7 @@ export const EnabledLight = Template.bind({});
 EnabledLight.decorators = [
     StoreDecorator({
         profile: {
-            form: {
-                username: "admin",
-                age: 22,
-                city: "NY",
-                country: Country.USA,
-                currency: Currency.USD,
-                firstName: "Dima",
-                lastName: "Andoniev",
-                avatar: ProfileImg
-            },
+            form: profile,
             readonly: false
         }
     })
@@ -85,16 +78,7 @@ EnabledDark.decorators = [
     ThemeDecorator(Theme.Dark),
     StoreDecorator({
         profile: {
-            form: {
-                username: "admin",
-                age: 22,
-                city: "NY",
-                country: Country.USA,
-                currency: Currency.USD,
-                firstName: "Dima",
-                lastName: "Andoniev",
-                avatar: ProfileImg
-            },
+            form: profile,
             readonly: false
         }
     })

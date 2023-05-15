@@ -10,7 +10,7 @@ import {
 import { Page } from "widgets/Page";
 import { useSearchParams } from "react-router-dom";
 import { initializeArticles } from "../../model/services/initializeArticles/initializeArticles";
-import { getArticlesInitialized } from "../../model/selectors/articlesSelectors";
+import { getArticlesHasMore, getArticlesInitialized } from "../../model/selectors/articlesSelectors";
 import { fetchFollowingArticles } from "../../model/services/fetchFollowingArticles/fetchFollowingArticles";
 import { articlesReducer, getArticles } from "../../model/slices/articlesPageSlice";
 import classes from "./ArticlesPage.module.scss";
@@ -28,16 +28,17 @@ const ArticlesPage = () => {
     useDynamicModuleLoader(dynamicModules);
 
     const articles = useSelector(getArticles.selectAll);
+    const hasMoreArticles = useSelector(getArticlesHasMore);
     const dispatch = useAppDispatch();
     const initialized = useSelector(getArticlesInitialized);
 
     useActionEffect(() => initializeArticles(searchParams), !initialized);
 
     const onLoadNextPart = useCallback(() => {
-        if (!!articles.length && __PROJECT__ !== "storybook") {
+        if (!!articles.length && hasMoreArticles) {
             dispatch(fetchFollowingArticles());
         }
-    }, [articles.length, dispatch]);
+    }, [articles.length, dispatch, hasMoreArticles]);
 
     return (
         <Page className={classNames(classes.ArticlesPage)} onScrollEnd={onLoadNextPart}>

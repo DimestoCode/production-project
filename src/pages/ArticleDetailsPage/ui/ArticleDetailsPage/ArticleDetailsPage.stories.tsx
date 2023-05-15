@@ -3,6 +3,8 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { IArticle } from "entities/Article";
 import { ArticleType } from "entities/Article/model/types/IArticle";
 import { ArticleBlockType } from "entities/Article/model/types/IArticleBlock";
+import { UserRole } from "entities/User";
+import { rest } from "msw";
 import { StoreDecorator } from "shared/config/storybook/StoreDecorator/StoreDecorator";
 import ArticleDetailsPage from "./ArticleDetailsPage";
 
@@ -16,7 +18,9 @@ const articleDetails: IArticle = {
     type: [ArticleType.IT],
     user: {
         id: 1,
-        username: "Username"
+        username: "Username",
+        roles: [UserRole.Admin],
+        avatar: ""
     },
     blocks: [
         {
@@ -86,6 +90,13 @@ export default {
         router: {
             path: "/articles/:articleId",
             route: "/articles/1"
+        },
+        msw: {
+            handlers: [
+                rest.get("/articles/1", (req, res, ctx) => {
+                    return res(ctx.json(articleDetails));
+                })
+            ]
         }
     },
     decorators: [

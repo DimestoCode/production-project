@@ -5,7 +5,7 @@ export const useActionEffect = <T extends Function>(callback: T, trigger = true)
     const dispatch = useAppDispatch();
 
     useEffect(() => {
-        if (__PROJECT__ !== "storybook" && trigger) {
+        if (trigger) {
             dispatch(callback());
         }
     }, [callback, dispatch, trigger]);

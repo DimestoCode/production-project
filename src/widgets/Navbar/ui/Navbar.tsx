@@ -1,4 +1,4 @@
-import { getUserAuthData, userActions } from "entities/User";
+import { getUserAuthData, isRoleAdmin, isRoleManager, userActions } from "entities/User";
 import { LoginModal } from "features/UserAuthentication";
 import { memo, useCallback, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -20,6 +20,10 @@ interface INavBarProps {
 
 export const Navbar = memo(({ className = "" }: INavBarProps) => {
     const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+    const isAdmin = useSelector(isRoleAdmin);
+    const isManager = useSelector(isRoleManager);
+
+    const showAdminPanelItem = isAdmin || isManager;
 
     const dispatch = useDispatch();
     const { t } = useTranslation("common");
@@ -36,10 +40,11 @@ export const Navbar = memo(({ className = "" }: INavBarProps) => {
 
     const menuItems = useMemo(() => {
         return [
+            ...(showAdminPanelItem ? [{ label: t("Admin Panel"), href: RoutePath.admin_panel }] : []),
             { label: t("Profile"), href: `${RoutePath.profile}/${authData?.id}` },
             { label: t("Logout"), onClick: onLogoutClick }
         ];
-    }, [authData?.id, onLogoutClick, t]);
+    }, [authData?.id, onLogoutClick, showAdminPanelItem, t]);
 
     return (
         <header className={classNames(classes.Navbar, {}, [className])}>

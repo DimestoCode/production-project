@@ -62,11 +62,9 @@ export const ListBox = <T extends string>({
                 )}
 
                 <div style={{ position: "relative" }}>
-                    <HListbox.Button className={classes.trigger} disabled={disabled}>
-                        <Button className={classes.triggerBtn} disabled={disabled}>
-                            <span>{currentOption?.label ?? defaultValue}</span>
-                            <Icon Svg={SelectArrowIcon} />
-                        </Button>
+                    <HListbox.Button as={Button} className={classes.triggerBtn} disabled={disabled}>
+                        <span>{currentOption?.label ?? defaultValue}</span>
+                        <Icon Svg={SelectArrowIcon} />
                     </HListbox.Button>
                     <HListbox.Options className={classNames(classes.options, {}, [classes[direction]])}>
                         {options.map((item) => (

@@ -1,19 +1,11 @@
 /* eslint-disable max-len */
 import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { UserRole } from "entities/User";
+import { rest } from "msw";
 import { StoreDecorator } from "shared/config/storybook/StoreDecorator/StoreDecorator";
 import { IArticle, ArticleType } from "../../model/types/IArticle";
 import { ArticleBlockType } from "../../model/types/IArticleBlock";
 import { ArticleDetails } from "./ArticleDetails";
-
-export default {
-    title: "entities/Article/ArticleDetails",
-    component: ArticleDetails,
-    argTypes: {
-        backgroundColor: { control: "color" }
-    }
-} as ComponentMeta<typeof ArticleDetails>;
-
-const Template: ComponentStory<typeof ArticleDetails> = (args) => <ArticleDetails {...args} />;
 
 const articleDetails: IArticle = {
     id: 1,
@@ -25,7 +17,8 @@ const articleDetails: IArticle = {
     type: [ArticleType.IT],
     user: {
         id: 1,
-        username: "userName"
+        username: "userName",
+        roles: [UserRole.Admin]
     },
     blocks: [
         {
@@ -88,6 +81,22 @@ const articleDetails: IArticle = {
         }
     ]
 };
+
+export default {
+    title: "entities/Article/ArticleDetails",
+    component: ArticleDetails,
+    argTypes: {
+        backgroundColor: { control: "color" }
+    },
+    parameters: {
+        msw: {
+            handlers: [rest.get("/articles/1", (req, res, ctx) => res(ctx.json(articleDetails)))]
+        }
+    }
+} as ComponentMeta<typeof ArticleDetails>;
+
+const Template: ComponentStory<typeof ArticleDetails> = (args) => <ArticleDetails {...args} />;
+
 export const Normal = Template.bind({});
 Normal.args = { id: 1 };
 Normal.decorators = [
@@ -99,7 +108,7 @@ Normal.decorators = [
 ];
 
 export const Error = Template.bind({});
-Error.args = { id: 1 };
+Error.args = { id: 2 };
 Error.decorators = [
     StoreDecorator({
         articleDetails: {
