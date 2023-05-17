@@ -1,4 +1,5 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { UserRole } from "entities/User";
 import { CommentList } from "./CommentList";
 
 export default {
@@ -20,8 +21,8 @@ Empty.args = {
 export const Normal = Template.bind({});
 Normal.args = {
     comments: [
-        { id: 1, text: "text", user: { id: 1, username: "User", avatar: "src/" } },
-        { id: 2, text: "text 2", user: { id: 1, username: "User" } }
+        { id: 1, text: "text", user: { id: 1, username: "User", avatar: "src/", roles: [UserRole.Admin] } },
+        { id: 2, text: "text 2", user: { id: 1, username: "User", roles: [UserRole.Admin] } }
     ],
     isLoading: false
 };

@@ -1,4 +1,5 @@
 import { IComment } from "entities/Comment";
+import { UserRole } from "entities/User";
 import { retrieveCommentsByArticleId } from "../../services/retrieveCommentsByArticleId/retrieveCommentsByArticleId";
 import { IArticleCommentsState } from "../../types/IArticleCommentsState";
 import { articleCommentsReducer } from "./articleCommentsSlice";
@@ -34,7 +35,8 @@ describe("articleCommentsSlice", () => {
                 text: "Text",
                 user: {
                     id: 1,
-                    username: "User"
+                    username: "User",
+                    roles: [UserRole.Admin]
                 }
             },
             {
@@ -42,7 +44,8 @@ describe("articleCommentsSlice", () => {
                 text: "Text  2",
                 user: {
                     id: 1,
-                    username: "User"
+                    username: "User",
+                    roles: [UserRole.Admin]
                 }
             }
         ];
@@ -57,7 +60,8 @@ describe("articleCommentsSlice", () => {
                     text: "Text",
                     user: {
                         id: 1,
-                        username: "User"
+                        username: "User",
+                        roles: [UserRole.Admin]
                     }
                 },
                 2: {
@@ -65,7 +69,8 @@ describe("articleCommentsSlice", () => {
                     text: "Text  2",
                     user: {
                         id: 1,
-                        username: "User"
+                        username: "User",
+                        roles: [UserRole.Admin]
                     }
                 }
             },

@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { IListBoxItem, IListBoxProps, ListBox } from "shared/ui/ListBox/ListBox";
-import { Currency } from "../../model/types/currency";
+import { Currency } from "../../model/consts/consts";
 
 interface CurrencySelectProps extends Omit<IListBoxProps<Currency>, "onChange" | "options"> {
     onChange?: (currency: Currency, name: string) => void;

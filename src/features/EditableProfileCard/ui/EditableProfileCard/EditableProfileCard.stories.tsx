@@ -4,7 +4,7 @@ import { Currency } from "entities/Currency";
 import { IProfile } from "entities/Profile";
 import { rest } from "msw";
 import { StoreDecorator } from "shared/config/storybook/StoreDecorator/StoreDecorator";
-import { ProfileValidationError } from "../../model/types/ProfileValidationError";
+import { ProfileValidationError } from "../../model/consts/ProfileValidationError";
 import { EditableProfileCard } from "./EditableProfileCard";
 
 const profile: IProfile = {

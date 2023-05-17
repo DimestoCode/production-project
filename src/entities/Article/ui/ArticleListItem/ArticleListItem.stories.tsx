@@ -1,7 +1,8 @@
 /* eslint-disable max-len */
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { IArticle, ArticleType } from "../../model/types/IArticle";
-import { ArticleBlockType } from "../../model/types/IArticleBlock";
+import { UserRole } from "entities/User";
+import { ArticleBlockType, ArticleType } from "../../model/consts/consts";
+import { IArticle } from "../../model/types/IArticle";
 import { ArticleListItem } from "./ArticleListItem";
 
 export default {
@@ -23,7 +24,8 @@ const article: IArticle = {
     user: {
         id: 1,
         username: "Dima",
-        avatar: "https://i.pinimg.com/564x/d4/28/bb/d428bb4dff60cf6df9b282ce58efcade.jpg"
+        avatar: "https://i.pinimg.com/564x/d4/28/bb/d428bb4dff60cf6df9b282ce58efcade.jpg",
+        roles: [UserRole.Admin]
     },
     createdAt: "26.02.2022",
     type: [ArticleType.IT],

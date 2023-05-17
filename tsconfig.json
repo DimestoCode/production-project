@@ -17,7 +17,9 @@
       "baseUrl": ".",
       "paths": {
         "*": ["./src/*"]
-      }
+      },
+      "isolatedModules": true,
+      "skipLibCheck": true
     },
     "ts-node": {
       "compilerOptions": {
@@ -31,6 +33,7 @@
       "lost-pixel.config.ts"
     ],
     "exclude": [
+      "node_modules",
       ".fttemplates/**/*.tsx",
       ".fttemplates/**/*.stories.tsx",
     ]

@@ -1,9 +1,10 @@
 import { Country } from "entities/Country";
 import { Currency } from "entities/Currency";
 import ProfileImg from "shared/assets/tests/profile.jpg";
+import { IProfile } from "entities/Profile";
 import { updateProfileData } from "../services/updateProfileData/updateProfileData";
-import { IProfile, IProfileState } from "../types/IProfileState";
-import { ProfileValidationError } from "../types/ProfileValidationError";
+import { IProfileState } from "../types/IProfileState";
+import { ProfileValidationError } from "../consts/ProfileValidationError";
 import { profileActions, profileReducer } from "./profileSlice";
 import { retrieveProfileData } from "../services/retrieveProfileData/retrieveProfileData";
 

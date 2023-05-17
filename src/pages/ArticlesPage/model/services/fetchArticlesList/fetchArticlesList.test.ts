@@ -1,5 +1,5 @@
 import { ArticleSortField, ArticleType, IArticle } from "entities/Article";
-import { TestAsyncThunk } from "shared/lib/tests/testAsyncThunk";
+import { TestAsyncThunk } from "shared/lib/tests/TestAsyncThunk";
 import { articlesActions } from "../../slices/articlesPageSlice";
 import { IArticlesState } from "../../types/IArticlesState";
 import { fetchArticlesList } from "./fetchArticlesList";

@@ -15,7 +15,7 @@ import { useActionEffect } from "shared/lib/hooks/useActionEffect/useActionEffec
 import { HStack, VStack } from "shared/ui/Stack";
 import { articleDetailsReducer } from "../../model/slice/articleDetailsSlice/articleDetailsSlice";
 import { retrieveArticleById } from "../../model/services/retrieveArticleById/retrieveArticleById";
-import { ArticleBlockType, IArticleBlock } from "../../model/types/IArticleBlock";
+import { IArticleBlock } from "../../model/types/IArticleBlock";
 import {
     getArticleDetailsData,
     getArticleDetailsError,
@@ -25,6 +25,7 @@ import classes from "./ArticleDetails.module.scss";
 import { ArticleCodeBlock } from "../ArticleCodeBlock/ArticleCodeBlock";
 import { ArticleImageBlock } from "../ArticleImageBlock/ArticleImageBlock";
 import { ArticleTextBlock } from "../ArticleTextBlock/ArticleTextBlock";
+import { ArticleBlockType } from "../../model/consts/consts";
 
 const asyncModules: IDynamicLoaderProps = {
     reducers: { articleDetails: articleDetailsReducer }

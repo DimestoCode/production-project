@@ -1,5 +1,5 @@
-import { IUser, userActions } from "entities/User";
-import { TestAsyncThunk } from "shared/lib/tests/testAsyncThunk";
+import { IUser, userActions, UserRole } from "entities/User";
+import { TestAsyncThunk } from "shared/lib/tests/TestAsyncThunk";
 import { loginByUsername } from "./loginByUsername";
 
 jest.mock("axios");
@@ -7,7 +7,7 @@ jest.mock("shared/config/i18n/i18n", () => jest.requireActual("shared/config/i18
 
 describe("loginByUsername", () => {
     test("should be fulfilled", async () => {
-        const userData: IUser = { username: "123", id: 1 };
+        const userData: IUser = { username: "123", id: 1, roles: [UserRole.Admin] };
         const thunk = new TestAsyncThunk(loginByUsername);
 
         thunk.api.post.mockReturnValue(Promise.resolve({ data: userData }));

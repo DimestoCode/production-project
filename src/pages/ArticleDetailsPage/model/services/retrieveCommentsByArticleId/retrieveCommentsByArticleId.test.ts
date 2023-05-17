@@ -1,5 +1,6 @@
 import { IComment } from "entities/Comment";
-import { TestAsyncThunk } from "shared/lib/tests/testAsyncThunk";
+import { UserRole } from "entities/User";
+import { TestAsyncThunk } from "shared/lib/tests/TestAsyncThunk";
 import { retrieveCommentsByArticleId } from "./retrieveCommentsByArticleId";
 
 jest.mock("axios");
@@ -14,7 +15,8 @@ describe("retrieveCommentsByArticleId.test", () => {
                 text: "Comment",
                 user: {
                     id: 1,
-                    username: "user"
+                    username: "user",
+                    roles: [UserRole.Admin]
                 }
             }
         ];
@@ -40,7 +42,8 @@ describe("retrieveCommentsByArticleId.test", () => {
                 text: "Comment",
                 user: {
                     id: 1,
-                    username: "user"
+                    username: "user",
+                    roles: [UserRole.Admin]
                 }
             }
         ];

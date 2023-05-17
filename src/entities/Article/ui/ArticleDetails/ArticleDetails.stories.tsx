@@ -3,8 +3,8 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { UserRole } from "entities/User";
 import { rest } from "msw";
 import { StoreDecorator } from "shared/config/storybook/StoreDecorator/StoreDecorator";
-import { IArticle, ArticleType } from "../../model/types/IArticle";
-import { ArticleBlockType } from "../../model/types/IArticleBlock";
+import { ArticleBlockType, ArticleType } from "../../model/consts/consts";
+import { IArticle } from "../../model/types/IArticle";
 import { ArticleDetails } from "./ArticleDetails";
 
 const articleDetails: IArticle = {

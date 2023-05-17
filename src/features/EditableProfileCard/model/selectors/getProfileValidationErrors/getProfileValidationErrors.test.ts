@@ -1,5 +1,5 @@
 import { IStoreState } from "app/providers/StoreProvider";
-import { ProfileValidationError } from "../../types/ProfileValidationError";
+import { ProfileValidationError } from "../../consts/ProfileValidationError";
 import { getProfileValidationErrors } from "./getProfileValidationErrors";
 
 describe("getProfileValidationErrors", () => {

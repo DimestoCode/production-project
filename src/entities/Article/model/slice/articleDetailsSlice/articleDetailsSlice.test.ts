@@ -1,5 +1,5 @@
+import { ArticleType } from "../../consts/consts";
 import { retrieveArticleById } from "../../services/retrieveArticleById/retrieveArticleById";
-import { ArticleType } from "../../types/IArticle";
 import { IArticleState } from "../../types/IArticleState";
 import { articleDetailsReducer } from "./articleDetailsSlice";
 

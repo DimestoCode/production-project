@@ -54,6 +54,7 @@ export const ArticlesPageFilters = memo(({ className }: IArticlesPageFiltersProp
 
     const onChangeOrder = useCallback(
         (order: SortOrder) => {
+            dispatch(articlesActions.setArticles({ articles: [], initialLoad: true }));
             setSearchParams({ order });
             dispatch(articlesActions.setOrder(order));
             fetchData();
@@ -63,6 +64,7 @@ export const ArticlesPageFilters = memo(({ className }: IArticlesPageFiltersProp
 
     const onChangeSort = useCallback(
         (sortField: ArticleSortField) => {
+            dispatch(articlesActions.setArticles({ articles: [], initialLoad: true }));
             setSearchParams({ sort: sortField });
 
             dispatch(articlesActions.setSort(sortField));
@@ -73,6 +75,7 @@ export const ArticlesPageFilters = memo(({ className }: IArticlesPageFiltersProp
 
     const onChangeSearch = useCallback(
         (search: string) => {
+            dispatch(articlesActions.setArticles({ articles: [], initialLoad: true }));
             setSearchParams({ search });
             dispatch(articlesActions.setSearch(search));
             debouncedFetchData();
@@ -82,6 +85,7 @@ export const ArticlesPageFilters = memo(({ className }: IArticlesPageFiltersProp
 
     const onChangeType = useCallback(
         (tabItem: ITabItem) => {
+            dispatch(articlesActions.setArticles({ articles: [], initialLoad: true }));
             setSearchParams({ type: tabItem.value });
             dispatch(articlesActions.setType(tabItem.value as ArticleType));
             fetchData();

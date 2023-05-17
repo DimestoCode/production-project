@@ -1,4 +1,5 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { UserRole } from "entities/User";
 import { CommentCard } from "./CommentCard";
 
 export default {
@@ -16,6 +17,11 @@ Normal.args = {
     comment: {
         id: 1,
         text: "Text",
-        user: { id: 1, username: "Username", avatar: "../../../../shared/assets/tests/profile.jpg" }
+        user: {
+            id: 1,
+            username: "Username",
+            avatar: "../../../../shared/assets/tests/profile.jpg",
+            roles: [UserRole.Admin]
+        }
     }
 };

@@ -1,5 +1,6 @@
-import { TestAsyncThunk } from "shared/lib/tests/testAsyncThunk";
-import { ArticleType, IArticle } from "../../types/IArticle";
+import { TestAsyncThunk } from "shared/lib/tests/TestAsyncThunk";
+import { ArticleType } from "../../consts/consts";
+import { IArticle } from "../../types/IArticle";
 import { retrieveArticleById } from "./retrieveArticleById";
 
 jest.mock("axios");

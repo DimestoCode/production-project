@@ -1,8 +1,8 @@
 import { Country } from "entities/Country";
 import { Currency } from "entities/Currency";
+import { IProfile } from "entities/Profile";
 import ProfileImg from "shared/assets/tests/profile.jpg";
-import { IProfile } from "../../types/IProfileState";
-import { ProfileValidationError } from "../../types/ProfileValidationError";
+import { ProfileValidationError } from "../../consts/ProfileValidationError";
 import { validateProfileData } from "./validateProfileData";
 
 jest.mock("axios");

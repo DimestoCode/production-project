@@ -3,8 +3,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { rtkApi } from "shared/api/rtkApi";
 import { StoreDecorator } from "shared/config/storybook/StoreDecorator/StoreDecorator";
 import { rest } from "msw";
-import { ArticleType, IArticle } from "entities/Article";
-import { ArticleBlockType } from "entities/Article/model/types/IArticleBlock";
+import { ArticleBlockType, ArticleType, IArticle } from "entities/Article";
 import { UserRole } from "entities/User";
 import { ArticleRecommendationsList } from "./ArticleRecommendationsList";
 

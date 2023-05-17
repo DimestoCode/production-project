@@ -1,5 +1,4 @@
-import { IArticle } from "entities/Article";
-import { ArticleType } from "entities/Article/model/types/IArticle";
+import { ArticleType, IArticle } from "entities/Article";
 import { fetchArticlesList } from "../services/fetchArticlesList/fetchArticlesList";
 import { IArticlesState } from "../types/IArticlesState";
 import { articlesActions, articlesReducer } from "./articlesPageSlice";

@@ -1,8 +1,4 @@
-export enum ArticleBlockType {
-    Code = "CODE",
-    Image = "IMAGE",
-    Text = "TEXT"
-}
+import { ArticleBlockType } from "../consts/consts";
 
 export interface IArticleBlockBase {
     id: number;
