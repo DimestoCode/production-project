@@ -74,9 +74,21 @@ const articlesSlice = createSlice({
                 state.error = undefined;
                 state.isLoading = true;
             })
-            .addCase(fetchArticlesList.fulfilled, (state) => {
-                state.isLoading = false;
-            })
+            .addCase(
+                fetchArticlesList.fulfilled,
+                (state, action: PayloadAction<{ articles: IArticle[]; initialLoad?: boolean }>) => {
+                    const { articles, initialLoad } = action.payload;
+                    state.isLoading = false;
+
+                    if (initialLoad) {
+                        articlesAdapter.setAll(state, articles);
+                        state.hasMore = articles.length === state.limit;
+                    } else {
+                        articlesAdapter.addMany(state, articles);
+                        state.hasMore = articles.length >= state?.limit;
+                    }
+                }
+            )
             .addCase(fetchArticlesList.rejected, (state, action: PayloadAction<string | undefined>) => {
                 state.isLoading = false;
                 state.error = action.payload;

@@ -37,16 +37,37 @@ describe("articlesPageSlice", () => {
         expect(res.error).toBeUndefined();
     });
 
-    test("fetchArticlesList fulfilled", () => {
+    test("fetchArticlesList fulfilled if initial load", () => {
         jest.spyOn(articlesActions, "setArticles");
         const state: DeepPartial<IArticlesState> = {};
         const articles: DeepPartial<IArticle>[] = [{ id: 1, type: [ArticleType.Economics], createdAt: "08/08/200" }];
         const res = articlesReducer(state as IArticlesState, {
             type: fetchArticlesList.fulfilled,
-            payload: articles as IArticle[]
+            payload: { articles, initialLoad: true }
         });
 
         expect(res.isLoading).toBeFalsy();
+        expect(res.hasMore).toBeFalsy();
+        expect(res.ids).toStrictEqual([1]);
+    });
+
+    test("fetchArticlesList fulfilled if not initial load", () => {
+        jest.spyOn(articlesActions, "setArticles");
+        const state: DeepPartial<IArticlesState> = {
+            ids: [1],
+            entities: {
+                1: {}
+            }
+        };
+        const articles: DeepPartial<IArticle>[] = [{ id: 2, type: [ArticleType.Economics], createdAt: "08/08/200" }];
+        const res = articlesReducer(state as IArticlesState, {
+            type: fetchArticlesList.fulfilled,
+            payload: { articles, initialLoad: false }
+        });
+
+        expect(res.isLoading).toBeFalsy();
+        expect(res.hasMore).toBeFalsy();
+        expect(res.ids).toStrictEqual([1, 2]);
     });
 
     test("fetchArticlesList rejected", () => {

@@ -1,6 +1,5 @@
 import { ArticleSortField, ArticleType, IArticle } from "entities/Article";
 import { TestAsyncThunk } from "shared/lib/tests/TestAsyncThunk";
-import { articlesActions } from "../../slices/articlesPageSlice";
 import { IArticlesState } from "../../types/IArticlesState";
 import { fetchArticlesList } from "./fetchArticlesList";
 
@@ -39,13 +38,14 @@ describe("fetchArticlesList", () => {
                 q: articlesState.search
             }
         });
-        expect(thunk.dispatch).toHaveBeenCalledWith(
-            articlesActions.setArticles({ articles: data as IArticle[], initialLoad: true })
-        );
-        expect(res.payload).toStrictEqual(data);
+
+        expect(res.payload).toStrictEqual({
+            articles: data,
+            initialLoad: true
+        });
     });
 
-    test("should fulfill with all query params if type is all", async () => {
+    test("should fulfill with all query params if type is economics", async () => {
         const articlesState: DeepPartial<IArticlesState> = {
             type: ArticleType.Economics
         };

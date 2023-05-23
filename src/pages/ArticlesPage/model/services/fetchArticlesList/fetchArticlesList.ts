@@ -10,15 +10,19 @@ import {
     getArticlesSortOrder,
     getArticlesType
 } from "../../selectors/articlesSelectors";
-import { articlesActions } from "../../slices/articlesPageSlice";
 
 interface IFetchArticlesListProps {
     initialLoad?: boolean;
 }
-export const fetchArticlesList = createAsyncThunk<IArticle[], IFetchArticlesListProps, IThunkConfig<string>>(
+
+interface IFetchArticleReturn extends IFetchArticlesListProps {
+    articles: IArticle[];
+}
+
+export const fetchArticlesList = createAsyncThunk<IFetchArticleReturn, IFetchArticlesListProps, IThunkConfig<string>>(
     "articles/fetchArticlesList",
     async (props, thunkApi) => {
-        const { extra, rejectWithValue, getState, dispatch } = thunkApi;
+        const { extra, rejectWithValue, getState } = thunkApi;
         const { initialLoad = false } = props;
         const limit = getArticlesPageLimit(getState());
         const search = getArticlesSearch(getState());
@@ -44,9 +48,7 @@ export const fetchArticlesList = createAsyncThunk<IArticle[], IFetchArticlesList
                 throw new Error();
             }
 
-            dispatch(articlesActions.setArticles({ articles: response.data, initialLoad }));
-
-            return response.data;
+            return { articles: response.data, initialLoad };
         } catch (error) {
             return rejectWithValue(
                 i18n.t("Server Error", {
