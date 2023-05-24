@@ -1,37 +1,31 @@
 import webpack from "webpack";
+import { buildBabelLoader } from "./loaders/buildBabelLoader";
 import { buildCssLoaders } from "./loaders/buildCssLoaders";
 import { IBuildOptions } from "./types/config";
 
-export function buildLoaders({ isDev }: IBuildOptions): webpack.RuleSetRule[] {
+export function buildLoaders(options: IBuildOptions): webpack.RuleSetRule[] {
+    const { isDev } = options;
+
     const svgLoader = {
         test: /\.svg$/i,
         use: ["@svgr/webpack"]
     };
 
-    const tsLoader = {
-        test: /\.tsx?$/,
-        use: [
-            {
-                loader: "ts-loader",
-                options: {
-                    transpileOnly: true
-                }
-            }
-        ],
-        exclude: /node_modules/
-    };
+    // const tsLoader = {
+    //     test: /\.tsx?$/,
+    //     use: [
+    //         {
+    //             loader: "ts-loader",
+    //             options: {
+    //                 transpileOnly: true
+    //             }
+    //         }
+    //     ],
+    //     exclude: /node_modules/
+    // };
 
-    const babelLoader = {
-        test: /\.(js|jsx|tsx)$/,
-        exclude: /node_modules/,
-        use: {
-            loader: "babel-loader",
-            options: {
-                presets: [["@babel/preset-env", { targets: "defaults" }]],
-                plugins: [isDev && require.resolve("react-refresh/babel")].filter(Boolean)
-            }
-        }
-    };
+    const tsBabelLoader = buildBabelLoader({ ...options, isTsx: false });
+    const tsxBabelLoader = buildBabelLoader({ ...options, isTsx: true });
 
     const cssLoader = buildCssLoaders(isDev);
 
@@ -40,5 +34,5 @@ export function buildLoaders({ isDev }: IBuildOptions): webpack.RuleSetRule[] {
         type: "asset/resource"
     };
 
-    return [fileLoader, svgLoader, babelLoader, tsLoader, cssLoader];
+    return [fileLoader, svgLoader, tsxBabelLoader, tsBabelLoader, cssLoader];
 }
