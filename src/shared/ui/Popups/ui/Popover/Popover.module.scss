@@ -1,0 +1,13 @@
+.Popover {
+    height: fit-content;
+    display: flex;
+    width: fit-content;
+
+    .panel {
+        padding: 15px;
+        background: var(--card-bg);
+        border-radius: 12px;
+        position: absolute;
+        z-index: var(--dropdown-z-index);
+    }
+}

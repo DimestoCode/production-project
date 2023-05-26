@@ -3,13 +3,25 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { ThemeDecorator } from "shared/config/storybook/ThemeDecorator/ThemeDecorator";
 import { Theme } from "app/providers/ThemeProvider";
 import { StoreDecorator } from "shared/config/storybook/StoreDecorator/StoreDecorator";
+import { rest } from "msw";
+import { INotification } from "entities/Notification/model/types/INotification";
 import { Navbar } from "./Navbar";
+
+const notifications: INotification[] = [
+    { description: "Description", id: 1, title: "Title", href: "https://google.com" },
+    { description: "Description 2", id: 2, title: "Title 2" }
+];
 
 export default {
     title: "widgets/Navbar",
     component: Navbar,
     argTypes: {
         backgroundColor: { control: "color" }
+    },
+    parameters: {
+        msw: {
+            handlers: [rest.get("/notifications", (req, res, ctx) => res(ctx.json(notifications)))]
+        }
     }
 } as ComponentMeta<typeof Navbar>;
 

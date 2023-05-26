@@ -3,8 +3,9 @@ import { uniqueId } from "lodash";
 import { Fragment, ReactNode } from "react";
 import { classNames } from "shared/lib/classNames/classNames";
 import { DropdownDirection } from "shared/types/ui";
-import { AppLink } from "../AppLink/AppLink";
+import { AppLink } from "../../../AppLink/AppLink";
 import classes from "./Menu.module.scss";
+import popup from "../../styles/popup.module.scss";
 
 export interface IMenuItem {
     disabled?: boolean;
@@ -22,12 +23,11 @@ interface IMenuProps {
 
 export const Menu = ({ className, items, triggerEl, direction = "bottom-right" }: IMenuProps) => {
     return (
-        <HMenu as="div" className={classNames(classes.Menu, {}, [className])}>
-            <HMenu.Button className={classes.trigger}>{triggerEl}</HMenu.Button>
-            <HMenu.Items className={classNames(classes.items, {}, [classes[direction]])}>
+        <HMenu as="div" className={classNames(popup.popup, {}, [className, classes.menu])}>
+            <HMenu.Button className={popup.trigger}>{triggerEl}</HMenu.Button>
+            <HMenu.Items className={classNames(classes.options, {}, [popup[direction]])}>
                 {items.map((item) => {
-                    const getItemClassNames = (active: boolean) =>
-                        classNames(classes.item, { [classes.active]: active });
+                    const getItemClassNames = (active: boolean) => classNames(classes.item, { [popup.active]: active });
 
                     if (item.href) {
                         return (

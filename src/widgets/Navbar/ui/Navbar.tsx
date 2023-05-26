@@ -1,17 +1,16 @@
-import { getUserAuthData, isRoleAdmin, isRoleManager, userActions } from "entities/User";
+import { getUserAuthData } from "entities/User";
+import { NotificationButton } from "features/NotificationButton";
 import { LoginModal } from "features/UserAuthentication";
-import { memo, useCallback, useMemo, useState } from "react";
+import { UserMenu } from "features/UserMenu";
+import { memo, useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { RoutePath } from "shared/config/routeConfig/routeConfig";
-import { USER_LOCAL_STORAGE_KEY } from "shared/const/localStorage";
 import { classNames } from "shared/lib/classNames/classNames";
 import { AppLink, AppLinkTheme } from "shared/ui/AppLink/AppLink";
-import { Avatar } from "shared/ui/Avatar/Avatar";
 import { Button, ButtonTheme } from "shared/ui/Button/Button";
-import { Menu } from "shared/ui/Menu/Menu";
+import { HStack } from "shared/ui/Stack";
 import { Text, TextTheme } from "shared/ui/Text/Text";
-
 import classes from "./Navbar.module.scss";
 
 interface INavBarProps {
@@ -20,31 +19,12 @@ interface INavBarProps {
 
 export const Navbar = memo(({ className = "" }: INavBarProps) => {
     const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
-    const isAdmin = useSelector(isRoleAdmin);
-    const isManager = useSelector(isRoleManager);
-
-    const showAdminPanelItem = isAdmin || isManager;
-
-    const dispatch = useDispatch();
     const { t } = useTranslation("common");
     const authData = useSelector(getUserAuthData);
 
     const toggleModal = useCallback(() => {
         setIsLoginModalOpen((isOpen) => !isOpen);
     }, []);
-
-    const onLogoutClick = useCallback(() => {
-        dispatch(userActions.logout());
-        localStorage.removeItem(USER_LOCAL_STORAGE_KEY);
-    }, [dispatch]);
-
-    const menuItems = useMemo(() => {
-        return [
-            ...(showAdminPanelItem ? [{ label: t("Admin Panel"), href: RoutePath.admin_panel }] : []),
-            { label: t("Profile"), href: `${RoutePath.profile}/${authData?.id}` },
-            { label: t("Logout"), onClick: onLogoutClick }
-        ];
-    }, [authData?.id, onLogoutClick, showAdminPanelItem, t]);
 
     return (
         <header className={classNames(classes.Navbar, {}, [className])}>
@@ -53,12 +33,10 @@ export const Navbar = memo(({ className = "" }: INavBarProps) => {
                 {t("Add article")}
             </AppLink>
             {authData ? (
-                <Menu
-                    className={classes.userMenu}
-                    direction="bottom-left"
-                    items={menuItems}
-                    triggerEl={<Avatar size={30} src={authData.avatar} />}
-                />
+                <HStack align="center" className={classes.actions} gap="16">
+                    <NotificationButton />
+                    <UserMenu />
+                </HStack>
             ) : (
                 <Button className={classes.links} onClick={toggleModal} theme={ButtonTheme.ClearInverted}>
                     {t("Login")}

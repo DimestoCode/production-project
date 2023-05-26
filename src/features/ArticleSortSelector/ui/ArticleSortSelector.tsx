@@ -2,7 +2,7 @@ import { ArticleSortField } from "entities/Article";
 import { memo, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { SortOrder } from "shared/types";
-import { IListBoxItem, ListBox } from "shared/ui/ListBox/ListBox";
+import { IListBoxItem, ListBox } from "shared/ui/Popups";
 import { HStack } from "shared/ui/Stack";
 
 interface IArticleSortSelectorProps {

@@ -75,7 +75,8 @@ module.exports = {
                     "justify",
                     "align",
                     "tag",
-                    "as"
+                    "as",
+                    "borderRadius"
                 ]
             }
         ],

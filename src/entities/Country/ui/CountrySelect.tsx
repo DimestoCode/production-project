@@ -1,6 +1,6 @@
 import { useCallback } from "react";
-import { IListBoxItem, IListBoxProps, ListBox } from "shared/ui/ListBox/ListBox";
 import { useTranslation } from "react-i18next";
+import { IListBoxItem, IListBoxProps, ListBox } from "shared/ui/Popups";
 import { Country } from "../model/country";
 
 interface CountrySelectProps extends Omit<IListBoxProps<Country>, "onChange" | "options"> {

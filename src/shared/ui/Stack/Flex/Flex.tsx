@@ -27,7 +27,7 @@ const justifyClasses: Record<FlexJustify, string> = {
 
 const alignClasses: Record<FlexAlign, string> = {
     start: classes.alignStart,
-    center: classes.justifyCenter,
+    center: classes.alignCenter,
     end: classes.alignEnd
 };
 

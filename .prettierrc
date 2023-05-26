@@ -4,5 +4,27 @@
     "trailingComma": "none",
     "tabWidth": 4,
     "printWidth": 120,
-    "singleQuote": false
+    "singleQuote": false,
+    "overrides": [
+        {
+            "files": "*.ts",
+            "options": {
+                "parser": "typescript"
+            }
+        },
+        {
+            "files": "*.tsx",
+            "options": {
+                "parser": "typescript"
+            }
+        },
+        {
+            "files": "*.scss",
+            "options": {
+                "parser": "scss",
+                "singleQuote": false,
+                "semi": true
+            }
+        }
+    ]
 }

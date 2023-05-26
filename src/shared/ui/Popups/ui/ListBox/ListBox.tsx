@@ -4,8 +4,9 @@ import { classNames } from "shared/lib/classNames/classNames";
 import SelectArrowIcon from "shared/assets/icons/select-arrow.svg";
 import { DropdownDirection } from "shared/types/ui";
 import classes from "./ListBox.module.scss";
-import { Button } from "../Button/Button";
-import { Icon } from "../Icon/Icon";
+import popup from "../../styles/popup.module.scss";
+import { Button } from "../../../Button/Button";
+import { Icon } from "../../../Icon/Icon";
 
 export interface IListBoxItem<T> {
     value: T;
@@ -44,11 +45,11 @@ export const ListBox = <T extends string>({
             <HListbox
                 as="div"
                 className={classNames(
-                    classes.ListBox,
+                    popup.popup,
                     {
                         [classes.disabled]: disabled
                     },
-                    [className]
+                    [classes.ListBox, className]
                 )}
                 disabled={disabled}
                 name={name}
@@ -72,7 +73,7 @@ export const ListBox = <T extends string>({
                                 {({ active, selected }) => (
                                     <li
                                         className={classNames(classes.item, {
-                                            [classes.active]: active || selected,
+                                            [popup.active]: active || selected,
                                             [classes.disabled]: item.disabled
                                         })}
                                     >
