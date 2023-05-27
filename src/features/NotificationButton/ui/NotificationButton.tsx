@@ -5,7 +5,6 @@ import { Button, ButtonTheme } from "@/shared/ui/Button/Button";
 import { Icon } from "@/shared/ui/Icon/Icon";
 import BellIcon from "@/shared/assets/icons/bell.svg";
 import { useDevice } from "@/shared/lib/hooks/useDevice/useDevice";
-import { AnimationProvider } from "@/shared/lib/components/AnimationProvider";
 import classes from "./NotificationButton.module.scss";
 
 const Popover = lazy(() => import("@/shared/ui/Popups").then((mod) => ({ default: mod.Popover })));
@@ -25,12 +24,12 @@ export const NotificationButton = memo(() => {
     }, [isMobile]);
 
     return isMobile ? (
-        <AnimationProvider>
+        <>
             {triggerButton}
             <Drawer isOpen={isOpen} onClose={() => setIsOpen(false)}>
                 <NotificationList />
             </Drawer>
-        </AnimationProvider>
+        </>
     ) : (
         <Popover direction="bottom-left" triggerEl={triggerButton}>
             <NotificationList className={classes.notifications} />

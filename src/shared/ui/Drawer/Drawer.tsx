@@ -6,6 +6,7 @@ import { useModal } from "@/shared/lib/hooks/useModal/useModal";
 import { Overlay } from "../Overlay/Overlay";
 import { Portal } from "../Portal/Portal";
 import classes from "./Drawer.module.scss";
+import withAnimationProvider from "@/shared/lib/components/AnimationProvider/withAnimationProvider";
 
 interface IDrawerProps {
     className?: string;
@@ -95,7 +96,7 @@ export const DrawerContent = ({ children, onClose, className, isOpen }: IDrawerP
     );
 };
 
-export const Drawer = (props: IDrawerProps) => {
+const DrawerWrapper = (props: IDrawerProps) => {
     const { isLoaded } = useAnimationLibraries();
 
     if (!isLoaded) {
@@ -104,3 +105,5 @@ export const Drawer = (props: IDrawerProps) => {
 
     return <DrawerContent {...props} />;
 };
+
+export const Drawer = withAnimationProvider(DrawerWrapper);
