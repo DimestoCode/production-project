@@ -1,5 +1,6 @@
-import { ReactNode, MouseEvent, useState, useRef, useCallback, useEffect } from "react";
+import { ReactNode } from "react";
 import { ClassNameObject, classNames } from "shared/lib/classNames/classNames";
+import { useModal } from "shared/lib/hooks/useModal/useModal";
 import { Overlay } from "../Overlay/Overlay";
 import { Portal } from "../Portal/Portal";
 import classes from "./Modal.module.scss";
@@ -7,61 +8,22 @@ import classes from "./Modal.module.scss";
 interface IModalProps {
     className?: string;
     children?: ReactNode;
-    isOpen?: boolean;
+    isOpen: boolean;
     onClose: () => void;
     lazy?: boolean;
 }
 const ANIMATION_DELAY = 300;
 
 export const Modal = ({ className = "", children, isOpen, onClose, lazy }: IModalProps) => {
-    const [isClosing, setIsClosing] = useState(false);
-    const [isMounted, setIsMounted] = useState(false);
-    const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-    const handleClose = useCallback(() => {
-        if (onClose) {
-            setIsClosing(true);
-            timerRef.current = setTimeout(() => {
-                onClose();
-                setIsClosing(false);
-            }, ANIMATION_DELAY);
-        }
-    }, [onClose]);
-
-    const onKeyDown = useCallback(
-        (e: KeyboardEvent) => {
-            if (e.key === "Escape") {
-                handleClose();
-            }
-        },
-        [handleClose]
-    );
-
-    useEffect(() => {
-        if (isOpen) {
-            window.addEventListener("keydown", onKeyDown);
-        }
-        return () => {
-            if (timerRef?.current) {
-                clearTimeout(timerRef.current);
-            }
-            window.removeEventListener("keydown", onKeyDown);
-        };
-    }, [isOpen, onKeyDown]);
-
-    useEffect(() => {
-        if (isOpen) {
-            setIsMounted(isOpen);
-        }
-    }, [isOpen]);
+    const { handleClose, isClosing, isMounted } = useModal({
+        isOpen,
+        onClose,
+        animationDelay: ANIMATION_DELAY
+    });
 
     const dynamicClasses: ClassNameObject = {
         [classes.opened]: isOpen,
         [classes.isClosing]: isClosing
-    };
-
-    const handleContentClick = (e: MouseEvent) => {
-        e.stopPropagation();
     };
 
     if (lazy && !isMounted) {
@@ -76,7 +38,6 @@ export const Modal = ({ className = "", children, isOpen, onClose, lazy }: IModa
                     className={classNames(classes.content, {
                         [classes.contentOpened]: isOpen
                     })}
-                    onClick={handleContentClick}
                 >
                     {children}
                 </div>
