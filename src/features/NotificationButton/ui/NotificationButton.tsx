@@ -1,21 +1,37 @@
 import { NotificationList } from "entities/Notification";
-import { memo } from "react";
+import { lazy, memo, useMemo, useState } from "react";
 import { Button, ButtonTheme } from "shared/ui/Button/Button";
 import { Icon } from "shared/ui/Icon/Icon";
 import BellIcon from "shared/assets/icons/bell.svg";
-import { Popover } from "shared/ui/Popups";
+import { useDevice } from "shared/lib/hooks/useDevice/useDevice";
+import noop from "lodash/noop";
 import classes from "./NotificationButton.module.scss";
 
+const Popover = lazy(() => import("shared/ui/Popups").then((mod) => ({ default: mod.Popover })));
+const Drawer = lazy(() => import("shared/ui/Drawer/Drawer").then((mod) => ({ default: mod.Drawer })));
+
 export const NotificationButton = memo(() => {
-    return (
-        <Popover
-            direction="bottom-left"
-            triggerEl={
-                <Button theme={ButtonTheme.Clear}>
-                    <Icon Svg={BellIcon} inverted />
-                </Button>
-            }
-        >
+    const [isOpen, setIsOpen] = useState(false);
+    const isMobile = useDevice();
+
+    const triggerButton = useMemo(() => {
+        const handleOpenDrawer = () => setIsOpen(true);
+        return (
+            <Button onClick={isMobile ? handleOpenDrawer : noop} theme={ButtonTheme.Clear}>
+                <Icon Svg={BellIcon} inverted />
+            </Button>
+        );
+    }, [isMobile]);
+
+    return isMobile ? (
+        <>
+            {triggerButton}
+            <Drawer isOpen={isOpen} onClose={() => setIsOpen(false)}>
+                <NotificationList />
+            </Drawer>
+        </>
+    ) : (
+        <Popover direction="bottom-left" triggerEl={triggerButton}>
             <NotificationList className={classes.notifications} />
         </Popover>
     );

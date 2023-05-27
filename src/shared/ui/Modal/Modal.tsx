@@ -1,5 +1,6 @@
 import { ReactNode, MouseEvent, useState, useRef, useCallback, useEffect } from "react";
 import { ClassNameObject, classNames } from "shared/lib/classNames/classNames";
+import { Overlay } from "../Overlay/Overlay";
 import { Portal } from "../Portal/Portal";
 import classes from "./Modal.module.scss";
 
@@ -7,7 +8,7 @@ interface IModalProps {
     className?: string;
     children?: ReactNode;
     isOpen?: boolean;
-    onClose?: () => void;
+    onClose: () => void;
     lazy?: boolean;
 }
 const ANIMATION_DELAY = 300;
@@ -70,15 +71,14 @@ export const Modal = ({ className = "", children, isOpen, onClose, lazy }: IModa
     return (
         <Portal>
             <div className={classNames(classes.Modal, dynamicClasses, [className])}>
-                <div className={classes.overlay} onClick={handleClose}>
-                    <div
-                        className={classNames(classes.content, {
-                            [classes.contentOpened]: isOpen
-                        })}
-                        onClick={handleContentClick}
-                    >
-                        {children}
-                    </div>
+                <Overlay onClick={handleClose} />
+                <div
+                    className={classNames(classes.content, {
+                        [classes.contentOpened]: isOpen
+                    })}
+                    onClick={handleContentClick}
+                >
+                    {children}
                 </div>
             </div>
         </Portal>
