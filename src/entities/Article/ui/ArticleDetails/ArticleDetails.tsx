@@ -4,15 +4,15 @@ import { useSelector } from "react-redux";
 import {
     IDynamicLoaderProps,
     useDynamicModuleLoader
-} from "shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader";
-import { Avatar } from "shared/ui/Avatar/Avatar";
-import { Skeleton } from "shared/ui/Skeleton/Skeleton";
-import { Text } from "shared/ui/Text/Text";
-import EyeIcon from "shared/assets/icons/eye.svg";
-import CalendarIcon from "shared/assets/icons/calendar.svg";
-import { Icon } from "shared/ui/Icon/Icon";
-import { useActionEffect } from "shared/lib/hooks/useActionEffect/useActionEffect";
-import { HStack, VStack } from "shared/ui/Stack";
+} from "@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader";
+import { Avatar } from "@/shared/ui/Avatar/Avatar";
+import { Skeleton } from "@/shared/ui/Skeleton/Skeleton";
+import { Text } from "@/shared/ui/Text/Text";
+import EyeIcon from "@/shared/assets/icons/eye.svg";
+import CalendarIcon from "@/shared/assets/icons/calendar.svg";
+import { Icon } from "@/shared/ui/Icon/Icon";
+import { useActionEffect } from "@/shared/lib/hooks/useActionEffect/useActionEffect";
+import { HStack, VStack } from "@/shared/ui/Stack";
 import { articleDetailsReducer } from "../../model/slice/articleDetailsSlice/articleDetailsSlice";
 import { retrieveArticleById } from "../../model/services/retrieveArticleById/retrieveArticleById";
 import { IArticleBlock } from "../../model/types/IArticleBlock";

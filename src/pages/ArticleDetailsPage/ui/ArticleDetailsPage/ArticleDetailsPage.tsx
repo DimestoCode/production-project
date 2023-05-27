@@ -1,15 +1,15 @@
-import { ArticleDetails } from "entities/Article";
 import { memo } from "react";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
-import { classNames } from "shared/lib/classNames/classNames";
+import { ArticleDetails } from "@/entities/Article";
+import { classNames } from "@/shared/lib/classNames/classNames";
 import {
     IDynamicLoaderProps,
     useDynamicModuleLoader
-} from "shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader";
-import { Page } from "widgets/Page";
-import { VStack } from "shared/ui/Stack";
-import { ArticleRecommendationsList } from "features/ArticleRecommendationsList";
+} from "@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader";
+import { Page } from "@/widgets/Page";
+import { VStack } from "@/shared/ui/Stack";
+import { ArticleRecommendationsList } from "@/features/ArticleRecommendationsList";
 import { articleDetailsPageReducer } from "../../model/slices";
 import { ArticleDetailsPageHeader } from "../../ui/ArticleDetailsPageHeader/ArticleDetailsPageHeader";
 import classes from "./ArticleDetailsPage.module.scss";

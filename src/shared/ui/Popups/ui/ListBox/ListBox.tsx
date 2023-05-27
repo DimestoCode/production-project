@@ -1,8 +1,8 @@
 import { Fragment, ReactNode, SelectHTMLAttributes, useMemo } from "react";
 import { Listbox as HListbox } from "@headlessui/react";
-import { classNames } from "shared/lib/classNames/classNames";
-import SelectArrowIcon from "shared/assets/icons/select-arrow.svg";
-import { DropdownDirection } from "shared/types/ui";
+import { classNames } from "@/shared/lib/classNames/classNames";
+import SelectArrowIcon from "@/shared/assets/icons/select-arrow.svg";
+import { DropdownDirection } from "@/shared/types/ui";
 import classes from "./ListBox.module.scss";
 import popup from "../../styles/popup.module.scss";
 import { Button } from "../../../Button/Button";

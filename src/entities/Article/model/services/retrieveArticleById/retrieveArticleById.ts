@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { IThunkConfig } from "app/providers/StoreProvider";
-import i18n from "shared/config/i18n/i18n";
+import { IThunkConfig } from "@/app/providers/StoreProvider";
+import i18n from "@/shared/config/i18n/i18n";
 import { IArticle } from "../../types/IArticle";
 
 export const retrieveArticleById = createAsyncThunk<IArticle, number, IThunkConfig<string>>(

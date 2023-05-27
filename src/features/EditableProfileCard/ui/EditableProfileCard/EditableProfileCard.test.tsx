@@ -1,11 +1,11 @@
 import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { Country } from "entities/Country";
-import { Currency } from "entities/Currency";
-import { IProfile } from "entities/Profile";
-import { renderTestComponent } from "shared/lib/tests/renderComponent";
-import { $api } from "shared/api/api";
 import { cloneDeep, set } from "lodash";
+import { Country } from "@/entities/Country";
+import { Currency } from "@/entities/Currency";
+import { IProfile } from "@/entities/Profile";
+import { renderTestComponent } from "@/shared/lib/tests/renderComponent";
+import { $api } from "@/shared/api/api";
 import { profileReducer } from "../../model/slices/profileSlice";
 import { EditableProfileCard } from "./EditableProfileCard";
 

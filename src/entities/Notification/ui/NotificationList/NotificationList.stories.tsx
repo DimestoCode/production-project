@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { rest } from "msw";
-import { StoreDecorator } from "shared/config/storybook/StoreDecorator/StoreDecorator";
+import { StoreDecorator } from "@/shared/config/storybook/StoreDecorator/StoreDecorator";
 import { INotification } from "../../model/types/INotification";
 import { NotificationList } from "./NotificationList";
 

@@ -1,14 +1,14 @@
 import { memo, useCallback } from "react";
 import { useSelector } from "react-redux";
-import { classNames } from "shared/lib/classNames/classNames";
-import { useActionEffect } from "shared/lib/hooks/useActionEffect/useActionEffect";
-import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
+import { useSearchParams } from "react-router-dom";
+import { classNames } from "@/shared/lib/classNames/classNames";
+import { useActionEffect } from "@/shared/lib/hooks/useActionEffect/useActionEffect";
+import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
 import {
     IDynamicLoaderProps,
     useDynamicModuleLoader
-} from "shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader";
-import { Page } from "widgets/Page";
-import { useSearchParams } from "react-router-dom";
+} from "@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader";
+import { Page } from "@/widgets/Page";
 import { initializeArticles } from "../../model/services/initializeArticles/initializeArticles";
 import { getArticlesHasMore, getArticlesInitialized } from "../../model/selectors/articlesSelectors";
 import { fetchFollowingArticles } from "../../model/services/fetchFollowingArticles/fetchFollowingArticles";

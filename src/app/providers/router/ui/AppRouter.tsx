@@ -1,7 +1,7 @@
 import { memo, Suspense, useCallback } from "react";
 import { Routes, Route } from "react-router-dom";
-import { AppRoutesProps, routeConfig } from "shared/config/routeConfig/routeConfig";
-import { Loader } from "shared/ui/Loader/Loader";
+import { AppRoutesProps, routeConfig } from "@/shared/config/routeConfig/routeConfig";
+import { Loader } from "@/shared/ui/Loader/Loader";
 import { RequireAuth } from "./RequireAuth";
 import { RequireRoles } from "./RequireRoles";
 

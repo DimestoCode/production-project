@@ -1,6 +1,6 @@
 import { memo } from "react";
 import { useParams } from "react-router-dom";
-import { Page } from "widgets/Page";
+import { Page } from "@/widgets/Page";
 
 // TODO: Add edit/add article form
 const EditArticlePage = memo(() => {

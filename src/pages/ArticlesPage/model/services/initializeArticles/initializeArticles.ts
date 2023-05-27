@@ -1,8 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { IThunkConfig } from "app/providers/StoreProvider";
-import { ArticleSortField, ArticleType } from "entities/Article";
 import { isNil } from "lodash";
-import { SortOrder } from "shared/types";
+import { IThunkConfig } from "@/app/providers/StoreProvider";
+import { ArticleSortField, ArticleType } from "@/entities/Article";
+import { SortOrder } from "@/shared/types";
 import { getArticlesInitialized } from "../../selectors/articlesSelectors";
 import { articlesActions } from "../../slices/articlesPageSlice";
 import { fetchArticlesList } from "../fetchArticlesList/fetchArticlesList";

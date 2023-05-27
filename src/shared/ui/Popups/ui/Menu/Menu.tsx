@@ -1,8 +1,8 @@
 import { Menu as HMenu } from "@headlessui/react";
 import { uniqueId } from "lodash";
 import { Fragment, ReactNode } from "react";
-import { classNames } from "shared/lib/classNames/classNames";
-import { DropdownDirection } from "shared/types/ui";
+import { classNames } from "@/shared/lib/classNames/classNames";
+import { DropdownDirection } from "@/shared/types/ui";
 import { AppLink } from "../../../AppLink/AppLink";
 import classes from "./Menu.module.scss";
 import popup from "../../styles/popup.module.scss";

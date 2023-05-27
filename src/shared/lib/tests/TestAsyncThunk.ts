@@ -1,6 +1,6 @@
 import { AsyncThunkAction } from "@reduxjs/toolkit";
-import { IStoreState } from "app/providers/StoreProvider";
 import axios, { AxiosStatic } from "axios";
+import { IStoreState } from "@/app/providers/StoreProvider";
 
 type RejectedObj<RejectedType> = {
     rejectValue: RejectedType;

@@ -1,10 +1,10 @@
 /* eslint-disable max-len */
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { rtkApi } from "shared/api/rtkApi";
-import { StoreDecorator } from "shared/config/storybook/StoreDecorator/StoreDecorator";
 import { rest } from "msw";
-import { ArticleBlockType, ArticleType, IArticle } from "entities/Article";
-import { UserRole } from "entities/User";
+import { rtkApi } from "@/shared/api/rtkApi";
+import { StoreDecorator } from "@/shared/config/storybook/StoreDecorator/StoreDecorator";
+import { ArticleBlockType, ArticleType, IArticle } from "@/entities/Article";
+import { UserRole } from "@/entities/User";
 import { ArticleRecommendationsList } from "./ArticleRecommendationsList";
 
 const articles: IArticle[] = [

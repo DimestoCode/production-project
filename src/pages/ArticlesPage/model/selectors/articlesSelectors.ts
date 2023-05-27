@@ -1,5 +1,5 @@
-import { IStoreState } from "app/providers/StoreProvider";
-import { ArticleSortField, ArticleType } from "entities/Article";
+import { IStoreState } from "@/app/providers/StoreProvider";
+import { ArticleSortField, ArticleType } from "@/entities/Article";
 
 export const getArticlesIsLoading = (state: IStoreState) => state.articles?.isLoading ?? false;
 

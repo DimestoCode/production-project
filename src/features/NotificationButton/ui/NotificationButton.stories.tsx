@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { INotification } from "entities/Notification/model/types/INotification";
 import { rest } from "msw";
-import { StoreDecorator } from "shared/config/storybook/StoreDecorator/StoreDecorator";
+import { INotification } from "@/entities/Notification/model/types/INotification";
+import { StoreDecorator } from "@/shared/config/storybook/StoreDecorator/StoreDecorator";
 import { NotificationButton } from "./NotificationButton";
 
 const notifications: INotification[] = [

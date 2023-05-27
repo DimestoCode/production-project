@@ -1,4 +1,4 @@
-import { IUser } from "entities/User";
+import { IUser } from "@/entities/User";
 import { ArticleType } from "../consts/consts";
 import { IArticleBlock } from "./IArticleBlock";
 

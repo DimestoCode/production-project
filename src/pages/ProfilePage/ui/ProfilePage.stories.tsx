@@ -1,13 +1,13 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { ThemeDecorator } from "shared/config/storybook/ThemeDecorator/ThemeDecorator";
-import { Theme } from "app/providers/ThemeProvider";
-import { StoreDecorator } from "shared/config/storybook/StoreDecorator/StoreDecorator";
-import { Country } from "entities/Country";
-import { Currency } from "entities/Currency";
-import ProfileImg from "shared/assets/tests/profile.jpg";
 import { rest } from "msw";
-import { IProfile } from "entities/Profile";
+import { ThemeDecorator } from "@/shared/config/storybook/ThemeDecorator/ThemeDecorator";
+import { Theme } from "@/app/providers/ThemeProvider";
+import { StoreDecorator } from "@/shared/config/storybook/StoreDecorator/StoreDecorator";
+import { Country } from "@/entities/Country";
+import { Currency } from "@/entities/Currency";
+import ProfileImg from "@/shared/assets/tests/profile.jpg";
+import { IProfile } from "@/entities/Profile";
 import ProfilePage from "./ProfilePage";
 
 const profile: IProfile = {

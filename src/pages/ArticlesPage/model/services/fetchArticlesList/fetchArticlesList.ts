@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { IThunkConfig } from "app/providers/StoreProvider";
-import { ArticleType, IArticle } from "entities/Article";
-import i18n from "shared/config/i18n/i18n";
+import { IThunkConfig } from "@/app/providers/StoreProvider";
+import { ArticleType, IArticle } from "@/entities/Article";
+import i18n from "@/shared/config/i18n/i18n";
 import {
     getArticlesPageLimit,
     getArticlesPageNumber,

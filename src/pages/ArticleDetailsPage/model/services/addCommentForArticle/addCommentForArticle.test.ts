@@ -1,5 +1,5 @@
-import { IStoreState } from "app/providers/StoreProvider";
-import { TestAsyncThunk } from "shared/lib/tests/TestAsyncThunk";
+import { IStoreState } from "@/app/providers/StoreProvider";
+import { TestAsyncThunk } from "@/shared/lib/tests/TestAsyncThunk";
 import { retrieveCommentsByArticleId } from "../retrieveCommentsByArticleId/retrieveCommentsByArticleId";
 import { addCommentForArticle } from "./addCommentForArticle";
 

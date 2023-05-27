@@ -1,6 +1,6 @@
 import { createEntityAdapter, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IStoreState } from "app/providers/StoreProvider";
-import { IArticle } from "entities/Article";
+import { IStoreState } from "@/app/providers/StoreProvider";
+import { IArticle } from "@/entities/Article";
 
 import { IArticleRecommendationsState } from "../../types/IArticleRecommandationsState";
 import { fetchArticleRecommendations } from "../../services/fetchArticleRecommendations/fetchArticleRecommendations";

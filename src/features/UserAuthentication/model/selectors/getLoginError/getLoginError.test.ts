@@ -1,4 +1,4 @@
-import { IStoreState } from "app/providers/StoreProvider";
+import { IStoreState } from "@/app/providers/StoreProvider";
 import { getLoginError } from "./getLoginError";
 
 describe("getLoginError", () => {

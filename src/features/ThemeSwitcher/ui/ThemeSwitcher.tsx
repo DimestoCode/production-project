@@ -1,10 +1,10 @@
 import { lazy, memo } from "react";
-import { Theme, useTheme } from "app/providers/ThemeProvider";
-import { Button, ButtonTheme } from "shared/ui/Button/Button";
+import { Theme, useTheme } from "@/app/providers/ThemeProvider";
+import { Button, ButtonTheme } from "@/shared/ui/Button/Button";
 
-const DarkIcon = lazy(() => import("shared/assets/icons/theme-dark.svg"));
-const LightIcon = lazy(() => import("shared/assets/icons/theme-light.svg"));
-const OrangeIcon = lazy(() => import("shared/assets/icons/theme-orange.svg"));
+const DarkIcon = lazy(() => import("@/shared/assets/icons/theme-dark.svg"));
+const LightIcon = lazy(() => import("@/shared/assets/icons/theme-light.svg"));
+const OrangeIcon = lazy(() => import("@/shared/assets/icons/theme-orange.svg"));
 
 interface IThemeSwitcherProps {
     className?: string;

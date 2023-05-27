@@ -1,8 +1,8 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { IArticle } from "entities/Article";
-import { ArticleBlockType, ArticleType } from "entities/Article/model/consts/consts";
 import { rest } from "msw";
-import { StoreDecorator } from "shared/config/storybook/StoreDecorator/StoreDecorator";
+import { IArticle } from "@/entities/Article";
+import { ArticleBlockType, ArticleType } from "@/entities/Article/model/consts/consts";
+import { StoreDecorator } from "@/shared/config/storybook/StoreDecorator/StoreDecorator";
 import ArticlesPage from "./ArticlesPage";
 
 const articles: DeepPartial<IArticle>[] = [

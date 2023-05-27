@@ -1,5 +1,5 @@
 import { ChangeEvent, InputHTMLAttributes, memo, SyntheticEvent, useRef, useState } from "react";
-import { classNames } from "shared/lib/classNames/classNames";
+import { classNames } from "@/shared/lib/classNames/classNames";
 import classes from "./Input.module.scss";
 
 interface IInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "value" | "onChange"> {

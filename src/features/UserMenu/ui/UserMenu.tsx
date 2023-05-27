@@ -1,11 +1,11 @@
-import { getUserAuthData, isRoleAdmin, isRoleManager, userActions } from "entities/User";
 import { memo, useCallback, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector, useDispatch } from "react-redux";
-import { RoutePath } from "shared/config/routeConfig/routeConfig";
-import { USER_LOCAL_STORAGE_KEY } from "shared/const/localStorage";
-import { Avatar } from "shared/ui/Avatar/Avatar";
-import { Menu } from "shared/ui/Popups";
+import { getUserAuthData, isRoleAdmin, isRoleManager, userActions } from "@/entities/User";
+import { RoutePath } from "@/shared/config/routeConfig/routeConfig";
+import { USER_LOCAL_STORAGE_KEY } from "@/shared/const/localStorage";
+import { Avatar } from "@/shared/ui/Avatar/Avatar";
+import { Menu } from "@/shared/ui/Popups";
 
 export const UserMenu = memo(() => {
     const { t } = useTranslation("common");

@@ -1,4 +1,4 @@
-import { TestAsyncThunk } from "shared/lib/tests/TestAsyncThunk";
+import { TestAsyncThunk } from "@/shared/lib/tests/TestAsyncThunk";
 import { ArticleType } from "../../consts/consts";
 import { IArticle } from "../../types/IArticle";
 import { retrieveArticleById } from "./retrieveArticleById";

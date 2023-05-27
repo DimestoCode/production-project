@@ -1,4 +1,4 @@
-import { IStoreState } from "app/providers/StoreProvider";
+import { IStoreState } from "@/app/providers/StoreProvider";
 import { ProfileValidationError } from "../../consts/ProfileValidationError";
 import { getProfileValidationErrors } from "./getProfileValidationErrors";
 

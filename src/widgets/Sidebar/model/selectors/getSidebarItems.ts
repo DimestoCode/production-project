@@ -1,13 +1,13 @@
 import { createSelector } from "@reduxjs/toolkit";
-import { getUserAuthData } from "entities/User";
-import { RoutePath } from "shared/config/routeConfig/routeConfig";
-import MainPageIcon from "shared/assets/icons/main-page.svg";
-import AboutPageIcon from "shared/assets/icons/about-page.svg";
 import { lazy } from "react";
+import { getUserAuthData } from "@/entities/User";
+import { RoutePath } from "@/shared/config/routeConfig/routeConfig";
+import MainPageIcon from "@/shared/assets/icons/main-page.svg";
+import AboutPageIcon from "@/shared/assets/icons/about-page.svg";
 import { ISidebarItem } from "../types/ISidebarItem";
 
-const ProfilePageIcon = lazy(() => import("shared/assets/icons/profile-page.svg"));
-const ArticlesPageIcon = lazy(() => import("shared/assets/icons/article.svg"));
+const ProfilePageIcon = lazy(() => import("@/shared/assets/icons/profile-page.svg"));
+const ArticlesPageIcon = lazy(() => import("@/shared/assets/icons/article.svg"));
 
 export const getSidebarItems = createSelector(getUserAuthData, (userData) => {
     const sidebarItemsList: ISidebarItem[] = [

@@ -1,8 +1,8 @@
-import { IStoreState } from "app/providers/StoreProvider";
-import { Country } from "entities/Country";
-import { Currency } from "entities/Currency";
-import { IProfile } from "entities/Profile";
-import ProfileImg from "shared/assets/tests/profile.jpg";
+import { IStoreState } from "@/app/providers/StoreProvider";
+import { Country } from "@/entities/Country";
+import { Currency } from "@/entities/Currency";
+import { IProfile } from "@/entities/Profile";
+import ProfileImg from "@/shared/assets/tests/profile.jpg";
 import { getProfileData } from "./getProfileData";
 
 describe("getProfileData", () => {

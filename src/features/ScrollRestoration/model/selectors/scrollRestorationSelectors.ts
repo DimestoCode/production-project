@@ -1,5 +1,5 @@
 import { createSelector } from "@reduxjs/toolkit";
-import { IStoreState } from "app/providers/StoreProvider";
+import { IStoreState } from "@/app/providers/StoreProvider";
 
 export const getScroll = (state: IStoreState) => state.scroll;
 

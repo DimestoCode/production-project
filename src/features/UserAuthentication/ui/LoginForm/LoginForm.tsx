@@ -1,21 +1,21 @@
-import { IUser } from "entities/User";
 import isNil from "lodash/isNil";
 import isString from "lodash/isString";
 import { memo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { RoutePath } from "shared/config/routeConfig/routeConfig";
-import { USER_LOCAL_STORAGE_KEY } from "shared/const/localStorage";
-import { classNames } from "shared/lib/classNames/classNames";
-import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
+import { IUser } from "@/entities/User";
+import { RoutePath } from "@/shared/config/routeConfig/routeConfig";
+import { USER_LOCAL_STORAGE_KEY } from "@/shared/const/localStorage";
+import { classNames } from "@/shared/lib/classNames/classNames";
+import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
 import {
     IDynamicLoaderProps,
     useDynamicModuleLoader
-} from "shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader";
-import { Button, ButtonTheme } from "shared/ui/Button/Button";
-import { Input } from "shared/ui/Input/Input";
-import { TextTheme, Text } from "shared/ui/Text/Text";
+} from "@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader";
+import { Button, ButtonTheme } from "@/shared/ui/Button/Button";
+import { Input } from "@/shared/ui/Input/Input";
+import { TextTheme, Text } from "@/shared/ui/Text/Text";
 import { loginActions, loginReducer } from "../../model/slices/loginSlice";
 import { getLoginIsLoading } from "../../model/selectors/getLoginIsLoading/getLoginIsLoading";
 import { getLoginError } from "../../model/selectors/getLoginError/getLoginError";

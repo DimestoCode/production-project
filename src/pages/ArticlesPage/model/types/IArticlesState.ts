@@ -1,5 +1,5 @@
 import { EntityState } from "@reduxjs/toolkit";
-import { ArticleSortField, ArticleType, ArticleViewMode, IArticle } from "entities/Article";
+import { ArticleSortField, ArticleType, ArticleViewMode, IArticle } from "@/entities/Article";
 
 export interface IArticlesState extends EntityState<IArticle> {
     initialized: boolean;

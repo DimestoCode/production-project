@@ -1,7 +1,7 @@
 import { memo } from "react";
 import { useTranslation } from "react-i18next";
-import { VStack } from "shared/ui/Stack";
-import { Text } from "shared/ui/Text/Text";
+import { VStack } from "@/shared/ui/Stack";
+import { Text } from "@/shared/ui/Text/Text";
 import { IComment } from "../../model/types/IComment";
 import { CommentCard } from "../CommentCard/CommentCard";
 

@@ -1,5 +1,6 @@
 import { action } from "@storybook/addon-actions";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { AnimationProvider } from "@/shared/lib/components/AnimationProvider";
 import { Drawer } from "./Drawer";
 
 export default {
@@ -10,7 +11,11 @@ export default {
     }
 } as ComponentMeta<typeof Drawer>;
 
-const Template: ComponentStory<typeof Drawer> = (args) => <Drawer {...args} />;
+const Template: ComponentStory<typeof Drawer> = (args) => (
+    <AnimationProvider>
+        <Drawer {...args} />
+    </AnimationProvider>
+);
 
 export const OpenedDrawer = Template.bind({});
 OpenedDrawer.args = {

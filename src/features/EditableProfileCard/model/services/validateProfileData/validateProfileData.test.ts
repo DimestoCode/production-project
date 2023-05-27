@@ -1,7 +1,7 @@
-import { Country } from "entities/Country";
-import { Currency } from "entities/Currency";
-import { IProfile } from "entities/Profile";
-import ProfileImg from "shared/assets/tests/profile.jpg";
+import { Country } from "@/entities/Country";
+import { Currency } from "@/entities/Currency";
+import { IProfile } from "@/entities/Profile";
+import ProfileImg from "@/shared/assets/tests/profile.jpg";
 import { ProfileValidationError } from "../../consts/ProfileValidationError";
 import { validateProfileData } from "./validateProfileData";
 

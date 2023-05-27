@@ -1,12 +1,12 @@
-import { CommentList } from "entities/Comment";
-import { AddCommentForm } from "features/AddCommentForm";
 import { memo, useCallback } from "react";
 import { useSelector } from "react-redux";
-import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
-import { Text } from "shared/ui/Text/Text";
 import { useTranslation } from "react-i18next";
-import { useActionEffect } from "shared/lib/hooks/useActionEffect/useActionEffect";
-import { VStack } from "shared/ui/Stack";
+import { CommentList } from "@/entities/Comment";
+import { AddCommentForm } from "@/features/AddCommentForm";
+import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
+import { Text } from "@/shared/ui/Text/Text";
+import { useActionEffect } from "@/shared/lib/hooks/useActionEffect/useActionEffect";
+import { VStack } from "@/shared/ui/Stack";
 import { retrieveCommentsByArticleId } from "../../model/services/retrieveCommentsByArticleId/retrieveCommentsByArticleId";
 import { getArticleComments } from "../../model/slices/articleCommentsSlice/articleCommentsSlice";
 import { addCommentForArticle } from "../../model/services/addCommentForArticle/addCommentForArticle";

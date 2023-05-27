@@ -1,10 +1,10 @@
 import { memo, SVGProps, VFC } from "react";
-import { classNames } from "shared/lib/classNames/classNames";
-import ListIcon from "shared/assets/icons/list.svg";
-import GridIcon from "shared/assets/icons/grid.svg";
-import { Button, ButtonTheme } from "shared/ui/Button/Button";
-import { Icon } from "shared/ui/Icon/Icon";
-import { HStack } from "shared/ui/Stack";
+import { classNames } from "@/shared/lib/classNames/classNames";
+import ListIcon from "@/shared/assets/icons/list.svg";
+import GridIcon from "@/shared/assets/icons/grid.svg";
+import { Button, ButtonTheme } from "@/shared/ui/Button/Button";
+import { Icon } from "@/shared/ui/Icon/Icon";
+import { HStack } from "@/shared/ui/Stack";
 import { ArticleViewMode } from "../../model/types/IArticle";
 import classes from "./ArticleViewSelector.module.scss";
 

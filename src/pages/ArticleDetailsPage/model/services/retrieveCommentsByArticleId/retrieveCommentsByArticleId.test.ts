@@ -1,6 +1,6 @@
-import { IComment } from "entities/Comment";
-import { UserRole } from "entities/User";
-import { TestAsyncThunk } from "shared/lib/tests/TestAsyncThunk";
+import { IComment } from "@/entities/Comment";
+import { UserRole } from "@/entities/User";
+import { TestAsyncThunk } from "@/shared/lib/tests/TestAsyncThunk";
 import { retrieveCommentsByArticleId } from "./retrieveCommentsByArticleId";
 
 jest.mock("axios");
