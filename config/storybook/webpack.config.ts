@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import path from "path";
 import webpack, { RuleSetRule } from "webpack";
 import { buildCssLoaders } from "../build/loaders/buildCssLoaders";
@@ -16,7 +17,6 @@ export default ({ config }: { config: webpack.Configuration }) => {
     config.resolve?.modules?.push(paths.src, "node_modules");
     config.resolve?.extensions?.push(".ts", ".tsx");
     if (config.module?.rules) {
-        // eslint-disable-next-line no-param-reassign
         config.module.rules = (config.module.rules as RuleSetRule[]).map((rule: RuleSetRule) => {
             if (/svg/.test(rule.test as string)) {
                 return { ...rule, exclude: /\.svg$/i } as RuleSetRule;
@@ -31,6 +31,16 @@ export default ({ config }: { config: webpack.Configuration }) => {
         use: ["@svgr/webpack"]
     });
     config.module?.rules?.push(buildCssLoaders(true));
+    config.resolve = {
+        ...config.resolve,
+        extensions: [".tsx", ".ts", ".js"],
+        preferAbsolute: true,
+        modules: [paths.src, "node_modules"],
+        alias: {
+            "@": paths.src
+        },
+        mainFiles: ["index"]
+    };
     const isDev = config.mode === "development";
     config.plugins?.push(
         new webpack.DefinePlugin({

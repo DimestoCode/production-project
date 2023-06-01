@@ -15,7 +15,9 @@ interface IPopoverProps {
 export const Popover = memo(({ className, triggerEl, direction = "bottom-right", children }: IPopoverProps) => {
     return (
         <HPopover className={classNames(classes.Popover, {}, [className, popup.popup])}>
-            <HPopover.Button className={popup.trigger}>{triggerEl}</HPopover.Button>
+            <HPopover.Button as="div" className={popup.trigger}>
+                {triggerEl}
+            </HPopover.Button>
 
             <HPopover.Panel className={classNames(classes.panel, {}, [popup[direction]])}>{children}</HPopover.Panel>
         </HPopover>
