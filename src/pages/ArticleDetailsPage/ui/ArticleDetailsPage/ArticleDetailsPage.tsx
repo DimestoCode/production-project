@@ -14,6 +14,7 @@ import { articleDetailsPageReducer } from "../../model/slices";
 import { ArticleDetailsPageHeader } from "../../ui/ArticleDetailsPageHeader/ArticleDetailsPageHeader";
 import classes from "./ArticleDetailsPage.module.scss";
 import { ArticleDetailsComments } from "../ArticleDetailsComments/ArticleDetailsComments";
+import { ArticleRating } from "@/features/ArticleRating";
 
 const dynamicModule: IDynamicLoaderProps = {
     reducers: {
@@ -37,6 +38,7 @@ const ArticleDetailsPage = memo(() => {
             <VStack gap="16" maxWidth>
                 <ArticleDetailsPageHeader />
                 <ArticleDetails id={Number(articleId)} />
+                <ArticleRating articleId={Number(articleId)} />
                 <ArticleRecommendationsList />
                 <ArticleDetailsComments articleId={Number(articleId)} />
             </VStack>

@@ -105,7 +105,12 @@ module.exports = {
         "no-undef": "off",
         "comma-spacing": "off",
         "@typescript-eslint/comma-spacing": "error",
-        "fsd-path-checker-by-dandoniev/fsd-path-checker": "error"
+        "fsd-path-checker-by-dandoniev/fsd-path-checker": [
+            "error",
+            {
+                alias: "@"
+            }
+        ]
     },
     overrides: [
         {

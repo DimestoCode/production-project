@@ -17,7 +17,21 @@ const App = () => {
 
     return (
         <div className={classNames("app")}>
-            <Suspense fallback={<Loader />}>
+            <Suspense
+                fallback={
+                    <div
+                        style={{
+                            display: "flex",
+                            width: "100%",
+                            height: "100vh",
+                            alignItems: "center",
+                            justifyContent: "center"
+                        }}
+                    >
+                        <Loader />
+                    </div>
+                }
+            >
                 <Navbar />
                 <div className="content-page">
                     <Sidebar />

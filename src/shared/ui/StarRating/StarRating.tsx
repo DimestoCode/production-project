@@ -14,7 +14,7 @@ interface IStarRatingProps {
 const stars = [1, 2, 3, 4, 5];
 
 export const StarRating = memo(({ className, selectedStars, size, onSelect }: IStarRatingProps) => {
-    const [highlightedStarsNumber, setHighlightedStarsNumber] = useState(0);
+    const [highlightedStarsNumber, setHighlightedStarsNumber] = useState(selectedStars);
     const [isSelected, setIsSelected] = useState(!!selectedStars);
 
     const onHover = (starsCount: number) => () => {
@@ -43,7 +43,7 @@ export const StarRating = memo(({ className, selectedStars, size, onSelect }: IS
                 <Icon
                     Svg={StarIcon}
                     className={classNames(classes.starIcon, {
-                        [classes.hovered]: highlightedStarsNumber >= starNumber,
+                        [classes.hovered]: Number(highlightedStarsNumber) >= starNumber,
                         [classes.selected]: isSelected
                     })}
                     height={size}

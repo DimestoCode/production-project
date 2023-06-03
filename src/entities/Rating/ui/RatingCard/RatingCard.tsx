@@ -17,13 +17,14 @@ interface IRatingCardProps {
     withFeedback: boolean;
     onCancel: (starsCount: number) => void;
     onAccept: (starsCound: number, feedback?: string) => void;
+    rate?: number;
 }
 
 export const RatingCard = memo(
-    ({ className, feedbackTitle, onAccept, onCancel, title, withFeedback }: IRatingCardProps) => {
+    ({ className, feedbackTitle, onAccept, onCancel, title, withFeedback, rate = 0 }: IRatingCardProps) => {
         const [isOpen, setIsOpen] = useState(false);
         const isMobile = useDevice();
-        const [starsCount, setStarsCount] = useState(0);
+        const [starsCount, setStarsCount] = useState(rate);
         const [feedback, setFeedback] = useState("");
         const { t } = useTranslation("common");
 
@@ -51,17 +52,17 @@ export const RatingCard = memo(
         }, [onCancel, starsCount]);
 
         const modalContent = (
-            <>
+            <VStack gap="8" maxWidth>
                 <Text title={feedbackTitle} />
                 <Input onChange={setFeedback} placeholder={t("Your feedback")} value={feedback} />
-            </>
+            </VStack>
         );
 
         return (
-            <Card className={className}>
+            <Card className={className} fullWidth>
                 <VStack align="center" gap="8">
-                    <Text title={title} />
-                    <StarRating onSelect={onSelectStars} size={40} />
+                    <Text title={starsCount ? t("Thanks for your feedback") : title} />
+                    <StarRating onSelect={onSelectStars} selectedStars={starsCount} size={40} />
 
                     {!isMobile ? (
                         <Modal isOpen={isOpen} onClose={handleCancel} lazy>
@@ -71,12 +72,11 @@ export const RatingCard = memo(
                                     <Button onClick={handleCancel} theme={ButtonTheme.OutlineRed}>
                                         {t("Cancel")}
                                     </Button>
-                                    <Button onClick={handleAccept} theme={ButtonTheme.OutlineRed}>
+                                    <Button onClick={handleAccept} theme={ButtonTheme.Outline}>
                                         {t("Submit")}
                                     </Button>
                                 </HStack>
                             </VStack>
-                            {modalContent}
                         </Modal>
                     ) : (
                         <Drawer isOpen={isOpen} onClose={handleCancel}>
