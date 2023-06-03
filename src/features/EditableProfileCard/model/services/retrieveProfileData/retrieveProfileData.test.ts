@@ -1,9 +1,9 @@
-import { Country } from "@/entities/Country";
-import { Currency } from "@/entities/Currency";
 import { TestAsyncThunk } from "@/shared/lib/tests/TestAsyncThunk";
 import ProfileImg from "@/shared/assets/tests/profile.jpg";
-import { IProfile } from "@/entities/Profile";
 import { retrieveProfileData } from "./retrieveProfileData";
+import { IProfile } from "@/entities/Profile/testing";
+import { Country } from "@/entities/Country/testing";
+import { Currency } from "@/entities/Currency/testing";
 
 jest.mock("axios");
 jest.mock("shared/config/i18n/i18n", () => jest.requireActual("shared/config/i18n/i18nForTests"));

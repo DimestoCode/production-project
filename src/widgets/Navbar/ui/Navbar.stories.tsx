@@ -5,7 +5,7 @@ import { ThemeDecorator } from "@/shared/config/storybook/ThemeDecorator/ThemeDe
 import { Theme } from "@/app/providers/ThemeProvider";
 import { StoreDecorator } from "@/shared/config/storybook/StoreDecorator/StoreDecorator";
 import { Navbar } from "./Navbar";
-import { INotification } from "@/entities/Notification";
+import { INotification } from "@/entities/Notification/testing";
 
 const notifications: INotification[] = [
     { description: "Description", id: 1, title: "Title", href: "https://google.com" },

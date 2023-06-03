@@ -1,13 +1,13 @@
 import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { cloneDeep, set } from "lodash";
-import { Country } from "@/entities/Country";
-import { Currency } from "@/entities/Currency";
-import { IProfile } from "@/entities/Profile";
 import { renderTestComponent } from "@/shared/lib/tests/renderComponent";
 import { $api } from "@/shared/api/api";
 import { profileReducer } from "../../model/slices/profileSlice";
 import { EditableProfileCard } from "./EditableProfileCard";
+import { Currency } from "@/entities/Currency/testing";
+import { Country } from "@/entities/Country/testing";
+import { IProfile } from "@/entities/Profile/testing";
 
 const profile: IProfile = {
     age: 10,

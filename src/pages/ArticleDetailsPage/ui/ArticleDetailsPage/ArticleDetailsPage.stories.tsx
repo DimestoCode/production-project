@@ -1,10 +1,10 @@
 /* eslint-disable max-len */
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { rest } from "msw";
-import { ArticleBlockType, ArticleType, IArticle } from "@/entities/Article";
-import { UserRole } from "@/entities/User";
 import { StoreDecorator } from "@/shared/config/storybook/StoreDecorator/StoreDecorator";
 import ArticleDetailsPage from "./ArticleDetailsPage";
+import { ArticleBlockType, ArticleType, IArticle } from "@/entities/Article/testing";
+import { UserRole } from "@/entities/User/testing";
 
 const articleDetails: IArticle = {
     id: 1,

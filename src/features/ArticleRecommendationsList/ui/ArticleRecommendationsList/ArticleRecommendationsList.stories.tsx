@@ -3,9 +3,9 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { rest } from "msw";
 import { rtkApi } from "@/shared/api/rtkApi";
 import { StoreDecorator } from "@/shared/config/storybook/StoreDecorator/StoreDecorator";
-import { ArticleBlockType, ArticleType, IArticle } from "@/entities/Article";
-import { UserRole } from "@/entities/User";
 import { ArticleRecommendationsList } from "./ArticleRecommendationsList";
+import { ArticleBlockType, ArticleType, IArticle } from "@/entities/Article/testing";
+import { UserRole } from "@/entities/User/testing";
 
 const articles: IArticle[] = [
     {

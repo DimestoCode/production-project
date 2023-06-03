@@ -1,11 +1,11 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { rest } from "msw";
-import { Country } from "@/entities/Country";
-import { Currency } from "@/entities/Currency";
-import { IProfile } from "@/entities/Profile";
 import { StoreDecorator } from "@/shared/config/storybook/StoreDecorator/StoreDecorator";
 import { ProfileValidationError } from "../../model/consts/ProfileValidationError";
 import { EditableProfileCard } from "./EditableProfileCard";
+import { Currency } from "@/entities/Currency/testing";
+import { Country } from "@/entities/Country/testing";
+import { IProfile } from "@/entities/Profile/testing";
 
 const profile: IProfile = {
     age: 1,

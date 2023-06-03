@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { ArticleSortField } from "@/entities/Article";
 import { StoreDecorator } from "@/shared/config/storybook/StoreDecorator/StoreDecorator";
 import { ArticlesPageFilters } from "./ArticlesPageFilters";
+import { ArticleSortField } from "@/entities/Article/testing";
 
 export default {
     title: "pages/Articles/ArticlesPageFilters",

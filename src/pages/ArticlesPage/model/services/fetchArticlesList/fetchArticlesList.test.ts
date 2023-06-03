@@ -1,4 +1,4 @@
-import { ArticleSortField, ArticleType, IArticle } from "@/entities/Article";
+import { ArticleSortField, ArticleType, IArticle } from "@/entities/Article/testing";
 import { TestAsyncThunk } from "@/shared/lib/tests/TestAsyncThunk";
 import { IArticlesState } from "../../types/IArticlesState";
 import { fetchArticlesList } from "./fetchArticlesList";

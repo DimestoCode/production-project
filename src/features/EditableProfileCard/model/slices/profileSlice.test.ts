@@ -1,12 +1,12 @@
-import { Country } from "@/entities/Country";
-import { Currency } from "@/entities/Currency";
 import ProfileImg from "@/shared/assets/tests/profile.jpg";
-import { IProfile } from "@/entities/Profile";
 import { updateProfileData } from "../services/updateProfileData/updateProfileData";
 import { IProfileState } from "../types/IProfileState";
 import { ProfileValidationError } from "../consts/ProfileValidationError";
 import { profileActions, profileReducer } from "./profileSlice";
 import { retrieveProfileData } from "../services/retrieveProfileData/retrieveProfileData";
+import { Currency } from "@/entities/Currency/testing";
+import { Country } from "@/entities/Country/testing";
+import { IProfile } from "@/entities/Profile/testing";
 
 const data: IProfile = {
     username: "admin",

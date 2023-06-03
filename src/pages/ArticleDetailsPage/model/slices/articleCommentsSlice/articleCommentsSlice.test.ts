@@ -1,5 +1,5 @@
-import { IComment } from "@/entities/Comment";
-import { UserRole } from "@/entities/User";
+import { IComment } from "@/entities/Comment/testing";
+import { UserRole } from "@/entities/User/testing";
 import { retrieveCommentsByArticleId } from "../../services/retrieveCommentsByArticleId/retrieveCommentsByArticleId";
 import { IArticleCommentsState } from "../../types/IArticleCommentsState";
 import { articleCommentsReducer } from "./articleCommentsSlice";

@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { UserRole } from "@/entities/User";
+import { UserRole } from "@/entities/User/testing";
 import { ArticleBlockType, ArticleType } from "../../model/consts/consts";
 import { IArticle } from "../../model/types/IArticle";
 import { ArticleList } from "./ArticleList";

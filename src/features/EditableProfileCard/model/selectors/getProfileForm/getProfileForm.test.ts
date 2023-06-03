@@ -1,7 +1,7 @@
 import { IStoreState } from "@/app/providers/StoreProvider";
-import { Country } from "@/entities/Country";
-import { Currency } from "@/entities/Currency";
-import { IProfile } from "@/entities/Profile";
+import { Country } from "@/entities/Country/testing";
+import { Currency } from "@/entities/Currency/testing";
+import { IProfile } from "@/entities/Profile/testing";
 import ProfileImg from "@/shared/assets/tests/profile.jpg";
 import { getProfileForm } from "./getProfileForm";
 

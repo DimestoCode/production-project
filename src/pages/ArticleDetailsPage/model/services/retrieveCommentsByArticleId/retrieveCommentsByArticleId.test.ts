@@ -1,5 +1,5 @@
-import { IComment } from "@/entities/Comment";
-import { UserRole } from "@/entities/User";
+import { IComment } from "@/entities/Comment/testing";
+import { UserRole } from "@/entities/User/testing";
 import { TestAsyncThunk } from "@/shared/lib/tests/TestAsyncThunk";
 import { retrieveCommentsByArticleId } from "./retrieveCommentsByArticleId";
 

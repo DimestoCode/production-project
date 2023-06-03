@@ -4,11 +4,11 @@ import { rest } from "msw";
 import { ThemeDecorator } from "@/shared/config/storybook/ThemeDecorator/ThemeDecorator";
 import { Theme } from "@/app/providers/ThemeProvider";
 import { StoreDecorator } from "@/shared/config/storybook/StoreDecorator/StoreDecorator";
-import { Country } from "@/entities/Country";
-import { Currency } from "@/entities/Currency";
 import ProfileImg from "@/shared/assets/tests/profile.jpg";
-import { IProfile } from "@/entities/Profile";
 import ProfilePage from "./ProfilePage";
+import { Country } from "@/entities/Country/testing";
+import { Currency } from "@/entities/Currency/testing";
+import { IProfile } from "@/entities/Profile/testing";
 
 const profile: IProfile = {
     username: "admin",

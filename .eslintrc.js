@@ -114,7 +114,8 @@ module.exports = {
         "fsd-path-checker-by-dandoniev/fsd-public-api-imports": [
             "error",
             {
-                alias: "@"
+                alias: "@",
+                testFilesPatterns: ["**/*.{test,stories}.*", "**/StoreDecorator.tsx"]
             }
         ]
     },

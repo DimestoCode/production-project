@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { IUserState, UserRole } from "@/entities/User";
 import { StoreDecorator } from "@/shared/config/storybook/StoreDecorator/StoreDecorator";
 import { UserMenu } from "./UserMenu";
+import { IUserState, UserRole } from "@/entities/User/testing";
 
 export default {
     title: "features/UserMenu",
