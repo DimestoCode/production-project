@@ -1,10 +1,9 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { rest } from "msw";
-import { INotification } from "@/entities/Notification/model/types/INotification";
 import { StoreDecorator } from "@/shared/config/storybook/StoreDecorator/StoreDecorator";
 import { NotificationButton } from "./NotificationButton";
 
-const notifications: INotification[] = [
+const notifications = [
     { description: "Description", id: 1, title: "Title", href: "https://google.com" },
     { description: "Description 2", id: 2, title: "Title 2" }
 ];

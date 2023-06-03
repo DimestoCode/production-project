@@ -4,8 +4,8 @@ import { rest } from "msw";
 import { ThemeDecorator } from "@/shared/config/storybook/ThemeDecorator/ThemeDecorator";
 import { Theme } from "@/app/providers/ThemeProvider";
 import { StoreDecorator } from "@/shared/config/storybook/StoreDecorator/StoreDecorator";
-import { INotification } from "@/entities/Notification/model/types/INotification";
 import { Navbar } from "./Navbar";
+import { INotification } from "@/entities/Notification";
 
 const notifications: INotification[] = [
     { description: "Description", id: 1, title: "Title", href: "https://google.com" },

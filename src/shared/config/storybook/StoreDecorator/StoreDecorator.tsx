@@ -1,3 +1,5 @@
+/* eslint-disable fsd-path-checker-by-dandoniev/fsd-public-api-imports */
+// TODO
 import { Story } from "@storybook/react";
 import { IStoreState, StoreProvider } from "@/app/providers/StoreProvider";
 import { articleDetailsReducer } from "@/entities/Article/model/slice/articleDetailsSlice/articleDetailsSlice";

@@ -1,6 +1,4 @@
-export { ArticleBlockType } from "./model/consts/consts";
-
-export { ArticleType, ArticleSortField } from "./model/consts/consts";
+export { ArticleType, ArticleSortField, ArticleBlockType } from "./model/consts/consts";
 
 export { ArticleList } from "./ui/ArticleList/ArticleList";
 export { ArticleDetails } from "./ui/ArticleDetails/ArticleDetails";

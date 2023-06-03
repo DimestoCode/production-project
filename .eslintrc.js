@@ -110,6 +110,12 @@ module.exports = {
             {
                 alias: "@"
             }
+        ],
+        "fsd-path-checker-by-dandoniev/fsd-public-api-imports": [
+            "error",
+            {
+                alias: "@"
+            }
         ]
     },
     overrides: [
