@@ -1,7 +1,7 @@
 import { createSelector } from "@reduxjs/toolkit";
 import { lazy } from "react";
 import { getUserAuthData } from "@/entities/User";
-import { RoutePath } from "@/shared/config/routeConfig/routeConfig";
+import { RoutePath } from "@/shared/const/router";
 import MainPageIcon from "@/shared/assets/icons/main-page.svg";
 import AboutPageIcon from "@/shared/assets/icons/about-page.svg";
 import { ISidebarItem } from "../types/ISidebarItem";

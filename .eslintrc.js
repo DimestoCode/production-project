@@ -117,6 +117,13 @@ module.exports = {
                 alias: "@",
                 testFilesPatterns: ["**/*.{test,stories}.*", "**/StoreDecorator.tsx"]
             }
+        ],
+        "fsd-path-checker-by-dandoniev/fsd-layer-imports": [
+            "error",
+            {
+                alias: "@",
+                ignoreImportPatterns: ["**/StoreProvider", "**/testing"]
+            }
         ]
     },
     overrides: [

@@ -2,7 +2,7 @@ import { memo, useCallback, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector, useDispatch } from "react-redux";
 import { getUserAuthData, isRoleAdmin, isRoleManager, userActions } from "@/entities/User";
-import { RoutePath } from "@/shared/config/routeConfig/routeConfig";
+import { RoutePath } from "@/shared/const/router";
 import { USER_LOCAL_STORAGE_KEY } from "@/shared/const/localStorage";
 import { Avatar } from "@/shared/ui/Avatar/Avatar";
 import { Menu } from "@/shared/ui/Popups";

@@ -1,8 +1,7 @@
 import { Reducer } from "@reduxjs/toolkit";
 import { useEffect } from "react";
 import { useDispatch, useStore } from "react-redux";
-import { IStoreWithManager } from "@/app/providers/StoreProvider";
-import { IStoreState, StoreStateKey } from "@/app/providers/StoreProvider/config/IStore";
+import { IStoreState, IStoreWithManager, StoreStateKey } from "@/app/providers/StoreProvider";
 
 export type Reducers = {
     [name in StoreStateKey]?: Reducer<NonNullable<IStoreState[name]>>;

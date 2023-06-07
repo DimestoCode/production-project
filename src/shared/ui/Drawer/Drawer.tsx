@@ -1,5 +1,4 @@
 import { ReactNode, useCallback, useEffect } from "react";
-import { useTheme } from "@/app/providers/ThemeProvider";
 import { ClassNameObject, classNames } from "@/shared/lib/classNames/classNames";
 import { useAnimationLibraries } from "@/shared/lib/components/AnimationProvider";
 import { useModal } from "@/shared/lib/hooks/useModal/useModal";
@@ -7,6 +6,7 @@ import { Overlay } from "../Overlay/Overlay";
 import { Portal } from "../Portal/Portal";
 import classes from "./Drawer.module.scss";
 import withAnimationProvider from "@/shared/lib/components/AnimationProvider/withAnimationProvider";
+import useTheme from "@/shared/lib/hooks/useTheme/useTheme";
 
 interface IDrawerProps {
     className?: string;
@@ -80,6 +80,7 @@ export const DrawerContent = ({ children, onClose, className, isOpen }: IDrawerP
     }
 
     const display = y.to((py) => (py < height ? "block" : "none"));
+
     return (
         <Portal>
             <div className={classNames(classes.Drawer, mods, [className, theme, "app_drawer"])}>
