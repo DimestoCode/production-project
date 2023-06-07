@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { CommentList } from "@/entities/Comment";
 import { AddCommentForm } from "@/features/AddCommentForm";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
-import { Text } from "@/shared/ui/Text/Text";
+import { Text } from "@/shared/ui/Text";
 import { useActionEffect } from "@/shared/lib/hooks/useActionEffect/useActionEffect";
 import { VStack } from "@/shared/ui/Stack";
 import { retrieveCommentsByArticleId } from "../../model/services/retrieveCommentsByArticleId/retrieveCommentsByArticleId";

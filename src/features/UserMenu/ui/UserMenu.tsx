@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getUserAuthData, isRoleAdmin, isRoleManager, userActions } from "@/entities/User";
 import { RoutePath } from "@/shared/const/router";
 import { USER_LOCAL_STORAGE_KEY } from "@/shared/const/localStorage";
-import { Avatar } from "@/shared/ui/Avatar/Avatar";
+import { Avatar } from "@/shared/ui/Avatar";
 import { Menu } from "@/shared/ui/Popups";
 
 export const UserMenu = memo(() => {

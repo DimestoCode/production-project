@@ -1,5 +1,5 @@
 import { lazy, memo } from "react";
-import { Button, ButtonTheme } from "@/shared/ui/Button/Button";
+import { Button, ButtonTheme } from "@/shared/ui/Button";
 import { Theme } from "@/shared/const/theme";
 import useTheme from "@/shared/lib/hooks/useTheme/useTheme";
 

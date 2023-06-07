@@ -13,9 +13,9 @@ import {
     IDynamicLoaderProps,
     useDynamicModuleLoader
 } from "@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader";
-import { Button, ButtonTheme } from "@/shared/ui/Button/Button";
-import { Input } from "@/shared/ui/Input/Input";
-import { TextTheme, Text } from "@/shared/ui/Text/Text";
+import { Button, ButtonTheme } from "@/shared/ui/Button";
+import { Input } from "@/shared/ui/Input";
+import { TextTheme, Text } from "@/shared/ui/Text";
 import { loginActions, loginReducer } from "../../model/slices/loginSlice";
 import { getLoginIsLoading } from "../../model/selectors/getLoginIsLoading/getLoginIsLoading";
 import { getLoginError } from "../../model/selectors/getLoginError/getLoginError";

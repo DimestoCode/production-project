@@ -6,7 +6,7 @@ import { useActionEffect } from "@/shared/lib/hooks/useActionEffect/useActionEff
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { Reducers, useDynamicModuleLoader } from "@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader";
 import { VStack } from "@/shared/ui/Stack";
-import { Text, TextTheme } from "@/shared/ui/Text/Text";
+import { Text, TextTheme } from "@/shared/ui/Text";
 import { retrieveProfileData } from "../../model/services/retrieveProfileData/retrieveProfileData";
 import { getProfileError } from "../../model/selectors/getProfileError/getProfileError";
 import { getProfileForm } from "../../model/selectors/getProfileForm/getProfileForm";

@@ -3,8 +3,8 @@ import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { RoutePath } from "@/shared/const/router";
-import { AppLink } from "@/shared/ui/AppLink/AppLink";
-import { Button, ButtonTheme } from "@/shared/ui/Button/Button";
+import { AppLink } from "@/shared/ui/AppLink";
+import { Button, ButtonTheme } from "@/shared/ui/Button";
 import { HStack } from "@/shared/ui/Stack";
 import { getCanUserEditArticle } from "../../model/selectors/article/article";
 

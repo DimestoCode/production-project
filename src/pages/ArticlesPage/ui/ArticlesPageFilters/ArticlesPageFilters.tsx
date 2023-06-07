@@ -6,11 +6,11 @@ import { ArticleSortField, ArticleType, ArticleViewMode, ArticleViewSelector } f
 import { ArticleSortSelector } from "@/features/ArticleSortSelector";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
-import { Card } from "@/shared/ui/Card/Card";
-import { Input } from "@/shared/ui/Input/Input";
+import { Card } from "@/shared/ui/Card";
+import { Input } from "@/shared/ui/Input";
 import { SortOrder } from "@/shared/types";
 import { useDebounce } from "@/shared/lib/hooks/useDebounce/useDebounce";
-import { ITabItem } from "@/shared/ui/Tabs/Tabs";
+import { ITabItem } from "@/shared/ui/Tabs";
 import { ArticleTypeTabs } from "@/features/ArticleTypeTabs";
 import { articlesActions } from "../../model/slices/articlesPageSlice";
 import { fetchArticlesList } from "../../model/services/fetchArticlesList/fetchArticlesList";
