@@ -13,6 +13,7 @@ const ProfilePage = memo(() => {
         return <Text title={t("Profile not found")} />;
     }
 
+    // TODO: Profile Rating
     return (
         <Page>
             <EditableProfileCard profileId={Number(profileId)} />
