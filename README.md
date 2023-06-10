@@ -12,7 +12,7 @@ npm run start:dev or npm run start:dev:vite - launching the server + frontend pr
 - `npm run start` - Launching the project using webpack-dev-server
 - `npm run start:vite` - Launching the project using vite
 - `npm run start:dev` - Launching both backend and frontend parts of application using webpack-dev-server
-- `npm run start:dev:vite` - Launching both backend and frontendt parts of application using vite
+- `npm run start:dev:vite` - Launching both backend and frontend parts of application using vite
 - `npm run start:dev:server` - Launching backend server
 - `npm run build:prod` - Assembling the production bundle
 - `npm run build:dev` - Assembling the dev bundle
