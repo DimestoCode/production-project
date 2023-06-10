@@ -50,8 +50,13 @@ export const ArticleSortSelector = memo(
 
         return (
             <HStack align="center" className={className} gap="16">
-                <ListBox label={t("Sort by")} onChange={onChangeSort} options={sortFieldOptions} value={sort} />
-                <ListBox label={t("Order")} onChange={onChangeOrder} options={orderOptions} value={order} />
+                <ListBox<ArticleSortField>
+                    label={t("Sort by")}
+                    onChange={onChangeSort}
+                    options={sortFieldOptions}
+                    value={sort}
+                />
+                <ListBox<SortOrder> label={t("Order")} onChange={onChangeOrder} options={orderOptions} value={order} />
             </HStack>
         );
     }

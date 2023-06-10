@@ -2,7 +2,6 @@ import { AnyAction, EnhancedStore, Reducer, ReducersMapObject } from "@reduxjs/t
 import { AxiosInstance } from "axios";
 import { NavigateFunction } from "react-router-dom";
 import { IArticleState } from "@/entities/Article";
-import { ICounterState } from "@/entities/Counter";
 import { IUserState } from "@/entities/User";
 import { IAddCommentFormState } from "@/features/AddCommentForm";
 import { IScrollState } from "@/features/ScrollRestoration";
@@ -14,7 +13,6 @@ import { IProfileState } from "@/features/EditableProfileCard";
 import { AppDispatch } from "./store";
 
 export interface IStoreState {
-    counter: ICounterState;
     user: IUserState;
     scroll: IScrollState;
     [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>;
