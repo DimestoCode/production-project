@@ -1,7 +1,8 @@
 import { Reducer } from "@reduxjs/toolkit";
 import { useEffect } from "react";
-import { useDispatch, useStore } from "react-redux";
+import { useStore } from "react-redux";
 import { IStoreState, IStoreWithManager, StoreStateKey } from "@/app/providers/StoreProvider";
+import { useAppDispatch } from "../useAppDispatch/useAppDispatch";
 
 export type Reducers = {
     [name in StoreStateKey]?: Reducer<NonNullable<IStoreState[name]>>;
@@ -14,7 +15,7 @@ export interface IDynamicLoaderProps {
 
 export const useDynamicModuleLoader = ({ reducers, removeOnUnmount = false }: IDynamicLoaderProps) => {
     const store = useStore() as IStoreWithManager;
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     useEffect(() => {
         const reducersEntries = Object.entries<Reducers>(reducers) as Array<[StoreStateKey, Reducer]>;

@@ -8,7 +8,7 @@ import { Card } from "@/shared/ui/Card";
 import { Avatar } from "@/shared/ui/Avatar";
 import { Button, ButtonTheme } from "@/shared/ui/Button";
 import { AppLink } from "@/shared/ui/AppLink";
-import { RoutePath, AppRoutes } from "@/shared/const/router";
+import { getRouteArticleDetails } from "@/shared/const/router";
 import { IArticleTextBlock } from "../../model/types/IArticleBlock";
 import { ArticleViewMode, IArticle } from "../../model/types/IArticle";
 import classes from "./ArticleListItem.module.scss";
@@ -29,8 +29,6 @@ export const ArticleListItem = memo(({ className, article, viewMode, target }: I
     const articleTypes = <Text className={classes.types} text={article.type.join(", ")} />;
     const textBlock = article.blocks.find((block) => block.type === ArticleBlockType.Text) as IArticleTextBlock;
 
-    const articleDetailsUrl = `${RoutePath[AppRoutes.ArticleDetails]}/${article.id}`;
-
     const views = (
         <>
             <Text className={classes.views} text={String(article.views)} />
@@ -42,7 +40,7 @@ export const ArticleListItem = memo(({ className, article, viewMode, target }: I
         <div className={classNames(classes.ArticleListItem, {}, [className, classes[viewMode]])}>
             <Card className={classes.card}>
                 {isGrid ? (
-                    <AppLink target={target} to={articleDetailsUrl}>
+                    <AppLink target={target} to={getRouteArticleDetails(String(article.id))}>
                         <div className={classes.imageWrapper}>
                             <img alt={article.title} className={classes.img} src={article.img} />
                             <Text className={classes.date} text={article.createdAt} />
@@ -65,7 +63,7 @@ export const ArticleListItem = memo(({ className, article, viewMode, target }: I
                         <img alt={article.title} className={classes.img} src={article.img} />
                         {textBlock && <ArticleTextBlock block={textBlock} className={classes.textBlock} />}
                         <div className={classes.footer}>
-                            <AppLink to={articleDetailsUrl}>
+                            <AppLink to={getRouteArticleDetails(String(article.id))}>
                                 <Button theme={ButtonTheme.Outline}>{t("Read more")}</Button>
                             </AppLink>
                             {views}

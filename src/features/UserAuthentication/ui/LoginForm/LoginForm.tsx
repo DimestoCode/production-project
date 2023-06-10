@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { IUser } from "@/entities/User";
-import { RoutePath } from "@/shared/const/router";
+import { getRouteProfile } from "@/shared/const/router";
 import { USER_LOCAL_STORAGE_KEY } from "@/shared/const/localStorage";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
@@ -71,7 +71,7 @@ const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
         if (result.meta.requestStatus === "fulfilled" && isUser(result.payload)) {
             localStorage.setItem(USER_LOCAL_STORAGE_KEY, JSON.stringify(result.payload));
             onSuccess();
-            navigate(`${RoutePath.profile}/${result.payload.id}`);
+            navigate(getRouteProfile(`${result.payload.id}`));
         }
     }, [dispatch, navigate, onSuccess, password, username]);
 
