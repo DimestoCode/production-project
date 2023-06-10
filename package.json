@@ -128,9 +128,5 @@
   },
   "msw": {
     "workerDirectory": "public"
-  },
-  "browserslist": [
-    "defaults",
-    "not IE 11"
-  ]
+  }
 }
