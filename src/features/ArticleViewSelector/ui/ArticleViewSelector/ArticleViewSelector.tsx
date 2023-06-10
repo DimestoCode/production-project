@@ -5,7 +5,7 @@ import GridIcon from "@/shared/assets/icons/grid.svg";
 import { Button, ButtonTheme } from "@/shared/ui/Button";
 import { Icon } from "@/shared/ui/Icon";
 import { HStack } from "@/shared/ui/Stack";
-import { ArticleViewMode } from "../../model/types/IArticle";
+import { ArticleViewMode } from "@/entities/Article";
 import classes from "./ArticleViewSelector.module.scss";
 
 interface IArticleViewModeProps {
@@ -25,18 +25,14 @@ export const ArticleViewSelector = memo(({ className, onViewClick, view }: IArti
     };
     return (
         <HStack align="center" className={className} gap="8">
-            {viewModes.map((viewMode) => {
-                console.log(viewMode.view, view);
-
-                return (
-                    <Button key={viewMode.view} onClick={onClick(viewMode.view)} theme={ButtonTheme.Clear}>
-                        <Icon
-                            Svg={viewMode.icon}
-                            className={classNames(classes.icon, { [classes.active]: viewMode.view === view })}
-                        />
-                    </Button>
-                );
-            })}
+            {viewModes.map((viewMode) => (
+                <Button key={viewMode.view} onClick={onClick(viewMode.view)} theme={ButtonTheme.Clear}>
+                    <Icon
+                        Svg={viewMode.icon}
+                        className={classNames(classes.icon, { [classes.active]: viewMode.view === view })}
+                    />
+                </Button>
+            ))}
         </HStack>
     );
 });
