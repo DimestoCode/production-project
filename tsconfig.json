@@ -28,6 +28,7 @@
     },
     "include": [
       "./config/**/*.ts",
+      "./script/**/*.ts",
       "./src/**/*.tsx",
       "./src/**/*.ts",
       "lost-pixel.config.ts"
