@@ -1,8 +1,9 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { PayloadAction } from "@reduxjs/toolkit";
 import { IProfile } from "@/entities/Profile";
 import { retrieveProfileData } from "../services/retrieveProfileData/retrieveProfileData";
 import { updateProfileData } from "../services/updateProfileData/updateProfileData";
 import { IProfileState } from "../types/IProfileState";
+import { buildSlice } from "@/shared/lib/store";
 
 const initialState: IProfileState = {
     readonly: true,
@@ -13,7 +14,7 @@ const initialState: IProfileState = {
     validationErrors: undefined
 };
 
-export const profileSlice = createSlice({
+export const profileSlice = buildSlice({
     name: "profile",
     initialState,
     reducers: {
@@ -64,4 +65,4 @@ export const profileSlice = createSlice({
     }
 });
 
-export const { actions: profileActions, reducer: profileReducer } = profileSlice;
+export const { actions: profileActions, reducer: profileReducer, useActions: useProfileActions } = profileSlice;

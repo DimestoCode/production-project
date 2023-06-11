@@ -16,7 +16,7 @@ import {
 import { Button, ButtonTheme } from "@/shared/ui/Button";
 import { Input } from "@/shared/ui/Input";
 import { TextTheme, Text } from "@/shared/ui/Text";
-import { loginActions, loginReducer } from "../../model/slices/loginSlice";
+import { loginReducer, useLoginActions } from "../../model/slices/loginSlice";
 import { getLoginIsLoading } from "../../model/selectors/getLoginIsLoading/getLoginIsLoading";
 import { getLoginError } from "../../model/selectors/getLoginError/getLoginError";
 import { getLoginPassword } from "../../model/selectors/getLoginPassword/getLoginPassword";
@@ -42,6 +42,7 @@ const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
 
     const { t } = useTranslation("common");
     const dispatch = useAppDispatch();
+    const { setPassword, setUsername } = useLoginActions();
 
     const username = useSelector(getLoginUsername);
     const password = useSelector(getLoginPassword);
@@ -50,16 +51,16 @@ const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
 
     const onChangeUsername = useCallback(
         (value: string) => {
-            dispatch(loginActions.setUsername(value));
+            setUsername(value);
         },
-        [dispatch]
+        [setUsername]
     );
 
     const onChangePassword = useCallback(
         (value: string) => {
-            dispatch(loginActions.setPassword(value));
+            setPassword(value);
         },
-        [dispatch]
+        [setPassword]
     );
 
     const isUser = (user: string | IUser | undefined): user is IUser => {

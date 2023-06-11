@@ -12,7 +12,7 @@ import { SortOrder } from "@/shared/types";
 import { useDebounce } from "@/shared/lib/hooks/useDebounce/useDebounce";
 import { ITabItem } from "@/shared/ui/Tabs";
 import { ArticleTypeTabs } from "@/features/ArticleTypeTabs";
-import { articlesActions } from "../../model/slices/articlesPageSlice";
+import { useArticlesActions } from "../../model/slices/articlesPageSlice";
 import { fetchArticlesList } from "../../model/services/fetchArticlesList/fetchArticlesList";
 import {
     getArticlesSearch,
@@ -38,60 +38,62 @@ export const ArticlesPageFilters = memo(({ className }: IArticlesPageFiltersProp
     const search = useSelector(getArticlesSearch);
     const type = useSelector(getArticlesType);
 
+    const { setArticles, setOrder, setPage, setSearch, setSort, setType, setView } = useArticlesActions();
+
     const fetchData = useCallback(() => {
-        dispatch(articlesActions.setPage(1));
+        setPage(1);
         dispatch(fetchArticlesList({ initialLoad: true }));
-    }, [dispatch]);
+    }, [dispatch, setPage]);
 
     const debouncedFetchData = useDebounce(fetchData, 500);
 
     const onChangeView = useCallback(
         (view: ArticleViewMode) => {
-            dispatch(articlesActions.setView(view));
+            setView(view);
             fetchData();
         },
-        [dispatch, fetchData]
+        [setView, fetchData]
     );
 
     const onChangeOrder = useCallback(
         (order: SortOrder) => {
-            dispatch(articlesActions.setArticles({ articles: [], initialLoad: true }));
+            setArticles({ articles: [], initialLoad: true });
             setSearchParams({ order });
-            dispatch(articlesActions.setOrder(order));
+            setOrder(order);
             fetchData();
         },
-        [dispatch, fetchData, setSearchParams]
+        [setOrder, fetchData, setSearchParams, setArticles]
     );
 
     const onChangeSort = useCallback(
         (sortField: ArticleSortField) => {
-            dispatch(articlesActions.setArticles({ articles: [], initialLoad: true }));
+            setArticles({ articles: [], initialLoad: true });
             setSearchParams({ sort: sortField });
 
-            dispatch(articlesActions.setSort(sortField));
+            setSort(sortField);
             fetchData();
         },
-        [dispatch, fetchData, setSearchParams]
+        [fetchData, setArticles, setSearchParams, setSort]
     );
 
     const onChangeSearch = useCallback(
         (search: string) => {
-            dispatch(articlesActions.setArticles({ articles: [], initialLoad: true }));
+            setArticles({ articles: [], initialLoad: true });
             setSearchParams({ search });
-            dispatch(articlesActions.setSearch(search));
+            setSearch(search);
             debouncedFetchData();
         },
-        [debouncedFetchData, dispatch, setSearchParams]
+        [debouncedFetchData, setArticles, setSearch, setSearchParams]
     );
 
     const onChangeType = useCallback(
         (tabItem: ITabItem) => {
-            dispatch(articlesActions.setArticles({ articles: [], initialLoad: true }));
+            setArticles({ articles: [], initialLoad: true });
             setSearchParams({ type: tabItem.value });
-            dispatch(articlesActions.setType(tabItem.value as ArticleType));
+            setType(tabItem.value as ArticleType);
             fetchData();
         },
-        [dispatch, fetchData, setSearchParams]
+        [fetchData, setArticles, setSearchParams, setType]
     );
 
     return (

@@ -1,4 +1,8 @@
-export { scrollRestorationReducer, scrollRestorationActions } from "./model/slices/scrollRestorationSlice";
+export {
+    scrollRestorationReducer,
+    scrollRestorationActions,
+    useScrollRestorationActions
+} from "./model/slices/scrollRestorationSlice";
 
 export { getScrollByPath } from "./model/selectors/scrollRestorationSelectors";
 

@@ -1,19 +1,19 @@
 import { Suspense, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
+import { getUserInitialized, useUserActions } from "@/entities/User";
 import { classNames } from "@/shared/lib/classNames/classNames";
+import { Loader } from "@/shared/ui/Loader";
 import { Navbar } from "@/widgets/Navbar";
 import { Sidebar } from "@/widgets/Sidebar";
-import { getUserInitialized, userActions } from "@/entities/User";
-import { Loader } from "@/shared/ui/Loader";
 import { AppRouter } from "./providers/router";
 
 const App = () => {
-    const dispatch = useDispatch();
     const initialized = useSelector(getUserInitialized);
+    const { retrieveAuthDataFromStorage } = useUserActions();
 
     useEffect(() => {
-        dispatch(userActions.retrieveAuthDataFromStorage());
-    }, [dispatch]);
+        retrieveAuthDataFromStorage();
+    }, [retrieveAuthDataFromStorage]);
 
     return (
         <div className={classNames("app")}>

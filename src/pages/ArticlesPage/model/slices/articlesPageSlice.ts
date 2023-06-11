@@ -1,10 +1,11 @@
-import { createEntityAdapter, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createEntityAdapter, PayloadAction } from "@reduxjs/toolkit";
 import { IStoreState } from "@/app/providers/StoreProvider";
 import { ArticleSortField, ArticleType, ArticleViewMode, IArticle } from "@/entities/Article";
 import { ARTICLES_VIEW_LOCAL_STORAGE_KEY } from "@/shared/const/localStorage";
 import { SortOrder } from "@/shared/types";
 import { fetchArticlesList } from "../services/fetchArticlesList/fetchArticlesList";
 import { IArticlesState } from "../types/IArticlesState";
+import { buildSlice } from "@/shared/lib/store";
 
 const articlesAdapter = createEntityAdapter<IArticle>({
     selectId: (article) => article.id
@@ -15,7 +16,7 @@ export const getArticles = articlesAdapter.getSelectors<IStoreState>(
 );
 
 const storageArticleMode = localStorage.getItem(ARTICLES_VIEW_LOCAL_STORAGE_KEY) as ArticleViewMode;
-const articlesSlice = createSlice({
+const articlesSlice = buildSlice({
     name: "articles",
     initialState: articlesAdapter.getInitialState<IArticlesState>({
         initialized: false,
@@ -96,4 +97,4 @@ const articlesSlice = createSlice({
     }
 });
 
-export const { reducer: articlesReducer, actions: articlesActions } = articlesSlice;
+export const { reducer: articlesReducer, actions: articlesActions, useActions: useArticlesActions } = articlesSlice;

@@ -1,9 +1,9 @@
 import { memo, useCallback, useMemo } from "react";
 import { useTranslation } from "react-i18next";
-import { useSelector, useDispatch } from "react-redux";
-import { getUserAuthData, isRoleAdmin, isRoleManager, userActions } from "@/entities/User";
-import { getRouteAdmin, getRouteProfile } from "@/shared/const/router";
+import { useSelector } from "react-redux";
+import { getUserAuthData, isRoleAdmin, isRoleManager, useUserActions } from "@/entities/User";
 import { USER_LOCAL_STORAGE_KEY } from "@/shared/const/localStorage";
+import { getRouteAdmin, getRouteProfile } from "@/shared/const/router";
 import { Avatar } from "@/shared/ui/Avatar";
 import { Menu } from "@/shared/ui/Popups";
 
@@ -12,15 +12,13 @@ export const UserMenu = memo(() => {
     const authData = useSelector(getUserAuthData);
     const isAdmin = useSelector(isRoleAdmin);
     const isManager = useSelector(isRoleManager);
-
+    const { logout } = useUserActions();
     const showAdminPanelItem = isAdmin || isManager;
 
-    const dispatch = useDispatch();
-
     const onLogoutClick = useCallback(() => {
-        dispatch(userActions.logout());
+        logout();
         localStorage.removeItem(USER_LOCAL_STORAGE_KEY);
-    }, [dispatch]);
+    }, [logout]);
 
     const menuItems = useMemo(() => {
         return [

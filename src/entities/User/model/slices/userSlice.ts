@@ -1,12 +1,13 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { PayloadAction } from "@reduxjs/toolkit";
 import { USER_LOCAL_STORAGE_KEY } from "@/shared/const/localStorage";
 import { IUser, IUserState } from "../types/IUser";
+import { buildSlice } from "@/shared/lib/store";
 
 const initialState: IUserState = {
     _initialized: false
 };
 
-export const userSlice = createSlice({
+export const userSlice = buildSlice({
     name: "user",
     initialState,
     reducers: {
@@ -26,4 +27,4 @@ export const userSlice = createSlice({
     }
 });
 
-export const { actions: userActions, reducer: userReducer } = userSlice;
+export const { actions: userActions, reducer: userReducer, useActions: useUserActions } = userSlice;

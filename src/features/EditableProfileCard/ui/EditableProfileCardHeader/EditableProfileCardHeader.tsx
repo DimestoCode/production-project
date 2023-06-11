@@ -6,7 +6,7 @@ import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch
 import { Button, ButtonTheme } from "@/shared/ui/Button";
 import { HStack } from "@/shared/ui/Stack";
 import { Text } from "@/shared/ui/Text";
-import { profileActions } from "../../model/slices/profileSlice";
+import { useProfileActions } from "../../model/slices/profileSlice";
 import { getIsProfileFormEditable } from "../../model/selectors/getIsProfileFormEditable/getIsProfileFormEditable";
 import { getProfileReadOnly } from "../../model/selectors/getProfileReadOnly/getProfileReadOnly";
 import { updateProfileData } from "../../model/services/updateProfileData/updateProfileData";
@@ -18,17 +18,18 @@ interface EditableProfileCardHeaderProps {
 
 export const EditableProfileCardHeader = ({ className }: EditableProfileCardHeaderProps) => {
     const { t } = useTranslation("profile");
-    const dispatch = useAppDispatch();
     const readOnly = useSelector(getProfileReadOnly);
     const isEditable = useSelector(getIsProfileFormEditable);
+    const dispatch = useAppDispatch();
+    const { cancelEdit, setReadOnly } = useProfileActions();
 
     const onEdit = useCallback(() => {
-        dispatch(profileActions.setReadOnly(false));
-    }, [dispatch]);
+        setReadOnly(false);
+    }, [setReadOnly]);
 
     const onCancel = useCallback(() => {
-        dispatch(profileActions.cancelEdit());
-    }, [dispatch]);
+        cancelEdit();
+    }, [cancelEdit]);
 
     const onSave = useCallback(() => {
         dispatch(updateProfileData());

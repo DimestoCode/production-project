@@ -3,7 +3,6 @@ import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { ProfileCard } from "@/entities/Profile";
 import { useActionEffect } from "@/shared/lib/hooks/useActionEffect/useActionEffect";
-import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { Reducers, useDynamicModuleLoader } from "@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader";
 import { VStack } from "@/shared/ui/Stack";
 import { Text, TextTheme } from "@/shared/ui/Text";
@@ -13,7 +12,7 @@ import { getProfileForm } from "../../model/selectors/getProfileForm/getProfileF
 import { getProfileIsLoading } from "../../model/selectors/getProfileIsLoading/getProfileIsLoading";
 import { getProfileReadOnly } from "../../model/selectors/getProfileReadOnly/getProfileReadOnly";
 import { getProfileValidationErrors } from "../../model/selectors/getProfileValidationErrors/getProfileValidationErrors";
-import { profileActions, profileReducer } from "../../model/slices/profileSlice";
+import { profileReducer, useProfileActions } from "../../model/slices/profileSlice";
 import { EditableProfileCardHeader } from "../EditableProfileCardHeader/EditableProfileCardHeader";
 
 interface IEditableProfileCardProps {
@@ -31,7 +30,8 @@ export const EditableProfileCard = memo(({ profileId }: IEditableProfileCardProp
     useDynamicModuleLoader({ reducers, removeOnUnmount: true });
     useActionEffect(fetchProfileCallback);
 
-    const dispatch = useAppDispatch();
+    const { updateProfile } = useProfileActions();
+
     const formData = useSelector(getProfileForm);
     const error = useSelector(getProfileError);
     const isLoading = useSelector(getProfileIsLoading);
@@ -40,23 +40,23 @@ export const EditableProfileCard = memo(({ profileId }: IEditableProfileCardProp
 
     const onInputChange = useCallback(
         (value: string, name: string) => {
-            dispatch(profileActions.updateProfile({ [name]: value ?? "" }));
+            updateProfile({ [name]: value ?? "" });
         },
-        [dispatch]
+        [updateProfile]
     );
 
     const onInputNumberChange = useCallback(
         (value: string, name: string) => {
-            dispatch(profileActions.updateProfile({ [name]: value ? +value : "" }));
+            updateProfile({ [name]: value ? +value : "" });
         },
-        [dispatch]
+        [updateProfile]
     );
 
     const onSelectChange = useCallback(
         <T extends string>(value: T, name: string) => {
-            dispatch(profileActions.updateProfile({ [name]: value }));
+            updateProfile({ [name]: value });
         },
-        [dispatch]
+        [updateProfile]
     );
 
     return (
