@@ -14,6 +14,8 @@ import { ArticleViewMode, IArticle } from "../../model/types/IArticle";
 import classes from "./ArticleListItem.module.scss";
 import { ArticleTextBlock } from "../ArticleTextBlock/ArticleTextBlock";
 import { ArticleBlockType } from "../../model/consts/consts";
+import { AppImage } from "@/shared/ui/AppImage/AppImage";
+import { Skeleton } from "@/shared/ui/Skeleton";
 
 interface IArticleListItemProps {
     className?: string;
@@ -42,7 +44,12 @@ export const ArticleListItem = memo(({ className, article, viewMode, target }: I
                 {isGrid ? (
                     <AppLink target={target} to={getRouteArticleDetails(String(article.id))}>
                         <div className={classes.imageWrapper}>
-                            <img alt={article.title} className={classes.img} src={article.img} />
+                            <AppImage
+                                alt={article.title}
+                                className={classes.img}
+                                fallback={<Skeleton height="200px" width="200px" />}
+                                src={article.img}
+                            />
                             <Text className={classes.date} text={article.createdAt} />
                         </div>
                         <div className={classes.infoWrapper}>
@@ -60,7 +67,13 @@ export const ArticleListItem = memo(({ className, article, viewMode, target }: I
                         </div>
                         <Text className={classes.title} text={article.title} />
                         {articleTypes}
-                        <img alt={article.title} className={classes.img} src={article.img} />
+                        <AppImage
+                            alt={article.title}
+                            className={classes.img}
+                            fallback={<Skeleton height={250} width="100%" />}
+                            src={article.img}
+                        />
+
                         {textBlock && <ArticleTextBlock block={textBlock} className={classes.textBlock} />}
                         <div className={classes.footer}>
                             <AppLink to={getRouteArticleDetails(String(article.id))}>
