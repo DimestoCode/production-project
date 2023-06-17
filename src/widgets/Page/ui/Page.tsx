@@ -7,14 +7,15 @@ import { classNames } from "@/shared/lib/classNames/classNames";
 import { useInfiniteScroll } from "@/shared/lib/hooks/useInfiniteScroll/useInfiniteScroll";
 import { useThrottle } from "@/shared/lib/hooks/useThrottle/useThrottle";
 import classes from "./Page.module.scss";
+import { ITestProps } from "@/shared/types/tests";
 
-interface IPageProps {
+interface IPageProps extends ITestProps {
     className?: string;
     children: ReactNode;
     onScrollEnd?: () => void;
 }
 
-export const Page = ({ className, children, onScrollEnd }: IPageProps) => {
+export const Page = ({ className, children, onScrollEnd, ...rest }: IPageProps) => {
     const wrapperRef = useRef() as MutableRefObject<HTMLInputElement>;
     const triggerRef = useRef() as MutableRefObject<HTMLInputElement>;
     const { setScrollPosition } = useScrollRestorationActions();
@@ -34,7 +35,12 @@ export const Page = ({ className, children, onScrollEnd }: IPageProps) => {
     }, [scrollPosition]);
 
     return (
-        <main className={classNames(classes.Page, {}, [className])} onScroll={onScroll} ref={wrapperRef}>
+        <main
+            className={classNames(classes.Page, {}, [className])}
+            data-testid={rest["data-testid"] ?? "page"}
+            onScroll={onScroll}
+            ref={wrapperRef}
+        >
             {children}
             {onScrollEnd ? <div ref={triggerRef} /> : null}
         </main>

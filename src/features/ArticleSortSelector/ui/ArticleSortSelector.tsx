@@ -1,7 +1,7 @@
 import { memo, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { ArticleSortField } from "@/entities/Article";
-import { SortOrder } from "@/shared/types";
+import { SortOrder } from "@/shared/types/sort";
 import { IListBoxItem, ListBox } from "@/shared/ui/Popups";
 import { HStack } from "@/shared/ui/Stack";
 

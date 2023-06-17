@@ -2,7 +2,7 @@ import { createEntityAdapter, PayloadAction } from "@reduxjs/toolkit";
 import { IStoreState } from "@/app/providers/StoreProvider";
 import { ArticleSortField, ArticleType, ArticleViewMode, IArticle } from "@/entities/Article";
 import { ARTICLES_VIEW_LOCAL_STORAGE_KEY } from "@/shared/const/localStorage";
-import { SortOrder } from "@/shared/types";
+import { SortOrder } from "@/shared/types/sort";
 import { fetchArticlesList } from "../services/fetchArticlesList/fetchArticlesList";
 import { IArticlesState } from "../types/IArticlesState";
 import { buildSlice } from "@/shared/lib/store";

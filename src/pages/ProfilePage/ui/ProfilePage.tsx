@@ -15,7 +15,7 @@ const ProfilePage = memo(() => {
 
     // TODO: Profile Rating
     return (
-        <Page>
+        <Page data-testid="profile-page">
             <EditableProfileCard profileId={Number(profileId)} />
         </Page>
     );
