@@ -4,22 +4,22 @@ import { renderTestComponent } from "@/shared/lib/tests/renderComponent";
 import { Sidebar } from "./Sidebar";
 
 describe("Sidebar", () => {
-    test("renders sucessfully", () => {
+    test("renders sucessfully", async () => {
         renderTestComponent(
             <Suspense fallback="loading">
                 <Sidebar />
             </Suspense>
         );
-        expect(screen.getByTestId("sidebar")).toBeInTheDocument();
+        expect(await screen.findByTestId("sidebar")).toBeInTheDocument();
     });
 
-    test("toggles successfully", () => {
+    test("toggles successfully", async () => {
         renderTestComponent(
             <Suspense fallback="loading">
                 <Sidebar />
             </Suspense>
         );
-        const toggleBtn = screen.getByTestId("sidebar-toggle");
+        const toggleBtn = await screen.findByTestId("sidebar-toggle");
         const sidebar = screen.getByTestId("sidebar");
         expect(sidebar).toBeInTheDocument();
 

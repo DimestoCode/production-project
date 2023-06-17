@@ -31,7 +31,9 @@ describe("AppRouter", () => {
             route: getRouteProfile("1"),
             initialState: {
                 user: {
-                    authData: {},
+                    authData: {
+                        id: 1
+                    },
                     _initialized: true
                 }
             }
