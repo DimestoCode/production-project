@@ -8,7 +8,7 @@ import { Skeleton } from "../Skeleton";
 
 interface AvatarProps {
     className?: string;
-    invertedFallback: boolean;
+    invertedFallback?: boolean;
     src?: string;
     alt?: string;
     size?: number;
