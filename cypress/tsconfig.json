@@ -3,8 +3,10 @@
       "target": "es5",
       "lib": ["es5", "dom"],
       "types": ["cypress", "node"],
-      "isolatedModules": false
+      "isolatedModules": false,
+      "resolveJsonModule": true
     },
     "extends": "../tsconfig.json",
-    "include": ["**/*.ts"]
+    "include": ["**/*.ts", "**/*.tsx"],
+    "exclude": ["node_modules"]
   }

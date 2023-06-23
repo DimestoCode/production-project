@@ -1,7 +1,7 @@
 import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { cloneDeep, set } from "lodash";
-import { renderTestComponent } from "@/shared/lib/tests/renderComponent";
+import { renderTestComponent } from "@/shared/lib/tests/renderTestComponent";
 import { $api } from "@/shared/api/api";
 import { profileReducer } from "../../model/slices/profileSlice";
 import { EditableProfileCard } from "./EditableProfileCard";

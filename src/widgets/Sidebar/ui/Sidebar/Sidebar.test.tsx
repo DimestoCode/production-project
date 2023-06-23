@@ -1,6 +1,6 @@
 import { fireEvent, screen } from "@testing-library/react";
 import React, { Suspense } from "react";
-import { renderTestComponent } from "@/shared/lib/tests/renderComponent";
+import { renderTestComponent } from "@/shared/lib/tests/renderTestComponent";
 import { Sidebar } from "./Sidebar";
 
 describe("Sidebar", () => {
