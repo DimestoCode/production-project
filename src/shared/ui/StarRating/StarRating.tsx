@@ -46,6 +46,8 @@ export const StarRating = memo(({ className, selectedStars, size, onSelect }: IS
                         [classes.hovered]: Number(highlightedStarsNumber) >= starNumber,
                         [classes.selected]: isSelected
                     })}
+                    data-selected={Number(highlightedStarsNumber) >= starNumber}
+                    data-testid={`StarRating.${starNumber}`}
                     height={size}
                     key={starNumber}
                     onClick={onClick(starNumber)}

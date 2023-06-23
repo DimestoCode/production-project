@@ -39,7 +39,10 @@ export const ArticleListItem = memo(({ className, article, viewMode, target }: I
     );
 
     return (
-        <div className={classNames(classes.ArticleListItem, {}, [className, classes[viewMode]])}>
+        <div
+            className={classNames(classes.ArticleListItem, {}, [className, classes[viewMode]])}
+            data-testid="ArticleListItem"
+        >
             <Card className={classes.card}>
                 {isGrid ? (
                     <AppLink target={target} to={getRouteArticleDetails(String(article.id))}>

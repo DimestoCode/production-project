@@ -16,7 +16,7 @@ export const ArticleRecommendationsList = memo(({ className }: IArticleRecommend
     const { isLoading, data: articles, error } = useGetArticleRecommendationsListQuery(3);
 
     return (
-        <VStack className={classNames("", {}, [className])} gap="8">
+        <VStack className={classNames("", {}, [className])} data-testid="ArticleRecommendations" gap="8">
             <Text size="L" title={t("Recommendations")} />
             {isLoading && <Loader />}
             {!isLoading && error && <Text text={t("Recommendations can't be loaded")} />}

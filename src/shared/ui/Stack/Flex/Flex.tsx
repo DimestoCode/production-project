@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ElementType, HTMLAttributes, ReactNode } from "react";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import classes from "./Flex.module.scss";
 
@@ -7,7 +7,7 @@ export type FlexAlign = "start" | "center" | "end";
 export type FlexDirection = "row" | "column";
 export type FlexGap = "4" | "8" | "16" | "32";
 
-export interface IFlexProps {
+export interface IFlexProps extends HTMLAttributes<HTMLOrSVGElement> {
     className?: string;
     children: ReactNode;
     justify?: FlexJustify;
@@ -15,7 +15,7 @@ export interface IFlexProps {
     direction?: FlexDirection;
     gap?: FlexGap;
     maxWidth?: boolean;
-    tag?: keyof JSX.IntrinsicElements;
+    tag?: ElementType;
 }
 
 const justifyClasses: Record<FlexJustify, string> = {
@@ -51,7 +51,8 @@ export const Flex = ({
     justify = "start",
     gap,
     tag = "div",
-    maxWidth
+    maxWidth,
+    ...rest
 }: IFlexProps) => {
     const additionalClasses = [
         className,
@@ -64,6 +65,8 @@ export const Flex = ({
     const Tag = tag;
 
     return (
-        <Tag className={classNames(classes.Flex, { [classes.maxWidth]: maxWidth }, additionalClasses)}>{children}</Tag>
+        <Tag className={classNames(classes.Flex, { [classes.maxWidth]: maxWidth }, additionalClasses)} {...rest}>
+            {children}
+        </Tag>
     );
 };

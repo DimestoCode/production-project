@@ -35,7 +35,7 @@ export const ArticleList = memo(({ className, articles, isLoading, viewMode = "g
     );
 
     return (
-        <div className={classNames(classes.ArticleList, {}, [className, classes[viewMode]])}>
+        <div className={classNames(classes.ArticleList, {}, [className, classes[viewMode]])} data-testid="ArticleList">
             {!!articles?.length && articles.map(renderArticle)}
             {isLoading && getSkeletons(viewMode)}
             {!isLoading && !articles?.length && <Text title={t("Articles not found")} />}

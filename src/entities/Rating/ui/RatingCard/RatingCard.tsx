@@ -54,12 +54,17 @@ export const RatingCard = memo(
         const modalContent = (
             <VStack gap="8" maxWidth>
                 <Text title={feedbackTitle} />
-                <Input onChange={setFeedback} placeholder={t("Your feedback")} value={feedback} />
+                <Input
+                    data-testid="RatingCard.Input"
+                    onChange={setFeedback}
+                    placeholder={t("Your feedback")}
+                    value={feedback}
+                />
             </VStack>
         );
 
         return (
-            <Card className={className} fullWidth>
+            <Card className={className} data-testid="RatingCard" fullWidth>
                 <VStack align="center" gap="8">
                     <Text title={starsCount ? t("Thanks for your feedback") : title} />
                     <StarRating onSelect={onSelectStars} selectedStars={starsCount} size={40} />
@@ -69,10 +74,18 @@ export const RatingCard = memo(
                             {modalContent}
                             <VStack gap="32" maxWidth>
                                 <HStack gap="16" justify="end" maxWidth>
-                                    <Button onClick={handleCancel} theme={ButtonTheme.OutlineRed}>
+                                    <Button
+                                        data-testid="RatingCard.Close"
+                                        onClick={handleCancel}
+                                        theme={ButtonTheme.OutlineRed}
+                                    >
                                         {t("Cancel")}
                                     </Button>
-                                    <Button onClick={handleAccept} theme={ButtonTheme.Outline}>
+                                    <Button
+                                        data-testid="RatingCard.Save"
+                                        onClick={handleAccept}
+                                        theme={ButtonTheme.Outline}
+                                    >
                                         {t("Submit")}
                                     </Button>
                                 </HStack>

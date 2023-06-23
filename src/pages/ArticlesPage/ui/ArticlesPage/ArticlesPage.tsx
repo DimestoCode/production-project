@@ -41,7 +41,7 @@ const ArticlesPage = () => {
     }, [articles.length, dispatch, hasMoreArticles]);
 
     return (
-        <Page className={classNames(classes.ArticlesPage)} onScrollEnd={onLoadNextPart}>
+        <Page className={classNames(classes.ArticlesPage)} data-testid="articles-page" onScrollEnd={onLoadNextPart}>
             <ArticlesPageFilters />
             <ArticlesInfiniteList className={classes.list} />
         </Page>

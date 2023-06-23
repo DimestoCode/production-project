@@ -17,7 +17,12 @@ interface ICommentCardProps {
 
 export const CommentCardSkeleton = memo(() => {
     return (
-        <VStack className={classNames(classes.CommentCard, {}, [classes.loading])} gap="16" maxWidth>
+        <VStack
+            className={classNames(classes.CommentCard, {}, [classes.loading])}
+            data-testid="ContentCard.Loading"
+            gap="16"
+            maxWidth
+        >
             <div className={classes.header}>
                 <Skeleton borderRadius="50%" height={30} width={30} />
                 <Skeleton className={classes.username} height={16} width={100} />
@@ -37,7 +42,12 @@ export const CommentCard = memo(({ className, comment, isLoading }: ICommentCard
     }
 
     return (
-        <VStack className={classNames(classes.CommentCard, {}, [className])} gap="8" maxWidth>
+        <VStack
+            className={classNames(classes.CommentCard, {}, [className])}
+            data-testid="CommentCard.Content"
+            gap="8"
+            maxWidth
+        >
             <AppLink className={classes.header} to={getRouteProfile(String(comment.user.id))}>
                 {comment.user.avatar ? <Avatar size={30} src={comment.user.avatar} /> : null}
                 <Text className={classes.username} title={comment.user.username} />

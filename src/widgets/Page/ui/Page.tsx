@@ -42,7 +42,7 @@ export const Page = ({ className, children, onScrollEnd, ...rest }: IPageProps) 
             ref={wrapperRef}
         >
             {children}
-            {onScrollEnd ? <div ref={triggerRef} /> : null}
+            {onScrollEnd ? <div ref={triggerRef} style={{ bottom: "1px", position: "relative" }} /> : null}
         </main>
     );
 };
