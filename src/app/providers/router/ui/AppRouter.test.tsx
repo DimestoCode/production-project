@@ -4,6 +4,10 @@ import { AppRouter } from "./AppRouter";
 import { getRouteAdmin, getRouteProfile } from "@/shared/const/router";
 import { UserRole } from "@/entities/User/testing";
 
+jest.mock("@/pages/ProfilePage/index", () => ({
+    ProfilePage: () => <div data-testid="profile-page"> Profile Page</div>
+}));
+
 describe("AppRouter", () => {
     test("About page should be rendered if route is /about", async () => {
         renderTestComponent(<AppRouter />, { route: "/about" });
