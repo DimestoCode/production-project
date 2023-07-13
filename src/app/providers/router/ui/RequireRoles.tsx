@@ -1,6 +1,5 @@
-import { useSelector } from "react-redux";
 import { Navigate, useLocation } from "react-router-dom";
-import { getUserRoles, UserRole } from "@/entities/User";
+import { UserRole, useUserRoles } from "@/entities/User";
 import { getRouteForbidden } from "@/shared/const/router";
 
 interface IRequireRolesProps {
@@ -9,7 +8,7 @@ interface IRequireRolesProps {
 }
 
 export const RequireRoles = ({ routeRoles, children }: IRequireRolesProps) => {
-    const userRoles = useSelector(getUserRoles);
+    const userRoles = useUserRoles();
     const location = useLocation();
     const hasRequiredRoles = routeRoles?.some((role) => userRoles?.includes(role));
 

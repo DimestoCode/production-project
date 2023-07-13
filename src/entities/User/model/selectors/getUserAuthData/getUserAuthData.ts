@@ -1,3 +1,4 @@
 import { IStoreState } from "@/app/providers/StoreProvider";
+import { buildSelector } from "@/shared/lib/store/buildSelector";
 
-export const getUserAuthData = (state: IStoreState) => state.user?.authData;
+export const [useUserAuthData, getUserAuthData] = buildSelector((state: IStoreState) => state.user?.authData);

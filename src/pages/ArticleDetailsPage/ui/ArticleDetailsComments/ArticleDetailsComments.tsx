@@ -10,7 +10,7 @@ import { VStack } from "@/shared/ui/Stack";
 import { retrieveCommentsByArticleId } from "../../model/services/retrieveCommentsByArticleId/retrieveCommentsByArticleId";
 import { getArticleComments } from "../../model/slices/articleCommentsSlice/articleCommentsSlice";
 import { addCommentForArticle } from "../../model/services/addCommentForArticle/addCommentForArticle";
-import { getArticleCommentsIsLoading } from "../../model/selectors/comments/commentsSelectors";
+import { useArticleCommentsIsLoading } from "../../model/selectors/comments/commentsSelectors";
 
 interface IArticleDetailsCommentsProps {
     articleId: number;
@@ -20,7 +20,7 @@ export const ArticleDetailsComments = memo(({ articleId }: IArticleDetailsCommen
     const { t } = useTranslation("article");
     const dispatch = useAppDispatch();
     const comments = useSelector(getArticleComments.selectAll);
-    const isLoading = useSelector(getArticleCommentsIsLoading);
+    const isLoading = useArticleCommentsIsLoading();
 
     const onCommentSubmit = useCallback(
         (comment: string) => {

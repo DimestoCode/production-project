@@ -2,7 +2,6 @@ import isNil from "lodash/isNil";
 import isString from "lodash/isString";
 import { memo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
-import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { IUser } from "@/entities/User";
 import { getRouteProfile } from "@/shared/const/router";
@@ -17,12 +16,12 @@ import { Button, ButtonTheme } from "@/shared/ui/Button";
 import { Input } from "@/shared/ui/Input";
 import { TextTheme, Text } from "@/shared/ui/Text";
 import { loginReducer, useLoginActions } from "../../model/slices/loginSlice";
-import { getLoginIsLoading } from "../../model/selectors/getLoginIsLoading/getLoginIsLoading";
-import { getLoginError } from "../../model/selectors/getLoginError/getLoginError";
-import { getLoginPassword } from "../../model/selectors/getLoginPassword/getLoginPassword";
-import { getLoginUsername } from "../../model/selectors/getLoginUsername/getLoginUsername";
-import classes from "./LoginForm.module.scss";
+import { useLoginIsLoading } from "../../model/selectors/getLoginIsLoading/getLoginIsLoading";
+import { useLoginError } from "../../model/selectors/getLoginError/getLoginError";
+import { useLoginPassword } from "../../model/selectors/getLoginPassword/getLoginPassword";
+import { useLoginUsername } from "../../model/selectors/getLoginUsername/getLoginUsername";
 import { loginByUsername } from "../../model/services/loginByUsername/loginByUsername";
+import classes from "./LoginForm.module.scss";
 
 export interface LoginFormProps {
     className?: string;
@@ -44,10 +43,10 @@ const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
     const dispatch = useAppDispatch();
     const { setPassword, setUsername } = useLoginActions();
 
-    const username = useSelector(getLoginUsername);
-    const password = useSelector(getLoginPassword);
-    const isLoading = useSelector(getLoginIsLoading);
-    const error = useSelector(getLoginError);
+    const username = useLoginUsername();
+    const password = useLoginPassword();
+    const isLoading = useLoginIsLoading();
+    const error = useLoginError();
 
     const onChangeUsername = useCallback(
         (value: string) => {

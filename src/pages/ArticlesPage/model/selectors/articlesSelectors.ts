@@ -1,24 +1,41 @@
 import { IStoreState } from "@/app/providers/StoreProvider";
 import { ArticleSortField, ArticleType } from "@/entities/Article";
+import { buildSelector } from "@/shared/lib/store/buildSelector";
 
-export const getArticlesIsLoading = (state: IStoreState) => state.articles?.isLoading ?? false;
+export const [useArticlesIsLoading, getArticlesIsLoading] = buildSelector(
+    (state: IStoreState) => state.articles?.isLoading ?? false
+);
 
-export const getArticlesError = (state: IStoreState) => state.articles?.error ?? "";
+export const [useArticlesError, getArticlesError] = buildSelector((state: IStoreState) => state.articles?.error ?? "");
 
-export const getArticlesView = (state: IStoreState) => state.articles?.view ?? "grid";
+export const [useArticlesView, getArticlesView] = buildSelector((state: IStoreState) => state.articles?.view ?? "grid");
 
-export const getArticlesPageNumber = (state: IStoreState) => state.articles?.page ?? 1;
+export const [useArticlesPageNumber, getArticlesPageNumber] = buildSelector(
+    (state: IStoreState) => state.articles?.page ?? 1
+);
 
-export const getArticlesPageLimit = (state: IStoreState) => state.articles?.limit ?? 9;
+export const [useArticlesPageLimit, getArticlesPageLimit] = buildSelector(
+    (state: IStoreState) => state.articles?.limit ?? 9
+);
 
-export const getArticlesHasMore = (state: IStoreState) => state.articles?.hasMore;
+export const [useArticlesHasMore, getArticlesHasMore] = buildSelector((state: IStoreState) => state.articles?.hasMore);
 
-export const getArticlesInitialized = (state: IStoreState) => state.articles?.initialized;
+export const [useArticlesInitialized, getArticlesInitialized] = buildSelector(
+    (state: IStoreState) => state.articles?.initialized
+);
 
-export const getArticlesSortField = (state: IStoreState) => state.articles?.sort ?? ArticleSortField.CreatedAt;
+export const [useArticlesSortField, getArticlesSortField] = buildSelector(
+    (state: IStoreState) => state.articles?.sort ?? ArticleSortField.CreatedAt
+);
 
-export const getArticlesSortOrder = (state: IStoreState) => state.articles?.order ?? "asc";
+export const [useArticlesSortOrder, getArticlesSortOrder] = buildSelector(
+    (state: IStoreState) => state.articles?.order ?? "asc"
+);
 
-export const getArticlesSearch = (state: IStoreState) => state.articles?.search ?? "";
+export const [useArticlesSearch, getArticlesSearch] = buildSelector(
+    (state: IStoreState) => state.articles?.search ?? ""
+);
 
-export const getArticlesType = (state: IStoreState) => state.articles?.type ?? ArticleType.All;
+export const [useArticlesType, getArticlesType] = buildSelector(
+    (state: IStoreState) => state.articles?.type ?? ArticleType.All
+);

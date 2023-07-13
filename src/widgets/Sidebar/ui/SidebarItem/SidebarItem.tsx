@@ -1,7 +1,6 @@
 import { memo } from "react";
 import { useTranslation } from "react-i18next";
-import { useSelector } from "react-redux";
-import { getUserAuthData } from "@/entities/User";
+import { useUserAuthData } from "@/entities/User";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { AppLink, AppLinkTheme } from "@/shared/ui/AppLink";
 import { ISidebarItem } from "../../model/types/ISidebarItem";
@@ -11,7 +10,7 @@ export const SidebarItem = memo(({ item, collapsed }: { item: ISidebarItem; coll
     const { path, text, Icon, isPrivate } = item;
     const { t } = useTranslation("common");
 
-    const isAuthenticated = useSelector(getUserAuthData);
+    const isAuthenticated = useUserAuthData();
 
     if (!isAuthenticated && isPrivate) {
         return null;

@@ -1,12 +1,12 @@
 import { IStoreState } from "@/app/providers/StoreProvider";
 import {
+    getArticlesIsLoading,
+    getArticlesView,
+    getArticlesPageNumber,
+    getArticlesPageLimit,
     getArticlesError,
     getArticlesHasMore,
-    getArticlesInitialized,
-    getArticlesIsLoading,
-    getArticlesPageLimit,
-    getArticlesPageNumber,
-    getArticlesView
+    getArticlesInitialized
 } from "./articlesSelectors";
 
 describe("articlesSelectors", () => {

@@ -1,1 +1,5 @@
 .fttemplates
+build
+coverage
+node_modules
+*.html

@@ -1,4 +1,9 @@
 import { IStoreState } from "@/app/providers/StoreProvider";
+import { buildSelector } from "@/shared/lib/store/buildSelector";
 
-export const getArticleCommentsIsLoading = (state: IStoreState) => state.articleDetailsPage?.comments.isLoading;
-export const getArticleCommentsError = (state: IStoreState) => state.articleDetailsPage?.comments.error;
+export const [useArticleCommentsIsLoading, getArticleCommentsIsLoading] = buildSelector(
+    (state: IStoreState) => state.articleDetailsPage?.comments.isLoading
+);
+export const [useArticleCommentsError, getArticleCommentsError] = buildSelector(
+    (state: IStoreState) => state.articleDetailsPage?.comments.error
+);

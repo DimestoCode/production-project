@@ -8,7 +8,7 @@ import { HStack } from "@/shared/ui/Stack";
 import { Text } from "@/shared/ui/Text";
 import { useProfileActions } from "../../model/slices/profileSlice";
 import { getIsProfileFormEditable } from "../../model/selectors/getIsProfileFormEditable/getIsProfileFormEditable";
-import { getProfileReadOnly } from "../../model/selectors/getProfileReadOnly/getProfileReadOnly";
+import { useProfileReadOnly } from "../../model/selectors/getProfileReadOnly/getProfileReadOnly";
 import { updateProfileData } from "../../model/services/updateProfileData/updateProfileData";
 import classes from "./EditableProfileCardHeader.module.scss";
 
@@ -18,7 +18,7 @@ interface EditableProfileCardHeaderProps {
 
 export const EditableProfileCardHeader = ({ className }: EditableProfileCardHeaderProps) => {
     const { t } = useTranslation("profile");
-    const readOnly = useSelector(getProfileReadOnly);
+    const readOnly = useProfileReadOnly();
     const isEditable = useSelector(getIsProfileFormEditable);
     const dispatch = useAppDispatch();
     const { cancelEdit, setReadOnly } = useProfileActions();

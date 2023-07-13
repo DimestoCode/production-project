@@ -1,4 +1,9 @@
 import { IStoreState } from "@/app/providers/StoreProvider";
+import { buildSelector } from "@/shared/lib/store/buildSelector";
 
-export const getAddCommentFormText = (state: IStoreState) => state.addCommentForm?.text ?? "";
-export const getAddCommentFormError = (state: IStoreState) => state.addCommentForm?.error;
+export const [useAddCommentFormText, getAddCommentFormText] = buildSelector(
+    (state: IStoreState) => state.addCommentForm?.text ?? ""
+);
+export const [useAddCommentFormError, getAddCommentFormError] = buildSelector(
+    (state: IStoreState) => state.addCommentForm?.error
+);

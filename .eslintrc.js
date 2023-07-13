@@ -50,14 +50,6 @@ module.exports = {
         "no-underscore-dangle": "off",
         "linebreak-style": ["error", "unix"],
         "comma-dangle": "off",
-        "max-len": [
-            2,
-            {
-                code: 150,
-                ignorePattern: "import",
-                ignoreComments: true
-            }
-        ],
         "i18next/no-literal-string": [
             "error",
             {

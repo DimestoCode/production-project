@@ -10,12 +10,13 @@ import {
 } from "@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader";
 import { Page } from "@/widgets/Page";
 import { initializeArticles } from "../../model/services/initializeArticles/initializeArticles";
-import { getArticlesHasMore, getArticlesInitialized } from "../../model/selectors/articlesSelectors";
+import { useArticlesHasMore } from "../../model/selectors/articlesSelectors";
 import { fetchFollowingArticles } from "../../model/services/fetchFollowingArticles/fetchFollowingArticles";
 import { articlesReducer, getArticles } from "../../model/slices/articlesPageSlice";
 import classes from "./ArticlesPage.module.scss";
 import { ArticlesPageFilters } from "../ArticlesPageFilters/ArticlesPageFilters";
 import { ArticlesInfiniteList } from "../ArticlesInfiniteList/ArticlesInfiniteList";
+import { useUserInitialized } from "@/entities/User";
 
 const dynamicModules: IDynamicLoaderProps = {
     reducers: {
@@ -28,9 +29,9 @@ const ArticlesPage = () => {
     useDynamicModuleLoader(dynamicModules);
 
     const articles = useSelector(getArticles.selectAll);
-    const hasMoreArticles = useSelector(getArticlesHasMore);
+    const hasMoreArticles = useArticlesHasMore();
     const dispatch = useAppDispatch();
-    const initialized = useSelector(getArticlesInitialized);
+    const initialized = useUserInitialized();
 
     useActionEffect(() => initializeArticles(searchParams), !initialized);
 

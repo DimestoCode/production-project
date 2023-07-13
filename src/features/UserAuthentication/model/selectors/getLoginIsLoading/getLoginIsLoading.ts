@@ -1,3 +1,6 @@
 import { IStoreState } from "@/app/providers/StoreProvider";
+import { buildSelector } from "@/shared/lib/store/buildSelector";
 
-export const getLoginIsLoading = (state: IStoreState) => state?.loginForm?.isLoading || false;
+export const [useLoginIsLoading, getLoginIsLoading] = buildSelector(
+    (state: IStoreState) => state?.loginForm?.isLoading || false
+);

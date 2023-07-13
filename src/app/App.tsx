@@ -1,6 +1,5 @@
 import { Suspense, useEffect } from "react";
-import { useSelector } from "react-redux";
-import { getUserInitialized, useUserActions } from "@/entities/User";
+import { useUserActions, useUserInitialized } from "@/entities/User";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { Loader } from "@/shared/ui/Loader";
 import { Navbar } from "@/widgets/Navbar";
@@ -8,7 +7,7 @@ import { Sidebar } from "@/widgets/Sidebar";
 import { AppRouter } from "./providers/router";
 
 const App = () => {
-    const initialized = useSelector(getUserInitialized);
+    const initialized = useUserInitialized();
     const { retrieveAuthDataFromStorage } = useUserActions();
 
     useEffect(() => {

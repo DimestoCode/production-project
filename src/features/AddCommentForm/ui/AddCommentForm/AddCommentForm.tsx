@@ -1,6 +1,5 @@
 import { memo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
-import { useSelector } from "react-redux";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import {
     IDynamicLoaderProps,
@@ -10,7 +9,7 @@ import { Button } from "@/shared/ui/Button";
 import { Input } from "@/shared/ui/Input";
 import { HStack } from "@/shared/ui/Stack";
 import { addCommentFormReducer, useAddCommentFormActions } from "../../model/slices/addCommentFormSlice";
-import { getAddCommentFormText } from "../../model/selectors/addCommentFormSelectors";
+import { useAddCommentFormText } from "../../model/selectors/addCommentFormSelectors";
 import classes from "./AddCommentForm.module.scss";
 
 interface IAddCommentFormProps {
@@ -27,7 +26,7 @@ const dynamicModules: IDynamicLoaderProps = {
 export const AddCommentForm = memo(({ className, onCommentSubmit }: IAddCommentFormProps) => {
     useDynamicModuleLoader(dynamicModules);
     const { t } = useTranslation("common");
-    const comment = useSelector(getAddCommentFormText);
+    const comment = useAddCommentFormText();
     const { setText } = useAddCommentFormActions();
 
     const onCommentChange = useCallback(

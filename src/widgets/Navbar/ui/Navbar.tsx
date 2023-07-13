@@ -1,7 +1,6 @@
 import { memo, useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useSelector } from "react-redux";
-import { getUserAuthData } from "@/entities/User";
+import { useUserAuthData } from "@/entities/User";
 import { NotificationButton } from "@/features/NotificationButton";
 import { LoginModal } from "@/features/UserAuthentication";
 import { UserMenu } from "@/features/UserMenu";
@@ -20,7 +19,7 @@ interface INavBarProps {
 export const Navbar = memo(({ className = "" }: INavBarProps) => {
     const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
     const { t } = useTranslation("common");
-    const authData = useSelector(getUserAuthData);
+    const authData = useUserAuthData();
 
     const toggleModal = useCallback(() => {
         setIsLoginModalOpen((isOpen) => !isOpen);

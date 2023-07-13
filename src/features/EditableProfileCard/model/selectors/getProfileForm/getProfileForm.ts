@@ -1,3 +1,4 @@
 import { IStoreState } from "@/app/providers/StoreProvider";
+import { buildSelector } from "@/shared/lib/store/buildSelector";
 
-export const getProfileForm = (state: IStoreState) => state.profile?.form;
+export const [useProfileForm, getProfileForm] = buildSelector((state: IStoreState) => state.profile?.form);

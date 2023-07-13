@@ -1,6 +1,5 @@
 import { memo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
-import { useSelector } from "react-redux";
 import {
     IDynamicLoaderProps,
     useDynamicModuleLoader
@@ -17,9 +16,9 @@ import { articleDetailsReducer } from "../../model/slice/articleDetailsSlice/art
 import { retrieveArticleById } from "../../model/services/retrieveArticleById/retrieveArticleById";
 import { IArticleBlock } from "../../model/types/IArticleBlock";
 import {
-    getArticleDetailsData,
-    getArticleDetailsError,
-    getArticleDetailsIsLoading
+    useArticleDetailsData,
+    useArticleDetailsError,
+    useArticleDetailsIsLoading
 } from "../../model/selectors/articleDetailsSelectors";
 import classes from "./ArticleDetails.module.scss";
 import { ArticleCodeBlock } from "../ArticleCodeBlock/ArticleCodeBlock";
@@ -52,10 +51,10 @@ export const ArticleDetails = memo(({ id }: { id: number }) => {
     useActionEffect(fetchArticleCallback);
 
     const { t } = useTranslation("article");
-    const isLoading = useSelector(getArticleDetailsIsLoading);
+    const isLoading = useArticleDetailsIsLoading();
 
-    const error = useSelector(getArticleDetailsError);
-    const article = useSelector(getArticleDetailsData);
+    const error = useArticleDetailsError();
+    const article = useArticleDetailsData();
 
     if (isLoading) {
         return (

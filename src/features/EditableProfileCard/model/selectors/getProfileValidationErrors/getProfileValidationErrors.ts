@@ -1,3 +1,6 @@
 import { IStoreState } from "@/app/providers/StoreProvider";
+import { buildSelector } from "@/shared/lib/store/buildSelector";
 
-export const getProfileValidationErrors = (state: IStoreState) => state.profile?.validationErrors ?? [];
+export const [useProfileValidationErrors, getProfileValidationErrors] = buildSelector(
+    (state: IStoreState) => state.profile?.validationErrors ?? []
+);

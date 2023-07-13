@@ -1,6 +1,5 @@
 import { memo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
-import { useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 import { ArticleSortField, ArticleType, ArticleViewMode } from "@/entities/Article";
 import { ArticleSortSelector } from "@/features/ArticleSortSelector";
@@ -15,11 +14,11 @@ import { ArticleTypeTabs } from "@/features/ArticleTypeTabs";
 import { useArticlesActions } from "../../model/slices/articlesPageSlice";
 import { fetchArticlesList } from "../../model/services/fetchArticlesList/fetchArticlesList";
 import {
-    getArticlesSearch,
-    getArticlesSortField,
-    getArticlesSortOrder,
-    getArticlesType,
-    getArticlesView
+    useArticlesSearch,
+    useArticlesSortField,
+    useArticlesSortOrder,
+    useArticlesType,
+    useArticlesView
 } from "../../model/selectors/articlesSelectors";
 import classes from "./ArticlesPageFilters.module.scss";
 import { ArticleViewSelector } from "@/features/ArticleViewSelector";
@@ -32,11 +31,11 @@ export const ArticlesPageFilters = memo(({ className }: IArticlesPageFiltersProp
     const [, setSearchParams] = useSearchParams();
     const { t } = useTranslation("articles");
     const dispatch = useAppDispatch();
-    const view = useSelector(getArticlesView);
-    const sortOrder = useSelector(getArticlesSortOrder);
-    const sortField = useSelector(getArticlesSortField);
-    const search = useSelector(getArticlesSearch);
-    const type = useSelector(getArticlesType);
+    const view = useArticlesView();
+    const sortOrder = useArticlesSortOrder();
+    const sortField = useArticlesSortField();
+    const search = useArticlesSearch();
+    const type = useArticlesType();
 
     const { setArticles, setOrder, setPage, setSearch, setSort, setType, setView } = useArticlesActions();
 

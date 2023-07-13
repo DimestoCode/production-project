@@ -1,7 +1,7 @@
 import { memo, useCallback, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
-import { getUserAuthData, isRoleAdmin, isRoleManager, useUserActions } from "@/entities/User";
+import { isRoleAdmin, isRoleManager, useUserActions, useUserAuthData } from "@/entities/User";
 import { USER_LOCAL_STORAGE_KEY } from "@/shared/const/localStorage";
 import { getRouteAdmin, getRouteProfile } from "@/shared/const/router";
 import { Avatar } from "@/shared/ui/Avatar";
@@ -9,7 +9,7 @@ import { Menu } from "@/shared/ui/Popups";
 
 export const UserMenu = memo(() => {
     const { t } = useTranslation("common");
-    const authData = useSelector(getUserAuthData);
+    const authData = useUserAuthData();
     const isAdmin = useSelector(isRoleAdmin);
     const isManager = useSelector(isRoleManager);
     const { logout } = useUserActions();

@@ -1,17 +1,16 @@
 import { memo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
-import { useSelector } from "react-redux";
 import { ProfileCard } from "@/entities/Profile";
 import { useActionEffect } from "@/shared/lib/hooks/useActionEffect/useActionEffect";
 import { Reducers, useDynamicModuleLoader } from "@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader";
 import { VStack } from "@/shared/ui/Stack";
 import { Text, TextTheme } from "@/shared/ui/Text";
 import { retrieveProfileData } from "../../model/services/retrieveProfileData/retrieveProfileData";
-import { getProfileError } from "../../model/selectors/getProfileError/getProfileError";
-import { getProfileForm } from "../../model/selectors/getProfileForm/getProfileForm";
-import { getProfileIsLoading } from "../../model/selectors/getProfileIsLoading/getProfileIsLoading";
-import { getProfileReadOnly } from "../../model/selectors/getProfileReadOnly/getProfileReadOnly";
-import { getProfileValidationErrors } from "../../model/selectors/getProfileValidationErrors/getProfileValidationErrors";
+import { useProfileError } from "../../model/selectors/getProfileError/getProfileError";
+import { useProfileForm } from "../../model/selectors/getProfileForm/getProfileForm";
+import { useProfileIsLoading } from "../../model/selectors/getProfileIsLoading/getProfileIsLoading";
+import { useProfileReadOnly } from "../../model/selectors/getProfileReadOnly/getProfileReadOnly";
+import { useProfileValidationErrors } from "../../model/selectors/getProfileValidationErrors/getProfileValidationErrors";
 import { profileReducer, useProfileActions } from "../../model/slices/profileSlice";
 import { EditableProfileCardHeader } from "../EditableProfileCardHeader/EditableProfileCardHeader";
 
@@ -32,11 +31,11 @@ export const EditableProfileCard = memo(({ profileId }: IEditableProfileCardProp
 
     const { updateProfile } = useProfileActions();
 
-    const formData = useSelector(getProfileForm);
-    const error = useSelector(getProfileError);
-    const isLoading = useSelector(getProfileIsLoading);
-    const readOnly = useSelector(getProfileReadOnly);
-    const validationErrors = useSelector(getProfileValidationErrors);
+    const formData = useProfileForm();
+    const error = useProfileError();
+    const isLoading = useProfileIsLoading();
+    const readOnly = useProfileReadOnly();
+    const validationErrors = useProfileValidationErrors();
 
     const onInputChange = useCallback(
         (value: string, name: string) => {
