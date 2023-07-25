@@ -116,7 +116,8 @@ module.exports = {
                 alias: "@",
                 ignoreImportPatterns: ["**/StoreProvider", "**/testing"]
             }
-        ]
+        ],
+        "react/prop-types": "off"
     },
     overrides: [
         {

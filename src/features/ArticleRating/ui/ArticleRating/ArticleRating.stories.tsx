@@ -14,7 +14,6 @@ export default {
         msw: {
             handlers: [
                 rest.get("/article-ratings", (req, res, ctx) => {
-                    console.log(req);
                     if (Number(req.url.searchParams.get("userId")) === 0) {
                         return res(
                             ctx.json([
