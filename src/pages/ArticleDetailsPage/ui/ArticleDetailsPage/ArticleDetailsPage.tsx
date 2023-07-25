@@ -15,6 +15,7 @@ import { ArticleDetailsPageHeader } from "../../ui/ArticleDetailsPageHeader/Arti
 import classes from "./ArticleDetailsPage.module.scss";
 import { ArticleDetailsComments } from "../ArticleDetailsComments/ArticleDetailsComments";
 import { ArticleRating } from "@/features/ArticleRating";
+import { getFeatureFlags } from "@/shared/lib/features";
 
 const dynamicModule: IDynamicLoaderProps = {
     reducers: {
@@ -26,7 +27,7 @@ const dynamicModule: IDynamicLoaderProps = {
 const ArticleDetailsPage = memo(() => {
     const { t } = useTranslation("article");
     const { articleId } = useParams<{ articleId: string }>();
-
+    const isArticleRatingEnabled = getFeatureFlags("isArticleRatingEnabled");
     useDynamicModuleLoader(dynamicModule);
 
     if (!articleId) {
@@ -38,7 +39,7 @@ const ArticleDetailsPage = memo(() => {
             <VStack gap="16" maxWidth>
                 <ArticleDetailsPageHeader />
                 <ArticleDetails id={Number(articleId)} />
-                <ArticleRating articleId={Number(articleId)} />
+                {isArticleRatingEnabled && <ArticleRating articleId={Number(articleId)} />}
                 <ArticleRecommendationsList />
                 <ArticleDetailsComments articleId={Number(articleId)} />
             </VStack>

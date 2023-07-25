@@ -141,6 +141,17 @@
       "city": "New York",
       "username": "user",
       "avatar": "https://i.pinimg.com/564x/d4/28/bb/d428bb4dff60cf6df9b282ce58efcade.jpg"
+    },
+    {
+      "id": 3,
+      "firstName": "Jon",
+      "lastName": "Hilton",
+      "age": 30,
+      "currency": "USD",
+      "country": "USA",
+      "city": "New York",
+      "username": "user",
+      "avatar": "https://i.pinimg.com/564x/d4/28/bb/d428bb4dff60cf6df9b282ce58efcade.jpg"
     }
   ],
   "users": [
@@ -151,6 +162,9 @@
       "roles": [
         "Admin"
       ],
+      "features": {
+        "isArticleRatingEnabled": true
+      },
       "avatar": "https://i.pinimg.com/564x/d4/28/bb/d428bb4dff60cf6df9b282ce58efcade.jpg"
     },
     {
@@ -160,6 +174,9 @@
       "roles": [
         "User"
       ],
+      "features": {
+        "isArticleRatingEnabled": false
+      },
       "avatar": "https://i.pinimg.com/736x/8a/55/99/8a5599792c0d7b0a02377b97fafe76a9.jpg"
     },
     {
@@ -169,6 +186,9 @@
       "roles": [
         "Manager"
       ],
+      "features": {
+        "isArticleRatingEnabled": true
+      },
       "avatar": "https://i.pinimg.com/736x/8a/55/99/8a5599792c0d7b0a02377b97fafe76a9.jpg"
     }
   ],
