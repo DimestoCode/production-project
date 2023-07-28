@@ -8,6 +8,6 @@ export function setFeatureFlags(newFeatureFlags?: IFeatureFlags) {
     }
 }
 
-export function getFeatureFlags(flag: keyof IFeatureFlags) {
+export function getFeatureFlag(flag: keyof IFeatureFlags) {
     return featureFlags[flag];
 }

@@ -121,6 +121,24 @@ Clear.args = {
 };
 ```
 
+----
+
+## Feature-flags
+
+Feature-flags are allowed to use via `toggleFeatures` utility. 
+`toggleFeatures` function takes following object as a parameter:
+```typescript jsx
+{
+    name: // feature flag name stored in database,
+    on: // component/functionality to apply if flag is enabled in the format of callback,
+    off: // component/functionality to apply if flag is disabled in the format of callback
+}
+```
+
+In order to remove feature automatically it's recommended to use removeFeatures script
+that takes in 2 arguments: 
+1. Feature name
+2. Feature state (on/off)
 
 ----
 
@@ -162,7 +180,6 @@ To enforce async loading of redux reducers the following hook is introduced
 [useDynamicModuleLoader](/src/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader.tsx)
 
 ----
-
 
 ## Entities
 
