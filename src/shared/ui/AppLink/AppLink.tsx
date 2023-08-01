@@ -1,4 +1,4 @@
-import { FC, memo } from "react";
+import { FC, forwardRef, memo } from "react";
 import { Link, LinkProps } from "react-router-dom";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import classes from "./AppLink.module.scss";
@@ -13,11 +13,15 @@ interface IAppLinkProps extends LinkProps {
     theme?: AppLinkTheme;
 }
 
-export const AppLink: FC<IAppLinkProps> = memo((props: IAppLinkProps) => {
-    const { to, className = "", children, theme = AppLinkTheme.Primary, ...rest } = props;
-    return (
-        <Link className={classNames(classes.AppLink, {}, [className, classes[theme]])} to={to} {...rest}>
-            {children}
-        </Link>
-    );
-});
+const AppLinkComponent: FC<IAppLinkProps> = forwardRef<HTMLAnchorElement, IAppLinkProps>(
+    (props: IAppLinkProps, ref) => {
+        const { to, className = "", children, theme = AppLinkTheme.Primary, ...rest } = props;
+        return (
+            <Link className={classNames(classes.AppLink, {}, [className, classes[theme]])} ref={ref} to={to} {...rest}>
+                {children}
+            </Link>
+        );
+    }
+);
+
+export const AppLink = memo(AppLinkComponent);

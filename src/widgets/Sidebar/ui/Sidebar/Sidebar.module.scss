@@ -10,6 +10,7 @@
         position: absolute;
         right: -32px;
         bottom: 32px;
+        z-index: calc(#{var(--overlay-z-index)} - 1);
 
         .arrow {
             display: block;

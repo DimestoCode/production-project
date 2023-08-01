@@ -1,3 +1,5 @@
+export { saveJsonSettings } from "./model/services/saveJsonSettings";
+export { useJsonSettings } from "./model/selectors/jsonSettings";
 export { UserRole } from "./model/consts/consts";
 export { userReducer, userActions, useUserActions } from "./model/slices/userSlice";
 export { type IUser, type IUserState } from "./model/types/IUser";

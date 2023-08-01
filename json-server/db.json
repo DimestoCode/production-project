@@ -165,7 +165,12 @@
       "features": {
         "isArticleRatingEnabled": true
       },
-      "avatar": "https://i.pinimg.com/564x/d4/28/bb/d428bb4dff60cf6df9b282ce58efcade.jpg"
+      "avatar": "https://i.pinimg.com/564x/d4/28/bb/d428bb4dff60cf6df9b282ce58efcade.jpg",
+      "jsonSettings": {
+        "theme": "app-dark-theme",
+        "isFirstVisit": true,
+        "settingsPageHasBeenOpen": false
+      }
     },
     {
       "id": 2,
@@ -177,7 +182,12 @@
       "features": {
         "isArticleRatingEnabled": false
       },
-      "avatar": "https://i.pinimg.com/736x/8a/55/99/8a5599792c0d7b0a02377b97fafe76a9.jpg"
+      "avatar": "https://i.pinimg.com/736x/8a/55/99/8a5599792c0d7b0a02377b97fafe76a9.jpg",
+      "jsonSettings": {
+        "theme": "app_dark_theme",
+        "isFirstVisit": true,
+        "settingsPageHasBeenOpen": false
+      }
     },
     {
       "id": 3,
@@ -189,7 +199,12 @@
       "features": {
         "isArticleRatingEnabled": true
       },
-      "avatar": "https://i.pinimg.com/736x/8a/55/99/8a5599792c0d7b0a02377b97fafe76a9.jpg"
+      "avatar": "https://i.pinimg.com/736x/8a/55/99/8a5599792c0d7b0a02377b97fafe76a9.jpg",
+      "jsonSettings": {
+        "theme": "app_dark_theme",
+        "isFirstVisit": true,
+        "settingsPageHasBeenOpen": false
+      }
     }
   ],
   "articles": [
