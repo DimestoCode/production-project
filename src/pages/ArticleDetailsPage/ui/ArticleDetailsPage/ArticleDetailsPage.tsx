@@ -1,4 +1,4 @@
-import { lazy, memo, useCallback } from "react";
+import { lazy, memo } from "react";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 import { ArticleDetails } from "@/entities/Article";
@@ -14,7 +14,7 @@ import { articleDetailsPageReducer } from "../../model/slices";
 import { ArticleDetailsPageHeader } from "../../ui/ArticleDetailsPageHeader/ArticleDetailsPageHeader";
 import classes from "./ArticleDetailsPage.module.scss";
 import { ArticleDetailsComments } from "../ArticleDetailsComments/ArticleDetailsComments";
-import { toggleFeatures } from "@/shared/lib/features";
+import { ToggleFeatures } from "@/shared/lib/features";
 
 const Card = lazy(async () => {
     return import("@/shared/ui/Card").then(({ Card }) => ({ default: Card }));
@@ -36,12 +36,6 @@ const ArticleDetailsPage = memo(() => {
 
     useDynamicModuleLoader(dynamicModule);
 
-    const articleRating = toggleFeatures({
-        name: "isArticleRatingEnabled",
-        off: useCallback(() => <Card>{t("Rating section is being developed")}</Card>, [t]),
-        on: useCallback(() => <ArticleRating articleId={Number(articleId)} />, [articleId])
-    });
-
     if (!articleId) {
         return <Page className={classNames(classes.ArticleDetailsPage)}>{t("Article is not found")}</Page>;
     }
@@ -51,7 +45,11 @@ const ArticleDetailsPage = memo(() => {
             <VStack gap="16" maxWidth>
                 <ArticleDetailsPageHeader />
                 <ArticleDetails id={Number(articleId)} />
-                {articleRating}
+                <ToggleFeatures
+                    feature="isArticleRatingEnabled"
+                    off={<Card>{t("Rating section is being developed")}</Card>}
+                    on={<ArticleRating articleId={Number(articleId)} />}
+                />
                 <ArticleRecommendationsList />
                 <ArticleDetailsComments articleId={Number(articleId)} />
             </VStack>
