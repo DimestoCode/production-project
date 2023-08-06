@@ -28,7 +28,8 @@
     "docker:run": "docker run -p 3000:3000 -p 8000:8000 myapp:1.0",
     "sonar:launch": "docker-compose up",
     "sonar:scan": "node ./sonarqube/sonarscan.js",
-    "postinstall": "ts-node ./script/clearCache/clearCache.ts"
+    "postinstall": "ts-node ./script/clearCache/clearCache.ts",
+    "remove-feature": "ts-node ./script/removeFeature/removerFeature.ts"
   },
   "keywords": [],
   "author": "",

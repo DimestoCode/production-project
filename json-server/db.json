@@ -167,10 +167,11 @@
       },
       "avatar": "https://i.pinimg.com/564x/d4/28/bb/d428bb4dff60cf6df9b282ce58efcade.jpg",
       "jsonSettings": {
-        "theme": "app-dark-theme",
+        "theme": "app-light-theme",
         "isFirstVisit": true,
         "settingsPageHasBeenOpen": false
-      }
+      },
+      "userId": 1
     },
     {
       "id": 2,

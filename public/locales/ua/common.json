@@ -32,5 +32,7 @@
   "Admin Panel": "Панель керування",
   "Your feedback": "Ваш фідбек",
   "Cancel": "Відмінити",
-  "Thanks for your feedback": "Дякуємо за зворотній зв'язок!"
+  "Thanks for your feedback": "Дякуємо за зворотній зв'язок!",
+  "Settings are missed": "Налаштування пусті",
+  "User is not authorized": "Користувач не авторизован"
 }

@@ -69,7 +69,7 @@ const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
     const onLoginClick = useCallback(async () => {
         const result = await dispatch(loginByUsername({ username, password }));
         if (result.meta.requestStatus === "fulfilled" && isUser(result.payload)) {
-            localStorage.setItem(USER_LOCAL_STORAGE_KEY, JSON.stringify(result.payload));
+            localStorage.setItem(USER_LOCAL_STORAGE_KEY, String(result.payload.id));
             onSuccess();
             navigate(getRouteProfile(`${result.payload.id}`));
         }

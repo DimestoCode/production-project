@@ -1,6 +1,6 @@
 import { IFeatureFlags } from "@/shared/types/featureFlags";
 import { UserRole } from "../consts/consts";
-import { IJSonSettings } from "./IJsonSettings";
+import { IJsonSettings } from "./IJsonSettings";
 
 export interface IUser {
     id: number;
@@ -8,7 +8,7 @@ export interface IUser {
     avatar?: string;
     roles: UserRole[];
     features?: IFeatureFlags;
-    jsonSettings?: IJSonSettings;
+    jsonSettings?: IJsonSettings;
 }
 
 export interface IUserState {

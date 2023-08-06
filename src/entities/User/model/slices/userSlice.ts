@@ -1,9 +1,9 @@
 import { PayloadAction } from "@reduxjs/toolkit";
-import { USER_LOCAL_STORAGE_KEY } from "@/shared/const/localStorage";
 import { IUser, IUserState } from "../types/IUser";
 import { buildSlice } from "@/shared/lib/store";
 import { setFeatureFlags } from "@/shared/lib/features";
-import { saveJsonSettings } from "../services/saveJsonSettings";
+import { saveJsonSettings } from "../services/saveJsonSettings/saveJsonSettings";
+import { initializeAuthData } from "../services/initializeAuthData/initializeAuthData";
 
 const initialState: IUserState = {
     _initialized: false
@@ -17,25 +17,25 @@ export const userSlice = buildSlice({
             state.authData = action.payload;
             setFeatureFlags(action.payload.features);
         },
-        retrieveAuthDataFromStorage: (state) => {
-            const user = localStorage.getItem(USER_LOCAL_STORAGE_KEY);
-            if (user) {
-                const parsedUser: IUser = JSON.parse(user);
-                state.authData = parsedUser;
-                setFeatureFlags(parsedUser.features);
-            }
-            state._initialized = true;
-        },
         logout: (state) => {
             state.authData = undefined;
         }
     },
     extraReducers: (builder) => {
-        builder.addCase(saveJsonSettings.fulfilled, (state, { payload }) => {
-            if (state.authData) {
-                state.authData.jsonSettings = payload;
-            }
-        });
+        builder
+            .addCase(saveJsonSettings.fulfilled, (state, { payload }) => {
+                if (state.authData) {
+                    state.authData.jsonSettings = payload;
+                }
+            })
+            .addCase(initializeAuthData.fulfilled, (state, { payload }) => {
+                state.authData = payload;
+                setFeatureFlags(payload.features);
+                state._initialized = true;
+            })
+            .addCase(initializeAuthData.rejected, (state) => {
+                state._initialized = true;
+            });
     }
 });
 

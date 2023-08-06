@@ -1,4 +1,5 @@
-export { saveJsonSettings } from "./model/services/saveJsonSettings";
+export { initializeAuthData } from "./model/services/initializeAuthData/initializeAuthData";
+export { saveJsonSettings } from "./model/services/saveJsonSettings/saveJsonSettings";
 export { useJsonSettings } from "./model/selectors/jsonSettings";
 export { UserRole } from "./model/consts/consts";
 export { userReducer, userActions, useUserActions } from "./model/slices/userSlice";

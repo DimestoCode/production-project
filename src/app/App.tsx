@@ -1,40 +1,26 @@
-import { Suspense, useEffect } from "react";
-import { useUserActions, useUserInitialized } from "@/entities/User";
+import { Suspense } from "react";
+import { initializeAuthData, useUserInitialized } from "@/entities/User";
 import { classNames } from "@/shared/lib/classNames/classNames";
-import { Loader } from "@/shared/ui/Loader";
 import { Navbar } from "@/widgets/Navbar";
 import { Sidebar } from "@/widgets/Sidebar";
 import { AppRouter } from "./providers/router";
+import { useActionEffect } from "@/shared/lib/hooks/useActionEffect/useActionEffect";
+import { AppLoader } from "@/widgets/AppLoader";
 
 const App = () => {
     const initialized = useUserInitialized();
-    const { retrieveAuthDataFromStorage } = useUserActions();
 
-    useEffect(() => {
-        retrieveAuthDataFromStorage();
-    }, [retrieveAuthDataFromStorage]);
+    useActionEffect(initializeAuthData);
 
-    return (
+    return !initialized ? (
+        <AppLoader />
+    ) : (
         <div className={classNames("app")}>
-            <Suspense
-                fallback={
-                    <div
-                        style={{
-                            display: "flex",
-                            width: "100%",
-                            height: "100vh",
-                            alignItems: "center",
-                            justifyContent: "center"
-                        }}
-                    >
-                        <Loader />
-                    </div>
-                }
-            >
+            <Suspense fallback={<AppLoader />}>
                 <Navbar />
                 <div className="content-page">
                     <Sidebar />
-                    {initialized && <AppRouter />}
+                    <AppRouter />
                 </div>
             </Suspense>
         </div>

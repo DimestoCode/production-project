@@ -1,8 +1,8 @@
 import { IStoreState } from "@/app/providers/StoreProvider";
 import { buildSelector } from "@/shared/lib/store/buildSelector";
-import { IJSonSettings } from "../types/IJsonSettings";
+import { IJsonSettings } from "../types/IJsonSettings";
 
-const defaultJsonSettings: IJSonSettings = {};
+const defaultJsonSettings: IJsonSettings = {};
 
 export const [useJsonSettings, getJsonSettings] = buildSelector(
     (state: IStoreState) => state.user.authData?.jsonSettings ?? defaultJsonSettings
