@@ -8,7 +8,22 @@ export function buildLoaders(options: IBuildOptions): webpack.RuleSetRule[] {
 
     const svgLoader = {
         test: /\.svg$/i,
-        use: ["@svgr/webpack"]
+        use: [{
+            loader: "@svgr/webpack",
+            options: {
+                icon: true,
+                svgoConfig: {
+                    plugins: [
+                        {
+                            name: "convertColors",
+                            params: {
+                                currentColor: true
+                            }
+                        }
+                    ]
+                }
+            }
+        }]
     };
 
     const tsBabelLoader = buildBabelLoader({ ...options, isTsx: false });

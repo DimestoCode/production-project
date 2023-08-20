@@ -30,6 +30,8 @@ export const ArticleViewSelector = memo(({ className, onViewClick, view }: IArti
                     <Icon
                         Svg={viewMode.icon}
                         className={classNames(classes.icon, { [classes.active]: viewMode.view === view })}
+                        height={20}
+                        width={20}
                     />
                 </Button>
             ))}
