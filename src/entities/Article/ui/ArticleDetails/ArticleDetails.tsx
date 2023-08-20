@@ -4,14 +4,14 @@ import {
     IDynamicLoaderProps,
     useDynamicModuleLoader
 } from "@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader";
-import { Avatar } from "@/shared/ui/Avatar";
-import { Skeleton } from "@/shared/ui/Skeleton";
-import { Text } from "@/shared/ui/Text";
+import { Avatar } from "@/shared/ui/deprecated/Avatar";
+import { Skeleton } from "@/shared/ui/deprecated/Skeleton";
+import { Text } from "@/shared/ui/deprecated/Text";
 import EyeIcon from "@/shared/assets/icons/eye.svg";
 import CalendarIcon from "@/shared/assets/icons/calendar.svg";
-import { Icon } from "@/shared/ui/Icon";
+import { Icon } from "@/shared/ui/deprecated/Icon";
 import { useActionEffect } from "@/shared/lib/hooks/useActionEffect/useActionEffect";
-import { HStack, VStack } from "@/shared/ui/Stack";
+import { HStack, VStack } from "@/shared/ui/deprecated/Stack";
 import { articleDetailsReducer } from "../../model/slice/articleDetailsSlice/articleDetailsSlice";
 import { retrieveArticleById } from "../../model/services/retrieveArticleById/retrieveArticleById";
 import { IArticleBlock } from "../../model/types/IArticleBlock";

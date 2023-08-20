@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { RatingCard } from "@/entities/Rating";
 import { useGetArticleRating, useRateArticle } from "../../api/articleRatingApi";
 import { useUserAuthData } from "@/entities/User";
-import { Skeleton } from "@/shared/ui/Skeleton";
+import { Skeleton } from "@/shared/ui/deprecated/Skeleton";
 
 export interface IArticleRatingProps {
     className?: string;

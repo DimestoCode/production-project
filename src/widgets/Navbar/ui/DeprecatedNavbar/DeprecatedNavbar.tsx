@@ -4,10 +4,10 @@ import { LoginModal } from "@/features/UserAuthentication";
 import { UserMenu } from "@/features/UserMenu";
 import { getRouteArticleAdd } from "@/shared/const/router";
 import { classNames } from "@/shared/lib/classNames/classNames";
-import { AppLink, AppLinkTheme } from "@/shared/ui/AppLink";
-import { Button, ButtonTheme } from "@/shared/ui/Button";
-import { HStack } from "@/shared/ui/Stack";
-import { TextTheme, Text } from "@/shared/ui/Text";
+import { AppLink, AppLinkTheme } from "@/shared/ui/deprecated/AppLink";
+import { Button, ButtonTheme } from "@/shared/ui/deprecated/Button";
+import { HStack } from "@/shared/ui/deprecated/Stack";
+import { TextTheme, Text } from "@/shared/ui/deprecated/Text";
 import classes from "./DeprecatedNavbar.module.scss";
 import { INavbarProps } from "../../model/types/INavbarProps";
 

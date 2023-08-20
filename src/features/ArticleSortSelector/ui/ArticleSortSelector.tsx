@@ -2,8 +2,8 @@ import { memo, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { ArticleSortField } from "@/entities/Article";
 import { SortOrder } from "@/shared/types/sort";
-import { IListBoxItem, ListBox } from "@/shared/ui/Popups";
-import { HStack } from "@/shared/ui/Stack";
+import { IListBoxItem, ListBox } from "@/shared/ui/deprecated/Popups";
+import { HStack } from "@/shared/ui/deprecated/Stack";
 
 interface IArticleSortSelectorProps {
     className?: string;

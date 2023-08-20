@@ -2,9 +2,9 @@ import { memo } from "react";
 import { useTranslation } from "react-i18next";
 import { ArticleList } from "@/entities/Article";
 import { classNames } from "@/shared/lib/classNames/classNames";
-import { Loader } from "@/shared/ui/Loader";
-import { VStack } from "@/shared/ui/Stack";
-import { Text } from "@/shared/ui/Text";
+import { Loader } from "@/shared/ui/deprecated/Loader";
+import { VStack } from "@/shared/ui/deprecated/Stack";
+import { Text } from "@/shared/ui/deprecated/Text";
 import { useGetArticleRecommendationsListQuery } from "../../api/articleRecommendationsApi";
 
 interface IArticleRecommendationsListProps {

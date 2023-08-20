@@ -3,8 +3,8 @@ import { NotificationButton } from "@/features/NotificationButton";
 import { LoginModal } from "@/features/UserAuthentication";
 import { UserMenu } from "@/features/UserMenu";
 import { classNames } from "@/shared/lib/classNames/classNames";
-import { Button, ButtonTheme } from "@/shared/ui/Button";
-import { HStack } from "@/shared/ui/Stack";
+import { Button, ButtonTheme } from "@/shared/ui/deprecated/Button";
+import { HStack } from "@/shared/ui/deprecated/Stack";
 import { INavbarProps } from "../../model/types/INavbarProps";
 import classes from "./RedesignedNavbar.module.scss";
 

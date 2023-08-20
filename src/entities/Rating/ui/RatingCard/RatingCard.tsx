@@ -1,14 +1,14 @@
 import { memo, useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { HStack, VStack } from "@/shared/ui/Stack";
-import { Card } from "@/shared/ui/Card";
-import { Text } from "@/shared/ui/Text";
-import { StarRating } from "@/shared/ui/StarRating";
-import { Input } from "@/shared/ui/Input";
-import { Modal } from "@/shared/ui/Modal";
-import { Button, ButtonSize, ButtonTheme } from "@/shared/ui/Button";
+import { HStack, VStack } from "@/shared/ui/deprecated/Stack";
+import { Card } from "@/shared/ui/deprecated/Card";
+import { Text } from "@/shared/ui/deprecated/Text";
+import { StarRating } from "@/shared/ui/deprecated/StarRating";
+import { Input } from "@/shared/ui/deprecated/Input";
+import { Modal } from "@/shared/ui/deprecated/Modal";
+import { Button, ButtonSize, ButtonTheme } from "@/shared/ui/deprecated/Button";
 import { useDevice } from "@/shared/lib/hooks/useDevice/useDevice";
-import { Drawer } from "@/shared/ui/Drawer";
+import { Drawer } from "@/shared/ui/deprecated/Drawer";
 
 interface IRatingCardProps {
     className?: string;

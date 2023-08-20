@@ -1,7 +1,7 @@
 import { classNames } from "@/shared/lib/classNames/classNames";
 import classes from "./RedesignedSidebar.module.scss";
 import { ISidebarProps } from "../../model/types/ISidebarProps";
-import { AppLogo } from "@/shared/ui/AppLogo";
+import { AppLogo } from "@/shared/ui/deprecated/AppLogo";
 
 export const RedesignedSidebar = ({ children, collapsed }: ISidebarProps) => {
     return (

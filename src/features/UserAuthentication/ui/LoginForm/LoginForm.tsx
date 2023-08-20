@@ -12,9 +12,9 @@ import {
     IDynamicLoaderProps,
     useDynamicModuleLoader
 } from "@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader";
-import { Button, ButtonTheme } from "@/shared/ui/Button";
-import { Input } from "@/shared/ui/Input";
-import { TextTheme, Text } from "@/shared/ui/Text";
+import { Button, ButtonTheme } from "@/shared/ui/deprecated/Button";
+import { Input } from "@/shared/ui/deprecated/Input";
+import { TextTheme, Text } from "@/shared/ui/deprecated/Text";
 import { loginReducer, useLoginActions } from "../../model/slices/loginSlice";
 import { useLoginIsLoading } from "../../model/selectors/getLoginIsLoading/getLoginIsLoading";
 import { useLoginError } from "../../model/selectors/getLoginError/getLoginError";

@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
-import { IListBoxProps, IListBoxItem, ListBox } from "@/shared/ui/Popups";
+import { IListBoxProps, IListBoxItem, ListBox } from "@/shared/ui/deprecated/Popups";
 import { Currency } from "../../model/consts/consts";
 
 interface CurrencySelectProps extends Omit<IListBoxProps<Currency>, "onChange" | "options"> {

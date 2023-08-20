@@ -2,9 +2,9 @@ import { memo } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { AppLink } from "@/shared/ui/AppLink";
-import { Button, ButtonTheme } from "@/shared/ui/Button";
-import { HStack } from "@/shared/ui/Stack";
+import { AppLink } from "@/shared/ui/deprecated/AppLink";
+import { Button, ButtonTheme } from "@/shared/ui/deprecated/Button";
+import { HStack } from "@/shared/ui/deprecated/Stack";
 import { getCanUserEditArticle } from "../../model/selectors/article/article";
 import { getRouteArticleEdit, getRouteArticles } from "@/shared/const/router";
 

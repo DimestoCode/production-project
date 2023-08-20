@@ -1,14 +1,14 @@
 import { lazy, memo, useMemo, useState } from "react";
 import noop from "lodash/noop";
 import { NotificationList } from "@/entities/Notification";
-import { Button, ButtonTheme } from "@/shared/ui/Button";
-import { Icon } from "@/shared/ui/Icon";
+import { Button, ButtonTheme } from "@/shared/ui/deprecated/Button";
+import { Icon } from "@/shared/ui/deprecated/Icon";
 import BellIcon from "@/shared/assets/icons/bell.svg";
 import { useDevice } from "@/shared/lib/hooks/useDevice/useDevice";
 import classes from "./NotificationButton.module.scss";
 
-const Popover = lazy(() => import("@/shared/ui/Popups").then((mod) => ({ default: mod.Popover })));
-const Drawer = lazy(() => import("@/shared/ui/Drawer/Drawer").then((mod) => ({ default: mod.Drawer })));
+const Popover = lazy(() => import("@/shared/ui/deprecated/Popups").then((mod) => ({ default: mod.Popover })));
+const Drawer = lazy(() => import("@/shared/ui/deprecated/Drawer/Drawer").then((mod) => ({ default: mod.Drawer })));
 
 export const NotificationButton = memo(() => {
     const [isOpen, setIsOpen] = useState(false);

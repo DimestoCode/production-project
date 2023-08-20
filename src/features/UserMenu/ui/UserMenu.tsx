@@ -4,8 +4,8 @@ import { useSelector } from "react-redux";
 import { isRoleAdmin, isRoleManager, useUserActions, useUserAuthData } from "@/entities/User";
 import { USER_LOCAL_STORAGE_KEY } from "@/shared/const/localStorage";
 import { getRouteAdmin, getRouteProfile } from "@/shared/const/router";
-import { Avatar } from "@/shared/ui/Avatar";
-import { Menu } from "@/shared/ui/Popups";
+import { Avatar } from "@/shared/ui/deprecated/Avatar";
+import { Menu } from "@/shared/ui/deprecated/Popups";
 
 export const UserMenu = memo(() => {
     const { t } = useTranslation("common");

@@ -8,7 +8,7 @@ import {
     useDynamicModuleLoader
 } from "@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader";
 import { Page } from "@/widgets/Page";
-import { VStack } from "@/shared/ui/Stack";
+import { VStack } from "@/shared/ui/deprecated/Stack";
 import { ArticleRecommendationsList } from "@/features/ArticleRecommendationsList";
 import { articleDetailsPageReducer } from "../../model/slices";
 import { ArticleDetailsPageHeader } from "../../ui/ArticleDetailsPageHeader/ArticleDetailsPageHeader";
@@ -17,7 +17,7 @@ import { ArticleDetailsComments } from "../ArticleDetailsComments/ArticleDetails
 import { ToggleFeatures } from "@/shared/lib/features";
 
 const Card = lazy(async () => {
-    return import("@/shared/ui/Card").then(({ Card }) => ({ default: Card }));
+    return import("@/shared/ui/deprecated/Card").then(({ Card }) => ({ default: Card }));
 });
 const ArticleRating = lazy(async () => {
     return import("@/features/ArticleRating").then(({ ArticleRating }) => ({ default: ArticleRating }));

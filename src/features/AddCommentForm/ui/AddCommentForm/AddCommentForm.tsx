@@ -5,9 +5,9 @@ import {
     IDynamicLoaderProps,
     useDynamicModuleLoader
 } from "@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader";
-import { Button } from "@/shared/ui/Button";
-import { Input } from "@/shared/ui/Input";
-import { HStack } from "@/shared/ui/Stack";
+import { Button } from "@/shared/ui/deprecated/Button";
+import { Input } from "@/shared/ui/deprecated/Input";
+import { HStack } from "@/shared/ui/deprecated/Stack";
 import { addCommentFormReducer, useAddCommentFormActions } from "../../model/slices/addCommentFormSlice";
 import { useAddCommentFormText } from "../../model/selectors/addCommentFormSelectors";
 import classes from "./AddCommentForm.module.scss";
