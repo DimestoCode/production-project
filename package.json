@@ -29,7 +29,7 @@
     "sonar:launch": "docker-compose up",
     "sonar:scan": "node ./sonarqube/sonarscan.js",
     "postinstall": "ts-node ./script/clearCache/clearCache.ts",
-    "remove-feature": "ts-node ./script/removeFeature/removerFeature.ts"
+    "remove-feature": "ts-node ./script/removeFeature/removeFeature.ts"
   },
   "keywords": [],
   "author": "",
@@ -106,8 +106,8 @@
     "sonarqube-scanner": "^3.0.1",
     "storybook-addon-themes": "^6.1.0",
     "style-loader": "3.3.1",
-    "stylelint": "14.5.3",
-    "stylelint-config-standard-scss": "3.0.0",
+    "stylelint": "^15.10.2",
+    "stylelint-config-standard-scss": "^10.0.0",
     "ts-loader": "9.2.6",
     "ts-morph": "^18.0.0",
     "ts-node": "10.5.0",

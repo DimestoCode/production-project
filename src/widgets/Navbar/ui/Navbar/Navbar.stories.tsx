@@ -22,40 +22,34 @@ export default {
         msw: {
             handlers: [rest.get("/notifications", (req, res, ctx) => res(ctx.json(notifications)))]
         }
-    }
+    },
+    decorators: [
+        StoreDecorator({
+            user: {
+                authData: {
+                    id: 1,
+                    features: {
+                        isAppRedesigned: false
+                    },
+                    username: "Test"
+                }
+            }
+        })
+    ]
 } as ComponentMeta<typeof Navbar>;
 
 const Template: ComponentStory<typeof Navbar> = (args) => <Navbar {...args} />;
 
 export const LightUnauthenticated = Template.bind({});
 LightUnauthenticated.args = {};
-LightUnauthenticated.decorators = [StoreDecorator({})];
 
 export const DarkUnauthenticated = Template.bind({});
 DarkUnauthenticated.args = {};
-DarkUnauthenticated.decorators = [ThemeDecorator(Theme.Dark), StoreDecorator({})];
+DarkUnauthenticated.decorators = [ThemeDecorator(Theme.Dark)];
 
 export const LightAuthenticated = Template.bind({});
 LightAuthenticated.args = {};
-LightAuthenticated.decorators = [
-    StoreDecorator({
-        user: {
-            authData: {
-                username: "Test"
-            }
-        }
-    })
-];
 
 export const DarkAuthenticated = Template.bind({});
 DarkAuthenticated.args = {};
-DarkAuthenticated.decorators = [
-    ThemeDecorator(Theme.Dark),
-    StoreDecorator({
-        user: {
-            authData: {
-                username: "Test"
-            }
-        }
-    })
-];
+DarkAuthenticated.decorators = [ThemeDecorator(Theme.Dark)];

@@ -7,6 +7,7 @@ import { I18nDecorator } from "../../src/shared/config/storybook/I18nDecorator/I
 import { RouterDecorator } from "../../src/shared/config/storybook/RouterDecorator/RouterDecorator";
 import { SuspenseDecorator } from "../../src/shared/config/storybook/SuspenseDecorator/SuspenseDecorator";
 import { StoreDecorator } from "../../src/shared/config/storybook/StoreDecorator/StoreDecorator";
+import { FeaturesDecorator } from "../../src/shared/config/storybook/FeaturesDecorator/FeaturesDecorator";
 
 export const parameters = {
     actions: { argTypesRegex: "^on[A-Z].*" },
@@ -49,4 +50,19 @@ addDecorator(StyleDecorator);
 addDecorator(ThemeDecorator(Theme.LIGHT));
 addDecorator(mswDecorator);
 addDecorator(SuspenseDecorator);
-addDecorator(StoreDecorator({}));
+addDecorator(
+    StoreDecorator({
+        user: {
+            authData: {
+                id: 1,
+                username: "Dima"
+            }
+        }
+    })
+);
+addDecorator(
+    FeaturesDecorator({
+        isAppRedesigned: false,
+        isArticleRatingEnabled: true
+    })
+);

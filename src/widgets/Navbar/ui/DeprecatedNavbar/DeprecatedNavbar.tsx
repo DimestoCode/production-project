@@ -1,30 +1,18 @@
-import { memo, useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useUserAuthData } from "@/entities/User";
 import { NotificationButton } from "@/features/NotificationButton";
 import { LoginModal } from "@/features/UserAuthentication";
 import { UserMenu } from "@/features/UserMenu";
+import { getRouteArticleAdd } from "@/shared/const/router";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { AppLink, AppLinkTheme } from "@/shared/ui/AppLink";
 import { Button, ButtonTheme } from "@/shared/ui/Button";
 import { HStack } from "@/shared/ui/Stack";
-import { Text, TextTheme } from "@/shared/ui/Text";
-import classes from "./Navbar.module.scss";
-import { getRouteArticleAdd } from "@/shared/const/router";
+import { TextTheme, Text } from "@/shared/ui/Text";
+import classes from "./DeprecatedNavbar.module.scss";
+import { INavbarProps } from "../../model/types/INavbarProps";
 
-interface INavBarProps {
-    className?: string;
-}
-
-export const Navbar = memo(({ className = "" }: INavBarProps) => {
-    const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+export const DeprecatedNavbar = ({ authData, isLoginModalOpen, toggleModal, className }: INavbarProps) => {
     const { t } = useTranslation("common");
-    const authData = useUserAuthData();
-
-    const toggleModal = useCallback(() => {
-        setIsLoginModalOpen((isOpen) => !isOpen);
-    }, []);
-
     return (
         <header className={classNames(classes.Navbar, {}, [className])}>
             <Text className={classes.appName} theme={TextTheme.Inverted} title={t("Dmytro's Blog")} />
@@ -45,4 +33,4 @@ export const Navbar = memo(({ className = "" }: INavBarProps) => {
             {isLoginModalOpen && <LoginModal isOpen={isLoginModalOpen} onClose={toggleModal} />}
         </header>
     );
-});
+};

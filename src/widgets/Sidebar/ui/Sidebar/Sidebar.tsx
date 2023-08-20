@@ -1,13 +1,15 @@
-import { memo, useMemo, useState } from "react";
+import { lazy, memo, useMemo, useState } from "react";
 import { useSelector } from "react-redux";
-import { classNames } from "@/shared/lib/classNames/classNames";
-import { Button, ButtonSize, ButtonTheme } from "@/shared/ui/Button";
-import { LangSwitcher } from "@/features/LangSwitcher";
-import { ThemeSwitcher } from "@/features/ThemeSwitcher";
-import { VStack } from "@/shared/ui/Stack";
 import { getSidebarItems } from "../../model/selectors/getSidebarItems";
-import classes from "./Sidebar.module.scss";
 import { SidebarItem } from "../SidebarItem/SidebarItem";
+import { ToggleFeatures } from "@/shared/lib/features";
+
+const DeprecateSidebar = lazy(() =>
+    import("../DeprecatedSidebar/DeprecatedSidebar").then((mod) => ({ default: mod.DeprecateSidebar }))
+);
+const RedesignedSidebar = lazy(() =>
+    import("../RedesignedSIdebar/RedesignedSidebar").then((mod) => ({ default: mod.RedesignedSidebar }))
+);
 
 interface ISideBarProps {
     className?: string;
@@ -24,29 +26,18 @@ export const Sidebar = memo(({ className = "" }: ISideBarProps) => {
     );
 
     return (
-        <aside
-            className={classNames(classes.Sidebar, { [classes.collapsed]: collapsed }, [className])}
-            data-testid="sidebar"
-        >
-            <Button
-                className={classes.collapseBtn}
-                data-testid="sidebar-toggle"
-                onClick={onToggle}
-                size={ButtonSize.L}
-                theme={ButtonTheme.BackgroundInverted}
-                type="button"
-                square
-            >
-                <span className={classNames(classes.arrow, { [classes.arrowCollapsed]: collapsed })}>{"<"}</span>
-            </Button>
-            <VStack className={classes.items} gap="8" tag="nav">
-                {renderedSidebarItems}
-            </VStack>
-
-            <div className={classes.switchers}>
-                <ThemeSwitcher />
-                <LangSwitcher className={classes.lang} short={collapsed} />
-            </div>
-        </aside>
+        <ToggleFeatures
+            feature="isAppRedesigned"
+            off={
+                <DeprecateSidebar className={className} collapsed={collapsed} onToggle={onToggle}>
+                    {renderedSidebarItems}
+                </DeprecateSidebar>
+            }
+            on={
+                <RedesignedSidebar className={className} collapsed={collapsed} onToggle={onToggle}>
+                    {renderedSidebarItems}
+                </RedesignedSidebar>
+            }
+        />
     );
 });

@@ -2,7 +2,12 @@ import { screen } from "@testing-library/react";
 import { renderTestComponent } from "@/shared/lib/tests/renderTestComponent";
 import { AppRouter } from "./AppRouter";
 import { getRouteAdmin, getRouteProfile } from "@/shared/const/router";
+import { getFeatureFlag } from "@/shared/lib/features";
+
 import { UserRole } from "@/entities/User/testing";
+
+jest.mock("@/shared/lib/features");
+(getFeatureFlag as jest.Mock<boolean>).mockReturnValue(false);
 
 jest.mock("@/pages/ProfilePage/index", () => ({
     ProfilePage: () => <div data-testid="profile-page"> Profile Page</div>

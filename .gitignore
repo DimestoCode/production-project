@@ -12,3 +12,4 @@ cypress/e2e/2-advanced-examples
 sonarqube/extensions
 sonarqube/data
 sonarqube/logs
+**/.DS_Store

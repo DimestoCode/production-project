@@ -24,7 +24,8 @@ describe("userSlice", () => {
                     theme: Theme.Dark
                 },
                 features: {
-                    isArticleRatingEnabled: true
+                    isArticleRatingEnabled: true,
+                    isAppRedesigned: false
                 },
                 roles: []
             };
@@ -75,7 +76,8 @@ describe("userSlice", () => {
                     theme: Theme.Dark
                 },
                 features: {
-                    isArticleRatingEnabled: true
+                    isArticleRatingEnabled: true,
+                    isAppRedesigned: false
                 }
             };
             const newState = userReducer(state as IUserState, { type: initializeAuthData.fulfilled, payload: user });

@@ -8,6 +8,7 @@ import { useInfiniteScroll } from "@/shared/lib/hooks/useInfiniteScroll/useInfin
 import { useThrottle } from "@/shared/lib/hooks/useThrottle/useThrottle";
 import classes from "./Page.module.scss";
 import { ITestProps } from "@/shared/types/tests";
+import { toggleFeatures } from "@/shared/lib/features";
 
 interface IPageProps extends ITestProps {
     className?: string;
@@ -34,9 +35,15 @@ export const Page = ({ className, children, onScrollEnd, ...rest }: IPageProps) 
         wrapperRef.current.scrollTop = scrollPosition;
     }, [scrollPosition]);
 
+    const rootClass = toggleFeatures({
+        name: "isAppRedesigned",
+        on: () => classes.PageRedesigned,
+        off: () => classes.Page
+    });
+
     return (
         <main
-            className={classNames(classes.Page, {}, [className])}
+            className={classNames(rootClass, {}, [className])}
             data-testid={rest["data-testid"] ?? "page"}
             onScroll={onScroll}
             ref={wrapperRef}
