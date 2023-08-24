@@ -1,13 +1,16 @@
-import { memo, useCallback } from "react";
+import { lazy, memo, useCallback } from "react";
 import { Button, ButtonTheme } from "@/shared/ui/deprecated/Button";
 import { Theme } from "@/shared/const/theme";
 import useTheme from "@/shared/lib/hooks/useTheme/useTheme";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { saveJsonSettings } from "@/entities/User";
 import { useDebounce } from "@/shared/lib/hooks/useDebounce/useDebounce";
-import { Icon } from "@/shared/ui/deprecated/Icon";
+import { Icon as IconDeprecated } from "@/shared/ui/deprecated/Icon";
+import { Icon } from "@/shared/ui/redesigned/Icon";
+import { ToggleFeatures } from "@/shared/lib/features";
 
-import LightIcon from "@/shared/assets/icons/theme-light.svg";
+const DeprecatedThemeIcon = lazy(() => import("@/shared/assets/icons/theme-light.svg"));
+const RedesignedThemeIcon = lazy(() => import("@/shared/assets/icons/theme-redesigned.svg"));
 
 interface IThemeSwitcherProps {
     className?: string;
@@ -32,8 +35,14 @@ export const ThemeSwitcher = memo(({ className = "" }: IThemeSwitcherProps) => {
     }, [debouncedSaveJsonSettings, toggleTheme]);
 
     return (
-        <Button className={className} onClick={onToggleHandler} theme={ButtonTheme.Clear}>
-            <Icon Svg={LightIcon} height={40} width={40} inverted />
-        </Button>
+        <ToggleFeatures
+            feature="isAppRedesigned"
+            off={
+                <Button className={className} onClick={onToggleHandler} theme={ButtonTheme.Clear}>
+                    <IconDeprecated Svg={DeprecatedThemeIcon} height={40} width={40} inverted />
+                </Button>
+            }
+            on={<Icon Svg={RedesignedThemeIcon} onClick={onToggleHandler} clickable />}
+        />
     );
 });

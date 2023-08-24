@@ -4,7 +4,7 @@ import { LoginModal } from "@/features/UserAuthentication";
 import { UserMenu } from "@/features/UserMenu";
 import { getRouteArticleAdd } from "@/shared/const/router";
 import { classNames } from "@/shared/lib/classNames/classNames";
-import { AppLink, AppLinkTheme } from "@/shared/ui/deprecated/AppLink";
+import { AppLink } from "@/shared/ui/deprecated/AppLink";
 import { Button, ButtonTheme } from "@/shared/ui/deprecated/Button";
 import { HStack } from "@/shared/ui/deprecated/Stack";
 import { TextTheme, Text } from "@/shared/ui/deprecated/Text";
@@ -16,7 +16,7 @@ export const DeprecatedNavbar = ({ authData, isLoginModalOpen, toggleModal, clas
     return (
         <header className={classNames(classes.Navbar, {}, [className])}>
             <Text className={classes.appName} theme={TextTheme.Inverted} title={t("Dmytro's Blog")} />
-            <AppLink className={classes.addBtn} theme={AppLinkTheme.Secondary} to={getRouteArticleAdd()}>
+            <AppLink className={classes.addBtn} to={getRouteArticleAdd()} variant="secondary">
                 {t("Add article")}
             </AppLink>
             {authData ? (

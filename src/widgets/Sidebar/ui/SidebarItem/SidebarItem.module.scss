@@ -11,12 +11,44 @@
         margin-left: 10px;
         opacity: 1;
     }
+
+    &.collapsed {
+        .link {
+            opacity: 0;
+            width: 0;
+            transition: 0.2s all ease-out;
+            margin-left: 0;
+        }
+    }
 }
 
-.collapsed {
-    .link {
-        opacity: 0;
-        width: 0;
-        transition: 0.2s all ease-out;
+.itemRedesigned {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    width: 100%;
+    padding: 0 16px;
+    gap: 10px;
+
+    &.collapsed {
+        gap: 0;
+        padding: 0 8px;
+        justify-content: center;
+
+        .link {
+            opacity: 0;
+            margin: 0;
+            width: 0;
+        }
     }
+
+    .link {
+        white-space: nowrap;
+    }
+}
+
+.active {
+    background: linear-gradient(88deg, rgb(94 211 243 / 30%) 0%, rgb(94 211 243 / 0%) 100%);
+    position: relative;
+    border-left: 2px solid var(--accent-redesigned);
 }

@@ -10,7 +10,8 @@ li {
 }
 
 a {
-    text-decoration: undeline;
+    text-decoration: none;
+    color: inherit;
 }
 
 input,
@@ -19,4 +20,11 @@ textarea,
 select {
     margin: 0;
     font: inherit;
+}
+
+button {
+    background: none;
+    outline: none;
+    border: none;
+    cursor: pointer;
 }

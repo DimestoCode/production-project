@@ -1,31 +1,30 @@
 import { FC, forwardRef, memo } from "react";
-import { Link, LinkProps } from "react-router-dom";
+import { LinkProps, NavLink } from "react-router-dom";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import classes from "./AppLink.module.scss";
 
-type AppLinkVariant = "primary" | "secondary";
+type AppLinkTheme = "primary" | "secondary";
 
 interface IAppLinkProps extends LinkProps {
     className?: string;
-    variant?: AppLinkVariant;
+    variant?: AppLinkTheme;
+    activeClassName?: string;
 }
 
-/**
- * Component is obsolete, new components are supposed to be used
- * @deprecated
- */
 const AppLinkComponent: FC<IAppLinkProps> = forwardRef<HTMLAnchorElement, IAppLinkProps>(
     (props: IAppLinkProps, ref) => {
-        const { to, className = "", children, variant = "primary", ...rest } = props;
+        const { activeClassName = "", to, className = "", children, variant = "primary", ...rest } = props;
         return (
-            <Link
-                className={classNames(classes.AppLink, {}, [className, classes[variant]])}
+            <NavLink
+                className={({ isActive }) =>
+                    classNames(classes.AppLink, { [activeClassName]: isActive }, [className, classes[variant]])
+                }
                 ref={ref}
                 to={to}
                 {...rest}
             >
                 {children}
-            </Link>
+            </NavLink>
         );
     }
 );

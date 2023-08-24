@@ -1,4 +1,5 @@
 .SidebarRedesigned {
+    position: relative;
     background: var(--light-bg-redesigned);
     width: 220px;
     height: 100%;
@@ -6,5 +7,50 @@
 
     .logo {
         padding-top: 20px;
+    }
+
+    .items {
+        margin-top: 40px;
+    }
+
+    .collapseBtn {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        z-index: calc(#{var(--overlay-z-index)} - 1);
+        rotate: 90deg;
+        transition: rotate 0.2s ease-in-out 0s;
+
+        &.collapsed {
+            rotate: -90deg;
+        }
+    }
+
+    .switchers {
+        position: absolute;
+        bottom: 40px;
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+        width: 100%;
+
+        .lang {
+            color: var(--inverted-primary-color);
+        }
+    }
+
+    &.collapsed {
+        width: 50px;
+
+        .items {
+            margin-left: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .switchers {
+            flex-direction: column;
+            align-items: center;
+        }
     }
 }

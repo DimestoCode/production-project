@@ -1,8 +1,8 @@
-import { VFC, SVGProps } from "react";
+import { ComponentType, SVGProps } from "react";
 
 export interface ISidebarItem {
     path: string;
     text: string;
-    Icon: VFC<SVGProps<SVGSVGElement>> | React.LazyExoticComponent<VFC<SVGProps<SVGSVGElement>>>;
+    Icon: ComponentType<SVGProps<SVGSVGElement>>;
     isPrivate?: boolean;
 }

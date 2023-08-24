@@ -1,10 +1,10 @@
-import { SVGProps, VFC } from "react";
+import { ComponentType, LazyExoticComponent, SVGProps } from "react";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import classes from "./Icon.module.scss";
 
-interface IconProps extends React.SVGProps<SVGSVGElement> {
+interface IconProps extends Omit<React.SVGProps<SVGSVGElement>, "ref"> {
     className?: string;
-    Svg: VFC<SVGProps<SVGSVGElement>>;
+    Svg: ComponentType<SVGProps<SVGSVGElement>> | LazyExoticComponent<ComponentType<SVGProps<SVGSVGElement>>>;
     inverted?: boolean;
 }
 /**

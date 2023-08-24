@@ -16,6 +16,7 @@
     );
     border-radius: 50%;
     opacity: 0.6;
+    pointer-events: none;
 }
 
 .gradientBig {
@@ -33,4 +34,5 @@
         rgb(94 211 243 / 0%) 100%
     );
     opacity: 0.6;
+    pointer-events: none;
 }

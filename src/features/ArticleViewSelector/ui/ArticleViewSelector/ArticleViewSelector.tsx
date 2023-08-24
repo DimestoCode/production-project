@@ -1,11 +1,13 @@
-import { memo, SVGProps, VFC } from "react";
+import { ComponentType, memo, SVGProps } from "react";
 import { classNames } from "@/shared/lib/classNames/classNames";
-import ListIcon from "@/shared/assets/icons/list.svg";
-import GridIcon from "@/shared/assets/icons/grid.svg";
 import { Button, ButtonTheme } from "@/shared/ui/deprecated/Button";
 import { Icon } from "@/shared/ui/deprecated/Icon";
 import { HStack } from "@/shared/ui/deprecated/Stack";
 import { ArticleViewMode } from "@/entities/Article";
+
+import GridIcon from "@/shared/assets/icons/grid.svg";
+import ListIcon from "@/shared/assets/icons/list.svg";
+
 import classes from "./ArticleViewSelector.module.scss";
 
 interface IArticleViewModeProps {
@@ -14,7 +16,7 @@ interface IArticleViewModeProps {
     onViewClick: (view: ArticleViewMode) => void;
 }
 
-const viewModes: { view: ArticleViewMode; icon: VFC<SVGProps<SVGSVGElement>> }[] = [
+const viewModes: { view: ArticleViewMode; icon: ComponentType<SVGProps<SVGSVGElement>> }[] = [
     { view: "grid", icon: GridIcon },
     { view: "list", icon: ListIcon }
 ];
