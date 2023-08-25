@@ -1,0 +1,51 @@
+.ListBox {
+    display: flex;
+    width: auto;
+    align-items: center;
+
+    .triggerBtn {
+        width: 100%;
+        text-align: left;
+        border-radius: 12px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-right: 5px;
+        background-color: var(--card-bg);
+
+        svg {
+            width: 20px;
+            height: 20px;
+        }
+    }
+}
+
+.label {
+    margin-right: 5px;
+
+    &.disabled {
+        opacity: 0.7;
+    }
+}
+
+.options {
+    background: var(--dark-bg-redesigned);
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    min-width: 100%;
+    z-index: var(--dropdown-z-index);
+    border-radius: 12px;
+    box-shadow: 4px 4px 8px var(--dark-bg-redesigned);
+
+    .item {
+        padding: 10px 20px;
+        cursor: pointer;
+        white-space: nowrap;
+    }
+
+    .disabled {
+        opacity: 0.7;
+        cursor: auto;
+    }
+}

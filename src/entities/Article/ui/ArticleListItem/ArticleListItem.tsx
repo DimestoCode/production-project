@@ -14,7 +14,7 @@ import { ArticleViewMode, IArticle } from "../../model/types/IArticle";
 import classes from "./ArticleListItem.module.scss";
 import { ArticleTextBlock } from "../ArticleTextBlock/ArticleTextBlock";
 import { ArticleBlockType } from "../../model/consts/consts";
-import { AppImage } from "@/shared/ui/deprecated/AppImage/AppImage";
+import { AppImage } from "@/shared/ui/redesigned/AppImage/AppImage";
 import { Skeleton } from "@/shared/ui/deprecated/Skeleton";
 
 interface IArticleListItemProps {

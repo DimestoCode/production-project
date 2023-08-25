@@ -16,7 +16,7 @@ interface IClickableIcon extends IIconBaseProps {
 }
 
 interface INonClickableIcon extends IIconBaseProps {
-    clickable: false;
+    clickable?: false;
 }
 
 type IconProps = IClickableIcon | INonClickableIcon;

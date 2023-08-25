@@ -4,7 +4,7 @@ import { LoginModal } from "@/features/UserAuthentication";
 import { UserMenu } from "@/features/UserMenu";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { Button, ButtonTheme } from "@/shared/ui/deprecated/Button";
-import { HStack } from "@/shared/ui/deprecated/Stack";
+import { HStack } from "@/shared/ui/redesigned/Stack";
 import { INavbarProps } from "../../model/types/INavbarProps";
 import classes from "./RedesignedNavbar.module.scss";
 

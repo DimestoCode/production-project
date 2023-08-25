@@ -6,7 +6,7 @@ import { numbersOnlyRegExp } from "@/shared/lib/regExp/regExp";
 import { Avatar } from "@/shared/ui/deprecated/Avatar";
 import { Input } from "@/shared/ui/deprecated/Input";
 import { Loader } from "@/shared/ui/deprecated/Loader";
-import { HStack, VStack } from "@/shared/ui/deprecated/Stack";
+import { HStack, VStack } from "@/shared/ui/redesigned/Stack";
 import { Text, TextTheme } from "@/shared/ui/deprecated/Text";
 import { IProfile } from "../../model/types/IProfile";
 import classes from "./ProfileCard.module.scss";

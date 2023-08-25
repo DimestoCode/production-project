@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { ProfileCard } from "@/entities/Profile";
 import { useActionEffect } from "@/shared/lib/hooks/useActionEffect/useActionEffect";
 import { Reducers, useDynamicModuleLoader } from "@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader";
-import { VStack } from "@/shared/ui/deprecated/Stack";
+import { VStack } from "@/shared/ui/redesigned/Stack";
 import { Text, TextTheme } from "@/shared/ui/deprecated/Text";
 import { retrieveProfileData } from "../../model/services/retrieveProfileData/retrieveProfileData";
 import { useProfileError } from "../../model/selectors/getProfileError/getProfileError";

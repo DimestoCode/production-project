@@ -6,7 +6,7 @@ import { AddCommentForm } from "@/features/AddCommentForm";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { Text } from "@/shared/ui/deprecated/Text";
 import { useActionEffect } from "@/shared/lib/hooks/useActionEffect/useActionEffect";
-import { VStack } from "@/shared/ui/deprecated/Stack";
+import { VStack } from "@/shared/ui/redesigned/Stack";
 import { retrieveCommentsByArticleId } from "../../model/services/retrieveCommentsByArticleId/retrieveCommentsByArticleId";
 import { getArticleComments } from "../../model/slices/articleCommentsSlice/articleCommentsSlice";
 import { addCommentForArticle } from "../../model/services/addCommentForArticle/addCommentForArticle";

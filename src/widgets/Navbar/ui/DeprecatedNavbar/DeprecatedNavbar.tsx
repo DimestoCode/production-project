@@ -6,7 +6,7 @@ import { getRouteArticleAdd } from "@/shared/const/router";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { AppLink } from "@/shared/ui/deprecated/AppLink";
 import { Button, ButtonTheme } from "@/shared/ui/deprecated/Button";
-import { HStack } from "@/shared/ui/deprecated/Stack";
+import { HStack } from "@/shared/ui/redesigned/Stack";
 import { TextTheme, Text } from "@/shared/ui/deprecated/Text";
 import classes from "./DeprecatedNavbar.module.scss";
 import { INavbarProps } from "../../model/types/INavbarProps";

@@ -12,7 +12,10 @@ interface ICardProps extends HTMLAttributes<HTMLDivElement> {
     theme?: CardTheme;
     fullWidth?: boolean;
 }
-
+/**
+ * Redesigned components are supposed to be used
+ * @deprecated
+ */
 export const Card = ({ className, children, theme = CardTheme.Normal, fullWidth, ...rest }: ICardProps) => {
     return (
         <article

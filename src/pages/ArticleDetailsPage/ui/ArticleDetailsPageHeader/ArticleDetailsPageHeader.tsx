@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { AppLink } from "@/shared/ui/deprecated/AppLink";
 import { Button, ButtonTheme } from "@/shared/ui/deprecated/Button";
-import { HStack } from "@/shared/ui/deprecated/Stack";
+import { HStack } from "@/shared/ui/redesigned/Stack";
 import { getCanUserEditArticle } from "../../model/selectors/article/article";
 import { getRouteArticleEdit, getRouteArticles } from "@/shared/const/router";
 

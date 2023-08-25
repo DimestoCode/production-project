@@ -1,7 +1,7 @@
 import { memo } from "react";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import LogoIcon from "@/shared/assets/icons/app-logo.svg";
-import { HStack } from "../../deprecated/Stack";
+import { HStack } from "../Stack";
 import classes from "./AppLogo.module.scss";
 
 interface IAppLogoProps {

@@ -7,7 +7,7 @@ import {
 } from "@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader";
 import { Button } from "@/shared/ui/deprecated/Button";
 import { Input } from "@/shared/ui/deprecated/Input";
-import { HStack } from "@/shared/ui/deprecated/Stack";
+import { HStack } from "@/shared/ui/redesigned/Stack";
 import { addCommentFormReducer, useAddCommentFormActions } from "../../model/slices/addCommentFormSlice";
 import { useAddCommentFormText } from "../../model/selectors/addCommentFormSelectors";
 import classes from "./AddCommentForm.module.scss";

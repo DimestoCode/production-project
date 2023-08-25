@@ -2,7 +2,7 @@ import { LangSwitcher } from "@/features/LangSwitcher";
 import { ThemeSwitcher } from "@/features/ThemeSwitcher";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { Button, ButtonSize, ButtonTheme } from "@/shared/ui/deprecated/Button";
-import { VStack } from "@/shared/ui/deprecated/Stack";
+import { VStack } from "@/shared/ui/redesigned/Stack";
 import { ISidebarProps } from "../../model/types/ISidebarProps";
 import classes from "./DeprecatedSidebar.module.scss";
 

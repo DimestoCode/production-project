@@ -1,7 +1,7 @@
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { ISidebarProps } from "../../model/types/ISidebarProps";
 import { AppLogo } from "@/shared/ui/redesigned/AppLogo";
-import { VStack } from "@/shared/ui/deprecated/Stack";
+import { VStack } from "@/shared/ui/redesigned/Stack";
 import { Icon } from "@/shared/ui/redesigned/Icon";
 import { LangSwitcher } from "@/features/LangSwitcher";
 import { ThemeSwitcher } from "@/features/ThemeSwitcher";

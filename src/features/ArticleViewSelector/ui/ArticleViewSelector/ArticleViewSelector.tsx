@@ -2,7 +2,7 @@ import { ComponentType, memo, SVGProps } from "react";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { Button, ButtonTheme } from "@/shared/ui/deprecated/Button";
 import { Icon } from "@/shared/ui/deprecated/Icon";
-import { HStack } from "@/shared/ui/deprecated/Stack";
+import { HStack } from "@/shared/ui/redesigned/Stack";
 import { ArticleViewMode } from "@/entities/Article";
 
 import GridIcon from "@/shared/assets/icons/grid.svg";

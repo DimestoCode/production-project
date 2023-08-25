@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { ArticleSortField } from "@/entities/Article";
 import { SortOrder } from "@/shared/types/sort";
 import { IListBoxItem, ListBox } from "@/shared/ui/deprecated/Popups";
-import { HStack } from "@/shared/ui/deprecated/Stack";
+import { HStack } from "@/shared/ui/redesigned/Stack";
 
 interface IArticleSortSelectorProps {
     className?: string;
