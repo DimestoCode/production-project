@@ -1,4 +1,4 @@
-import { CallExpression, JsxAttribute, Node, Project, SourceFile, SyntaxKind } from "ts-morph";
+import { ArrowFunction, CallExpression, JsxAttribute, Node, Project, SourceFile, SyntaxKind } from "ts-morph";
 
 const toggleFunctionName = "toggleFeatures";
 const toggleComponentName = "ToggleFeatures";
@@ -42,17 +42,23 @@ function isToggleComponent(node: Node) {
     return identifier?.getText() === toggleComponentName;
 }
 
-function getUseCallbackCallExpressionFirstArgumentBodyIfPossible(expression: CallExpression | undefined): string {
+function getCallExpressionBody(expression: CallExpression | undefined): string {
+    console.log("EXP", expression);
+
     if (!expression) {
         return "";
     }
 
     if (expression.getFirstDescendantByKind(SyntaxKind.Identifier)?.getText() !== "useCallback") {
-        return "";
+        return expression.getText();
     }
 
     const [elementCallback] = expression?.getArguments() ?? [];
     return elementCallback.asKind(SyntaxKind.ArrowFunction)?.getBody().getText() ?? "";
+}
+
+function getArrowFunctionBody(arrowFunction: ArrowFunction) {
+    return arrowFunction.getBody().getText();
 }
 
 const replaceToggleFunction = (node: Node) => {
@@ -60,6 +66,7 @@ const replaceToggleFunction = (node: Node) => {
     const onFunctionProperty = objectOptions?.getProperty("on");
     const offFunctionProperty = objectOptions?.getProperty("off");
     const featureNameProperty = objectOptions?.getProperty("name");
+
     const featureName = featureNameProperty?.getFirstDescendantByKind(SyntaxKind.StringLiteral)?.getText().slice(1, -1);
 
     if (featureName !== removedFeatureName) {
@@ -67,16 +74,25 @@ const replaceToggleFunction = (node: Node) => {
     }
 
     // console.log(onFunctionProperty?.getChildren());
-    const onFunctionUseCallbackExpression = onFunctionProperty?.getFirstDescendantByKind(SyntaxKind.CallExpression);
 
-    const offFunctionUseCallbackExpression = offFunctionProperty?.getFirstDescendantByKind(SyntaxKind.CallExpression);
+    const onFunctionPropertyBody =
+        onFunctionProperty?.getFirstDescendantByKind(SyntaxKind.CallExpression) ??
+        onFunctionProperty?.getFirstDescendantByKind(SyntaxKind.ArrowFunction);
 
-    if (featureState === "on") {
-        node.replaceWithText(getUseCallbackCallExpressionFirstArgumentBodyIfPossible(onFunctionUseCallbackExpression));
+    const offFunctionPropertyBody =
+        offFunctionProperty?.getFirstDescendantByKind(SyntaxKind.CallExpression) ??
+        offFunctionProperty?.getFirstDescendantByKind(SyntaxKind.ArrowFunction);
+
+    if (featureState === "on" && onFunctionPropertyBody) {
+        if (Node.isCallExpression(onFunctionPropertyBody))
+            node.replaceWithText(getCallExpressionBody(onFunctionPropertyBody));
+        else node.replaceWithText(getArrowFunctionBody(onFunctionPropertyBody));
     }
 
-    if (featureState === "off") {
-        node.replaceWithText(getUseCallbackCallExpressionFirstArgumentBodyIfPossible(offFunctionUseCallbackExpression));
+    if (featureState === "off" && offFunctionPropertyBody) {
+        if (Node.isCallExpression(offFunctionPropertyBody))
+            node.replaceWithText(getCallExpressionBody(offFunctionPropertyBody));
+        else node.replaceWithText(getArrowFunctionBody(offFunctionPropertyBody));
     }
 };
 
@@ -85,7 +101,6 @@ const getAttributeNodeByName = (jsxAttributes: JsxAttribute[], name: string) =>
 
 const getReplacedComponent = (attribute: JsxAttribute | undefined) => {
     const value = attribute?.getFirstDescendantByKind(SyntaxKind.JsxExpression)?.getExpression()?.getText();
-
     if (value?.startsWith("(")) {
         return value.slice(1, -1);
     }
@@ -122,6 +137,7 @@ files.forEach((sourceFile: SourceFile) => {
     sourceFile.forEachDescendant((node) => {
         if (node.isKind(SyntaxKind.CallExpression) && isToggleFunction(node)) {
             replaceToggleFunction(node);
+            return;
         }
 
         if (node.isKind(SyntaxKind.JsxSelfClosingElement) && isToggleComponent(node)) {
