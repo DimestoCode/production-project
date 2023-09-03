@@ -1,12 +1,13 @@
 import { Fragment, ReactNode, SelectHTMLAttributes, useMemo } from "react";
 import { Listbox as HListbox } from "@headlessui/react";
 import { classNames } from "@/shared/lib/classNames/classNames";
-import SelectArrowIcon from "@/shared/assets/icons/select-arrow.svg";
+import ArrowDownIcon from "@/shared/assets/icons/arrow-down.svg";
 import { DropdownDirection } from "@/shared/types/ui";
 import classes from "./ListBox.module.scss";
 import popup from "../../styles/popup.module.scss";
 import { Button } from "../../../Button/Button";
 import { Icon } from "../../../Icon/Icon";
+import CheckIcon from "@/shared/assets/icons/check-icon.svg";
 
 export interface IListBoxItem<T> {
     value: T;
@@ -56,34 +57,56 @@ export const ListBox = <T extends string>({
                 onChange={onChange}
                 value={value}
             >
-                {!!label && (
-                    <HListbox.Label className={classNames(classes.label, { [classes.disabled]: disabled })}>
-                        {`${label}>`}
-                    </HListbox.Label>
-                )}
+                {({ open }) => (
+                    <>
+                        {!!label && (
+                            <HListbox.Label className={classNames(classes.label, { [classes.disabled]: disabled })}>
+                                {`${label}>`}
+                            </HListbox.Label>
+                        )}
 
-                <div style={{ position: "relative" }}>
-                    <HListbox.Button as={Button} className={classes.triggerBtn} disabled={disabled}>
-                        <span>{currentOption?.label ?? defaultValue}</span>
-                        <Icon Svg={SelectArrowIcon} />
-                    </HListbox.Button>
-                    <HListbox.Options className={classNames(classes.options, {}, [classes[direction], popup.options])}>
-                        {options.map((item) => (
-                            <HListbox.Option as={Fragment} disabled={item.disabled} key={item.value} value={item.value}>
-                                {({ active, selected }) => (
-                                    <li
-                                        className={classNames(classes.item, {
-                                            [popup.active]: active || selected,
-                                            [classes.disabled]: item.disabled
-                                        })}
+                        <div style={{ position: "relative" }}>
+                            <HListbox.Button
+                                as={Button}
+                                className={classNames(classes.triggerBtn, { [classes.isOpen]: open })}
+                                disabled={disabled}
+                                variant="filled"
+                            >
+                                <span>{currentOption?.label ?? defaultValue}</span>
+                                <Icon Svg={ArrowDownIcon} />
+                            </HListbox.Button>
+
+                            <HListbox.Options
+                                className={classNames(classes.options, { [classes.isOpen]: open }, [
+                                    classes[direction],
+                                    popup.options
+                                ])}
+                                static
+                            >
+                                {options.map((item) => (
+                                    <HListbox.Option
+                                        as={Fragment}
+                                        disabled={item.disabled}
+                                        key={item.value}
+                                        value={item.value}
                                     >
-                                        {item.label}
-                                    </li>
-                                )}
-                            </HListbox.Option>
-                        ))}
-                    </HListbox.Options>
-                </div>
+                                        {({ active, selected }) => (
+                                            <li
+                                                className={classNames(classes.item, {
+                                                    [popup.active]: active || selected,
+                                                    [classes.disabled]: item.disabled
+                                                })}
+                                            >
+                                                {item.label}
+                                                {selected && <Icon Svg={CheckIcon} color="inherit" />}
+                                            </li>
+                                        )}
+                                    </HListbox.Option>
+                                ))}
+                            </HListbox.Options>
+                        </div>
+                    </>
+                )}
             </HListbox>
         </div>
     );

@@ -13,10 +13,7 @@ export interface IListBoxItem<T> {
     label: ReactNode;
     disabled?: boolean;
 }
-/**
- * Component is obsolete, new components are supposed to be used
- * @deprecated
- */
+
 export interface IListBoxProps<T extends string>
     extends Omit<SelectHTMLAttributes<HTMLSelectElement>, "onChange" | "value" | "defaultValue"> {
     className?: string;
@@ -29,7 +26,10 @@ export interface IListBoxProps<T extends string>
     name?: string;
     direction?: DropdownDirection;
 }
-
+/**
+ * Component is obsolete, new components are supposed to be used
+ * @deprecated
+ */
 export const ListBox = <T extends string>({
     options,
     className,

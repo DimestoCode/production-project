@@ -16,6 +16,10 @@ import { articlesReducer, getArticles } from "../../model/slices/articlesPageSli
 import classes from "./ArticlesPage.module.scss";
 import { ArticlesPageFilters } from "../ArticlesPageFilters/ArticlesPageFilters";
 import { ArticlesInfiniteList } from "../ArticlesInfiniteList/ArticlesInfiniteList";
+import { ToggleFeatures } from "@/shared/lib/features";
+import { StickyLayout } from "@/shared/layouts/StickyLayout";
+import { ViewSelectorContainer } from "../ViewSelectorContainer/ViewSelectorContainer";
+import { FiltersContainer } from "../FiltersContainer/FiltersContainer";
 
 const dynamicModules: IDynamicLoaderProps = {
     reducers: {
@@ -41,10 +45,34 @@ const ArticlesPage = () => {
     }, [articles.length, dispatch, hasMoreArticles]);
 
     return (
-        <Page className={classNames(classes.ArticlesPage)} data-testid="articles-page" onScrollEnd={onLoadNextPart}>
-            <ArticlesPageFilters />
-            <ArticlesInfiniteList className={classes.list} />
-        </Page>
+        <ToggleFeatures
+            feature="isAppRedesigned"
+            off={
+                <Page
+                    className={classNames(classes.ArticlesPage)}
+                    data-testid="articles-page"
+                    onScrollEnd={onLoadNextPart}
+                >
+                    <ArticlesPageFilters />
+                    <ArticlesInfiniteList className={classes.list} />
+                </Page>
+            }
+            on={
+                <StickyLayout
+                    content={
+                        <Page
+                            className={classNames(classes.ArticlesPageRedesigned)}
+                            data-testid="articles-page"
+                            onScrollEnd={onLoadNextPart}
+                        >
+                            <ArticlesInfiniteList className={classes.list} />
+                        </Page>
+                    }
+                    left={<ViewSelectorContainer />}
+                    right={<FiltersContainer />}
+                />
+            }
+        />
     );
 };
 

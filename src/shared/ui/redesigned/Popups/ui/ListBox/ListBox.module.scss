@@ -6,16 +6,29 @@
     .triggerBtn {
         width: 100%;
         text-align: left;
-        border-radius: 12px;
+        border-radius: 34px;
         display: flex;
+        gap: 18px;
         justify-content: space-between;
         align-items: center;
-        padding-right: 5px;
-        background-color: var(--card-bg);
+        padding: 5px 16px;
+        transition: rotate 0.3s ease-in;
+        z-index: calc(var(--dropdown-z-index) + 1);
 
         svg {
-            width: 20px;
-            height: 20px;
+            color: var(--hint-redesigned);
+            width: 11px;
+            height: 11px;
+            transition: rotate 0.2s ease-out;
+        }
+
+        &.isOpen {
+            color: var(--accent-redesigned);
+
+            svg {
+                color: var(--accent-redesigned);
+                rotate: -180deg;
+            }
         }
     }
 }
@@ -34,14 +47,33 @@
     display: flex;
     flex-direction: column;
     min-width: 100%;
-    z-index: var(--dropdown-z-index);
     border-radius: 12px;
     box-shadow: 4px 4px 8px var(--dark-bg-redesigned);
+    transition: opacity 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.2), transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.2);
+    transform: translateY(-10px);
+    opacity: 0;
+    pointer-events: none;
+    z-index: var(--dropdown-z-index);
+
+    &.isOpen {
+        opacity: 1;
+        transform: translateY(8px);
+        pointer-events: all;
+    }
 
     .item {
+        display: flex;
+        width: 100%;
+        gap: 8px;
+        justify-content: space-between;
+        align-items: center;
         padding: 10px 20px;
         cursor: pointer;
         white-space: nowrap;
+
+        svg {
+            fill: var(--text-redesigned);
+        }
     }
 
     .disabled {

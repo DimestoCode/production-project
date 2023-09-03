@@ -1,9 +1,25 @@
-.icon {
-    margin-right: 5px;
-    fill: var(--secondary-color);
+.ArticleViewSelector {
+    .icon {
+        margin-right: 5px;
+        fill: var(--secondary-color);
+    }
+
+    .active {
+        fill: var(--primary-color);
+        opacity: 1;
+    }
 }
 
-.active {
-    fill: var(--primary-color);
-    opacity: 1;
+.ArticleViewSelectorRedesigned {
+    .iconWrapper {
+        padding: 7px;
+        display: block;
+        width: 32px;
+        height: 32px;
+
+        .icon:not(.active) {
+            color: var(--light-bg-redesigned);
+            opacity: 1;
+        }
+    }
 }

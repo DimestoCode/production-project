@@ -2,8 +2,11 @@ import { memo, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { ArticleSortField } from "@/entities/Article";
 import { SortOrder } from "@/shared/types/sort";
-import { IListBoxItem, ListBox } from "@/shared/ui/deprecated/Popups";
-import { HStack } from "@/shared/ui/redesigned/Stack";
+import { IListBoxItem, ListBox as ListBoxDeprecated } from "@/shared/ui/deprecated/Popups";
+import { HStack, VStack } from "@/shared/ui/redesigned/Stack";
+import { ToggleFeatures } from "@/shared/lib/features";
+import { ListBox } from "@/shared/ui/redesigned/Popups";
+import { Text } from "@/shared/ui/redesigned/Text";
 
 interface IArticleSortSelectorProps {
     className?: string;
@@ -30,8 +33,9 @@ export const ArticleSortSelector = memo(
             [t]
         );
 
-        const sortFieldOptions = useMemo<IListBoxItem<ArticleSortField>[]>(
-            () => [
+        const sortFieldOptions = useMemo<IListBoxItem<ArticleSortField>[]>(() => {
+            console.log("h");
+            return [
                 {
                     label: t("Creation date"),
                     value: ArticleSortField.CreatedAt
@@ -44,20 +48,45 @@ export const ArticleSortSelector = memo(
                     label: t("Views"),
                     value: ArticleSortField.Views
                 }
-            ],
-            [t]
-        );
+            ];
+        }, [t]);
+
+        console.log(sortFieldOptions);
 
         return (
-            <HStack align="center" className={className} gap="16">
-                <ListBox<ArticleSortField>
-                    label={t("Sort by")}
-                    onChange={onChangeSort}
-                    options={sortFieldOptions}
-                    value={sort}
-                />
-                <ListBox<SortOrder> label={t("Order")} onChange={onChangeOrder} options={orderOptions} value={order} />
-            </HStack>
+            <ToggleFeatures
+                feature="isAppRedesigned"
+                off={
+                    <HStack align="center" className={className} gap="16">
+                        <ListBoxDeprecated<ArticleSortField>
+                            label={t("Sort by")}
+                            onChange={onChangeSort}
+                            options={sortFieldOptions}
+                            value={sort}
+                        />
+                        <ListBoxDeprecated<SortOrder>
+                            label={t("Order")}
+                            onChange={onChangeOrder}
+                            options={orderOptions}
+                            value={order}
+                        />
+                    </HStack>
+                }
+                on={
+                    <VStack gap="8">
+                        <Text text={`${t("Sort by")}:`} />
+                        <VStack className={className} gap="16">
+                            <ListBox<ArticleSortField>
+                                onChange={onChangeSort}
+                                options={sortFieldOptions}
+                                value={sort}
+                            />
+
+                            <ListBox<SortOrder> onChange={onChangeOrder} options={orderOptions} value={order} />
+                        </VStack>
+                    </VStack>
+                }
+            />
         );
     }
 );

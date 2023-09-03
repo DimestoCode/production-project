@@ -22,7 +22,11 @@ export const Page = ({ className, children, onScrollEnd, ...rest }: IPageProps) 
     const { setScrollPosition } = useScrollRestorationActions();
     const { pathname } = useLocation();
     const scrollPosition = useSelector((state: IStoreState) => getScrollByPath(state, pathname));
-    useInfiniteScroll({ triggerRef, wrapperRef, callback: onScrollEnd });
+    useInfiniteScroll({
+        triggerRef,
+        wrapperRef: toggleFeatures({ name: "isAppRedesigned", on: () => undefined, off: () => wrapperRef }),
+        callback: onScrollEnd
+    });
 
     const onScroll = useThrottle((e: UIEvent<HTMLDivElement>) => {
         setScrollPosition({

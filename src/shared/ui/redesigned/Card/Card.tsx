@@ -4,6 +4,7 @@ import classes from "./Card.module.scss";
 
 export type CardVariant = "normal" | "outlined" | "light";
 export type CardPadding = "0" | "8" | "16" | "24";
+export type CardBorder = "round" | "normal";
 
 interface ICardProps extends HTMLAttributes<HTMLDivElement> {
     className?: string;
@@ -11,15 +12,25 @@ interface ICardProps extends HTMLAttributes<HTMLDivElement> {
     variant?: CardVariant;
     fullWidth?: boolean;
     padding?: CardPadding;
+    border?: CardBorder;
 }
 
-export const Card = ({ className, children, variant = "normal", fullWidth, padding = "8", ...rest }: ICardProps) => {
+export const Card = ({
+    className,
+    children,
+    variant = "normal",
+    fullWidth,
+    padding = "8",
+    border = "normal",
+    ...rest
+}: ICardProps) => {
     return (
         <article
             className={classNames(classes.Card, { [classes.fullWidth]: fullWidth }, [
                 className,
                 classes[variant],
-                classes[`padding-${padding}`]
+                classes[`padding-${padding}`],
+                classes[`border-${border}`]
             ])}
             {...rest}
         >
