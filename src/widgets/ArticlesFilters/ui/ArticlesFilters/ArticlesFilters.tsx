@@ -10,6 +10,8 @@ import { ArticleTypeTabs } from "@/features/ArticleTypeTabs";
 import { SortOrder } from "@/shared/types/sort";
 import { ITabItem } from "@/shared/ui/deprecated/Tabs";
 import { Input } from "@/shared/ui/redesigned/Input";
+import { Icon } from "@/shared/ui/redesigned/Icon";
+import SearchIcon from "@/shared/assets/icons/search.svg";
 
 interface IArticlesFiltersProps {
     className?: string;
@@ -40,14 +42,19 @@ export const ArticlesFilters = memo<IArticlesFiltersProps>(
         return (
             <Card className={classNames(classes.ArticlesFilters, {}, [className])} padding="24">
                 <VStack gap="32">
-                    <Input onChange={onChangeSearch} placeholder={t("Search")} value={search} />
+                    <Input
+                        addonLeft={<Icon Svg={SearchIcon} />}
+                        onChange={onChangeSearch}
+                        placeholder={t("Search")}
+                        value={search}
+                    />
+                    <ArticleTypeTabs className={classes.tabs} onChangeType={onChangeType} value={type} />
                     <ArticleSortSelector
                         onChangeOrder={onChangeOrder}
                         onChangeSort={onChangeSort}
                         order={sortOrder}
                         sort={sortField}
                     />
-                    <ArticleTypeTabs className={classes.tabs} onChangeType={onChangeType} value={type} />
                 </VStack>
             </Card>
         );

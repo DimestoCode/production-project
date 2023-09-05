@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, forwardRef, memo } from "react";
+import { ButtonHTMLAttributes, ReactNode, forwardRef, memo } from "react";
 import { ClassNameObject, classNames } from "@/shared/lib/classNames/classNames";
 import classes from "./Button.module.scss";
 
@@ -12,6 +12,8 @@ interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     square?: boolean;
     size?: ButtonSize;
     fullWidth?: boolean;
+    addonRight?: ReactNode;
+    addonLeft?: ReactNode;
 }
 
 export const ButtonWithRef = forwardRef<HTMLButtonElement, IButtonProps>((props, ref) => {
@@ -23,6 +25,8 @@ export const ButtonWithRef = forwardRef<HTMLButtonElement, IButtonProps>((props,
         size = "size_m",
         disabled,
         fullWidth,
+        addonRight,
+        addonLeft,
         ...rest
     } = props;
 
@@ -35,7 +39,9 @@ export const ButtonWithRef = forwardRef<HTMLButtonElement, IButtonProps>((props,
 
     return (
         <button type="button" {...rest} className={buttonClassnames} disabled={disabled} ref={ref}>
+            {addonLeft}
             {children}
+            {addonRight}
         </button>
     );
 });

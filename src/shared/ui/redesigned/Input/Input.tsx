@@ -1,5 +1,5 @@
-import { ChangeEvent, InputHTMLAttributes, memo, SyntheticEvent, useRef, useState } from "react";
-import { classNames } from "@/shared/lib/classNames/classNames";
+import { ChangeEvent, InputHTMLAttributes, memo, ReactNode, useRef, useState } from "react";
+import { ClassNameObject, classNames } from "@/shared/lib/classNames/classNames";
 import classes from "./Input.module.scss";
 
 interface IInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "value" | "onChange"> {
@@ -7,12 +7,24 @@ interface IInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "value
     value?: string | number;
     onChange?: (value: string, name: string) => void;
     regExp?: RegExp;
+    addonLeft?: ReactNode;
+    addonRight?: ReactNode;
 }
 
 export const Input = memo(
-    ({ className, value, onChange, type = "text", placeholder, disabled, regExp, ...rest }: IInputProps) => {
+    ({
+        className,
+        value,
+        onChange,
+        type = "text",
+        placeholder,
+        disabled,
+        regExp,
+        addonLeft,
+        addonRight,
+        ...rest
+    }: IInputProps) => {
         const [isFocused, setIsFocused] = useState(false);
-        const [caretPosition, setCaretPosition] = useState(0);
 
         const inputRef = useRef<HTMLInputElement | null>(null);
 
@@ -22,7 +34,6 @@ export const Input = memo(
             }
 
             onChange?.(e.target.value, e.target.name);
-            setCaretPosition(e.target.value.length);
         };
 
         const onBlur = () => {
@@ -37,39 +48,27 @@ export const Input = memo(
             }
         };
 
-        const onSelect = (e: SyntheticEvent<HTMLInputElement>) => {
-            if (e.currentTarget.selectionEnd !== null) {
-                setCaretPosition(e.currentTarget.selectionEnd);
-            }
+        const mods: ClassNameObject = {
+            [classes.disabled]: disabled,
+            [classes.focused]: isFocused
         };
 
-        const isCaretVisible = isFocused && !disabled;
-
         return (
-            <div className={classNames(classes.InputWrapper, { [classes.disabled]: disabled }, [className])}>
-                {placeholder && <div className={classes.placeholder}>{`${placeholder}>`}</div>}
-                <div className={classes.caretWrapper}>
-                    <input
-                        className={classes.input}
-                        disabled={disabled}
-                        onBlur={onBlur}
-                        onChange={handleChange}
-                        onFocus={onFocus}
-                        onSelect={onSelect}
-                        ref={inputRef}
-                        type={type}
-                        value={value}
-                        {...rest}
-                    />
-                    {isCaretVisible && (
-                        <span
-                            className={classes.caret}
-                            style={{
-                                left: `${caretPosition * 9}px`
-                            }}
-                        />
-                    )}
-                </div>
+            <div className={classNames(classes.InputWrapper, mods, [className])}>
+                {!!addonLeft && <span className={classes.addonLeft}>{addonLeft}</span>}
+                <input
+                    {...rest}
+                    className={classes.input}
+                    disabled={disabled}
+                    onBlur={onBlur}
+                    onChange={handleChange}
+                    onFocus={onFocus}
+                    placeholder={placeholder}
+                    ref={inputRef}
+                    type={type}
+                    value={value}
+                />
+                {!!addonRight && <span className={classes.addonRight}>{addonRight}</span>}
             </div>
         );
     }

@@ -19,7 +19,13 @@
             color: var(--hint-redesigned);
             width: 11px;
             height: 11px;
-            transition: rotate 0.2s ease-out;
+            transition: rotate 0.2s ease-out, color 0.2s ease-in-out;
+        }
+
+        &:hover {
+            svg {
+                color: var(--accent-redesigned);
+            }
         }
 
         &.isOpen {

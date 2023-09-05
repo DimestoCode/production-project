@@ -67,13 +67,13 @@ export const ListBox = <T extends string>({
 
                         <div style={{ position: "relative" }}>
                             <HListbox.Button
+                                addonRight={<Icon Svg={ArrowDownIcon} />}
                                 as={Button}
                                 className={classNames(classes.triggerBtn, { [classes.isOpen]: open })}
                                 disabled={disabled}
                                 variant="filled"
                             >
                                 <span>{currentOption?.label ?? defaultValue}</span>
-                                <Icon Svg={ArrowDownIcon} />
                             </HListbox.Button>
 
                             <HListbox.Options
