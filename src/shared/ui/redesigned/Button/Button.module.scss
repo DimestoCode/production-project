@@ -6,6 +6,10 @@
 
     &:not(&.disabled):hover {
         color: var(--accent-redesigned);
+
+        svg {
+            color: var(--accent-redesigned);
+        }
     }
 }
 

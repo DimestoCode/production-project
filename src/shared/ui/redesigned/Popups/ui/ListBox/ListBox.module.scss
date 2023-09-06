@@ -22,12 +22,6 @@
             transition: rotate 0.2s ease-out, color 0.2s ease-in-out;
         }
 
-        &:hover {
-            svg {
-                color: var(--accent-redesigned);
-            }
-        }
-
         &.isOpen {
             color: var(--accent-redesigned);
 

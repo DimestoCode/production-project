@@ -1,0 +1,18 @@
+.ProfileCard {
+    &.loading,
+    &.error {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 200px;
+    }
+
+    .avatarWrapper {
+        display: flex;
+        justify-content: center;
+    }
+
+    .input {
+        width: 100%;
+    }
+}

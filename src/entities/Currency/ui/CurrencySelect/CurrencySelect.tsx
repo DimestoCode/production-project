@@ -1,7 +1,9 @@
 import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
-import { IListBoxProps, IListBoxItem, ListBox } from "@/shared/ui/deprecated/Popups";
+import { IListBoxProps, IListBoxItem, ListBox as ListBoxDeprecated } from "@/shared/ui/deprecated/Popups";
 import { Currency } from "../../model/consts/consts";
+import { ToggleFeatures } from "@/shared/lib/features";
+import { ListBox } from "@/shared/ui/redesigned/Popups";
 
 interface CurrencySelectProps extends Omit<IListBoxProps<Currency>, "onChange" | "options"> {
     onChange?: (currency: Currency, name: string) => void;
@@ -21,17 +23,20 @@ export const CurrencySelect = ({ label, value, onChange, disabled, ...rest }: Cu
         },
         [onChange]
     );
+
+    const props: IListBoxProps<string> = {
+        ...rest,
+        "data-testid": "CurrencySelect",
+        defaultValue: t("Specify currency"),
+        disabled,
+        label,
+        name: "currency",
+        onChange: onChangeHandler,
+        options: currencyOptions,
+        value
+    };
+
     return (
-        <ListBox
-            {...rest}
-            data-testid="CurrencySelect"
-            defaultValue={t("Specify currency")}
-            disabled={disabled}
-            label={label}
-            name="currency"
-            onChange={onChangeHandler}
-            options={currencyOptions}
-            value={value}
-        />
+        <ToggleFeatures feature="isAppRedesigned" off={<ListBoxDeprecated {...props} />} on={<ListBox {...props} />} />
     );
 };

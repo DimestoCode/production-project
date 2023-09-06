@@ -5,7 +5,7 @@ import classes from "./Flex.module.scss";
 export type FlexJustify = "start" | "center" | "end" | "between";
 export type FlexAlign = "start" | "center" | "end";
 export type FlexDirection = "row" | "column";
-export type FlexGap = "4" | "8" | "16" | "32";
+export type FlexGap = "4" | "8" | "16" | "24" | "32";
 
 export interface IFlexProps extends HTMLAttributes<HTMLOrSVGElement> {
     className?: string;
@@ -40,6 +40,7 @@ const gapClasses: Record<FlexGap, string> = {
     "4": classes.gap4,
     "8": classes.gap8,
     "16": classes.gap16,
+    "24": classes.gap24,
     "32": classes.gap32
 };
 

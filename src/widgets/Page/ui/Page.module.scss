@@ -13,4 +13,5 @@
 
 .PageRedesigned {
     overflow-y: auto;
+    min-height: calc(100dvh - 2 * 32px);
 }

@@ -25,6 +25,7 @@ export interface IListBoxProps<T extends string>
     onChange: (value: T) => void;
     name?: string;
     direction?: DropdownDirection;
+    ["data-testid"]?: string;
 }
 /**
  * Component is obsolete, new components are supposed to be used
@@ -39,7 +40,8 @@ export const ListBox = <T extends string>({
     defaultValue,
     value,
     name,
-    direction = "bottom-left"
+    direction = "bottom-left",
+    ...rest
 }: IListBoxProps<T>) => {
     const currentOption = useMemo(() => options.find((item) => item.value === value), [options, value]);
 
@@ -54,6 +56,7 @@ export const ListBox = <T extends string>({
                     },
                     [classes.ListBox, className]
                 )}
+                data-testid={rest["data-testid"]}
                 disabled={disabled}
                 name={name}
                 onChange={onChange}

@@ -1,6 +1,8 @@
 import { ChangeEvent, InputHTMLAttributes, memo, ReactNode, useRef, useState } from "react";
 import { ClassNameObject, classNames } from "@/shared/lib/classNames/classNames";
 import classes from "./Input.module.scss";
+import { HStack } from "../Stack";
+import { Text } from "../Text";
 
 interface IInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "value" | "onChange"> {
     className?: string;
@@ -9,6 +11,7 @@ interface IInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "value
     regExp?: RegExp;
     addonLeft?: ReactNode;
     addonRight?: ReactNode;
+    label?: string;
 }
 
 export const Input = memo(
@@ -22,6 +25,7 @@ export const Input = memo(
         regExp,
         addonLeft,
         addonRight,
+        label,
         ...rest
     }: IInputProps) => {
         const [isFocused, setIsFocused] = useState(false);
@@ -53,7 +57,7 @@ export const Input = memo(
             [classes.focused]: isFocused
         };
 
-        return (
+        const input = (
             <div className={classNames(classes.InputWrapper, mods, [className])}>
                 {!!addonLeft && <span className={classes.addonLeft}>{addonLeft}</span>}
                 <input
@@ -71,5 +75,16 @@ export const Input = memo(
                 {!!addonRight && <span className={classes.addonRight}>{addonRight}</span>}
             </div>
         );
+
+        if (label) {
+            return (
+                <HStack gap="8" maxWidth>
+                    <Text text={label} />
+                    {input}
+                </HStack>
+            );
+        }
+
+        return input;
     }
 );
