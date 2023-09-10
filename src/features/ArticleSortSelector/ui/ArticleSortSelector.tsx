@@ -51,8 +51,6 @@ export const ArticleSortSelector = memo(
             ];
         }, [t]);
 
-        console.log(sortFieldOptions);
-
         return (
             <ToggleFeatures
                 feature="isAppRedesigned"

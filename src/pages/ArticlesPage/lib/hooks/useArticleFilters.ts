@@ -27,11 +27,23 @@ export const useArticleFilters = () => {
     const { setArticles, setOrder, setPage, setSearch, setSort, setType, setView } = useArticlesActions();
 
     const fetchData = useCallback(() => {
+        setArticles({ articles: [], initialLoad: true });
+
         setPage(1);
         dispatch(fetchArticlesList({ initialLoad: true }));
-    }, [dispatch, setPage]);
+    }, [dispatch, setArticles, setPage]);
 
     const debouncedFetchData = useDebounce(fetchData, 500);
+
+    const setSearchParam = useCallback(
+        (key: string, value: string) => {
+            setSearchParams((prev) => {
+                prev.set(key, value);
+                return prev;
+            });
+        },
+        [setSearchParams]
+    );
 
     const onChangeView = useCallback(
         (view: ArticleViewMode) => {
@@ -43,43 +55,39 @@ export const useArticleFilters = () => {
 
     const onChangeOrder = useCallback(
         (order: SortOrder) => {
-            setArticles({ articles: [], initialLoad: true });
-            setSearchParams({ order });
+            setSearchParam("order", order);
             setOrder(order);
             fetchData();
         },
-        [setOrder, fetchData, setSearchParams, setArticles]
+        [setSearchParam, setOrder, fetchData]
     );
 
     const onChangeSort = useCallback(
         (sortField: ArticleSortField) => {
-            setArticles({ articles: [], initialLoad: true });
-            setSearchParams({ sort: sortField });
+            setSearchParam("sort", sortField);
 
             setSort(sortField);
             fetchData();
         },
-        [fetchData, setArticles, setSearchParams, setSort]
+        [fetchData, setSearchParam, setSort]
     );
 
     const onChangeSearch = useCallback(
         (search: string) => {
-            setArticles({ articles: [], initialLoad: true });
-            setSearchParams({ search });
+            setSearchParam("search", search);
             setSearch(search);
             debouncedFetchData();
         },
-        [debouncedFetchData, setArticles, setSearch, setSearchParams]
+        [debouncedFetchData, setSearch, setSearchParam]
     );
 
     const onChangeType = useCallback(
         (tabItem: ITabItem) => {
-            setArticles({ articles: [], initialLoad: true });
-            setSearchParams({ type: tabItem.value });
+            setSearchParam("type", tabItem.value);
             setType(tabItem.value as ArticleType);
             fetchData();
         },
-        [fetchData, setArticles, setSearchParams, setType]
+        [fetchData, setSearchParam, setType]
     );
 
     return {
