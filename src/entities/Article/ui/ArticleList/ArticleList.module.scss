@@ -2,9 +2,13 @@
     display: flex;
     width: 100%;
     gap: 30px;
+}
 
+.ArticleListRedesigned,
+.ArticleList {
     &.grid {
         flex-wrap: wrap;
+        width: 100%;
     }
 
     &.list {

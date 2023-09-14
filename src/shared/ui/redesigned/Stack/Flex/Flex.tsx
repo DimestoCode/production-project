@@ -5,6 +5,7 @@ import classes from "./Flex.module.scss";
 export type FlexJustify = "start" | "center" | "end" | "between";
 export type FlexAlign = "start" | "center" | "end";
 export type FlexDirection = "row" | "column";
+export type FlexWrap = "nowrap" | "wrap";
 export type FlexGap = "4" | "8" | "16" | "24" | "32";
 
 export interface IFlexProps extends HTMLAttributes<HTMLOrSVGElement> {
@@ -14,6 +15,7 @@ export interface IFlexProps extends HTMLAttributes<HTMLOrSVGElement> {
     align?: FlexAlign;
     direction?: FlexDirection;
     gap?: FlexGap;
+    wrap?: FlexWrap;
     maxWidth?: boolean;
     tag?: ElementType;
 }
@@ -50,6 +52,7 @@ export const Flex = ({
     align = "center",
     direction = "row",
     justify = "start",
+    wrap = "nowrap",
     gap,
     tag = "div",
     maxWidth,
@@ -60,6 +63,7 @@ export const Flex = ({
         justifyClasses[justify],
         alignClasses[align],
         directionClasses[direction],
+        classes[wrap],
         gap && gapClasses[gap]
     ];
 

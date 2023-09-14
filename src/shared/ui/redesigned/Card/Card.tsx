@@ -6,7 +6,7 @@ export type CardVariant = "normal" | "outlined" | "light";
 export type CardPadding = "0" | "8" | "16" | "24";
 export type CardBorder = "round" | "normal";
 
-interface ICardProps extends HTMLAttributes<HTMLDivElement> {
+export interface ICardProps extends HTMLAttributes<HTMLDivElement> {
     className?: string;
     children: ReactNode;
     variant?: CardVariant;

@@ -27,4 +27,35 @@
             }
         }
     }
+
+    &.grid {
+        width: 240px;
+        height: 350px;
+        overflow: hidden;
+
+        .link {
+            display: flex;
+            flex-direction: column;
+            width: inherit;
+            height: inherit;
+            gap: 8px;
+        }
+
+        .img {
+            min-height: 140px;
+            max-height: 140px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .info {
+            padding: 8px 8px 16px;
+            height: 100%;
+        }
+
+        .footer {
+            height: 100%;
+            justify-content: flex-end;
+        }
+    }
 }

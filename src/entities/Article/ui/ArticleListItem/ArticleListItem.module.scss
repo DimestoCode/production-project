@@ -1,4 +1,5 @@
-.ArticleListItem {
+.ArticleListItem,
+.ArticleListItemRedesigned {
     &.list {
         .views {
             margin-left: auto;
@@ -113,5 +114,29 @@
             overflow: hidden;
             text-overflow: ellipsis;
         }
+    }
+}
+
+.ArticleListItemRedesigned {
+    &.grid {
+        width: 240px;
+        overflow: hidden;
+
+        .card {
+            overflow: hidden;
+            height: 350px;
+        }
+    }
+
+    .gridSkeletonContainer {
+        height: 100%;
+    }
+
+    .gridBottomSkeletonBlock {
+        padding: 8px 8px 16px;
+    }
+
+    &.list {
+        width: 100%;
     }
 }

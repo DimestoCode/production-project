@@ -7,6 +7,8 @@ import { ArticleViewMode, IArticle } from "../../model/types/IArticle";
 import { ArticleListItem } from "../ArticleListItem/ArticleListItem";
 import { ArticleListItemSkeleton } from "../ArticleListItem/ArticleListItemSkeleton";
 import classes from "./ArticleList.module.scss";
+import { ToggleFeatures } from "@/shared/lib/features";
+import { HStack } from "@/shared/ui/redesigned/Stack";
 
 interface IArticleListProps {
     className?: string;
@@ -34,11 +36,34 @@ export const ArticleList = memo(({ className, articles, isLoading, viewMode = "g
         [viewMode, target]
     );
 
-    return (
-        <div className={classNames(classes.ArticleList, {}, [className, classes[viewMode]])} data-testid="ArticleList">
+    const articleListContent = (
+        <>
             {!!articles?.length && articles.map(renderArticle)}
             {isLoading && getSkeletons(viewMode)}
             {!isLoading && !articles?.length && <Text title={t("Articles not found")} />}
-        </div>
+        </>
+    );
+
+    return (
+        <ToggleFeatures
+            feature="isAppRedesigned"
+            off={
+                <div
+                    className={classNames(classes.ArticleList, {}, [className, classes[viewMode]])}
+                    data-testid="ArticleList"
+                >
+                    {articleListContent}
+                </div>
+            }
+            on={
+                <HStack
+                    className={classNames(classes.ArticleListRedesigned, {}, [classes[viewMode]])}
+                    gap="16"
+                    wrap="wrap"
+                >
+                    {articleListContent}
+                </HStack>
+            }
+        />
     );
 });
