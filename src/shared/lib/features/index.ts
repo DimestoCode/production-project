@@ -1,5 +1,4 @@
-export { ToggleFeatures } from "./ToggleFeatures/ToggleFeatures";
-
-export { toggleFeatures, type IToggleFeaturesOptions } from "./toggleFeatures";
-
-export { setFeatureFlags, getFeatureFlag } from "./setGetFeatures";
+export { updateFeatureFlags } from "./services/updateFeatureFlags";
+export { getFeatureFlag, getAllFeatureFlags, setFeatureFlags } from "./lib/setGetFeatures";
+export { toggleFeatures } from "./lib/toggleFeatures";
+export { ToggleFeatures } from "./components/ToggleFeatures/ToggleFeatures";

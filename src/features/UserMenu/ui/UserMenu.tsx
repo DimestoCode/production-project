@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { isRoleAdmin, isRoleManager, useUserActions, useUserAuthData } from "@/entities/User";
 import { USER_LOCAL_STORAGE_KEY } from "@/shared/const/localStorage";
-import { getRouteAdmin, getRouteProfile } from "@/shared/const/router";
+import { getRouteAdmin, getRouteProfile, getRouteSettings } from "@/shared/const/router";
 import { Avatar as AvatarDeprecated } from "@/shared/ui/deprecated/Avatar";
 import { Menu as MenuDeprecated } from "@/shared/ui/deprecated/Popups";
 import { ToggleFeatures } from "@/shared/lib/features";
@@ -26,6 +26,7 @@ export const UserMenu = memo(() => {
     const menuItems = useMemo(() => {
         return [
             ...(showAdminPanelItem ? [{ label: t("Admin Panel"), href: getRouteAdmin() }] : []),
+            { label: t("Settings"), href: getRouteSettings() },
             { label: t("Profile"), href: getRouteProfile(`${authData?.id}`) },
             { label: t("Logout"), onClick: onLogoutClick }
         ];

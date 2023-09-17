@@ -3,9 +3,9 @@ import { Suspense } from "react";
 import { renderTestComponent } from "@/shared/lib/tests/renderTestComponent";
 import { Sidebar } from "./Sidebar";
 import { IStoreState } from "@/app/providers/StoreProvider";
-import { getFeatureFlag } from "@/shared/lib/features/setGetFeatures";
+import { getFeatureFlag } from "@/shared/lib/features";
 
-jest.mock("@/shared/lib/features/setGetFeatures");
+jest.mock("@/shared/lib/features/lib/setGetFeatures");
 (getFeatureFlag as jest.Mock<boolean>).mockReturnValue(false);
 
 const initialState: DeepPartial<IStoreState> = {

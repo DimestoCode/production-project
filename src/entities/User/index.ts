@@ -1,3 +1,4 @@
+export type { IJsonSettings } from "./model/types/IJsonSettings";
 export { initializeAuthData } from "./model/services/initializeAuthData/initializeAuthData";
 export { saveJsonSettings } from "./model/services/saveJsonSettings/saveJsonSettings";
 export { useJsonSettings } from "./model/selectors/jsonSettings";
