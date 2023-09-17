@@ -45,7 +45,12 @@ export const Menu = ({ className, items, triggerEl, direction = "bottom-right" }
                     return (
                         <HMenu.Item as={Fragment} disabled={item.disabled} key={uniqueId()}>
                             {({ active }) => (
-                                <Button className={getItemClassNames(active)} onClick={item.onClick} type="button">
+                                <Button
+                                    className={getItemClassNames(active)}
+                                    onClick={item.onClick}
+                                    type="button"
+                                    variant="clear"
+                                >
                                     {item.label}
                                 </Button>
                             )}

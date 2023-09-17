@@ -1,7 +1,6 @@
 import isNil from "lodash/isNil";
 import isString from "lodash/isString";
-import { memo, useCallback } from "react";
-import { useTranslation } from "react-i18next";
+import { memo, useCallback, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { IUser } from "@/entities/User";
 import { getRouteProfile } from "@/shared/const/router";
@@ -12,9 +11,6 @@ import {
     IDynamicLoaderProps,
     useDynamicModuleLoader
 } from "@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader";
-import { Button, ButtonTheme } from "@/shared/ui/deprecated/Button";
-import { Input } from "@/shared/ui/deprecated/Input";
-import { TextTheme, Text } from "@/shared/ui/deprecated/Text";
 import { loginReducer, useLoginActions } from "../../model/slices/loginSlice";
 import { useLoginIsLoading } from "../../model/selectors/getLoginIsLoading/getLoginIsLoading";
 import { useLoginError } from "../../model/selectors/getLoginError/getLoginError";
@@ -22,6 +18,10 @@ import { useLoginPassword } from "../../model/selectors/getLoginPassword/getLogi
 import { useLoginUsername } from "../../model/selectors/getLoginUsername/getLoginUsername";
 import { loginByUsername } from "../../model/services/loginByUsername/loginByUsername";
 import classes from "./LoginForm.module.scss";
+import { ToggleFeatures } from "@/shared/lib/features";
+import { LoginFormRedesigned } from "./LoginFormRedesigned";
+import { LoginFormDeprecated } from "./LoginFormDeprecated";
+import { ILoginProps } from "../../model/types/ILogin";
 
 export interface LoginFormProps {
     className?: string;
@@ -34,12 +34,10 @@ const dynamicModuleLoaderProps: IDynamicLoaderProps = {
     },
     removeOnUnmount: true
 };
-
 const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
     const navigate = useNavigate();
     useDynamicModuleLoader(dynamicModuleLoaderProps);
 
-    const { t } = useTranslation("common");
     const dispatch = useAppDispatch();
     const { setPassword, setUsername } = useLoginActions();
 
@@ -75,34 +73,25 @@ const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
         }
     }, [dispatch, navigate, onSuccess, password, username]);
 
+    const props = useMemo<ILoginProps>(
+        () => ({
+            isLoading,
+            onChangePassword,
+            onChangeUsername,
+            onLoginClick,
+            password,
+            username,
+            error
+        }),
+        [error, isLoading, onChangePassword, onChangeUsername, onLoginClick, password, username]
+    );
     return (
         <form className={classNames(classes.LoginForm, {}, [className])}>
-            <Text title={t("Login Form")} />
-            {error && <Text text={error} theme={TextTheme.Error} />}
-            <Input
-                className={classes.input}
-                onChange={onChangeUsername}
-                placeholder={t("Input login")}
-                type="text"
-                value={username}
-                autoFocus
+            <ToggleFeatures
+                feature="isAppRedesigned"
+                off={<LoginFormDeprecated {...props} />}
+                on={<LoginFormRedesigned {...props} />}
             />
-            <Input
-                className={classes.input}
-                onChange={onChangePassword}
-                placeholder={t("Input password")}
-                type="text"
-                value={password}
-            />
-            <Button
-                className={classes.loginBtn}
-                disabled={isLoading}
-                onClick={onLoginClick}
-                theme={ButtonTheme.Outline}
-                type="submit"
-            >
-                {t("Login")}
-            </Button>
         </form>
     );
 });
