@@ -4,6 +4,7 @@ import { useModal } from "@/shared/lib/hooks/useModal/useModal";
 import { Overlay } from "../../redesigned/Overlay/Overlay";
 import { Portal } from "../../redesigned/Portal/Portal";
 import classes from "./Modal.module.scss";
+import { toggleFeatures } from "@/shared/lib/features";
 
 interface IModalProps {
     className?: string;
@@ -13,10 +14,7 @@ interface IModalProps {
     lazy?: boolean;
 }
 const ANIMATION_DELAY = 300;
-/**
- * Component is obsolete, new components are supposed to be used
- * @deprecated
- */
+
 export const Modal = ({ className = "", children, isOpen, onClose, lazy }: IModalProps) => {
     const { handleClose, isClosing, isMounted } = useModal({
         isOpen,
@@ -33,9 +31,15 @@ export const Modal = ({ className = "", children, isOpen, onClose, lazy }: IModa
         return null;
     }
 
+    const viewClass = toggleFeatures({
+        name: "isAppRedesigned",
+        on: () => classes.newModal,
+        off: () => classes.oldModal
+    });
+
     return (
-        <Portal>
-            <div className={classNames(classes.Modal, dynamicClasses, [className])}>
+        <Portal element={document.getElementById("app") ?? document.body}>
+            <div className={classNames(classes.Modal, dynamicClasses, [viewClass, className])}>
                 <Overlay onClick={handleClose} />
                 <div
                     className={classNames(classes.content, {

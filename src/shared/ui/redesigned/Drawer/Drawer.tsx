@@ -2,11 +2,12 @@ import { ReactNode, useCallback, useEffect } from "react";
 import { ClassNameObject, classNames } from "@/shared/lib/classNames/classNames";
 import { useAnimationLibraries } from "@/shared/lib/components/AnimationProvider";
 import { useModal } from "@/shared/lib/hooks/useModal/useModal";
-import { Overlay } from "../../redesigned/Overlay/Overlay";
-import { Portal } from "../../redesigned/Portal/Portal";
+import { Overlay } from "../Overlay/Overlay";
+import { Portal } from "../Portal/Portal";
 import classes from "./Drawer.module.scss";
 import withAnimationProvider from "@/shared/lib/components/AnimationProvider/withAnimationProvider";
 import useTheme from "@/shared/lib/hooks/useTheme/useTheme";
+import { toggleFeatures } from "@/shared/lib/features";
 
 interface IDrawerProps {
     className?: string;
@@ -80,10 +81,14 @@ export const DrawerContent = ({ children, onClose, className, isOpen }: IDrawerP
     }
 
     const display = y.to((py) => (py < height ? "block" : "none"));
-
+    const viewClass = toggleFeatures({
+        name: "isAppRedesigned",
+        on: () => classes.newDrawer,
+        off: () => classes.oldDrawer
+    });
     return (
-        <Portal>
-            <div className={classNames(classes.Drawer, mods, [className, theme, "app_drawer"])}>
+        <Portal element={document.getElementById("app") ?? document.body}>
+            <div className={classNames(classes.Drawer, mods, [className, theme, "app_drawer", viewClass])}>
                 <Overlay onClick={() => closeDrawer()} />
                 <Spring.a.div
                     className={classes.sheet}
@@ -107,8 +112,4 @@ const DrawerWrapper = (props: IDrawerProps) => {
     return <DrawerContent {...props} />;
 };
 
-/**
- * Component is obsolete, new components are supposed to be used
- * @deprecated
- */
 export const Drawer = withAnimationProvider(DrawerWrapper);

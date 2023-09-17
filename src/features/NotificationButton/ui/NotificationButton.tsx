@@ -14,7 +14,7 @@ const NotificationIconDeprecated = lazy(() => import("@/shared/assets/icons/bell
 const NotificationIcon = lazy(() => import("@/shared/assets/icons/bell-redesigned.svg"));
 
 const PopoverDeprecated = lazy(() => import("@/shared/ui/deprecated/Popups").then((mod) => ({ default: mod.Popover })));
-const Drawer = lazy(() => import("@/shared/ui/deprecated/Drawer/Drawer").then((mod) => ({ default: mod.Drawer })));
+const Drawer = lazy(() => import("@/shared/ui/redesigned/Drawer/Drawer").then((mod) => ({ default: mod.Drawer })));
 
 export const NotificationButton = memo(() => {
     const [isOpen, setIsOpen] = useState(false);

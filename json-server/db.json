@@ -164,7 +164,7 @@
       ],
       "features": {
         "isArticleRatingEnabled": true,
-        "isAppRedesigned": false
+        "isAppRedesigned": true
       },
       "avatar": "https://cdn4.vectorstock.com/i/1000x1000/42/83/avatar-social-media-isolated-icon-design-vector-10704283.jpg",
       "jsonSettings": {
