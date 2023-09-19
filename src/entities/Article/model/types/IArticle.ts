@@ -15,3 +15,7 @@ export interface IArticle {
 }
 
 export type ArticleViewMode = "grid" | "list";
+
+export interface IArticleDetailsProps {
+    article: IArticle;
+}

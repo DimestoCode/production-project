@@ -40,7 +40,7 @@ export const ButtonWithRef = forwardRef<HTMLButtonElement, IButtonProps>((props,
     return (
         <button type="button" {...rest} className={buttonClassnames} disabled={disabled} ref={ref}>
             {addonLeft}
-            {children}
+            {children as ReactNode}
             {addonRight}
         </button>
     );

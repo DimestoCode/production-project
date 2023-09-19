@@ -10,10 +10,6 @@ interface IAppLinkProps extends LinkProps {
     variant?: AppLinkVariant;
 }
 
-/**
- * Component is obsolete, new components are supposed to be used
- * @deprecated
- */
 const AppLinkComponent: FC<IAppLinkProps> = forwardRef<HTMLAnchorElement, IAppLinkProps>(
     (props: IAppLinkProps, ref) => {
         const { to, className = "", children, variant = "primary", ...rest } = props;
@@ -30,4 +26,8 @@ const AppLinkComponent: FC<IAppLinkProps> = forwardRef<HTMLAnchorElement, IAppLi
     }
 );
 
+/**
+ * Component is obsolete, new components are supposed to be used
+ * @deprecated
+ */
 export const AppLink = memo(AppLinkComponent);

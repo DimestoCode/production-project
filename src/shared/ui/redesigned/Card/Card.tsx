@@ -11,6 +11,7 @@ export interface ICardProps extends HTMLAttributes<HTMLDivElement> {
     children: ReactNode;
     variant?: CardVariant;
     fullWidth?: boolean;
+    fullHeight?: boolean;
     padding?: CardPadding;
     border?: CardBorder;
 }
@@ -20,13 +21,14 @@ export const Card = ({
     children,
     variant = "normal",
     fullWidth,
+    fullHeight,
     padding = "8",
     border = "normal",
     ...rest
 }: ICardProps) => {
     return (
         <article
-            className={classNames(classes.Card, { [classes.fullWidth]: fullWidth }, [
+            className={classNames(classes.Card, { [classes.fullWidth]: fullWidth, [classes.fullHeight]: fullHeight }, [
                 className,
                 classes[variant],
                 classes[`padding-${padding}`],

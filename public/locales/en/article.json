@@ -8,5 +8,8 @@
   "Recommendations can": "Recommendations can't be loaded",
   "Rate the article": "Rate the article",
   "Leave your feedback": "Leave your feedback, it helps us to improve",
-  "Rating section is being developed": "Rating sections is being developed"
+  "Rating section is being developed": "Rating sections is being developed",
+  "{{count}} views_other": "{{count}} views",
+  "{{count}} views_one": "{{count}} view",
+  "{{count}} views_few": "{{count}} views"
 }

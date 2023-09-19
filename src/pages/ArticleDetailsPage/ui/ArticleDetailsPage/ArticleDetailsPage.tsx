@@ -15,10 +15,11 @@ import { ArticleDetailsPageHeader } from "../../ui/ArticleDetailsPageHeader/Arti
 import classes from "./ArticleDetailsPage.module.scss";
 import { ArticleDetailsComments } from "../ArticleDetailsComments/ArticleDetailsComments";
 import { ToggleFeatures } from "@/shared/lib/features";
+import { StickyLayout } from "@/shared/layouts/StickyLayout";
+import { ArticleDetailsContainer } from "../ArticleDetailsContainer/ArticleDetailsContainer";
+import { ExtraInfoContainer } from "../ExtraInfoContainer/ExtraInfoContainer";
+import { Card as CardDeprecated } from "@/shared/ui/deprecated/Card";
 
-const Card = lazy(async () => {
-    return import("@/shared/ui/deprecated/Card").then(({ Card }) => ({ default: Card }));
-});
 const ArticleRating = lazy(async () => {
     return import("@/features/ArticleRating").then(({ ArticleRating }) => ({ default: ArticleRating }));
 });
@@ -41,19 +42,35 @@ const ArticleDetailsPage = memo(() => {
     }
 
     return (
-        <Page className={classNames(classes.ArticleDetailsPage)}>
-            <VStack gap="16" maxWidth>
-                <ArticleDetailsPageHeader />
-                <ArticleDetails id={Number(articleId)} />
-                <ToggleFeatures
-                    feature="isArticleRatingEnabled"
-                    off={<Card>{t("Rating section is being developed")}</Card>}
-                    on={<ArticleRating articleId={Number(articleId)} />}
+        <ToggleFeatures
+            feature="isAppRedesigned"
+            off={
+                <Page className={classNames(classes.ArticleDetailsPage)}>
+                    <VStack gap="16" maxWidth>
+                        <ArticleDetailsPageHeader />
+                        <ArticleDetails id={Number(articleId)} />
+                        <CardDeprecated>{t("Rating section is being developed")}</CardDeprecated>
+                        <ArticleRecommendationsList />
+                        <ArticleDetailsComments articleId={Number(articleId)} />
+                    </VStack>
+                </Page>
+            }
+            on={
+                <StickyLayout
+                    content={
+                        <Page className={classNames(classes.ArticleDetailsPage)}>
+                            <VStack gap="16" maxWidth>
+                                <ArticleDetailsContainer />
+                                <ArticleRating articleId={Number(articleId)} />
+                                <ArticleRecommendationsList />
+                                <ArticleDetailsComments articleId={Number(articleId)} />
+                            </VStack>
+                        </Page>
+                    }
+                    right={<ExtraInfoContainer />}
                 />
-                <ArticleRecommendationsList />
-                <ArticleDetailsComments articleId={Number(articleId)} />
-            </VStack>
-        </Page>
+            }
+        />
     );
 });
 

@@ -12,9 +12,9 @@ interface IStickyLayoutProps {
 export const StickyLayout = memo(({ className, content, left, right }: IStickyLayoutProps) => {
     return (
         <div className={classNames(classes.StickyLayout, {}, [className])}>
-            {right && <div className={classes.left}>{left}</div>}
+            {left && <div className={classes.left}>{left}</div>}
             <div className={classes.content}>{content}</div>
-            {left && <div className={classes.right}>{right}</div>}
+            {right && <div className={classes.right}>{right}</div>}
         </div>
     );
 });

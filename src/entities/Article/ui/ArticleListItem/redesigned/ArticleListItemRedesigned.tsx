@@ -26,7 +26,7 @@ export const ArticleListItemRedesigned = memo<IArticleListItemProps>(({ article,
 
     const userInfo = (
         <>
-            <Avatar size={32} src={article.user?.avatar} />
+            <Avatar className={classes.avatar} size={32} src={article.user?.avatar} />
             <Text text={article.user.username} bold />
         </>
     );
@@ -74,10 +74,8 @@ export const ArticleListItemRedesigned = memo<IArticleListItemProps>(({ article,
                         <Text text={article.createdAt} />
                     </HStack>
 
-                    {/* <div className={classes.header}></div> */}
                     <Text size="L" title={article.title} bold />
                     <Text size="L" text={article.subtitle} />
-                    {/* {articleTypes} */}
                     <AppImage
                         alt={article.title}
                         className={classes.img}

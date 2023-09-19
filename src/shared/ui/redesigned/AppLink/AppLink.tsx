@@ -1,4 +1,4 @@
-import { FC, forwardRef, memo } from "react";
+import { FC, ReactNode, forwardRef, memo } from "react";
 import { LinkProps, NavLink } from "react-router-dom";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import classes from "./AppLink.module.scss";
@@ -23,7 +23,7 @@ const AppLinkComponent: FC<IAppLinkProps> = forwardRef<HTMLAnchorElement, IAppLi
                 to={to}
                 {...rest}
             >
-                {children}
+                {children as ReactNode}
             </NavLink>
         );
     }

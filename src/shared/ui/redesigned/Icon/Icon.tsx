@@ -8,6 +8,7 @@ type SvgProps = Omit<React.SVGProps<SVGSVGElement>, "onClick" | "ref">;
 interface IIconBaseProps extends SvgProps {
     className?: string;
     Svg: ComponentType<SVGProps<SVGSVGElement>> | LazyExoticComponent<ComponentType<SVGProps<SVGSVGElement>>>;
+    btnClassName?: string;
 }
 
 interface IClickableIcon extends IIconBaseProps {
@@ -30,13 +31,18 @@ export const Icon = forwardRef<SVGSVGElement, IconProps>((props: IconProps, ref)
             height={height}
             ref={ref}
             width={width}
-            {...omit(rest, "onClick")}
+            {...omit(rest, "onClick", "btnClassName")}
         />
     );
 
     if (clickable) {
         return (
-            <button className={classes.button} onClick={props.onClick} style={{ width, height }} type="button">
+            <button
+                className={classNames(classes.button, {}, [rest.btnClassName])}
+                onClick={props.onClick}
+                style={{ width, height }}
+                type="button"
+            >
                 {icon}
             </button>
         );

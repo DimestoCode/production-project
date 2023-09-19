@@ -4,44 +4,21 @@ import {
     IDynamicLoaderProps,
     useDynamicModuleLoader
 } from "@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader";
-import { Avatar } from "@/shared/ui/deprecated/Avatar";
 import { Skeleton } from "@/shared/ui/deprecated/Skeleton";
 import { Text } from "@/shared/ui/deprecated/Text";
-import EyeIcon from "@/shared/assets/icons/eye.svg";
-import CalendarIcon from "@/shared/assets/icons/calendar.svg";
-import { Icon } from "@/shared/ui/deprecated/Icon";
 import { useActionEffect } from "@/shared/lib/hooks/useActionEffect/useActionEffect";
-import { HStack, VStack } from "@/shared/ui/redesigned/Stack";
+import { VStack } from "@/shared/ui/redesigned/Stack";
 import { articleDetailsReducer } from "../../model/slice/articleDetailsSlice/articleDetailsSlice";
 import { retrieveArticleById } from "../../model/services/retrieveArticleById/retrieveArticleById";
-import { IArticleBlock } from "../../model/types/IArticleBlock";
-import {
-    useArticleDetailsData,
-    useArticleDetailsError,
-    useArticleDetailsIsLoading
-} from "../../model/selectors/articleDetailsSelectors";
+import { useArticleDetailsError, useArticleDetailsIsLoading } from "../../model/selectors/articleDetailsSelectors";
 import classes from "./ArticleDetails.module.scss";
-import { ArticleCodeBlock } from "../ArticleCodeBlock/ArticleCodeBlock";
-import { ArticleImageBlock } from "../ArticleImageBlock/ArticleImageBlock";
-import { ArticleTextBlock } from "../ArticleTextBlock/ArticleTextBlock";
-import { ArticleBlockType } from "../../model/consts/consts";
+import { ToggleFeatures } from "@/shared/lib/features";
+import { ArticleDetailsDeprecated } from "./deprecated/ArticleDetailsDeprecated";
+import { ArticleDetailsRedesigned } from "./redesigned/ArticleDetailsRedesigned";
 
 const asyncModules: IDynamicLoaderProps = {
     reducers: { articleDetails: articleDetailsReducer }
 };
-
-function renderBlock(block: IArticleBlock) {
-    switch (block.type) {
-        case ArticleBlockType.Code:
-            return <ArticleCodeBlock block={block} className={classes.block} key={block.id} />;
-        case ArticleBlockType.Image:
-            return <ArticleImageBlock block={block} className={classes.block} key={block.id} />;
-        case ArticleBlockType.Text:
-            return <ArticleTextBlock block={block} className={classes.block} key={block.id} />;
-        default:
-            return null;
-    }
-}
 
 export const ArticleDetails = memo(({ id }: { id: number }) => {
     useDynamicModuleLoader(asyncModules);
@@ -54,7 +31,6 @@ export const ArticleDetails = memo(({ id }: { id: number }) => {
     const isLoading = useArticleDetailsIsLoading();
 
     const error = useArticleDetailsError();
-    const article = useArticleDetailsData();
 
     if (isLoading) {
         return (
@@ -74,23 +50,11 @@ export const ArticleDetails = memo(({ id }: { id: number }) => {
 
     return (
         <VStack className={classes.ArticleDetails} gap="16" maxWidth>
-            <HStack className={classes.avatarWrapper} justify="center" maxWidth>
-                <Avatar className={classes.avatar} size={200} src={article?.img} />
-            </HStack>
-            <VStack data-testid="ArticleDetails.Info" gap="4">
-                <Text className={classes.title} text={article?.subtitle} title={article?.title} />
-                <HStack className={classes.articleInfo} gap="8">
-                    <Icon Svg={EyeIcon} className={classes.icon} />
-                    <Text text={String(article?.views)} />
-                </HStack>
-
-                <HStack className={classes.articleInfo} gap="8">
-                    <Icon Svg={CalendarIcon} className={classes.icon} />
-                    <Text text={article?.createdAt} />
-                </HStack>
-            </VStack>
-
-            {article?.blocks.map(renderBlock)}
+            <ToggleFeatures
+                feature="isAppRedesigned"
+                off={<ArticleDetailsDeprecated />}
+                on={<ArticleDetailsRedesigned />}
+            />
         </VStack>
     );
 });

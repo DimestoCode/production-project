@@ -19,8 +19,8 @@ interface TextProps {
 
 const mapHeaderSizeToTag: Record<TextSize, keyof JSX.IntrinsicElements> = {
     S: "h3",
-    L: "h2",
-    M: "h1"
+    L: "h1",
+    M: "h2"
 };
 
 export const Text = memo(
