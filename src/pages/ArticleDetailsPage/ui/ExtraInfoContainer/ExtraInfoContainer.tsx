@@ -16,7 +16,7 @@ export const ExtraInfoContainer = memo<IExtraInfoContainerProps>(({ className }:
         return null;
     }
     return (
-        <Card border="round" className={classes.card} padding="24">
+        <Card border="partial" className={classes.card} padding="24">
             <ArticleMetaData
                 author={article.user}
                 className={className}

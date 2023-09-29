@@ -4,6 +4,7 @@ import classes from "./LoginForm.module.scss";
 import { Input } from "@/shared/ui/redesigned/Input";
 import { Text } from "@/shared/ui/redesigned/Text";
 import { Button } from "@/shared/ui/redesigned/Button";
+import { VStack } from "@/shared/ui/redesigned/Stack";
 
 export const LoginFormRedesigned = ({
     error,
@@ -17,7 +18,7 @@ export const LoginFormRedesigned = ({
     const { t } = useTranslation("common");
 
     return (
-        <>
+        <VStack gap="16" maxWidth>
             <Text title={t("Login Form")} />
             {error && <Text text={error} variant="error" />}
             <Input
@@ -44,6 +45,6 @@ export const LoginFormRedesigned = ({
             >
                 {t("Login")}
             </Button>
-        </>
+        </VStack>
     );
 };

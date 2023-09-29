@@ -69,7 +69,7 @@ export const AddCommentForm = memo(({ className, onCommentSubmit }: IAddCommentF
                 </HStack>
             }
             on={
-                <Card border="round" padding="24" fullWidth>
+                <Card border="partial" padding="24" fullWidth>
                     <HStack
                         align="center"
                         className={classNames(classes.AddCommentFormRedesigned, {}, [className])}
@@ -92,50 +92,5 @@ export const AddCommentForm = memo(({ className, onCommentSubmit }: IAddCommentF
                 </Card>
             }
         />
-        // <HStack
-        //     align="center"
-        //     className={classNames(classes.AddCommentForm, {}, [className])}
-        //     data-testid="AddCommentForm"
-        //     justify="between"
-        //     maxWidth
-        // >
-        //     <ToggleFeatures
-        //         feature="isAppRedesigned"
-        //         off={
-        //             <HStack
-        //     align="center"
-        //     className={classNames(classes.AddCommentForm, {}, [className])}
-        //     data-testid="AddCommentForm"
-        //     justify="between"
-        //     maxWidth
-        // >
-        //                 <InputDeprecated
-        //                     className={classes.input}
-        //                     data-testid="AddCommentForm.Input"
-        //                     onChange={onCommentChange}
-        //                     placeholder={t("Type comment")}
-        //                     value={comment}
-        //                 />
-        //                 <ButtonDeprecated data-testid="AddCommentForm.Button" onClick={handleCommentSubmit}>
-        //                     {t("Submit")}
-        //                 </ButtonDeprecated>
-        //             <HStack />
-        //         }
-        //         on={
-        //             <HStack>
-        //                 <Input
-        //                     className={classes.input}
-        //                     data-testid="AddCommentForm.Input"
-        //                     onChange={onCommentChange}
-        //                     placeholder={t("Type comment")}
-        //                     value={comment}
-        //                 />
-        //                 <Button data-testid="AddCommentForm.Button" onClick={handleCommentSubmit}>
-        //                     {t("Submit")}
-        //                 </Button>
-        //             </HStack>
-        //         }
-        //     />
-        // </HStack>
     );
 });

@@ -3,10 +3,10 @@ import { NotificationButton } from "@/features/NotificationButton";
 import { LoginModal } from "@/features/UserAuthentication";
 import { UserMenu } from "@/features/UserMenu";
 import { classNames } from "@/shared/lib/classNames/classNames";
-import { Button, ButtonTheme } from "@/shared/ui/deprecated/Button";
 import { HStack } from "@/shared/ui/redesigned/Stack";
 import { INavbarProps } from "../../model/types/INavbarProps";
 import classes from "./RedesignedNavbar.module.scss";
+import { Button } from "@/shared/ui/redesigned/Button";
 
 export const RedesignedNavbar = ({ authData, isLoginModalOpen, toggleModal, className }: INavbarProps) => {
     const { t } = useTranslation("common");
@@ -18,7 +18,7 @@ export const RedesignedNavbar = ({ authData, isLoginModalOpen, toggleModal, clas
                     <UserMenu />
                 </HStack>
             ) : (
-                <Button className={classes.links} onClick={toggleModal} theme={ButtonTheme.ClearInverted}>
+                <Button className={classes.links} onClick={toggleModal} variant="clear">
                     {t("Login")}
                 </Button>
             )}

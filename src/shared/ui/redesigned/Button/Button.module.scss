@@ -3,14 +3,6 @@
     color: var(--text-redesigned);
     padding: 6px 15px;
     transition: color 0.2s ease-in-out;
-
-    &:not(&.disabled):hover {
-        color: var(--accent-redesigned);
-
-        svg {
-            color: var(--accent-redesigned);
-        }
-    }
 }
 
 .clear {
@@ -25,13 +17,42 @@
     background-color: var(--light-bg-redesigned);
 }
 
+.normal {
+    &:not(&.disabled):hover {
+        color: var(--accent-redesigned);
+
+        svg {
+            color: var(--accent-redesigned);
+        }
+    }
+}
+
 .outlined {
     border-radius: 34px;
-    border: 2px solid var(--icon-redesigned);
     background-color: none;
 
-    &:hover {
-        border-color: var(--accent-redesigned);
+    &.normal {
+        border: 2px solid var(--icon-redesigned);
+
+        &:hover {
+            border-color: var(--accent-redesigned);
+        }
+    }
+
+    &.error {
+        border: 2px solid var(--cancel-redesigned);
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+
+    &.success {
+        border: 2px solid var(--save-redesigned);
+
+        &:hover {
+            opacity: 0.8;
+        }
     }
 }
 

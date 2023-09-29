@@ -1,23 +1,20 @@
-import { useCallback } from "react";
-import { useTranslation } from "react-i18next";
+import { useCallback, useMemo } from "react";
 import { useSelector } from "react-redux";
-import { classNames } from "@/shared/lib/classNames/classNames";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
-import { Button, ButtonTheme } from "@/shared/ui/deprecated/Button";
-import { HStack } from "@/shared/ui/redesigned/Stack";
-import { Text } from "@/shared/ui/deprecated/Text";
 import { useProfileActions } from "../../model/slices/profileSlice";
 import { getIsProfileFormEditable } from "../../model/selectors/getIsProfileFormEditable/getIsProfileFormEditable";
 import { useProfileReadOnly } from "../../model/selectors/getProfileReadOnly/getProfileReadOnly";
 import { updateProfileData } from "../../model/services/updateProfileData/updateProfileData";
-import classes from "./EditableProfileCardHeader.module.scss";
+import { IProfileCardProps } from "../../model/types/IProfileCardProps";
+import { ToggleFeatures } from "@/shared/lib/features";
+import { EditableProfileCardHeaderDeprecated } from "./deprecated/EditableProfileCardHeaderDeprecated";
+import { EditableProfileCardHeaderRedesigned } from "./redesigned/EditableProfileCardHeaderRedesigned";
 
 interface EditableProfileCardHeaderProps {
     className?: string;
 }
 
 export const EditableProfileCardHeader = ({ className }: EditableProfileCardHeaderProps) => {
-    const { t } = useTranslation("profile");
     const readOnly = useProfileReadOnly();
     const isEditable = useSelector(getIsProfileFormEditable);
     const dispatch = useAppDispatch();
@@ -35,40 +32,21 @@ export const EditableProfileCardHeader = ({ className }: EditableProfileCardHead
         dispatch(updateProfileData());
     }, [dispatch]);
 
+    const props = useMemo<IProfileCardProps>(() => {
+        return {
+            onEdit,
+            onCancel,
+            isEditable,
+            onSave,
+            readOnly,
+            className
+        };
+    }, [className, isEditable, onCancel, onEdit, onSave, readOnly]);
     return (
-        <HStack className={classNames(classes.EditableProfileCardHeader, {}, [className])} justify="between" maxWidth>
-            <Text title={t("Profile")} />
-
-            {isEditable && (
-                <div>
-                    {readOnly ? (
-                        <Button
-                            data-testid="EditableProfileCardHeader.EditButton"
-                            onClick={onEdit}
-                            theme={ButtonTheme.Outline}
-                        >
-                            {t("Edit")}
-                        </Button>
-                    ) : (
-                        <HStack gap="8">
-                            <Button
-                                data-testid="EditableProfileCardHeader.CancelButton"
-                                onClick={onCancel}
-                                theme={ButtonTheme.OutlineRed}
-                            >
-                                {t("Cancel")}
-                            </Button>
-                            <Button
-                                data-testid="EditableProfileCardHeader.SaveButton"
-                                onClick={onSave}
-                                theme={ButtonTheme.Outline}
-                            >
-                                {t("Save")}
-                            </Button>
-                        </HStack>
-                    )}
-                </div>
-            )}
-        </HStack>
+        <ToggleFeatures
+            feature="isAppRedesigned"
+            off={<EditableProfileCardHeaderDeprecated {...props} />}
+            on={<EditableProfileCardHeaderRedesigned {...props} />}
+        />
     );
 };

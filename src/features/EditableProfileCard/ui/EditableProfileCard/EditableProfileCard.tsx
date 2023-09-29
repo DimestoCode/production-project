@@ -4,7 +4,7 @@ import { ProfileCard } from "@/entities/Profile";
 import { useActionEffect } from "@/shared/lib/hooks/useActionEffect/useActionEffect";
 import { Reducers, useDynamicModuleLoader } from "@/shared/lib/hooks/useDynamicModuleLoader/useDynamicModuleLoader";
 import { VStack } from "@/shared/ui/redesigned/Stack";
-import { Text, TextTheme } from "@/shared/ui/deprecated/Text";
+import { Text as TextDeprecated, TextTheme } from "@/shared/ui/deprecated/Text";
 import { retrieveProfileData } from "../../model/services/retrieveProfileData/retrieveProfileData";
 import { useProfileError } from "../../model/selectors/getProfileError/getProfileError";
 import { useProfileForm } from "../../model/selectors/getProfileForm/getProfileForm";
@@ -13,6 +13,8 @@ import { useProfileReadOnly } from "../../model/selectors/getProfileReadOnly/get
 import { useProfileValidationErrors } from "../../model/selectors/getProfileValidationErrors/getProfileValidationErrors";
 import { profileReducer, useProfileActions } from "../../model/slices/profileSlice";
 import { EditableProfileCardHeader } from "../EditableProfileCardHeader/EditableProfileCardHeader";
+import { ToggleFeatures } from "@/shared/lib/features";
+import { Text } from "@/shared/ui/redesigned/Text";
 
 interface IEditableProfileCardProps {
     profileId: number;
@@ -63,7 +65,18 @@ export const EditableProfileCard = memo(({ profileId }: IEditableProfileCardProp
             <EditableProfileCardHeader />
             {!!validationErrors?.length &&
                 validationErrors.map((error) => (
-                    <Text data-testid="EditableProfileCard.Error" key={error} text={t(error)} theme={TextTheme.Error} />
+                    <ToggleFeatures
+                        feature="isAppRedesigned"
+                        key={error}
+                        off={
+                            <TextDeprecated
+                                data-testid="EditableProfileCard.Error"
+                                text={t(error)}
+                                theme={TextTheme.Error}
+                            />
+                        }
+                        on={<Text data-testid="EditableProfileCard.Error" text={t(error)} variant="error" />}
+                    />
                 ))}
             <ProfileCard
                 data={formData}

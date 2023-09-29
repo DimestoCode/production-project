@@ -23,7 +23,7 @@ export const ProfileCardRedesigned = memo(
     }: Omit<IProfileCardProps, "error" | "isLoading">) => {
         const { t } = useTranslation("profile");
         return (
-            <Card padding="24" fullWidth>
+            <Card border="partial" padding="24" fullWidth>
                 <VStack gap="32" maxWidth>
                     {!!data?.avatar && (
                         <HStack className={classes.avatarWrapper} justify="center" maxWidth>

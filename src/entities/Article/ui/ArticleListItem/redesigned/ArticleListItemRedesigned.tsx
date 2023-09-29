@@ -40,7 +40,7 @@ export const ArticleListItemRedesigned = memo<IArticleListItemProps>(({ article,
 
     return (
         <Card
-            border={viewMode === "list" ? undefined : "round"}
+            border={viewMode === "list" ? undefined : "partial"}
             className={classNames(classes.ArticleListItemRedesigned, {}, [className, classes[viewMode]])}
             data-testid="ArticleListItem"
             padding={viewMode === "list" ? "24" : "0"}

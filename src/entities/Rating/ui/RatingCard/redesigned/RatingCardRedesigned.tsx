@@ -28,7 +28,7 @@ const RatingCardRedesigned = (props: IRatingCardProps) => {
         </VStack>
     );
     return (
-        <Card border="round" className={className} data-testid="RatingCard" padding="24" fullWidth>
+        <Card border="partial" className={className} data-testid="RatingCard" padding="24" fullWidth>
             <VStack align="center" gap="8">
                 <Text title={starsCount ? t("Thanks for your feedback") : title} />
                 <StarRating onSelect={onSelectStars} selectedStars={starsCount} size={40} />

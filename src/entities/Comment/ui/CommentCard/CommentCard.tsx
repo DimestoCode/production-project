@@ -69,7 +69,7 @@ export const CommentCard = memo(({ className, comment, isLoading }: ICommentCard
                 </VStack>
             }
             on={
-                <Card border="round" padding="24" fullWidth>
+                <Card border="partial" padding="24" fullWidth>
                     <VStack
                         className={classNames(classes.CommentCardRedesigned, {}, [className])}
                         data-testid="CommentCard.Content"

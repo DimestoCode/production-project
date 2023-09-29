@@ -3,8 +3,8 @@ import { ClassNameObject, classNames } from "@/shared/lib/classNames/classNames"
 import classes from "./Button.module.scss";
 
 export type ButtonVariant = "clear" | "outlined" | "filled";
-
 export type ButtonSize = "m" | "l" | "xl";
+export type ButtonColor = "normal" | "success" | "error";
 
 interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     className?: string;
@@ -14,6 +14,7 @@ interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     fullWidth?: boolean;
     addonRight?: ReactNode;
     addonLeft?: ReactNode;
+    color?: ButtonColor;
 }
 
 export const ButtonWithRef = forwardRef<HTMLButtonElement, IButtonProps>((props, ref) => {
@@ -27,6 +28,7 @@ export const ButtonWithRef = forwardRef<HTMLButtonElement, IButtonProps>((props,
         fullWidth,
         addonRight,
         addonLeft,
+        color = "normal",
         ...rest
     } = props;
 
@@ -35,7 +37,12 @@ export const ButtonWithRef = forwardRef<HTMLButtonElement, IButtonProps>((props,
         [classes.disabled]: disabled,
         [classes.fullWidth]: fullWidth
     };
-    const buttonClassnames = classNames(classes.Button, classNamesObject, [className, classes[variant], classes[size]]);
+    const buttonClassnames = classNames(classes.Button, classNamesObject, [
+        className,
+        classes[variant],
+        classes[size],
+        classes[color]
+    ]);
 
     return (
         <button type="button" {...rest} className={buttonClassnames} disabled={disabled} ref={ref}>

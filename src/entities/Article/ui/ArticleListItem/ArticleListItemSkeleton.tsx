@@ -51,7 +51,7 @@ const ArticleItemSkeletonDeprecated = ({ viewMode }: IArticleListItemSkeletonPro
 const ArticleItemSkeletonRedesigned = ({ viewMode }: IArticleListItemSkeletonProps) => {
     const isGrid = viewMode === "grid";
     const cardProps: Partial<ICardProps> = {
-        border: isGrid ? "round" : undefined,
+        border: isGrid ? "partial" : undefined,
         padding: isGrid ? "0" : "8"
     };
 
@@ -93,89 +93,11 @@ const ArticleItemSkeletonRedesigned = ({ viewMode }: IArticleListItemSkeletonPro
 };
 
 export const ArticleListItemSkeleton = memo(({ viewMode }: IArticleListItemSkeletonProps) => {
-    // const CardComponent = useMemo(() => {
-    //     return toggleFeatures({ name: "isAppRedesigned", off: () => CardDeprecated, on: () => Card });
-    // }, []);
-
-    // const SkeletonComponent = useMemo(() => {
-    //     return toggleFeatures({ name: "isAppRedesigned", off: () => SkeletonDeprecated, on: () => Skeleton });
-    // }, []);
-
-    // const mainClassName = toggleFeatures({
-    //     name: "isAppRedesigned",
-    //     off: () => classes.ArticleListItem,
-    //     on: () => classes.ArticleListItemRedesigned
-    // });
-
-    // const gridSkeleton = (
-    //     <ToggleFeatures
-    //         feature="isAppRedesigned"
-    //         off={
-    //             <>
-    //                 <div className={classes.imageWrapper}>
-    //                     <SkeletonComponent className={classes.img} height={200} width={200} />
-    //                 </div>
-    //                 <div className={classes.infoWrapper}>
-    //                     <SkeletonComponent height={16} width={130} />
-    //                 </div>
-    //                 <SkeletonComponent className={classes.title} height={16} width={150} />
-    //             </>
-    //         }
-    //         on={
-    //             <VStack className={classes.gridSkeletonContainer} justify="between">
-    //                 <VStack gap="16">
-    //                     <SkeletonComponent className={classes.img} height={140} width={240} />
-    //                     <SkeletonComponent height={24} width={130} />
-    //                 </VStack>
-
-    //                 <VStack className={classes.gridBottomSkeletonBlock} gap="4" maxWidth>
-    //                     <HStack justify="between" maxWidth>
-    //                         <SkeletonComponent height={24} width={84} />
-    //                         <SkeletonComponent height={24} width={56} />
-    //                     </HStack>
-    //                     <SkeletonComponent height={24} width={100} />
-    //                 </VStack>
-    //             </VStack>
-    //         }
-    //     />
-    // );
-
-    // const cardProps = useMemo(() => {
-    //     return toggleFeatures({
-    //         name: "isAppRedesigned",
-    //         off: () => ({}),
-    //         on: () => ({
-    //             border: isGrid ? "round" : undefined,
-    //             padding: isGrid ? "0" : "8"
-    //         })
-    //     });
-    // }, [isGrid]);
-
     return (
         <ToggleFeatures
             feature="isAppRedesigned"
             off={<ArticleItemSkeletonDeprecated viewMode={viewMode} />}
             on={<ArticleItemSkeletonRedesigned viewMode={viewMode} />}
         />
-        // <div className={classNames(mainClassName, {}, [classes[viewMode]])}>
-        //     <CardComponent {...cardProps} className={classes.card}>
-        //         {isGrid ? (
-        //             gridSkeleton
-        //         ) : (
-        //             <>
-        //                 <div className={classes.header}>
-        //                     <SkeletonComponent borderRadius="50%" height={30} width={30} />
-        //                     <SkeletonComponent className={classes.username} height={16} width={150} />
-        //                     <SkeletonComponent className={classes.date} height={16} width={150} />
-        //                 </div>
-        //                 <SkeletonComponent className={classes.title} height={24} width={250} />
-        //                 <SkeletonComponent className={classes.img} height={250} width="100%" />
-        //                 <div className={classes.footer}>
-        //                     <SkeletonComponent height={36} width={200} />
-        //                 </div>
-        //             </>
-        //         )}
-        //     </CardComponent>
-        // </div>
     );
 });
