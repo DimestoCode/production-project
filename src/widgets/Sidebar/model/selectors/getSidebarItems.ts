@@ -1,9 +1,9 @@
-import { createSelector } from "@reduxjs/toolkit";
 import { lazy, SVGProps, ComponentType } from "react";
 import { getUserAuthData } from "@/entities/User";
 import { getRouteAbout, getRouteArticles, getRouteMain, getRouteProfile } from "@/shared/const/router";
 import { ISidebarItem } from "../types/ISidebarItem";
 import { toggleFeatures } from "@/shared/lib/features";
+import { buildSelector } from "@/shared/lib/store/buildSelector";
 
 const AboutPageIconDeprecated = lazy(() => import("@/shared/assets/icons/about-page.svg"));
 const MainPageIconDeprecated = lazy(() => import("@/shared/assets/icons/main-page.svg"));
@@ -17,7 +17,9 @@ const ArticlesPageIcon = lazy(() => import("@/shared/assets/icons/article-redesi
 
 type GenericIconType = ComponentType<Omit<SVGProps<SVGSVGElement>, "ref">>;
 
-export const getSidebarItems = createSelector(getUserAuthData, (userData) => {
+export const [useSidebarItems, getSidebarItems] = buildSelector((state) => {
+    const userData = getUserAuthData(state);
+
     const sidebarItemsList: ISidebarItem[] = [
         {
             path: getRouteMain(),

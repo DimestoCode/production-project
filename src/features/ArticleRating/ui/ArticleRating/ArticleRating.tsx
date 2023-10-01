@@ -3,7 +3,9 @@ import { useTranslation } from "react-i18next";
 import { RatingCard } from "@/entities/Rating";
 import { useGetArticleRating, useRateArticle } from "../../api/articleRatingApi";
 import { useUserAuthData } from "@/entities/User";
-import { Skeleton } from "@/shared/ui/deprecated/Skeleton";
+import { Skeleton as SkeletonDeprecated } from "@/shared/ui/deprecated/Skeleton";
+import { ToggleFeatures } from "@/shared/lib/features";
+import { Skeleton } from "@/shared/ui/redesigned/Skeleton";
 
 export interface IArticleRatingProps {
     className?: string;
@@ -45,7 +47,13 @@ const ArticleRating = memo(({ className, articleId }: IArticleRatingProps) => {
     );
 
     if (isLoading) {
-        return <Skeleton height={120} width="100%" />;
+        return (
+            <ToggleFeatures
+                feature="isAppRedesigned"
+                off={<SkeletonDeprecated height={120} width="100%" />}
+                on={<Skeleton height={120} width="100%" />}
+            />
+        );
     }
 
     return (

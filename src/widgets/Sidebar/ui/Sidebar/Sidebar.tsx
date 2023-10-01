@@ -1,6 +1,5 @@
 import { lazy, memo, useMemo, useState } from "react";
-import { useSelector } from "react-redux";
-import { getSidebarItems } from "../../model/selectors/getSidebarItems";
+import { useSidebarItems } from "../../model/selectors/getSidebarItems";
 import { SidebarItem } from "../SidebarItem/SidebarItem";
 import { ToggleFeatures } from "@/shared/lib/features";
 
@@ -17,7 +16,7 @@ interface ISideBarProps {
 
 export const Sidebar = memo(({ className = "" }: ISideBarProps) => {
     const [collapsed, setCollapsed] = useState(false);
-    const sidebarItemsList = useSelector(getSidebarItems);
+    const sidebarItemsList = useSidebarItems();
     const onToggle = () => setCollapsed((prev) => !prev);
 
     const renderedSidebarItems = useMemo(

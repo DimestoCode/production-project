@@ -29,17 +29,32 @@ body {
     display: flex;
 }
 
+.app *::-webkit-scrollbar {
+    width: 12px;
+    height: 8px;
+}
+
+.app *::-webkit-scrollbar-track {
+    background: var(--card-bg);
+}
+
+.app *::-webkit-scrollbar-thumb {
+    background: var(--inverted-primary-color);
+    border-radius: 20px;
+    border: 2px solid var(--primary-color);
+}
+
 *::-webkit-scrollbar {
     width: 12px;
     height: 8px;
 }
 
 *::-webkit-scrollbar-track {
-    background: var(--card-bg);
+    background: var(--light-bg-redesigned);
 }
 
 *::-webkit-scrollbar-thumb {
-    background: var(--inverted-primary-color);
+    background: var(--icon-redesigned);
     border-radius: 20px;
-    border: 2px solid var(--primary-color);
+    border: 1px solid var(--accent-redesigned);
 }
