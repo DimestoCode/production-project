@@ -22,6 +22,7 @@ import { ToggleFeatures } from "@/shared/lib/features";
 import { LoginFormRedesigned } from "./LoginFormRedesigned";
 import { LoginFormDeprecated } from "./LoginFormDeprecated";
 import { ILoginProps } from "../../model/types/ILogin";
+import { useForceUpdate } from "@/shared/lib/render/forceUpdate";
 
 export interface LoginFormProps {
     className?: string;
@@ -45,6 +46,7 @@ const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
     const password = useLoginPassword();
     const isLoading = useLoginIsLoading();
     const error = useLoginError();
+    const forceUpdate = useForceUpdate();
 
     const onChangeUsername = useCallback(
         (value: string) => {
@@ -70,8 +72,9 @@ const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
             localStorage.setItem(USER_LOCAL_STORAGE_KEY, String(result.payload.id));
             onSuccess();
             navigate(getRouteProfile(`${result.payload.id}`));
+            forceUpdate();
         }
-    }, [dispatch, navigate, onSuccess, password, username]);
+    }, [dispatch, forceUpdate, navigate, onSuccess, password, username]);
 
     const props = useMemo<ILoginProps>(
         () => ({

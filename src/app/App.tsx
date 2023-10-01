@@ -12,7 +12,7 @@ import { MainLayout } from "@/shared/layouts/MainLayout";
 const App = () => {
     const initialized = useUserInitialized();
 
-    useActionEffect(initializeAuthData);
+    useActionEffect(initializeAuthData, !initialized);
 
     return initialized ? (
         <ToggleFeatures
@@ -31,12 +31,7 @@ const App = () => {
             on={
                 <div className={classNames("app_redesigned")} id="app">
                     <Suspense fallback={<AppLoader />}>
-                        <MainLayout
-                            content={<AppRouter />}
-                            header={<Navbar />}
-                            sidebar={<Sidebar />}
-                            // toolbar={<div></div>}
-                        />
+                        <MainLayout content={<AppRouter />} header={<Navbar />} sidebar={<Sidebar />} />
                     </Suspense>
                 </div>
             }

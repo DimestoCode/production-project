@@ -2,7 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { IThunkConfig } from "@/app/providers/StoreProvider";
 import { IFeatureFlags } from "@/shared/types/featureFlags";
 import { updateFeatureFlags as updateFeatureFlagsMutation } from "../api/featureFlagApi";
-import { getAllFeatureFlags } from "../lib/setGetFeatures";
+import { getAllFeatureFlags, setFeatureFlags } from "../lib/setGetFeatures";
 
 interface IUpdateFeatureFlagOptions {
     userId: number;
@@ -13,19 +13,19 @@ export const updateFeatureFlags = createAsyncThunk<void | string, IUpdateFeature
     "user/saveJsonSettigs",
     async ({ userId, newFeatures }, thunkApi) => {
         const { rejectWithValue, dispatch } = thunkApi;
-
+        const newFeatureFalgs = {
+            ...getAllFeatureFlags(),
+            ...newFeatures
+        };
         try {
             await dispatch(
                 updateFeatureFlagsMutation({
                     userId,
-                    features: {
-                        ...getAllFeatureFlags(),
-                        ...newFeatures
-                    }
+                    features: newFeatureFalgs
                 })
             );
-            window.location.reload();
 
+            setFeatureFlags(newFeatureFalgs);
             return;
         } catch (e) {
             console.log(e);

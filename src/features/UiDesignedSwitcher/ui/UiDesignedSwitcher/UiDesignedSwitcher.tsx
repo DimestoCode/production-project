@@ -12,6 +12,7 @@ import { Text } from "@/shared/ui/redesigned/Text";
 import { Text as TextDeprecated } from "@/shared/ui/deprecated/Text";
 import { Skeleton } from "@/shared/ui/redesigned/Skeleton";
 import { Skeleton as SkeletonDeprecated } from "@/shared/ui/deprecated/Skeleton";
+import { useForceUpdate } from "@/shared/lib/render/forceUpdate";
 
 interface IUiDesignedSwitcherProps {
     className?: string;
@@ -33,6 +34,8 @@ export const UiDesignedSwitcher = memo(({ className }: IUiDesignedSwitcherProps)
             label: t("old")
         }
     ];
+    const forceUpdate = useForceUpdate();
+
     const onChange = async (value: string) => {
         if (!isNil(authData)) {
             setIsLoading(true);
@@ -45,6 +48,8 @@ export const UiDesignedSwitcher = memo(({ className }: IUiDesignedSwitcherProps)
                 })
             ).unwrap();
             setIsLoading(false);
+
+            forceUpdate();
         }
     };
 
@@ -71,7 +76,6 @@ export const UiDesignedSwitcher = memo(({ className }: IUiDesignedSwitcherProps)
             ) : (
                 <ListBoxComponent
                     className={className}
-                    // label={t("Interface")}
                     onChange={onChange}
                     options={items}
                     value={isAppRedesigned ? "new" : "old"}
