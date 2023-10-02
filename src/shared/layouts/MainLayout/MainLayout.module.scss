@@ -25,11 +25,13 @@
         align-items: flex-end;
 
         .header {
-            justify-self: end;
+            justify-self: start;
         }
 
         .toolbar {
             justify-self: end;
+            height: inherit;
+            width: 100%;
         }
     }
 
@@ -37,6 +39,6 @@
     .sidebar {
         position: sticky;
         top: 0;
-        height: 100dvh;
+        height: 100vh;
     }
 }

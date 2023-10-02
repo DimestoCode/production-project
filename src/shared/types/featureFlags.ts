@@ -1,4 +1,4 @@
 export interface IFeatureFlags {
-    isArticleRatingEnabled: boolean;
+    isArticleRatingEnabled?: boolean;
     isAppRedesigned: boolean;
 }

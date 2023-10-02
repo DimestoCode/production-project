@@ -1,6 +1,5 @@
 import { Suspense } from "react";
 import { initializeAuthData, useUserInitialized } from "@/entities/User";
-import { classNames } from "@/shared/lib/classNames/classNames";
 import { Navbar } from "@/widgets/Navbar";
 import { Sidebar } from "@/widgets/Sidebar";
 import { AppRouter } from "./providers/router";
@@ -8,9 +7,12 @@ import { useActionEffect } from "@/shared/lib/hooks/useActionEffect/useActionEff
 import { AppLoader } from "@/widgets/AppLoader";
 import { ToggleFeatures } from "@/shared/lib/features";
 import { MainLayout } from "@/shared/layouts/MainLayout";
+import { AppLoaderLayout } from "@/shared/layouts/AppLoaderLayout";
+import { useAppToolbar } from "./lib/useAppToolbar";
 
 const App = () => {
     const initialized = useUserInitialized();
+    const toolbar = useAppToolbar();
 
     useActionEffect(initializeAuthData, !initialized);
 
@@ -18,7 +20,7 @@ const App = () => {
         <ToggleFeatures
             feature="isAppRedesigned"
             off={
-                <div className={classNames("app")} id="app">
+                <div className="app" id="app">
                     <Suspense fallback={<AppLoader />}>
                         <Navbar />
                         <div className="content-page">
@@ -29,15 +31,32 @@ const App = () => {
                 </div>
             }
             on={
-                <div className={classNames("app_redesigned")} id="app">
-                    <Suspense fallback={<AppLoader />}>
-                        <MainLayout content={<AppRouter />} header={<Navbar />} sidebar={<Sidebar />} />
+                <div className="app_redesigned" id="app">
+                    <Suspense fallback={<AppLoaderLayout />}>
+                        <MainLayout
+                            content={<AppRouter />}
+                            header={<Navbar />}
+                            sidebar={<Sidebar />}
+                            toolbar={toolbar}
+                        />
                     </Suspense>
                 </div>
             }
         />
     ) : (
-        <AppLoader />
+        <ToggleFeatures
+            feature="isAppRedesigned"
+            off={
+                <div className="app" id="app">
+                    <AppLoader />
+                </div>
+            }
+            on={
+                <div className="app_redesigned" id="app">
+                    <AppLoaderLayout />
+                </div>
+            }
+        />
     );
 };
 

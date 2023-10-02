@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { IThunkConfig } from "@/app/providers/StoreProvider";
-import { USER_LOCAL_STORAGE_KEY } from "@/shared/const/localStorage";
+import { LOCAL_STORAGE_DESIGN_KEY, USER_LOCAL_STORAGE_KEY } from "@/shared/const/localStorage";
 import { IUser } from "../../types/IUser";
 import i18n from "@/shared/config/i18n/i18n";
 
@@ -16,6 +16,7 @@ export const initializeAuthData = createAsyncThunk<IUser, void, IThunkConfig<str
         try {
             const response = await extra.api.get<IUser>(`users/${userId}`);
 
+            localStorage.setItem(LOCAL_STORAGE_DESIGN_KEY, response.data.features?.isAppRedesigned ? "new" : "old");
             if (!response.data.jsonSettings) {
                 return rejectWithValue(
                     i18n.t("Settings are missed", {
