@@ -5,6 +5,7 @@ import ProfileImg from "@/shared/assets/tests/profile.jpg";
 import { ProfileCard } from "./ProfileCard";
 import { Country } from "@/entities/Country/testing";
 import { Currency } from "@/entities/Currency/testing";
+import { NewDesignDecorator } from "@/shared/config/storybook/NewDesignDecorator/NewDesignDecorator";
 
 export default {
     title: "entities/ProfileCard",
@@ -54,3 +55,24 @@ export const Error = Template.bind({});
 Error.args = {
     error: "Something went wrong"
 };
+
+export const LoadingRedesigned = Template.bind({});
+LoadingRedesigned.args = {
+    isLoading: true
+};
+LoadingRedesigned.decorators = [NewDesignDecorator];
+
+export const WithDataRedesigned = Template.bind({});
+WithDataRedesigned.args = {
+    data: {
+        username: "admin",
+        age: 22,
+        city: "NY",
+        country: Country.USA,
+        currency: Currency.USD,
+        firstName: "Dima",
+        lastName: "Andoniev",
+        avatar: ProfileImg
+    }
+};
+WithDataRedesigned.decorators = [NewDesignDecorator];

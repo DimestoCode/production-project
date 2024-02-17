@@ -1,4 +1,4 @@
-import { Suspense } from "react";
+import { Suspense, memo } from "react";
 import { initializeAuthData, useUserInitialized } from "@/entities/User";
 import { Navbar } from "@/widgets/Navbar";
 import { Sidebar } from "@/widgets/Sidebar";
@@ -9,8 +9,9 @@ import { ToggleFeatures } from "@/shared/lib/features";
 import { MainLayout } from "@/shared/layouts/MainLayout";
 import { AppLoaderLayout } from "@/shared/layouts/AppLoaderLayout";
 import { useAppToolbar } from "./lib/useAppToolbar";
+import { withTheme } from "./providers/ThemeProvider/ui/ThemeProvider";
 
-const App = () => {
+const App = memo(() => {
     const initialized = useUserInitialized();
     const toolbar = useAppToolbar();
 
@@ -58,6 +59,6 @@ const App = () => {
             }
         />
     );
-};
+});
 
-export default App;
+export default withTheme(App);

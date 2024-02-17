@@ -61,7 +61,7 @@ export const ListBox = <T extends string>({
                     <>
                         {!!label && (
                             <HListbox.Label className={classNames(classes.label, { [classes.disabled]: disabled })}>
-                                {`${label}>`}
+                                {label}
                             </HListbox.Label>
                         )}
 
