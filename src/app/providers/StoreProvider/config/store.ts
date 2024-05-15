@@ -3,7 +3,7 @@ import { userReducer } from "@/entities/User";
 import { scrollRestorationReducer } from "@/features/ScrollRestoration";
 import { $api } from "@/shared/api/api";
 import { rtkApi } from "@/shared/api/rtkApi";
-import { IStoreState, IThunkExtra } from "./IStore";
+import { IReducerManager, IStoreState, IThunkExtra } from "./IStore";
 import { createReducerManager } from "./reducerManager";
 
 export function createReduxStore(initialStore: IStoreState, asyncReducers: ReducersMapObject<IStoreState>) {
@@ -31,10 +31,13 @@ export function createReduxStore(initialStore: IStoreState, asyncReducers: Reduc
             }).concat(rtkApi.middleware)
     });
 
-    // @ts-ignore
-    store.reducerManager = reducerManager;
+    type CustomStore = typeof store & {
+        reducerManager: IReducerManager;
+    };
 
-    return store;
+    (store as CustomStore).reducerManager = reducerManager;
+
+    return store as CustomStore;
 }
 
 export type AppDispatch = ReturnType<typeof createReduxStore>["dispatch"];
